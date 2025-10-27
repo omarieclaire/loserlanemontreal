@@ -498,6 +498,7 @@
             <div class="controls">
               <button class="btn-clear" onclick="clearGrid()">X ERASE EVERYTHING X</button>
               <button class="btn-eraser" id="eraserBtn" onclick="toggleEraser()">Eraser</button>
+              <button class="btn-copy" onclick="loadRandomExample()">See random example</button>
             </div>
           </div>
 
@@ -543,6 +544,53 @@
       let lastDrawnCell = null;
       let isEraserMode = false;
 
+      // Example buildings pool
+      const exampleBuildings = [
+        {
+          name: "Fire Station",
+          art: [
+            "    ◢◣   ", 
+            " ◢✦✦  ✦✦◣",
+            "◢✶✶FIRE✶✶◣",
+            "││CASERNE│",
+            "││✧✧26✯✧││",
+            "╰┴──────┴╯"
+          ]
+        },
+        {
+          name: "Cathedral",
+          art: [
+            "   ╱▲╲    ",
+            " ╱▲▲▲▲╲   ",
+            "│NOTRE   │",
+            "│ DAME   │",
+            "│ BASIL  │",
+            "└────────┘"
+          ]
+        },
+        {
+          name: "Street Sign",
+          art: [
+            "    ||    ",
+            "  |    |  ",
+            " |      │ ",
+            "|  RUE   │",
+            "│LAJEUN- |",
+            "╰────────╯"
+          ]
+        },
+        {
+          name: "Market",
+          art: [
+            "   ╱■╲    ",
+            " ╱╲╱╲╱╲   ",
+            "╱╲╱╲╱╲╱╲  ",
+            "│ ATWATER│",
+            "│ MARKET │",
+            "└────────┘"
+          ]
+        }
+      ];
    
       const paletteCategories = [
   {
@@ -1214,6 +1262,35 @@
           const col = index % GRID_SIZE;
           cell.textContent = grid[row][col];
         });
+      }
+
+      function loadRandomExample() {
+        // Pick a random example
+        const randomIndex = Math.floor(Math.random() * exampleBuildings.length);
+        const example = exampleBuildings[randomIndex];
+        
+        // Clear the grid first
+        grid = Array(GRID_SIZE)
+          .fill()
+          .map(() => Array(GRID_SIZE).fill(""));
+        
+        // Calculate starting row for bottom alignment
+        const startRow = GRID_SIZE - example.art.length;
+        
+        // Load the example art into the grid (bottom-aligned)
+        example.art.forEach((line, artRowIndex) => {
+          const gridRowIndex = startRow + artRowIndex;
+          for (let colIndex = 0; colIndex < GRID_SIZE; colIndex++) {
+            // Get character at this position, default to empty space
+            const char = line[colIndex] || "";
+            grid[gridRowIndex][colIndex] = char === " " ? "" : char;
+          }
+        });
+        
+        updateGrid();
+        selectedCell = null;
+        highlightCell(null);
+        showToast(`Loaded: ${example.name}! ✨`);
       }
 
       function clearGrid() {
