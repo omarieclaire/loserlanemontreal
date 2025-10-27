@@ -745,53 +745,525 @@
       let isEraserMode = false;
 
       // Example buildings pool
-      const exampleBuildings = [
-        {
-          name: "Fire Station",
-          art: [
-            "    ◢◣   ", 
-            " ◢✦✦  ✦✦◣",
-            "◢✶✶FIRE✶✶◣",
-            "││CASERNE│",
-            "││✧✧26✯✧││",
-            "╰┴──────┴╯"
-          ]
-        },
-        {
-          name: "Cathedral",
-          art: [
-            "   ╱▲╲    ",
-            " ╱▲▲▲▲╲   ",
-            "│NOTRE   │",
-            "│ DAME   │",
-            "│ BASIL  │",
-            "└────────┘"
-          ]
-        },
-        {
-          name: "Street Sign",
-          art: [
-            "    ||    ",
-            "  |    |  ",
-            " |      │ ",
-            "|  RUE   │",
-            "│LAJEUN- |",
-            "╰────────╯"
-          ]
-        },
-        {
-          name: "Market",
-          art: [
-            "   ╱■╲    ",
-            " ╱╲╱╲╱╲   ",
-            "╱╲╱╲╱╲╱╲  ",
-            "│ ATWATER│",
-            "│ MARKET │",
-            "└────────┘"
-          ]
-        }
-      ];
-   
+    const exampleBuildings = [
+  {
+    name: "Habitat 67",
+    art: [
+      "  ▓▓  ▓▓  ",
+      " ▓▓▓ ▓▓▓  ",
+      "▓▓▓ 67 ▓▓▓",
+      " ▓▓▓▓▓▓▓▓ ",
+      "▓▓▓ ▓▓▓▓▓ ",
+      " ▓▓  ▓▓ ▓▓"
+    ]
+  },
+  {
+    name: "Biosphere",
+    art: [
+      "   ╱◇◇╲   ",
+      "  ◇◇◇◇◇  ",
+      " ◇◇◇◇◇◇◇ ",
+      " ◇◇◇◇◇◇◇ ",
+      "  ◇◇◇◇◇  ",
+      "   ╲◇◇╱   "
+    ]
+  },
+  {
+    name: "Olympic Stadium",
+    art: [
+      "      ╱│  ",
+      "     ╱ │  ",
+      "    ╱  │  ",
+      "   ╱╲  │  ",
+      "  ╱  ╲ │  ",
+      " ◢◣ ◢◣◣│  "
+    ]
+  },
+  {
+    name: "Place des Arts",
+    art: [
+      "▀▀▀▀▀▀▀▀▀▀",
+      "█PLACE   █",
+      "█DES ARTS█",
+      "█ ▢ ▢ ▢ ▢█",
+      "█ ▢ ▢ ▢ ▢█",
+      "▔▔▔▔▔▔▔▔▔▔"
+    ]
+  },
+  {
+    name: "Phi Centre",
+    art: [
+      "╔═══PHI══╗",
+      "║ ◉ ART ◉║",
+      "║▓▓▓▓▓▓▓▓║",
+      "║ CINEMA ║",
+      "║▓▓▓▓▓▓▓▓║",
+      "╚═══════╝"
+    ]
+  },
+  {
+    name: "Main Bistro",
+    art: [
+      "  ▁▁▁▁▁   ",
+      " │ MAIN │ ",
+      " │BISTRO│ ",
+      " │ ☕★☕ │ ",
+      " │░░░░░░│ ",
+      " └──▐▌──┘ "
+    ]
+  },
+  {
+    name: "Casa del Popolo",
+    art: [
+      "╔═CASA═╗  ",
+      "║ DEL  ║  ",
+      "║POPOLO║  ",
+      "║★ ♪ ★║  ",
+      "║▓▓▓▓▓║  ",
+      "╚══════╝  "
+    ]
+  },
+  {
+    name: "Musée d'Art Contemporain",
+    art: [
+      "▀▀▀MAC▀▀▀▀",
+      "█ ◢■◣ ◢■◣█",
+      "█ ◥■◤ ◥■◤█",
+      "█ ART    █",
+      "█CONTEMPO█",
+      "▔▔▔▔▔▔▔▔▔▔"
+    ]
+  },
+  {
+    name: "SAT Societé",
+    art: [
+      "╭{     )─╮",
+      "╭─SAT───╮ ",
+      "│◉AUDIO◉│ ",
+      "│VISUAL │ ",
+      "│▓▓▓▓▓▓▓│ ",
+      "│░IMMR░░│ ",
+      "╰───────╯ "
+    ]
+  },
+  {
+    name: "Tam Tams",
+    art: [
+      "  ♪ ☼ ♪   ",
+      " ○ ● ○ ●  ",
+      "  TAM     ",
+      "  TAMS    ",
+      " ● ○ ● ○  ",
+      "  ♫ ☼ ♫   "
+    ]
+  },
+  {
+    name: "Wilensky's",
+    art: [
+      "╔WILENSKY╗",
+      "║ LIGHT  ║",
+      "║ LUNCH  ║",
+      "╚════════╝"
+    ]
+  },
+  {
+    name: "Fairmount Bagel",
+    art: [
+      "  ╱▔▔▔╲   ",
+      " │FAIR  │ ",
+      " │MOUNT │ ",
+      " │ ◯ ◯  │ ",
+      " │BAGELS│ ",
+      " ╰─────╯  "
+    ]
+  },
+  {
+    name: "Casa d'Italia",
+    art: [
+      "╔═CASA═╗  ",
+      "║D'ITALIA║",
+      "║ ★ ★ ★ ║",
+      "║▓▓▓▓▓▓▓║",
+      "║CULTURA║",
+      "╚═══════╝"
+    ]
+  },
+  {
+    name: "Greenroom",
+    art: [
+      "╭─GREEN──╮",
+      "│ ROOM   │",
+      "│ ♪ ★ ♫  │",
+      "╰────────╯"
+    ]
+  },
+  {
+    name: "McCord Museum",
+    art: [
+      "▀McCORD▀▀▀",
+      "█        █",
+      "█ ◢■◣◢■◣ █",
+      "▔▔▔▔▔▔▔▔▔▔"
+    ]
+  },
+  {
+    name: "Quai des Brumes",
+    art: [
+      "╔═QUAI══╗ ",
+      "║ DES   ║ ",
+      "║BRUMES ║ ",
+      "╚═══════╝ "
+    ]
+  },
+  {
+    name: "Cabaret Mile End",
+    art: [
+      "▁▁CABARET▁",
+      "│ MILE   │",
+      "│  END   │",
+      "│▓STAGE▓▓│",
+      "└─────────┘"
+    ]
+  },
+  {
+    name: "Foufounes Électriques",
+    art: [
+      "╔FOUFOU═╗ ",
+      "║NES    ║ ",
+      "║ELEC   ║ ",
+      "║TRIQUES║ ",
+      "║★♫PUNK♫║ ",
+      "╚═══════╝ "
+    ]
+  },
+  {
+    name: "Le Dépanneur Café",
+    art: [
+      "╭DEPAN──╮ ",
+      "│ NEUR  │ ",
+      "│ CAFE  │ ",
+      "│ ☕ ◉  │ ",
+      "│░RESTO░│ ",
+      "╰───────╯ "
+    ]
+  },
+  {
+    name: "Drawn & Quarterly",
+    art: [
+      "╔DRAWN═╗  ",
+      "║  &   ║  ",
+      "║QRTLY ║  ",
+      "║ ◢■◣  ║  ",
+      "║BOOKS ║  ",
+      "╚══════╝  "
+    ]
+  },
+  {
+    name: "L'Escalier",
+    art: [
+      "╭L'ESCA─╮ ",
+      "│ LIER  │ ",
+      "│ ♪ ★ ♫ │ ",
+      "╰───────╯ "
+    ]
+  },
+  {
+    name: "Cinéma du Parc",
+    art: [
+      "▀▀CINEMA▀▀",
+      "█ DU    █ ",
+      "█ PARC  █ ",
+      "█ ◢▓▓◣  █ ",
+      "█ ◥▓▓◤  █ ",
+      "▔▔▔▔▔▔▔▔▔▔"
+    ]
+  },
+  {
+    name: "Croissanterie Figaro",
+    art: [
+      "  ╱▔▔▔╲   ",
+      " │CROIS │ ",
+      " │SANTE │ ",
+      " │FIGARO│ ",
+      " │◯☕◯☕│ ",
+      " ╰──────╯ "
+    ]
+  },
+  {
+    name: "Barraca",
+    art: [
+      "╭BARRACA╮ ",
+      "│ RHUMBA│ ",
+      "╰────────╯"
+    ]
+  },
+  {
+    name: "Espace pour la vie",
+    art: [
+      "  ╱▲╲ ◉   ",
+      " │ESPACE│ ",
+      " │ POUR │ ",
+      " │ LA   │ ",
+      " │ VIE ☼│ ",
+      " └──────┘ "
+    ]
+  },
+  {
+    name: "Café Olimpico",
+    art: [
+      "╭OLIMPICO╮",
+      "│ESPRESSO│",
+      "│ CAFFE  │",
+      "│░1970░░ │",
+      "╰────────╯"
+    ]
+  },
+  {
+    name: "Cinéma Beaubien",
+    art: [
+      "╔CINEMA═╗ ",
+      "║BEAUBIEN║",
+      "║ ◢▓▓◣  ║ ",
+      "║ ◥▓▓◤  ║ ",
+      "║ 1938  ║ ",
+      "╚═══════╝ "
+    ]
+  },
+  {
+    name: "La Vitrola",
+    art: [
+      "╭LA─────╮ ",
+      "│VITROLA│ ",
+      "╰────────╯"
+    ]
+  },
+  {
+    name: "Palais Royale",
+    art: [
+      "▀PALAIS▀▀▀",
+      "█ ROYALE █",
+      "█ RESTO  █",
+      "▔▔▔▔▔▔▔▔▔▔"
+    ]
+  },
+  {
+    name: "Sala Rossa",
+    art: [
+      "╭SALA───╮ ",
+      "│ ROSSA │ ",
+      "│ ♪ ★ ♫ │ ",
+      "╰────────╯"
+    ]
+  },
+  {
+    name: "Notre-Dame Basilica",
+    art: [
+      "   ╱▲╲    ",
+      "  ╱▲▲╲    ",
+      " ╱NOTRE╲  ",
+      "│  DAME  │",
+      "│ ★ ✦ ★ │",
+      "└────────┘"
+    ]
+  },
+  {
+    name: "Café dei Campi",
+    art: [
+      "╭DEI────╮ ",
+      "│ CAMPI │ ",
+      "│ CAFFE │ ",
+      "│ ☕ ◉  │ ",
+      "╰───────╯ "
+    ]
+  },
+  {
+    name: "Arepera du Plateau",
+    art: [
+      "╭AREPERA╮ ",
+      "│ ◢■◣   │ ",
+      "╰────────╯"
+    ]
+  },
+  {
+    name: "Leonard Cohen House",
+    art: [
+      "  ▁▁▁▁▁   ",
+      " │ 5244 │ ",
+      " │ BLVD │ ",
+      " │★POET★│ ",
+      " └───────┘ "
+    ]
+  },
+  {
+    name: "Giant Ring",
+    art: [
+      "   ◢◣◣    ",
+      "  ◢   ◣   ",
+      " ◢ RING◣  ",
+      " ◥     ◤  ",
+      "  ◥   ◤   ",
+      "   ◥◤◤    "
+    ]
+  },
+  {
+    name: "Parquette",
+    art: [
+      "╭PAR___╮  ",
+      "│ QUET │ ",
+      "│ ★ ☕ ★│ ",
+      "│░.  E░░│ ",
+      "╰────────╯"
+    ]
+  },
+  {
+    name: "Café Orr",
+    art: [
+      "╭──ORR──╮ ",
+      "│ CAFE  │ ",
+      "│ ☕☕☕ │ ",
+      "╰────────╯"
+    ]
+  },
+  {
+    name: "Parc Laurier",
+    art: [
+      "  ☼ ◉ ☼   ",
+      " ░PARC░   ",
+      "░LAURIER░ ",
+      " ░POOL░   ",
+      "  ░░░░░   ",
+      "  ◉ ☼ ◉   "
+    ]
+  },
+  {
+    name: "Frédéric-Back Park",
+    art: [
+      "  ☼ ◉ ☼   ",
+      " ░FRED░   ",
+      "░░BACK░░  ",
+      " ░ORBS░   ",
+      "  ░░░░░   ",
+      "  ◉ ☼ ◉   "
+    ]
+  },
+  {
+    name: "Parc Jeanne-Mance",
+    art: [
+      "  ☼ ◉ ☼   ",
+      " ░JEANNE░ ",
+      "░░MANCE░░ ",
+      " ░PARC░   ",
+      "  ◉ ☼ ◉   "
+    ]
+  },
+  {
+    name: "Parc Jarry",
+    art: [
+      "  ☼ ◉ ☼   ",
+      " ░░PARC░░ ",
+      "░░JARRY░░ ",
+      "  ░░░░░   ",
+      "  ◉ ☼ ◉   "
+    ]
+  },
+  {
+    name: "Renaissance",
+    art: [
+      "╔RENAIS═╗ ",
+      "║ SANCE ║ ",
+      "║ THRIFT║ ",
+      "║ BOOKS ║ ",
+      "╚═══════╝ "
+    ]
+  },
+  {
+    name: "Les Petits Frères",
+    art: [
+      "╭LES────╮ ",
+      "│PETITS │ ",
+      "│FRERES │ ",
+      "│ ★ ♥ ★ │ ",
+      "╰────────╯"
+    ]
+  },
+  {
+    name: "Westmount Greenhouse",
+    art: [
+      "  ╱▔▔▔╲   ",
+      " ╱ ☼ ◉ ╲  ",
+      "│WESTMOU│ ",
+      "│ GREEN │ ",
+      "│░HOUSE░│ ",
+      "╰────────╯"
+    ]
+  },
+  {
+    name: "Chatime",
+    art: [
+      "╭CHATIME╮ ",
+      "│ BUBBLE│ ",
+      "│  TEA  │ ",
+      "│ ◉ ◉ ◉ │ ",
+      "│░BOBA░░│ ",
+      "╰────────╯"
+    ]
+  },
+  {
+    name: "Marché PA",
+    art: [
+      "╔MARCHE═╗ ",
+      "║  PA   ║ ",
+      "║ ◢■◣   ║ ",
+      "║GROCERY║ ",
+      "╚═══════╝ "
+    ]
+  },
+  {
+    name: "Samosa King",
+    art: [
+      "╭SAMOSA─╮ ",
+      "│ KING  │ ",
+      "│  $1   │ ",
+      "│ ◢■◣   │ ",
+      "│░SPICE░│ ",
+      "╰────────╯"
+    ]
+  },
+  {
+    name: "Gnocchi $5",
+    art: [
+      "╭GNOCCHI╮ ",
+      "│  $5   │ ",
+      "│ ◢■◣   │ ",
+      "╰────────╯"
+    ]
+  },
+  {
+    name: "St-Viateur Bagel",
+    art: [
+      "  ╱▔▔▔╲   ",
+      " │ST-VIA│ ",
+      " │ TEUR │ ",
+      " │ ◯ ◯  │ ",
+      " │BAGELS│ ",
+      " ╰──────╯ "
+    ]
+  },
+  {
+    name: "Van Horne Underpass",
+    art: [
+      "  ▀▀▀▀▀   ",
+      " │VAN   │ ",
+      "╱│HORNE│╲ ",
+      "││UNDER││ ",
+      "││░PASS░││",
+      "╰┴──────┴╯"
+    ]
+  }
+
+];
+      
+
       const paletteCategories = [
   {
     name: "Buildings",
