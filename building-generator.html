@@ -328,10 +328,16 @@
         h1 {
           font-size: clamp(1.2rem, 5vw, 1.5em);
           letter-spacing: clamp(2px, 1vw, 8px);
+          margin-bottom: 8px;
         }
 
         .subtitle {
           font-size: clamp(0.75rem, 2.5vw, 0.9em);
+          margin-bottom: 8px;
+        }
+
+        .subtitle:last-of-type {
+          margin-bottom: 15px;
         }
 
         .cell {
@@ -396,10 +402,87 @@
 
         .main-content {
           gap: 15px;
+          flex-direction: column-reverse;
         }
 
         .instructions {
           font-size: clamp(11px, 2.5vw, 13px);
+          padding: 10px;
+          margin-top: 10px;
+        }
+
+        /* Mobile-specific: Make palette section more compact and accessible */
+        .info-section {
+          padding: 8px 15px;
+          margin-bottom: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+        }
+
+        .current-char-label {
+          font-size: 0.85rem;
+          margin-bottom: 0;
+        }
+
+        .current-char-display {
+          font-size: 24px;
+          line-height: 1;
+        }
+
+        /* Mobile-specific: Optimize palette layout - restrict to ~4 lines */
+        .palette {
+          max-height: 220px;
+          padding: 8px;
+          border: 2px solid #63f863;
+          position: relative;
+        }
+
+        /* Make scrollbar more obvious on mobile */
+        .palette::-webkit-scrollbar {
+          width: 12px;
+        }
+
+        .palette::-webkit-scrollbar-track {
+          background: #120303;
+          border-radius: 5px;
+          border: 1px solid #63f863;
+        }
+
+        .palette::-webkit-scrollbar-thumb {
+          background: #63f863;
+          border-radius: 5px;
+          border: 2px solid #0a0202;
+        }
+
+        .palette::-webkit-scrollbar-thumb:hover {
+          background: #ff77df;
+        }
+
+        .palette-section {
+          min-width: 100%;
+        }
+
+        .grid-section {
+          min-width: 100%;
+        }
+
+        .palette-title {
+          font-size: 0.85rem;
+          margin-bottom: 5px;
+        }
+
+        .palette-category {
+          margin-bottom: 10px;
+        }
+
+        .palette-chars {
+          gap: 4px;
+        }
+
+        .char-btn {
+          padding: 6px 10px;
         }
       }
 
@@ -414,6 +497,41 @@
 
         .modal-btn {
           width: 100%;
+        }
+
+        /* Extra small screens: further optimize space */
+        .info-section {
+          padding: 6px 12px;
+          gap: 8px;
+        }
+
+        .current-char-label {
+          font-size: 0.75rem;
+        }
+
+        .current-char-display {
+          font-size: 20px;
+        }
+
+        .palette {
+          max-height: 200px;
+          padding: 6px;
+        }
+
+        .palette-category {
+          margin-bottom: 8px;
+        }
+
+        .palette-title {
+          margin-bottom: 4px;
+        }
+
+        .palette-chars {
+          gap: 3px;
+        }
+
+        .char-btn {
+          padding: 5px 8px;
         }
       }
 
