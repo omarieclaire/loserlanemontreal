@@ -322,16 +322,98 @@
 
       @media (max-width: 768px) {
         .container {
-          padding: 20px;
+          padding: 15px;
         }
 
         h1 {
-          font-size: 1.5em;
+          font-size: clamp(1.2rem, 5vw, 1.5em);
+          letter-spacing: clamp(2px, 1vw, 8px);
+        }
+
+        .subtitle {
+          font-size: clamp(0.75rem, 2.5vw, 0.9em);
         }
 
         .cell {
-          font-size: 16px;
-          min-height: 28px;
+          font-size: clamp(14px, 3vw, 16px);
+          min-height: clamp(25px, 8vw, 28px);
+          cursor: pointer;
+          -webkit-tap-highlight-color: transparent;
+        }
+
+        .grid-container {
+          touch-action: none;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          user-select: none;
+        }
+
+        .grid {
+          gap: 1px;
+        }
+
+        button {
+          font-size: clamp(11px, 2.5vw, 14px);
+          padding: 8px 12px;
+          touch-action: manipulation;
+          -webkit-tap-highlight-color: transparent;
+        }
+
+        .char-btn {
+          font-size: clamp(14px, 3vw, 18px);
+          min-width: clamp(35px, 10vw, 40px);
+          touch-action: manipulation;
+          -webkit-tap-highlight-color: transparent;
+        }
+
+        .palette {
+          -webkit-overflow-scrolling: touch;
+          max-height: min(60vh, 500px);
+        }
+
+        .modal {
+          width: 95%;
+          padding: 20px;
+        }
+
+        .modal h2 {
+          font-size: clamp(1.2rem, 4vw, 1.5em);
+        }
+
+        .modal-input-group input {
+          font-size: clamp(14px, 3vw, 16px);
+        }
+
+        .building-preview {
+          font-size: clamp(12px, 3vw, 18px);
+          padding: 15px;
+        }
+
+        .modal-btn {
+          font-size: clamp(14px, 3vw, 16px);
+          padding: 12px;
+        }
+
+        .main-content {
+          gap: 15px;
+        }
+
+        .instructions {
+          font-size: clamp(11px, 2.5vw, 13px);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          padding: 10px;
+        }
+
+        .modal-buttons {
+          flex-direction: column;
+        }
+
+        .modal-btn {
+          width: 100%;
         }
       }
 
@@ -1127,11 +1209,38 @@
             e.target.style.cursor = "";
           });
           cell.addEventListener("click", () => handleCellClick(i));
+
+          // Touch events for mobile
+          cell.addEventListener("touchstart", (e) => {
+            e.preventDefault();
+            isDrawing = true;
+            lastDrawnCell = null;
+            handleCellDraw(i);
+          });
+
+          cell.addEventListener("touchmove", (e) => {
+            e.preventDefault();
+            if (isDrawing) {
+              const touch = e.touches[0];
+              const element = document.elementFromPoint(touch.clientX, touch.clientY);
+              if (element && element.classList.contains("cell")) {
+                const touchIndex = parseInt(element.dataset.index);
+                handleCellDraw(touchIndex);
+              }
+            }
+          });
+
           gridElement.appendChild(cell);
         }
 
         // Stop drawing when mouse is released anywhere
         document.addEventListener("mouseup", () => {
+          isDrawing = false;
+          lastDrawnCell = null;
+        });
+
+        // Stop drawing when touch ends
+        document.addEventListener("touchend", () => {
           isDrawing = false;
           lastDrawnCell = null;
         });
