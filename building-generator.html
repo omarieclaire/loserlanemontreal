@@ -31,6 +31,10 @@
         max-width: 900px;
         width: 100%;
       }
+      a {
+        color: #63f863;
+
+      }
 
       h1 {
         text-align: center;
@@ -43,8 +47,8 @@
       .subtitle {
         text-align: center;
         color: #d1feff;
-        margin-bottom: 25px;
-        font-size: 0.9em;
+        margin-bottom: 15px;
+        font-size: 1.25rem;
       }
 
       .main-content {
@@ -137,16 +141,16 @@
 
       button:active {
         transform: translate(2px, 2px);
-        box-shadow: 1px 1px #333;
+        /* box-shadow: 1px 1px #333; */
       }
 
       .btn-clear {
         background: #ff77df;
-        color: white;
+        /* color: white; */
       }
 
       .btn-copy {
-        background: #63f863;
+        background: #ff77df;
         color: #120303;
       }
 
@@ -157,12 +161,12 @@
 
       .btn-eraser {
         background: #ff77df;
-        color: white;
+        /* color: white; */
       }
 
-      .btn-eraser.active {
+      .btn-eraser:hover, .btn-download:hover, .btn-copy:hover {
         background: #63f863;
-        box-shadow: 0 0 0 3px rgba(255, 167, 38, 0.3);
+        /* box-shadow: 0 0 0 3px rgba(255, 167, 38, 0.3); */
       }
 
       .btn-add-game {
@@ -241,7 +245,7 @@
 
       .info-section {
         background: rgba(231, 169, 0, 0.15);
-        padding: 20px;
+        padding: 10px;
 
         
         /* border-radius: 8px; */
@@ -682,9 +686,7 @@
   <body>
     <div class="container">
       <h1>Contribute to Loser Lane!</h1>
-      <p class="subtitle">https://marieflanagan.com/loserlanepark</p>
-
-      <p class="subtitle">Draw your building, then add it to the game!</p>
+      <p class="subtitle">Draw your building, then add it to <a target="_blank" href="https://omarieclaire.github.io/loserlanemontreal/">Loser Lane</a>!</p>
 
       <div class="main-content">
         <div class="grid-section">
@@ -696,9 +698,9 @@
           <div class="grid-container">
             <div class="grid" id="grid"></div>
             <div class="controls">
-              <button class="btn-clear" onclick="clearGrid()">X ERASE EVERYTHING X</button>
+              <button class="btn-clear" onclick="clearGrid()">ERASE ALL</button>
               <button class="btn-eraser" id="eraserBtn" onclick="toggleEraser()">Eraser</button>
-              <button class="btn-copy" onclick="loadRandomExample()">Random example</button>
+              <button class="btn-copy" onclick="loadRandomExample()">Example</button>
             </div>
           </div>
 
