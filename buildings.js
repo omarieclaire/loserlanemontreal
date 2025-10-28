@@ -48,6 +48,21 @@ const TORONTO_BUILDINGS = [
       "    ▒▒    "
     ]
   },
+      {
+        name: "BAIN_COLONIAL",
+        artist: "Julia",
+        art: [
+            " ┏━━━━━━┓ ",
+            " ┣━━━━━━┫ ",
+            " ┃ BAIN ┃ ",
+            " ┃      ┃ ",
+            " ┃COLO  ┃ ",
+            " ┃  NIAL┃ ",
+            " ┃      ┃ ",
+            " ┃      ┃ ",
+            " ┗━━━━━━┛ "
+        ]
+    },
   
   {
     name: "Olympic Stadium",
