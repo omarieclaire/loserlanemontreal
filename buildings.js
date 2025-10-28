@@ -63,6 +63,76 @@ const TORONTO_BUILDINGS = [
             " ┗━━━━━━┛ "
         ]
     },
+        {
+        name: "SNAKE_FACTORY",
+        artist: "Pen",
+        art: [
+            "  ∿∿∿⳻    ",
+            "  ∿∿∿5⳻   ",
+            "  ∿∿∿ S⳻  ",
+            "  ∿∿∿ S⚕  ",
+            "  ∿∿∿ S⚕  ",
+            "  ∿∿∿ S⚕  ",
+            "  ∿∿∿ S⚕  ",
+            "  ∿⍝∿ S⚕  "
+        ]
+    },
+        {
+        name: "BLOBBY'S_BUNKER",
+        artist: "Pen",
+        art: [
+            "   ⌓⌓⌓    ",
+            "  ◯ ❂ ⌇   ",
+            " ◯ ◜ ◝⌇   ",
+            " ◯⋰◟◘◞⦆   "
+        ]
+    },
+        {
+        name: "OBSERVATOIRE",
+        artist: "Pen",
+        art: [
+            "   ╭⦿⦿╮   ",
+            "  ╭ ⠁⠑ ╮  ",
+            " ╭ ⠛  ⠅⠝╮ ",
+            " ╰⠇ ⠋   ╯ ",
+            "  ╰⠕⠜ ⠜╯  ",
+            "   ╰  ╯   ",
+            "    ░░    ",
+            "    ▒▒    ",
+            "    ▓▓    ",
+            "    ██    "
+        ]
+    },
+        {
+        name: "ÉCOCENTRE_SAINT-LAURENT",
+        artist: "Pen",
+        art: [
+            "    ∥     ",
+            "   HH     ",
+            "  ▲▲▲▲    ",
+            "  ****    ",
+            " ⌠~◊ +≋   ",
+            "/⍞╳ 9 ⌯\  ",
+            "⌞╤╗ ⏏ ⌘╔╕ ",
+            "⌜╪╝⎇U ⠒╚╛ "
+        ]
+    },
+
+        {
+        name: "BANQ",
+        artist: "Julia",
+        art: [
+            " ┏━━━━━━┓ ",
+            " ┃BAnQ  ┃ ",
+            " ┣━━━━━━┛ ",
+            " ┃    ┃   ",
+            " ┃    ┃   ",
+            " ┃    ┃   ",
+            " ┃ ┌┐ ┃   ",
+            " ┃ ││ ┃   ",
+            " ┗━┷┷━┛   "
+        ]
+    },
   
   {
     name: "Olympic Stadium",

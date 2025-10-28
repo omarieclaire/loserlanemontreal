@@ -1,1855 +1,2372 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LoserLane Building Creator</title>
+  <html>
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>LoserLane Building Creator</title>
 
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
+      <meta name="mobile-web-app-capable" content="yes" />
 
-      body {
-        font-family: "Courier New", monospace;
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
-        background: #120303;
-      }
+      <title>Loser Lane Building Generator</title>
+      <meta name="title" content="Loser Lane Building Generator" />
+      <meta name="description" content="Draw a building for Loser Lane" />
 
-      /* Language Toggle - Subtle version */
-      .lang-toggle-container {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        z-index: 1000;
-        transition: opacity 0.3s ease;
-      }
+      <!-- Open Graph / Facebook -->
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://marieflanagan.com/loserlane/" />
+      <meta property="og:title" content="Loser Lane Building Generator" />
+      <meta property="og:description" content="Draw a building for Loser Lane" />
+      <meta property="og:image" content="https://marieflanagan.com/loserlane/img/helpc.png" />
 
-      .lang-toggle-container:hover {
-        opacity: 1;
-      }
+      <!-- Terrifying creature from the depths Card Tags  -->
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="Loser Lane Building Generator - Montreal Bike Survival Game" />
+      <meta name="twitter:description" content="Draw a building for Loser Lane" />
+      <meta name="twitter:image" content="https://marieflanagan.com/loserlane/img/helpc.png" />
 
-      .lang-toggle {
-        background: transparent;
-        border: 1px solid #63f863;
-        padding: 4px 4px;
-        font-size: 0.8rem;
-        cursor: pointer;
-        width: 50px;
-        font-family: "Courier New", monospace;
-        color: #63f863;
-        letter-spacing: 1px;
-        transition: all 0.2s ease;
-        box-shadow: none;
-      }
+      <link rel="me" href="https://mastodon.social/@omarieclaire" />
 
-      .lang-toggle:hover {
-        outline: none;
-      }
+      <!-- Bluesky/AT Protocol -->
+      <!--  currently use OpenGraph tags, but add these for future compatibility -->
+      <meta property="bsky:title" content="Loser Lane Building Generator - Montreal Bike Survival Game" />
+      <meta property="bsky:description" content="Draw a building for Loser Lane" />
+      <meta property="bsky:image" content="https://marieflanagan.com/loserlane/img/helpc.png" />
 
-      .container {
-        background: black;
-        /* border-radius: 10px; */
-        padding: 25px;
-        border: 2px solid #e7a900;
-        box-shadow: 0 0 20px rgba(231, 169, 0, 0.3);
-        max-width: 650px;
-        width: 100%;
-      }
-      a {
-        color: #63f863;
-      }
+      <!-- General SEO Meta Tags -->
+      <meta name="description" content="Draw a building for Loser Lane" />
+      <meta name="theme-color" content="#000000" />
 
-      h1 {
-        text-align: center;
-        color: #63f863;
-        margin-bottom: 10px;
-        font-size: 1.6em;
-        letter-spacing: 6px;
-      }
+      <!-- Image Specifications -->
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content="Loser Lane Building Generator game preview showing a cyclist navigating through traffic" />
 
-      .subtitle {
-        text-align: center;
-        color: #d1feff;
-        margin-bottom: 15px;
-        font-size: 1.05rem;
-      }
+      <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+      <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+      <link rel="shortcut icon" href="/favicon/favicon.ico" />
+      <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+      <link rel="manifest" href="/favicon/site.webmanifest" />
 
-      .main-content {
-        display: flex;
-        gap: 25px;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      .grid-section {
-        flex: 1;
-        min-width: 280px;
-      }
-
-      .grid-container {
-        background: #0a0202;
-        margin: 10px;
-        border-radius: 8px;
-        /* margin-bottom: 10px; */
-        box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5);
-        border: 1px solid #333;
-        max-height: 60vh;
-        overflow: auto;
-        user-select: none;
-        -webkit-user-select: none;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(10, 1fr);
-        gap: 2px;
-        background: #63f86368;
-        padding: 2px;
-        border-radius: 5px;
-        /* margin-bottom: 8px; */
-      }
-
-      .cell {
-        aspect-ratio: 1 / 1.5;
-        background: #120303;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-        transition: all 0.2s;
-        position: relative;
-        min-height: 10px;
-        color: #d1feff;
-      }
-
-      .cell:hover {
-        background: rgba(99, 248, 99, 0.2);
-        transform: scale(1.1);
-        z-index: 10;
-      }
-
-      .cell.active {
-        background: #120303;
-      }
-
-      .controls {
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-        justify-content:center;
-      }
-
-      button {
-        padding: 8px 5px;
-        border: 2px solid #666;
-        border-radius: 5px;
-        font-family: "Courier New", monospace;
-        font-size: 13px;
-        cursor: pointer;
-        transition: all 0.2s;
-        font-weight: bold;
-        background-color: #63f863;
-        color: #120303;
-        box-shadow: 4px 4px #666;
-      }
-
-      button:hover {
-        transform: translateY(-2px);
-        box-shadow: 6px 6px #333;
-        background-color: #ff77df;
-        color: #fff;
-      }
-
-      button:active {
-        transform: translate(2px, 2px);
-        /* box-shadow: 1px 1px #333; */
-      }
-
-      .btn-clear {
-        background: #ff77df;
-        /* color: white; */
-      }
-
-      .btn-copy {
-        background: #ff77df;
-        color: #120303;
-      }
-
-      .btn-download {
-        background: #d1feff;
-        color: #120303;
-      }
-
-      .btn-eraser {
-        background: #ff77df;
-        /* color: white; */
-      }
-
-      .btn-eraser:hover,
-      .btn-download:hover,
-      .btn-copy:hover {
-        background: #63f863;
-        /* box-shadow: 0 0 0 3px rgba(255, 167, 38, 0.3); */
-      }
-
-      .btn-add-game {
-        background: #63f863;
-        color: #120303;
-        width: 100%;
-        font-size: 15px;
-        padding: 12px;
-        margin-top: 10px;
-        border: 2px solid #666;
-      }
-
-      .btn-add-game:hover {
-        background: #ff77df;
-        color: #fff;
-      }
-
-      .palette-section {
-        flex: 1;
-        min-width: 280px;
-      }
-
-      .palette {
-        background: #0a0202;
-        padding: 12px;
-        border-radius: 8px;
-        max-height: 75vh;
-        overflow-y: auto;
-        border: 1px solid #333;
-      }
-
-      .palette-category {
-        margin-bottom: 12px;
-      }
-
-      .palette-title {
-        font-size: 0.9rem;
-        font-weight: bold;
-        color: #ff77df;
-        margin-bottom: 7px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-
-      .palette-chars {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 4px;
-      }
-
-      .char-btn {
-        padding: 6px 10px;
-        background: #120303;
-        border: 2px solid #666;
-        border-radius: 5px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: all 0.2s;
-        min-width: 36px;
-        text-align: center;
-        color: #d1feff;
-        box-shadow: 2px 2px #333;
-      }
-
-      .char-btn:hover {
-        border-color: #63f863;
-        background: rgba(231, 169, 0, 0.2);
-        transform: scale(1.1);
-      }
-
-      .char-btn.selected {
-        background: #63f863;
-        color: #120303;
-        border-color: #63f863;
-      }
-      .info-section {
-        padding: 5px;
-        padding-bottom: 7px;
-        border: 2px solid #ff77df;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 15px;
-        color: #63f863;
-      }
-
-      .info-text {
-        color: #63f863;
-        font-size: 0.9rem;
-        margin-bottom: 5px;
-      }
-
-      .current-char-display {
-        font-size: 1rem;
-        color: #63f863;
-        margin: 0;
-        font-weight: bold;
-      }
-
-      .output-section {
-        margin-top: 20px;
-        background: #0a0202;
-        padding: 15px;
-        border-radius: 8px;
-        border: 1px solid #333;
-      }
-
-      .output-label {
-        color: #ff77df;
-        font-weight: bold;
-        margin-bottom: 10px;
-        font-size: 0.9rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-
-      #output {
-        width: 100%;
-        min-height: 150px;
-        background: #120303;
-        color: #63f863;
-        border: 2px solid #666;
-        border-radius: 5px;
-        padding: 12px;
-        font-family: "Courier New", monospace;
-        font-size: 0.9rem;
-        resize: vertical;
-        white-space: pre;
-        overflow-x: auto;
-      }
-
-      /* Modal Styles */
-      .modal-overlay {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.8);
-        z-index: 1000;
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
-      }
-
-      .modal-overlay.show {
-        display: flex;
-      }
-      .modal {
-        background: black;
-        /* border-radius: 10px; */
-        padding: 30px;
-        max-width: 500px;
-        width: 90%;
-        max-height: 80vh;
-        overflow-y: auto;
-        animation: modalSlideIn 0.3s ease-out;
-        border: 2px solid #e7a900;
-        box-shadow: 0 0 30px rgba(231, 169, 0, 0.5);
-      }
-
-      @keyframes modalSlideIn {
-        from {
-          opacity: 0;
-          transform: translateY(-50px);
+      <style>
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
         }
-        to {
+
+        body {
+          font-family: "Courier New", monospace;
+          min-height: 100vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 20px;
+          background: #120303;
+        }
+
+        /* Language Toggle - Subtle version */
+        .lang-toggle-container {
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          z-index: 1000;
+          transition: opacity 0.3s ease;
+        }
+
+        .lang-toggle-container:hover {
           opacity: 1;
-          transform: translateY(0);
         }
-      }
 
-      .modal h2 {
-        color: #63f863;
-        margin-bottom: 20px;
-        text-align: center;
-        font-size: 1.5em;
-        letter-spacing: 4px;
-      }
+        .lang-toggle {
+          background: transparent;
+          border: 1px solid #63f863;
+          padding: 4px 4px;
+          font-size: 0.8rem;
+          cursor: pointer;
+          width: 50px;
+          font-family: "Courier New", monospace;
+          color: #63f863;
+          letter-spacing: 1px;
+          transition: all 0.2s ease;
+          box-shadow: none;
+        }
 
-      .modal-input-group {
-        margin-bottom: 20px;
-      }
+        .lang-toggle:hover {
+          outline: none;
+        }
 
-      .modal-input-group label {
-        display: block;
-        font-size: 12px;
-        color: #dfb1ff;
-        margin-bottom: 5px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
+        .container {
+          background: black;
+          /* border-radius: 10px; */
+          padding: 25px;
+          border: 2px solid #e7a900;
+          box-shadow: 0 0 20px rgba(231, 169, 0, 0.3);
+          max-width: 650px;
+          width: 100%;
+        }
+        a {
+          color: #63f863;
+        }
 
-      .modal-input-group input {
-        width: 100%;
-        padding: 12px;
-        background: #0a0202;
-        border: 2px solid #666;
-        /* border-radius: 5px; */
-        color: #d1feff;
-        font-family: "Courier New", monospace;
-        font-size: 16px;
-        font-weight: bold;
-      }
+        h1 {
+          text-align: center;
+          color: #63f863;
+          margin-bottom: 10px;
+          font-size: 1.6em;
+          letter-spacing: 6px;
+        }
 
-      .modal-input-group input:focus {
-        outline: none;
-        border-color: #63f863;
-        box-shadow: 0 0 0 3px rgba(99, 248, 99, 0.1);
-      }
+        .subtitle {
+          text-align: center;
+          color: #d1feff;
+          margin-bottom: 15px;
+          font-size: 1.05rem;
+        }
 
-      .building-preview-container {
-        display: flex;
-        margin: auto;
-        justify-content: center;
-        margin-bottom: 15px;
-      }
+        .main-content {
+          display: flex;
+          gap: 25px;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
 
-      .building-preview {
-        background: #0a0202;
-        padding: 20px;
-        border: 1px solid #666;
-        font-family: "Courier New", monospace;
-        color: #d1feff;
-        white-space: pre;
-        overflow-x: auto;
-        font-size: 12px;
-        line-height: 1.5;
-        letter-spacing: 0;
-      }
+        .grid-section {
+          flex: 1;
+          min-width: 280px;
+        }
 
-      .modal-buttons {
-        display: flex;
-        gap: 10px;
-        justify-content: stretch;
-      }
+        .grid-container {
+          background: #0a0202;
+          margin: 10px;
+          border-radius: 8px;
+          /* margin-bottom: 10px; */
+          box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5);
+          border: 1px solid #333;
+          max-height: 60vh;
+          overflow: auto;
+          user-select: none;
+          -webkit-user-select: none;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          user-select: none;
+        }
 
-      .modal-btn {
-        flex: 1;
-        padding: 15px;
-        border: 2px solid #666;
-        /* border-radius: 5px; */
-        font-family: "Courier New", monospace;
-        font-size: 16px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: all 0.2s;
-        box-shadow: 4px 4px #666;
-      }
+        .grid {
+          display: grid;
+          grid-template-columns: repeat(10, 1fr);
+          gap: 2px;
+          background: #63f86368;
+          padding: 2px;
+          border-radius: 5px;
+          /* margin-bottom: 8px; */
+        }
 
-      .modal-btn-cancel {
-        background: #666;
-        color: #d1feff;
-      }
+        .cell {
+          aspect-ratio: 1 / 1.5;
+          background: #120303;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.5rem;
+          transition: all 0.2s;
+          position: relative;
+          min-height: 10px;
+          color: #d1feff;
+        }
 
-      .modal-btn-cancel:hover {
-        background: #777;
-        box-shadow: 6px 6px #333;
-      }
+        .cell:hover {
+          background: rgba(99, 248, 99, 0.2);
+          transform: scale(1.1);
+          z-index: 10;
+        }
 
-      .modal-btn-submit {
-        background: #e7a900;
-        color: #120303;
-      }
+        .cell.active {
+          background: #120303;
+        }
 
-      .modal-btn-submit:hover {
-        background: #ff77df;
-        color: #fff;
-        transform: translateY(-2px);
-        box-shadow: 6px 6px #333;
-      }
+        .controls {
+          display: flex;
+          gap: 10px;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
 
-      .modal-btn:active {
-        transform: translate(2px, 2px);
-        box-shadow: 1px 1px #333;
-      }
+        button {
+          padding: 8px 5px;
+          border: 2px solid #666;
+          border-radius: 5px;
+          font-family: "Courier New", monospace;
+          font-size: 13px;
+          cursor: pointer;
+          transition: all 0.2s;
+          font-weight: bold;
+          background-color: #63f863;
+          color: #120303;
+          box-shadow: 4px 4px #666;
+        }
 
-      .modal-content {
-        background: black;
-        border: 2px solid #e7a900;
-        border-radius: 10px;
-        padding: 25px;
-        max-width: 550px;
-        width: 100%;
-        box-shadow: 0 0 30px rgba(231, 169, 0, 0.5);
-        max-height: 90vh;
-        overflow-y: auto;
-      }
+        button:hover {
+          transform: translateY(-2px);
+          box-shadow: 6px 6px #333;
+          background-color: #ff77df;
+          color: #fff;
+        }
 
-      .modal-title {
-        color: #63f863;
-        font-size: 1.4rem;
-        margin-bottom: 15px;
-        text-align: center;
-        letter-spacing: 2px;
-      }
+        button:active {
+          transform: translate(2px, 2px);
+          /* box-shadow: 1px 1px #333; */
+        }
 
-      .modal-form {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-      }
+        .btn-clear {
+          background: #ff77df;
+          /* color: white; */
+        }
 
-      .form-group {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-      }
+        .btn-copy {
+          background: #ff77df;
+          color: #120303;
+        }
 
-      .form-label {
-        color: #ff77df;
-        font-size: 0.9rem;
-        font-weight: bold;
-      }
+        .btn-download {
+          background: #d1feff;
+          color: #120303;
+        }
 
-      .form-input {
-        padding: 10px;
-        background: #120303;
-        border: 2px solid #666;
-        border-radius: 5px;
-        color: #d1feff;
-        font-family: "Courier New", monospace;
-        font-size: 0.95rem;
-      }
+        .btn-eraser {
+          background: #ff77df;
+          /* color: white; */
+        }
 
-      .form-input:focus {
-        outline: none;
-        border-color: #63f863;
-      }
+        .btn-eraser:hover,
+        .btn-download:hover,
+        .btn-copy:hover {
+          background: #63f863;
+          /* box-shadow: 0 0 0 3px rgba(255, 167, 38, 0.3); */
+        }
 
-      .form-note {
-        color: #d1feff;
-        font-size: 0.75rem;
-        opacity: 0.8;
-      }
+        .btn-add-game {
+          background: #63f863;
+          color: #120303;
+          width: 100%;
+          font-size: 15px;
+          padding: 12px;
+          margin-top: 10px;
+          border: 2px solid #666;
+        }
 
-      .building-preview-container {
-        margin: 15px 0;
-        padding: 12px;
-        background: #0a0202;
-        border-radius: 8px;
-        border: 1px solid #333;
-      }
+        .btn-add-game:hover {
+          background: #ff77df;
+          color: #fff;
+        }
 
-      .preview-label {
-        color: #ff77df;
-        font-size: 0.85rem;
-        margin-bottom: 8px;
-        text-align: center;
-      }
+        .palette-section {
+          flex: 1;
+          min-width: 280px;
+        }
 
-      #buildingPreview {
-        margin: 0 auto;
-        background: #63f86368;
-        padding: 2px;
-        border-radius: 5px;
-      }
+        .palette {
+          background: #0a0202;
+          padding: 12px;
+          border-radius: 8px;
+          max-height: 75vh;
+          overflow-y: auto;
+          border: 1px solid #333;
+          
+        }
 
-      .modal-buttons {
-        display: flex;
-        gap: 10px;
-        justify-content: center;
-        margin-top: 15px;
-      }
+        .palette-category {
+          margin-bottom: 12px;
+        }
 
-      .btn-submit {
-        background: #63f863;
-        color: #120303;
-        padding: 10px 25px;
-        font-size: 15px;
-      }
+        .palette-title {
+          font-size: 0.9rem;
+          font-weight: bold;
+          color: #ff77df;
+          margin-bottom: 7px;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+        }
 
-      .btn-cancel {
-        background: #ff77df;
-        color: #120303;
-        padding: 10px 25px;
-        font-size: 15px;
-      }
+        .palette-chars {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 4px;
+        }
 
-      /* Toast notification */
-      .toast {
-        position: fixed;
-        bottom: 30px;
-        left: 50%;
-        transform: translateX(-50%) translateY(100px);
-        background: #63f863;
-        color: #120303;
-        padding: 12px 25px;
-        border-radius: 8px;
-        font-weight: bold;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        z-index: 2000;
-        opacity: 0;
-        transition: all 0.3s ease;
-        font-size: 0.95rem;
-      }
+        .char-btn {
+          padding: 6px 10px;
+          background: #120303;
+          border: 2px solid #666;
+          border-radius: 5px;
+          font-size: 16px;
+          cursor: pointer;
+          transition: all 0.2s;
+          min-width: 36px;
+          text-align: center;
+          color: #d1feff;
+          box-shadow: 2px 2px #333;
+        }
 
-      .toast.show {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0);
-      }
+        .char-btn:hover {
+          border-color: #63f863;
+          background: rgba(231, 169, 0, 0.2);
+          transform: scale(1.1);
+        }
 
-      /* Scrollbar styling */
-      ::-webkit-scrollbar {
-        width: 8px;
-        height: 8px;
-      }
+        .char-btn.selected {
+          background: #63f863;
+          color: #120303;
+          border-color: #63f863;
+        }
+        .info-section {
+          padding: 5px;
+          padding-bottom: 7px;
+          border: 2px solid #ff77df;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 15px;
+          color: #63f863;
+        }
 
-      ::-webkit-scrollbar-track {
-        background: #0a0202;
-      }
+        .info-text {
+          color: #63f863;
+          font-size: 0.9rem;
+          margin-bottom: 5px;
+        }
 
-      ::-webkit-scrollbar-thumb {
-        background: #666;
-        border-radius: 4px;
-      }
+        .current-char-display {
+          font-size: 1rem;
+          color: #63f863;
+          margin: 0;
+          font-weight: bold;
+        }
 
-      ::-webkit-scrollbar-thumb:hover {
-        background: #e7a900;
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Language Toggle -->
-    <div class="lang-toggle-container" id="lang-toggle-container">
-      <button class="lang-toggle" id="lang-toggle">FR</button>
-    </div>
+        .output-section {
+          margin-top: 20px;
+          background: #0a0202;
+          padding: 15px;
+          border-radius: 8px;
+          border: 1px solid #333;
+        }
 
-    <div class="container">
-      <h1 data-i18n="title">Draw a building!</h1>
-      <p class="subtitle">
-        <span data-i18n="subtitle">Draw your Montreal building, then add it to</span>
-        <a target="_blank" href="https://omarieclaire.github.io/loserlanemontreal/">Loser Lane</a>
-      </p>
+        .output-label {
+          color: #ff77df;
+          font-weight: bold;
+          margin-bottom: 10px;
+          font-size: 0.9rem;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+        }
 
-      <div class="main-content">
-        <div class="grid-section">
-          <div class="info-section">
-            <span class="current-char-label" data-i18n="currentCharacter">Current Character</span>
-            <span class="current-char-display" id="currentCharDisplay">█</span>
+        #output {
+          width: 100%;
+          min-height: 150px;
+          background: #120303;
+          color: #63f863;
+          border: 2px solid #666;
+          border-radius: 5px;
+          padding: 12px;
+          font-family: "Courier New", monospace;
+          font-size: 0.9rem;
+          resize: vertical;
+          white-space: pre;
+          overflow-x: auto;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.8);
+          z-index: 1000;
+          justify-content: center;
+          align-items: center;
+          padding: 20px;
+        }
+
+        .modal-overlay.show {
+          display: flex;
+        }
+        .modal {
+          background: black;
+          /* border-radius: 10px; */
+          padding: 30px;
+          max-width: 500px;
+          width: 90%;
+          max-height: 80vh;
+          overflow-y: auto;
+          animation: modalSlideIn 0.3s ease-out;
+          border: 2px solid #e7a900;
+          box-shadow: 0 0 30px rgba(231, 169, 0, 0.5);
+        }
+
+        @keyframes modalSlideIn {
+          from {
+            opacity: 0;
+            transform: translateY(-50px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .modal h2 {
+          color: #63f863;
+          margin-bottom: 20px;
+          text-align: center;
+          font-size: 1.5em;
+          letter-spacing: 4px;
+        }
+
+        .modal-input-group {
+          margin-bottom: 20px;
+        }
+
+        .modal-input-group label {
+          display: block;
+          font-size: 12px;
+          color: #dfb1ff;
+          margin-bottom: 5px;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+        }
+
+        .modal-input-group input {
+          width: 100%;
+          padding: 12px;
+          background: #0a0202;
+          border: 2px solid #666;
+          /* border-radius: 5px; */
+          color: #d1feff;
+          font-family: "Courier New", monospace;
+          font-size: 16px;
+          font-weight: bold;
+        }
+
+        .modal-input-group input:focus {
+          outline: none;
+          border-color: #63f863;
+          box-shadow: 0 0 0 3px rgba(99, 248, 99, 0.1);
+        }
+
+        .building-preview-container {
+          display: flex;
+          margin: auto;
+          justify-content: center;
+          margin-bottom: 15px;
+        }
+
+        .building-preview {
+          background: #0a0202;
+          padding: 20px;
+          border: 1px solid #666;
+          font-family: "Courier New", monospace;
+          color: #d1feff;
+          white-space: pre;
+          overflow-x: auto;
+          font-size: 12px;
+          line-height: 1.5;
+          letter-spacing: 0;
+        }
+
+        .modal-buttons {
+          display: flex;
+          gap: 10px;
+          justify-content: stretch;
+        }
+
+        .modal-btn {
+          flex: 1;
+          padding: 15px;
+          border: 2px solid #666;
+          /* border-radius: 5px; */
+          font-family: "Courier New", monospace;
+          font-size: 16px;
+          font-weight: bold;
+          cursor: pointer;
+          transition: all 0.2s;
+          box-shadow: 4px 4px #666;
+        }
+
+        .modal-btn-cancel {
+          background: #666;
+          color: #d1feff;
+        }
+
+        .modal-btn-cancel:hover {
+          background: #777;
+          box-shadow: 6px 6px #333;
+        }
+
+        .modal-btn-submit {
+          background: #e7a900;
+          color: #120303;
+        }
+
+        .modal-btn-submit:hover {
+          background: #ff77df;
+          color: #fff;
+          transform: translateY(-2px);
+          box-shadow: 6px 6px #333;
+        }
+
+        .modal-btn:active {
+          transform: translate(2px, 2px);
+          box-shadow: 1px 1px #333;
+        }
+
+        .modal-content {
+          background: black;
+          border: 2px solid #e7a900;
+          border-radius: 10px;
+          padding: 25px;
+          max-width: 550px;
+          width: 100%;
+          box-shadow: 0 0 30px rgba(231, 169, 0, 0.5);
+          max-height: 90vh;
+          overflow-y: auto;
+        }
+
+        .modal-title {
+          color: #63f863;
+          font-size: 1.4rem;
+          margin-bottom: 15px;
+          text-align: center;
+          letter-spacing: 2px;
+        }
+
+        .modal-form {
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .form-group {
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+        }
+
+        .form-label {
+          color: #ff77df;
+          font-size: 0.9rem;
+          font-weight: bold;
+        }
+
+        .form-input {
+          padding: 10px;
+          background: #120303;
+          border: 2px solid #666;
+          border-radius: 5px;
+          color: #d1feff;
+          font-family: "Courier New", monospace;
+          font-size: 0.95rem;
+        }
+
+        .form-input:focus {
+          outline: none;
+          border-color: #63f863;
+        }
+
+        .form-note {
+          color: #d1feff;
+          font-size: 0.75rem;
+          opacity: 0.8;
+        }
+
+        .building-preview-container {
+          margin: 15px 0;
+          padding: 12px;
+          background: #0a0202;
+          border-radius: 8px;
+          border: 1px solid #333;
+        }
+
+        .preview-label {
+          color: #ff77df;
+          font-size: 0.85rem;
+          margin-bottom: 8px;
+          text-align: center;
+        }
+
+        #buildingPreview {
+          margin: 0 auto;
+          background: #63f86368;
+          padding: 2px;
+          border-radius: 5px;
+        }
+
+        .modal-buttons {
+          display: flex;
+          gap: 10px;
+          justify-content: center;
+          margin-top: 15px;
+        }
+
+        .btn-submit {
+          background: #63f863;
+          color: #120303;
+          padding: 10px 25px;
+          font-size: 15px;
+        }
+
+        .btn-cancel {
+          background: #ff77df;
+          color: #120303;
+          padding: 10px 25px;
+          font-size: 15px;
+        }
+
+        /* Toast notification */
+        .toast {
+          position: fixed;
+          bottom: 30px;
+          left: 50%;
+          transform: translateX(-50%) translateY(100px);
+          background: #63f863;
+          color: #120303;
+          padding: 12px 25px;
+          border-radius: 8px;
+          font-weight: bold;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+          z-index: 2000;
+          opacity: 0;
+          transition: all 0.3s ease;
+          font-size: 0.95rem;
+        }
+
+        .toast.show {
+          opacity: 1;
+          transform: translateX(-50%) translateY(0);
+        }
+
+        .landscape-hint {
+          position: fixed;
+          top: 50px;
+          left: 50%;
+          transform: translateX(-50%);
+          background: rgba(99, 248, 99, 0.95);
+          color: #120303;
+          padding: 12px 20px;
+          font-size: 2rem;
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity 0.5s ease, visibility 0.5s ease;
+          z-index: 999;
+          pointer-events: none;
+          border: 6px solid #120303;
+          outline: 2px solid #63f863;
+          box-shadow: 0 2px 10px rgba(99, 248, 99, 0.3);
+          max-width: 95%;
+          text-align: center;
+        }
+
+        .landscape-hint.show {
+          opacity: 1;
+          visibility: visible;
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+          width: 8px;
+          height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+          background: #0a0202;
+        }
+
+        ::-webkit-scrollbar-thumb {
+          background: #666;
+          border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+          background: #e7a900;
+        }
+
+        /* Mobile landscape optimization */
+        @media (max-width: 900px) and (orientation: landscape) {
+          .container {
+            max-width: 82vw;
+          }
+          .main-content {
+            flex-wrap: nowrap;
+            align-items: flex-start;
+          }
+
+          .grid-section {
+            flex: 0 0 auto;
+            max-width: 35%;
+            min-width: 280px;
+          }
+
+          .grid-container {
+            max-height: none;
+            overflow: visible;
+          }
+
+          .palette-section {
+            flex: 1 1 65%;
+            max-width: 65%;
+          }
+
+          .palette {
+            max-height: 125vh;
+          }
+        }
+      </style>
+    </head>
+
+    <body>
+      <!-- Language Toggle -->
+      <div class="lang-toggle-container" id="lang-toggle-container">
+        <button class="lang-toggle" id="lang-toggle">FR</button>
+      </div>
+
+      <div class="container">
+        <h1 data-i18n="title">Draw a building!</h1>
+        <p class="subtitle">
+          <span data-i18n="subtitle">Draw your Montreal building and add it to</span>
+          <a target="_blank" href="https://omarieclaire.github.io/loserlanemontreal/">LoserLane</a>
+        </p>
+
+        <div class="main-content">
+          <div class="grid-section">
+            <div class="info-section">
+              <span class="current-char-label" data-i18n="currentCharacter">Current Character</span>
+              <span class="current-char-display" id="currentCharDisplay">█</span>
+            </div>
+
+            <div class="grid-container">
+              <div class="grid" id="grid"></div>
+            </div>
+            <div class="controls">
+              <button class="btn-clear" onclick="clearGrid()" data-i18n="eraseAll">ERASE ALL</button>
+              <button class="btn-eraser" id="eraserBtn" onclick="toggleEraser()" data-i18n="eraser">Eraser</button>
+              <button class="btn-copy" onclick="loadRandomExample()" data-i18n="example">Example</button>
+            </div>
+            <button class="btn-add-game" onclick="addToGame()" data-i18n="addButton">Add to LoserLane</button>
           </div>
 
-          <div class="grid-container">
-            <div class="grid" id="grid"></div>
+          <div class="palette-section">
+            <div class="palette" id="palette"></div>
           </div>
-          <div class="controls">
-            <button class="btn-clear" onclick="clearGrid()" data-i18n="eraseAll">ERASE ALL</button>
-            <button class="btn-eraser" id="eraserBtn" onclick="toggleEraser()" data-i18n="eraser">Eraser</button>
-            <button class="btn-copy" onclick="loadRandomExample()" data-i18n="example">Example</button>
-          </div>
-          <button class="btn-add-game" onclick="addToGame()" data-i18n="addButton">Add to LoserLane</button>
-        </div>
-
-        <div class="palette-section">
-          <div class="palette" id="palette"></div>
         </div>
       </div>
-    </div>
 
-    <!-- Modal for adding to game -->
-    <div class="modal-overlay" id="modalOverlay">
-      <div class="modal">
-        <h2 data-i18n="modalTitle">Add to Game</h2>
-        <div class="modal-input-group">
-          <label data-i18n="buildingName">Building Name</label>
-          <input type="text" id="modalBuildingName" data-i18n-placeholder="buildingPlaceholder" placeholder="e.g., BENELUX" />
-        </div>
-        <div class="modal-input-group">
-          <label data-i18n="artistName">Your Name / Handle</label>
-          <input type="text" id="modalArtistName" data-i18n-placeholder="artistPlaceholder" placeholder="e.g., Avery" />
-        </div>
-        <div class="building-preview-container">
-          <div class="building-preview" id="buildingPreview"></div>
-        </div>
-        <div class="modal-buttons">
-          <button class="modal-btn modal-btn-cancel" onclick="closeModal()" data-i18n="cancel">Cancel</button>
-          <button class="modal-btn modal-btn-submit" onclick="submitBuilding()" data-i18n="submit">Submit 🚀</button>
+      <!-- Modal for adding to game -->
+      <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+          <h2 data-i18n="modalTitle">Add to Game</h2>
+          <div class="modal-input-group">
+            <label data-i18n="buildingName">Building Name</label>
+            <input type="text" id="modalBuildingName" data-i18n-placeholder="buildingPlaceholder" placeholder="e.g., BENELUX" />
+          </div>
+          <div class="modal-input-group">
+            <label data-i18n="artistName">Your Name / Handle</label>
+            <input type="text" id="modalArtistName" data-i18n-placeholder="artistPlaceholder" placeholder="e.g., Avery" />
+          </div>
+          <div class="building-preview-container">
+            <div class="building-preview" id="buildingPreview"></div>
+          </div>
+          <div class="modal-buttons">
+            <button class="modal-btn modal-btn-cancel" onclick="closeModal()" data-i18n="cancel">Cancel</button>
+            <button class="modal-btn modal-btn-submit" onclick="submitBuilding()" data-i18n="submit">Submit 🚀</button>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="toast" id="toast">Copied!</div>
+      <div class="toast" id="toast">Copied!</div>
 
-    <script>
-      // Translations
-      const TRANSLATIONS = [
-        { key: "title", en: "Draw a building!", fr: "Dessine un bâtiment!" },
-        { key: "subtitle", en: "Draw your Montreal building, then add it to", fr: "Dessine ton bâtiment montréalais, puis ajoute-le à" },
-        { key: "currentCharacter", en: "Current Character", fr: "Caractère actuel" },
-        { key: "eraseAll", en: "ERASE ALL", fr: "TOUT EFFACER" },
-        { key: "eraser", en: "Eraser", fr: "Efface" },
-        { key: "example", en: "Example", fr: "Exemple" },
-        { key: "addButton", en: "Add to LoserLane", fr: "L'ajouter à LoserLane" },
-        { key: "modalTitle", en: "Add to Game", fr: "Ajouter au jeu" },
-        { key: "buildingName", en: "Building Name", fr: "Nom du bâtiment" },
-        { key: "buildingPlaceholder", en: "e.g., BENELUX", fr: "ex: BENELUX" },
-        { key: "artistName", en: "Your Name / Handle", fr: "Ton nom / pseudo" },
-        { key: "artistPlaceholder", en: "e.g., Avery", fr: "ex: Avery" },
-        { key: "cancel", en: "Cancel", fr: "Annuler" },
-        { key: "submit", en: "Submit", fr: "Soumettre" },
-        { key: "copied", en: "Copied!", fr: "Copié!" },
-        { key: "gridCleared", en: "Grid cleared!", fr: "Grille effacée!" },
-        { key: "loadedExample", en: "Loaded: ", fr: "Chargé: " },
-        { key: "enterBuildingName", en: "Please enter a building name!", fr: "Entre un nom de bâtiment!" },
-        { key: "enterArtistName", en: "Please enter your name or handle!", fr: "Entre ton nom ou pseudo!" },
-        { key: "buildingNameTooLong", en: "Building name too long! Max 30 characters.", fr: "Nom trop long! Max 30 caractères." },
-        { key: "artistNameTooLong", en: "Artist name too long! Max 30 characters.", fr: "Nom trop long! Max 30 caractères." },
-        { key: "submitSuccess", en: "Building submitted successfully! Thank you!", fr: "Bâtiment soumis avec succès! Merci!" },
-        { key: "submitFailed", en: "Submission may have failed. Please try again.", fr: "Soumission échouée. Réessaie!" },
-        { key: "walls", en: "Walls", fr: "Murs" },
-        { key: "basic", en: "Basic", fr: "Basique" },
-        { key: "blocks", en: "Blocks", fr: "Blocs" },
-        { key: "lines", en: "Lines", fr: "Lignes" },
-        { key: "shapes", en: "Shapes", fr: "Formes" },
-        { key: "accent", en: "Accent", fr: "Accent" },
-        { key: "montreal", en: "Montreal", fr: "Montréal" },
-      ];
+      <!-- Gentle landscape mode hint -->
+      <div class="landscape-hint" id="landscapeHint" data-i18n="landscapeHint">Rotate for better experience!</div>
 
-      // Build lookup objects from the array (for performance)
-      const LANG = {
-        en: {},
-        fr: {},
-      };
+      <script>
+                // Translations
+                const TRANSLATIONS = [
+                  { key: "title", en: "Draw a building!", fr: "Dessine un bâtiment!" },
+                  { key: "subtitle", en: "Draw your Montreal building & add it to", fr: "Dessine ton bâtiment montréalais & ajoute-le à" },
+                  { key: "currentCharacter", en: "Current Character", fr: "Caractère actuel" },
+                  { key: "eraseAll", en: "ERASE ALL", fr: "TOUT EFFACER" },
+                  { key: "eraser", en: "Eraser", fr: "Efface" },
+                  { key: "example", en: "Example", fr: "Exemple" },
+                  { key: "addButton", en: "Add to LoserLane", fr: "L'ajouter à LoserLane" },
+                  { key: "modalTitle", en: "Add to Game", fr: "Ajouter au jeu" },
+                  { key: "buildingName", en: "Building Name", fr: "Nom du bâtiment" },
+                  { key: "buildingPlaceholder", en: "e.g., BENELUX", fr: "ex: BENELUX" },
+                  { key: "artistName", en: "Your Name / Handle", fr: "Ton nom / pseudo" },
+                  { key: "artistPlaceholder", en: "e.g., Avery", fr: "ex: Avery" },
+                  { key: "cancel", en: "Cancel", fr: "Annuler" },
+                  { key: "submit", en: "Submit", fr: "Soumettre" },
+                  { key: "copied", en: "Copied!", fr: "Copié!" },
+                  { key: "gridCleared", en: "Grid cleared!", fr: "Grille effacée!" },
+                  { key: "loadedExample", en: "Loaded: ", fr: "Chargé: " },
+                  { key: "enterBuildingName", en: "Please enter a building name!", fr: "Entre un nom de bâtiment!" },
+                  { key: "enterArtistName", en: "Please enter your name or handle!", fr: "Entre ton nom ou pseudo!" },
+                  { key: "buildingNameTooLong", en: "Building name too long! Max 30 characters.", fr: "Nom trop long! Max 30 caractères." },
+                  { key: "artistNameTooLong", en: "Artist name too long! Max 30 characters.", fr: "Nom trop long! Max 30 caractères." },
+                  { key: "submitSuccess", en: "Building submitted successfully! Thank you!", fr: "Bâtiment soumis avec succès! Merci!" },
+                  { key: "submitFailed", en: "Submission may have failed. Please try again.", fr: "Soumission échouée. Réessaie!" },
+                  { key: "walls", en: "Walls", fr: "Murs" },
+                  { key: "basic", en: "Basic", fr: "Basique" },
+                  { key: "blocks", en: "Blocks", fr: "Blocs" },
+                  { key: "lines", en: "Lines", fr: "Lignes" },
+                  { key: "shapes", en: "Shapes", fr: "Formes" },
+                  { key: "accent", en: "Accent", fr: "Accent" },
+                  { key: "montreal", en: "Montreal", fr: "Montréal" },
+                  { key: "landscapeHint", en: "rotate your phone? drawing is nicer in landscape mode", fr: "Tourne ton écran!" },
+                ];
 
-      TRANSLATIONS.forEach((item) => {
-        LANG.en[item.key] = item.en;
-        LANG.fr[item.key] = item.fr;
-      });
+                // Build lookup objects from the array (for performance)
+                const LANG = {
+                  en: {},
+                  fr: {},
+                };
 
-      let currentLang = localStorage.getItem("language") || "en";
+                TRANSLATIONS.forEach((item) => {
+                  LANG.en[item.key] = item.en;
+                  LANG.fr[item.key] = item.fr;
+                });
 
-      // Define the t() function
-      function t(key) {
-        return LANG[currentLang][key] || key;
-      }
+                let currentLang = localStorage.getItem("language") || "en";
 
-      // Language switcher - single toggle button
-      document.addEventListener("DOMContentLoaded", () => {
-        updateLanguage();
+                // Define the t() function
+                function t(key) {
+                  return LANG[currentLang][key] || key;
+                }
 
-        const langToggle = document.getElementById("lang-toggle");
+                // Language switcher - single toggle button
+                document.addEventListener("DOMContentLoaded", () => {
+                  updateLanguage();
 
-        if (langToggle) {
-          // Set initial button text
-          langToggle.textContent = currentLang === "en" ? "FR" : "EN";
-          langToggle.addEventListener("click", () => {
-            currentLang = currentLang === "en" ? "fr" : "en";
-            localStorage.setItem("language", currentLang);
-            // Refresh the page to apply new language
-            location.reload();
-          });
-        }
-      });
+                  const langToggle = document.getElementById("lang-toggle");
 
-      function updateLanguage() {
-        document.querySelectorAll("[data-i18n]").forEach((element) => {
-          const key = element.dataset.i18n;
-          if (LANG[currentLang][key]) {
-            element.textContent = LANG[currentLang][key];
-          }
-        });
+                  if (langToggle) {
+                    // Set initial button text
+                    langToggle.textContent = currentLang === "en" ? "FR" : "EN";
+                    langToggle.addEventListener("click", () => {
+                      currentLang = currentLang === "en" ? "fr" : "en";
+                      localStorage.setItem("language", currentLang);
+                      // Refresh the page to apply new language
+                      location.reload();
+                    });
+                  }
+                });
 
-        // Update placeholders
-        document.querySelectorAll("[data-i18n-placeholder]").forEach((element) => {
-          const key = element.dataset.i18nPlaceholder;
-          if (LANG[currentLang][key]) {
-            element.placeholder = LANG[currentLang][key];
-          }
-        });
-      }
+                function updateLanguage() {
+                  document.querySelectorAll("[data-i18n]").forEach((element) => {
+                    const key = element.dataset.i18n;
+                    if (LANG[currentLang][key]) {
+                      element.textContent = LANG[currentLang][key];
+                    }
+                  });
 
-      const GRID_SIZE = 10;
-      let grid = Array(GRID_SIZE)
-        .fill()
-        .map(() => Array(GRID_SIZE).fill(""));
-      let currentChar = "█";
-      let selectedCell = null;
-      let isDrawing = false;
-      let lastDrawnCell = null;
-      let isEraserMode = false;
+                  // Update placeholders
+                  document.querySelectorAll("[data-i18n-placeholder]").forEach((element) => {
+                    const key = element.dataset.i18nPlaceholder;
+                    if (LANG[currentLang][key]) {
+                      element.placeholder = LANG[currentLang][key];
+                    }
+                  });
+                }
 
-      // Example buildings pool
-      const exampleBuildings = [
-        {
-          name: "Habitat 67",
-          art: ["  ▓▓  ▓▓  ", " ▓▓▓ ▓▓▓  ", "▓▓▓ 67 ▓▓▓", " ▓▓▓▓▓▓▓▓ ", "▓▓▓ ▓▓▓▓▓ ", " ▓▓  ▓▓ ▓▓"],
-        },
-        {
-          name: "Biosphere",
-          art: ["   ╱◇◇╲   ", "  ◇◇◇◇◇  ", " ◇◇◇◇◇◇◇ ", " ◇◇◇◇◇◇◇ ", "  ◇◇◇◇◇  ", "   ╲◇◇╱   "],
-        },
-        {
-          name: "Olympic Stadium",
-          art: ["      ╱│  ", "     ╱ │  ", "    ╱  │  ", "   ╱╲  │  ", "  ╱  ╲ │  ", " ◢◣ ◢◣◣│  "],
-        },
-        {
-          name: "Place des Arts",
-          art: ["▀▀▀▀▀▀▀▀▀▀", "█PLACE   █", "█DES ARTS█", "█ ▢ ▢ ▢ ▢█", "█ ▢ ▢ ▢ ▢█", "▔▔▔▔▔▔▔▔▔▔"],
-        },
-        {
-          name: "Phi Centre",
-          art: ["╔═══PHI══╗", "║ ◉ ART ◉║", "║▓▓▓▓▓▓▓▓║", "║ CINEMA ║", "║▓▓▓▓▓▓▓▓║", "╚═══════╝"],
-        },
-        {
-          name: "LE_CRAYON_MONTRÉALAIS",
-          artist: "Aurélie",
-          art: [" ⚛ ⚛ ", " ╔◢◣╗ ", " ⊡⊡⊡⊡ ", " ╚▒▒╝ ", " ▒▒ ", " ▒▒ "],
-        },
-        {
-          name: "Main Bistro",
-          art: ["  ▁▁▁▁▁   ", " │ MAIN │ ", " │BISTRO│ ", " │ ☕★☕ │ ", " │░░░░░░│ ", " └──▐▌──┘ "],
-        },
-        {
-          name: "Casa del Popolo",
-          art: ["╔═CASA═╗  ", "║ DEL  ║  ", "║POPOLO║  ", "║★ ♪ ★║  ", "║▓▓▓▓▓║  ", "╚══════╝  "],
-        },
-        {
-          name: "Musée d'Art Contemporain",
-          art: ["▀▀▀MAC▀▀▀▀", "█ ◢■◣ ◢■◣█", "█ ◥■◤ ◥■◤█", "█ ART    █", "█CONTEMPO█", "▔▔▔▔▔▔▔▔▔▔"],
-        },
-        {
-          name: "SAT Societé",
-          art: ["╭{     )─╮", "╭─SAT───╮ ", "│◉AUDIO◉│ ", "│VISUAL │ ", "│▓▓▓▓▓▓▓│ ", "│░IMMR░░│ ", "╰───────╯ "],
-        },
-        {
-          name: "Tam Tams",
-          art: ["  ♪ ☼ ♪   ", " ○ ● ○ ●  ", "  TAM     ", "  TAMS    ", " ● ○ ● ○  ", "  ♫ ☼ ♫   "],
-        },
-        {
-          name: "Wilensky's",
-          art: ["╔WILENSKY╗", "║ LIGHT  ║", "║ LUNCH  ║", "╚════════╝"],
-        },
-        {
-          name: "Fairmount Bagel",
-          art: ["  ╱▔▔▔╲   ", " │FAIR  │ ", " │MOUNT │ ", " │ ◯ ◯  │ ", " │BAGELS│ ", " ╰─────╯  "],
-        },
-        {
-          name: "Casa d'Italia",
-          art: ["╔═CASA═╗  ", "║D'ITALIA║", "║ ★ ★ ★ ║", "║▓▓▓▓▓▓▓║", "║CULTURA║", "╚═══════╝"],
-        },
-        {
-          name: "Greenroom",
-          art: ["╭─GREEN──╮", "│ ROOM   │", "│ ♪ ★ ♫  │", "╰────────╯"],
-        },
-        {
-          name: "McCord Museum",
-          art: ["▀McCORD▀▀▀", "█        █", "█ ◢■◣◢■◣ █", "▔▔▔▔▔▔▔▔▔▔"],
-        },
-        {
-          name: "Quai des Brumes",
-          art: ["╔═QUAI══╗ ", "║ DES   ║ ", "║BRUMES ║ ", "╚═══════╝ "],
-        },
-        {
-          name: "Cabaret Mile End",
-          art: ["▁▁CABARET▁", "│ MILE   │", "│  END   │", "│▓STAGE▓▓│", "└─────────┘"],
-        },
-        {
-          name: "Foufounes Électriques",
-          art: ["╔FOUFOU═╗ ", "║NES    ║ ", "║ELEC   ║ ", "║TRIQUES║ ", "║★♫PUNK♫║ ", "╚═══════╝ "],
-        },
-        {
-          name: "Le Dépanneur Café",
-          art: ["╭DEPAN──╮ ", "│ NEUR  │ ", "│ CAFE  │ ", "│ ☕ ◉  │ ", "│░RESTO░│ ", "╰───────╯ "],
-        },
-        {
-          name: "Drawn & Quarterly",
-          art: ["╔DRAWN═╗  ", "║  &   ║  ", "║QRTLY ║  ", "║ ◢■◣  ║  ", "║BOOKS ║  ", "╚══════╝  "],
-        },
-        {
-          name: "L'Escalier",
-          art: ["╭L'ESCA─╮ ", "│ LIER  │ ", "│ ♪ ★ ♫ │ ", "╰───────╯ "],
-        },
-        {
-          name: "Cinéma du Parc",
-          art: ["▀▀CINEMA▀▀", "█ DU    █ ", "█ PARC  █ ", "█ ◢▓▓◣  █ ", "█ ◥▓▓◤  █ ", "▔▔▔▔▔▔▔▔▔▔"],
-        },
-        {
-          name: "Croissanterie Figaro",
-          art: ["  ╱▔▔▔╲   ", " │CROIS │ ", " │SANTE │ ", " │FIGARO│ ", " │◯☕◯☕│ ", " ╰──────╯ "],
-        },
-        {
-          name: "Barraca",
-          art: ["╭BARRACA╮ ", "│ RHUMBA│ ", "╰────────╯"],
-        },
-        {
-          name: "Espace pour la vie",
-          art: ["  ╱▲╲ ◉   ", " │ESPACE│ ", " │ POUR │ ", " │ LA   │ ", " │ VIE ☼│ ", " └──────┘ "],
-        },
-        {
-          name: "Café Olimpico",
-          art: ["╭OLIMPICO╮", "│ESPRESSO│", "│ CAFFE  │", "│░1970░░ │", "╰────────╯"],
-        },
-        {
-          name: "Cinéma Beaubien",
-          art: ["╔CINEMA═╗ ", "║BEAUBIEN║", "║ ◢▓▓◣  ║ ", "║ ◥▓▓◤  ║ ", "║ 1938  ║ ", "╚═══════╝ "],
-        },
-        {
-          name: "La Vitrola",
-          art: ["╭LA─────╮ ", "│VITROLA│ ", "╰────────╯"],
-        },
-        {
-          name: "Palais Royale",
-          art: ["▀PALAIS▀▀▀", "█ ROYALE █", "█ RESTO  █", "▔▔▔▔▔▔▔▔▔▔"],
-        },
-        {
-          name: "Sala Rossa",
-          art: ["╭SALA───╮ ", "│ ROSSA │ ", "│ ♪ ★ ♫ │ ", "╰────────╯"],
-        },
-        {
-          name: "Notre-Dame Basilica",
-          art: ["   ╱▲╲    ", "  ╱▲▲╲    ", " ╱NOTRE╲  ", "│  DAME  │", "│ ★ ✦ ★ │", "└────────┘"],
-        },
-        {
-          name: "Café dei Campi",
-          art: ["╭DEI────╮ ", "│ CAMPI │ ", "│ CAFFE │ ", "│ ☕ ◉  │ ", "╰───────╯ "],
-        },
-        {
-          name: "Arepera du Plateau",
-          art: ["╭AREPERA╮ ", "│ ◢■◣   │ ", "╰────────╯"],
-        },
-        {
-          name: "Leonard Cohen House",
-          art: ["  ▁▁▁▁▁   ", " │ 5244 │ ", " │ BLVD │ ", " │★POET★│ ", " └───────┘ "],
-        },
-        {
-          name: "Giant Ring",
-          art: ["   ◢◣◣    ", "  ◢   ◣   ", " ◢ RING◣  ", " ◥     ◤  ", "  ◥   ◤   ", "   ◥◤◤    "],
-        },
-        {
-          name: "Parquette",
-          art: ["╭PAR___╮  ", "│ QUET │ ", "│ ★ ☕ ★│ ", "│░.  E░░│ ", "╰────────╯"],
-        },
-        {
-          name: "Café Orr",
-          art: ["╭──ORR──╮ ", "│ CAFE  │ ", "│ ☕☕☕ │ ", "╰────────╯"],
-        },
-        {
-          name: "Parc Laurier",
-          art: ["  ☼ ◉ ☼   ", " ░PARC░   ", "░LAURIER░ ", " ░POOL░   ", "  ░░░░░   ", "  ◉ ☼ ◉   "],
-        },
-        {
-          name: "Frédéric-Back Park",
-          art: ["  ☼ ◉ ☼   ", " ░FRED░   ", "░░BACK░░  ", " ░ORBS░   ", "  ░░░░░   ", "  ◉ ☼ ◉   "],
-        },
-        {
-          name: "Parc Jeanne-Mance",
-          art: ["  ☼ ◉ ☼   ", " ░JEANNE░ ", "░░MANCE░░ ", " ░PARC░   ", "  ◉ ☼ ◉   "],
-        },
-        {
-          name: "Parc Jarry",
-          art: ["  ☼ ◉ ☼   ", " ░░PARC░░ ", "░░JARRY░░ ", "  ░░░░░   ", "  ◉ ☼ ◉   "],
-        },
-        {
-          name: "Renaissance",
-          art: ["╔RENAIS═╗ ", "║ SANCE ║ ", "║ THRIFT║ ", "║ BOOKS ║ ", "╚═══════╝ "],
-        },
-        {
-          name: "Les Petits Frères",
-          art: ["╭LES────╮ ", "│PETITS │ ", "│FRERES │ ", "│ ★ ♥ ★ │ ", "╰────────╯"],
-        },
-        {
-          name: "Westmount Greenhouse",
-          art: ["  ╱▔▔▔╲   ", " ╱ ☼ ◉ ╲  ", "│WESTMOU│ ", "│ GREEN │ ", "│░HOUSE░│ ", "╰────────╯"],
-        },
-        {
-          name: "Chatime",
-          art: ["╭CHATIME╮ ", "│ BUBBLE│ ", "│  TEA  │ ", "│ ◉ ◉ ◉ │ ", "│░BOBA░░│ ", "╰────────╯"],
-        },
-        {
-          name: "Marché PA",
-          art: ["╔MARCHE═╗ ", "║  PA   ║ ", "║ ◢■◣   ║ ", "║GROCERY║ ", "╚═══════╝ "],
-        },
-        {
-          name: "Samosa King",
-          art: ["╭SAMOSA─╮ ", "│ KING  │ ", "│  $1   │ ", "│ ◢■◣   │ ", "│░SPICE░│ ", "╰────────╯"],
-        },
-        {
-          name: "Gnocchi $5",
-          art: ["╭GNOCCHI╮ ", "│  $5   │ ", "│ ◢■◣   │ ", "╰────────╯"],
-        },
-        {
-          name: "St-Viateur Bagel",
-          art: ["  ╱▔▔▔╲   ", " │ST-VIA│ ", " │ TEUR │ ", " │ ◯ ◯  │ ", " │BAGELS│ ", " ╰──────╯ "],
-        },
-        {
-          name: "Van Horne Underpass",
-          art: ["  ▀▀▀▀▀   ", " │VAN   │ ", "╱│HORNE│╲ ", "││UNDER││ ", "││░PASS░││", "╰┴──────┴╯"],
-        },
-      ];
+                const GRID_SIZE = 10;
+                let grid = Array(GRID_SIZE)
+                  .fill()
+                  .map(() => Array(GRID_SIZE).fill(""));
+                let currentChar = "█";
+                let selectedCell = null;
+                    let hoveredCell = null;
 
-      const paletteCategories = [
-        {
-          name: "Buildings",
-          chars: [
-            "█",
-            "▓",
-            "▒",
-            "░",
-            "│",
-            "─",
-            "┌",
-            "┐",
-            "└",
-            "┘",
-            "├",
-            "┤",
-            "┬",
-            "┴",
-            "┼",
-            "║",
-            "═",
-            "╔",
-            "╗",
-            "╚",
-            "╝",
-            "╠",
-            "╣",
-            "╦",
-            "╩",
-            "╬",
-            "▀",
-            "▄",
-            "■",
-            "□",
-            "▪",
-            "▫",
-            "▁",
-            "▂",
-            "▃",
-            "▅",
-            "▆",
-            "▇",
-            "▉",
-            "▊",
-            "▋",
-            "▌",
-            "▍",
-            "▎",
-            "▏",
-            "▐",
-            "▔",
-            "▕",
-          ],
-        },
-        {
-          name: "Windows & Doors",
-          chars: ["◼", "◻", "◾", "◽", "▢", "▣", "▤", "▥", "▦", "▧", "▨", "▩", "⊞", "⊟", "⊠", "⊡", "∥", "≑", "≜", "▬", "▭", "▮", "▯", "▰", "▱"],
-        },
-        {
-          name: "Roofs & Details",
-          chars: ["◢", "◣", "◤", "◥", "△", "▲", "▽", "▼", "◊", "◇", "⋰", "⋱", "╱", "╲", "╳", "⌒", "⌓"],
-        },
-        {
-          name: "Decorative",
-          chars: [
-            "★",
-            "☆",
-            "✦",
-            "✧",
-            "✩",
-            "✪",
-            "✫",
-            "✬",
-            "✭",
-            "✮",
-            "✯",
-            "⁂",
-            "❀",
-            "❁",
-            "❂",
-            "❃",
-            "⚘",
-            "○",
-            "●",
-            "◐",
-            "◑",
-            "⚐",
-            "⚑",
-            "⚙",
-            "⚛",
-            "⚜",
-            "⛨",
-            "⛩",
-            "⛫",
-            "⛬",
-          ],
-        },
-        {
-          name: "Lines & Corners",
-          chars: [
-            "─",
-            "━",
-            "│",
-            "┃",
-            "┌",
-            "┍",
-            "┎",
-            "┏",
-            "┐",
-            "┑",
-            "┒",
-            "┓",
-            "└",
-            "┕",
-            "┖",
-            "┗",
-            "┘",
-            "┙",
-            "┚",
-            "┛",
-            "├",
-            "┝",
-            "┞",
-            "┟",
-            "┠",
-            "┡",
-            "┢",
-            "┣",
-            "┤",
-            "┥",
-            "┦",
-            "┧",
-            "┨",
-            "┩",
-            "┪",
-            "┫",
-            "┬",
-            "┭",
-            "┮",
-            "┯",
-            "┰",
-            "┱",
-            "┲",
-            "┳",
-            "┴",
-            "┵",
-            "┶",
-            "┷",
-            "┸",
-            "┹",
-            "┺",
-            "┻",
-            "┼",
-            "┽",
-            "┾",
-            "┿",
-            "╀",
-            "╁",
-            "╂",
-            "╃",
-            "╄",
-            "╅",
-            "╆",
-            "╇",
-            "╈",
-            "╉",
-            "╊",
-            "╋",
-            "╌",
-            "╍",
-            "╎",
-            "╏",
-            "┄",
-            "┅",
-            "┆",
-            "┇",
-            "┈",
-            "┉",
-            "┊",
-            "┋",
-            "╼",
-            "╽",
-            "╾",
-            "╿",
-          ],
-        },
-        {
-          name: "Double Lines",
-          chars: [
-            "═",
-            "║",
-            "╒",
-            "╓",
-            "╔",
-            "╕",
-            "╖",
-            "╗",
-            "╘",
-            "╙",
-            "╚",
-            "╛",
-            "╜",
-            "╝",
-            "╞",
-            "╟",
-            "╠",
-            "╡",
-            "╢",
-            "╣",
-            "╤",
-            "╥",
-            "╦",
-            "╧",
-            "╨",
-            "╩",
-            "╪",
-            "╫",
-            "╬",
-          ],
-        },
-        {
-          name: "Curved & Round",
-          chars: [
-            "╭",
-            "╮",
-            "╯",
-            "╰",
-            "⌜",
-            "⌝",
-            "⌞",
-            "⌟",
-            "⌈",
-            "⌉",
-            "⌊",
-            "⌋",
-            "〈",
-            "〉",
-            "《",
-            "》",
-            "「",
-            "」",
-            "『",
-            "』",
-            "(",
-            ")",
-            "⟨",
-            "⟩",
-            "⦅",
-            "⦆",
-          ],
-        },
-        {
-          name: "Patterns",
-          chars: [
-            "░",
-            "▒",
-            "▓",
-            "█",
-            "▀",
-            "▄",
-            "▌",
-            "▐",
-            "▖",
-            "▗",
-            "▘",
-            "▙",
-            "▚",
-            "▛",
-            "▜",
-            "▝",
-            "▞",
-            "▟",
-            "⬒",
-            "⬓",
-            "⬔",
-            "⬕",
-            "⠀",
-            "⠁",
-            "⠂",
-            "⠃",
-            "⠄",
-            "⠅",
-            "⠆",
-            "⠇",
-            "⠈",
-            "⠉",
-            "⠊",
-            "⠋",
-            "⠌",
-            "⠍",
-            "⠎",
-            "⠏",
-            "⠐",
-            "⠑",
-            "⠒",
-            "⠓",
-            "⠔",
-            "⠕",
-            "⠖",
-            "⠗",
-            "⠘",
-            "⠙",
-            "⠚",
-            "⠛",
-            "⠜",
-            "⠝",
-            "⠞",
-            "⠟",
-          ],
-        },
-        {
-          name: "Circles & Dots",
-          chars: [
-            "○",
-            "●",
-            "◐",
-            "◑",
-            "⚬",
-            "⚭",
-            "⦾",
-            "⦿",
-            "⧂",
-            "⧃",
-            "◌",
-            "◍",
-            "◔",
-            "◕",
-            "◖",
-            "◗",
-            "◘",
-            "◙",
-            "◚",
-            "◛",
-            "◜",
-            "◝",
-            "◞",
-            "◟",
-            "◠",
-            "◡",
-            "◯",
-            "⦁",
-            "∘",
-          ],
-        },
-        {
-          name: "Triangles & Arrows",
-          chars: ["△", "▲", "▽", "▼", "◄", "◅", "►", "▻", "▴", "▵", "▸", "▹", "▾", "▿", "◂", "◃", "▷", "◁", "⯅", "⯆", "⯇", "⯈"],
-        },
-        {
-          name: "Symbols",
-          chars: [
-            "~",
-            "≈",
-            "≋",
-            "∿",
-            "〜",
-            "⌇",
-            "⌠",
-            "⌡",
-            "⌢",
-            "⌣",
-            "⌯",
-            "⍝",
-            "⍞",
-            "⍟",
-            "◄",
-            "►",
-            "⳺",
-            "⳻",
-            "o",
-            "O",
-            "°",
-            "⚬",
-            "⚭",
-            "⌘",
-            "⌥",
-            "⎋",
-            "⌫",
-            "⌦",
-            "␣",
-            "⏎",
-            "⏏",
-            "⎈",
-            "⎆",
-            "⎇",
-            "⌤",
-            "⌧",
-            "⚠",
-            "⚡",
-            "☢",
-            "☣",
-            "⚕",
-          ],
-        },
-        {
-          name: "Letters (A-Z)",
-          chars: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
-        },
-        {
-          name: "Numbers (0-9)",
-          chars: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
-        },
-        {
-          name: "Basic",
-          chars: ["#", "@", "*", "+", "=", "-", "_", "|", "/", "\\", "^", "v", "<", ">", ".", ",", ":", ";", "!", "?", "~", "[", "]", "{", "}"],
-        },
-      ];
-      function initGrid() {
-        const gridElement = document.getElementById("grid");
-        for (let i = 0; i < GRID_SIZE * GRID_SIZE; i++) {
-          const cell = document.createElement("div");
-          cell.className = "cell";
-          cell.dataset.index = i;
+                let isDrawing = false;
+                let lastDrawnCell = null;
+                let isEraserMode = false;
 
-          // Mouse events for drawing
-          cell.addEventListener("mousedown", () => {
-            isDrawing = true;
-            lastDrawnCell = null;
-            handleCellDraw(i);
-          });
-          cell.addEventListener("mouseenter", (e) => {
-            if (isDrawing) {
-              handleCellDraw(i);
-            }
-            // Update custom cursor
-            updateCellCursor(e.target);
-          });
-          cell.addEventListener("mouseleave", (e) => {
-            // Reset cursor
-            e.target.style.cursor = "";
-          });
-          cell.addEventListener("click", () => handleCellClick(i));
+                let copiedCell = null;
+                let isDraggingToMove = false;
+                let draggedCell = null;
+                let draggedContent = null;
+                let isShiftPressed = false;
 
-          // Touch events for mobile
-          cell.addEventListener("touchstart", (e) => {
-            e.preventDefault();
-            isDrawing = true;
-            lastDrawnCell = null;
-            handleCellDraw(i);
-          });
+                // Example buildings pool
+                const exampleBuildings = [
+                  {
+                    name: "Habitat 67",
+                    art: ["  ▓▓  ▓▓  ", " ▓▓▓ ▓▓▓  ", "▓▓▓ 67 ▓▓▓", " ▓▓▓▓▓▓▓▓ ", "▓▓▓ ▓▓▓▓▓ ", " ▓▓  ▓▓ ▓▓"],
+                  },
+                  {
+                    name: "Biosphere",
+                    art: ["   ╱◇◇╲   ", "  ◇◇◇◇◇  ", " ◇◇◇◇◇◇◇ ", " ◇◇◇◇◇◇◇ ", "  ◇◇◇◇◇  ", "   ╲◇◇╱   "],
+                  },
+                  {
+                    name: "Olympic Stadium",
+                    art: ["      ╱│  ", "     ╱ │  ", "    ╱  │  ", "   ╱╲  │  ", "  ╱  ╲ │  ", " ◢◣ ◢◣◣│  "],
+                  },
+                  {
+                    name: "Place des Arts",
+                    art: ["▀▀▀▀▀▀▀▀▀▀", "█PLACE   █", "█DES ARTS█", "█ ▢ ▢ ▢ ▢█", "█ ▢ ▢ ▢ ▢█", "▔▔▔▔▔▔▔▔▔▔"],
+                  },
+                  {
+                    name: "Phi Centre",
+                    art: ["╔═══PHI══╗", "║ ◉ ART ◉║", "║▓▓▓▓▓▓▓▓║", "║ CINEMA ║", "║▓▓▓▓▓▓▓▓║", "╚═══════╝"],
+                  },
+                  {
+                    name: "LE_CRAYON_MONTRÉALAIS",
+                    artist: "Aurélie",
+                    art: [" ⚛ ⚛ ", " ╔◢◣╗ ", " ⊡⊡⊡⊡ ", " ╚▒▒╝ ", " ▒▒ ", " ▒▒ "],
+                  },
+                  {
+                    name: "Main Bistro",
+                    art: ["  ▁▁▁▁▁   ", " │ MAIN │ ", " │BISTRO│ ", " │ ☕★☕ │ ", " │░░░░░░│ ", " └──▐▌──┘ "],
+                  },
+                  {
+                    name: "Casa del Popolo",
+                    art: ["╔═CASA═╗  ", "║ DEL  ║  ", "║POPOLO║  ", "║★ ♪ ★║  ", "║▓▓▓▓▓║  ", "╚══════╝  "],
+                  },
+                  {
+                    name: "Musée d'Art Contemporain",
+                    art: ["▀▀▀MAC▀▀▀▀", "█ ◢■◣ ◢■◣█", "█ ◥■◤ ◥■◤█", "█ ART    █", "█CONTEMPO█", "▔▔▔▔▔▔▔▔▔▔"],
+                  },
+                  {
+                    name: "SAT Societé",
+                    art: ["╭{     )─╮", "╭─SAT───╮ ", "│◉AUDIO◉│ ", "│VISUAL │ ", "│▓▓▓▓▓▓▓│ ", "│░IMMR░░│ ", "╰───────╯ "],
+                  },
+                  {
+                    name: "Tam Tams",
+                    art: ["  ♪ ☼ ♪   ", " ○ ● ○ ●  ", "  TAM     ", "  TAMS    ", " ● ○ ● ○  ", "  ♫ ☼ ♫   "],
+                  },
+                  {
+                    name: "Wilensky's",
+                    art: ["╔WILENSKY╗", "║ LIGHT  ║", "║ LUNCH  ║", "╚════════╝"],
+                  },
+                  {
+                    name: "Fairmount Bagel",
+                    art: ["  ╱▔▔▔╲   ", " │FAIR  │ ", " │MOUNT │ ", " │ ◯ ◯  │ ", " │BAGELS│ ", " ╰─────╯  "],
+                  },
+                  {
+                    name: "Casa d'Italia",
+                    art: ["╔═CASA═╗  ", "║D'ITALIA║", "║ ★ ★ ★ ║", "║▓▓▓▓▓▓▓║", "║CULTURA║", "╚═══════╝"],
+                  },
+                  {
+                    name: "Greenroom",
+                    art: ["╭─GREEN──╮", "│ ROOM   │", "│ ♪ ★ ♫  │", "╰────────╯"],
+                  },
+                  {
+                    name: "McCord Museum",
+                    art: ["▀McCORD▀▀▀", "█        █", "█ ◢■◣◢■◣ █", "▔▔▔▔▔▔▔▔▔▔"],
+                  },
+                  {
+                    name: "Quai des Brumes",
+                    art: ["╔═QUAI══╗ ", "║ DES   ║ ", "║BRUMES ║ ", "╚═══════╝ "],
+                  },
+                  {
+                    name: "Cabaret Mile End",
+                    art: ["▁▁CABARET▁", "│ MILE   │", "│  END   │", "│▓STAGE▓▓│", "└─────────┘"],
+                  },
+                  {
+                    name: "Foufounes Électriques",
+                    art: ["╔FOUFOU═╗ ", "║NES    ║ ", "║ELEC   ║ ", "║TRIQUES║ ", "║★♫PUNK♫║ ", "╚═══════╝ "],
+                  },
+                  {
+                    name: "Le Dépanneur Café",
+                    art: ["╭DEPAN──╮ ", "│ NEUR  │ ", "│ CAFE  │ ", "│ ☕ ◉  │ ", "│░RESTO░│ ", "╰───────╯ "],
+                  },
+                  {
+                    name: "Drawn & Quarterly",
+                    art: ["╔DRAWN═╗  ", "║  &   ║  ", "║QRTLY ║  ", "║ ◢■◣  ║  ", "║BOOKS ║  ", "╚══════╝  "],
+                  },
+                  {
+                    name: "L'Escalier",
+                    art: ["╭L'ESCA─╮ ", "│ LIER  │ ", "│ ♪ ★ ♫ │ ", "╰───────╯ "],
+                  },
+                  {
+                    name: "Cinéma du Parc",
+                    art: ["▀▀CINEMA▀▀", "█ DU    █ ", "█ PARC  █ ", "█ ◢▓▓◣  █ ", "█ ◥▓▓◤  █ ", "▔▔▔▔▔▔▔▔▔▔"],
+                  },
+                  {
+                    name: "Croissanterie Figaro",
+                    art: ["  ╱▔▔▔╲   ", " │CROIS │ ", " │SANTE │ ", " │FIGARO│ ", " │◯☕◯☕│ ", " ╰──────╯ "],
+                  },
+                  {
+                    name: "Barraca",
+                    art: ["╭BARRACA╮ ", "│ RHUMBA│ ", "╰────────╯"],
+                  },
+                  {
+                    name: "Espace pour la vie",
+                    art: ["  ╱▲╲ ◉   ", " │ESPACE│ ", " │ POUR │ ", " │ LA   │ ", " │ VIE ☼│ ", " └──────┘ "],
+                  },
+                  {
+                    name: "Café Olimpico",
+                    art: ["╭OLIMPICO╮", "│ESPRESSO│", "│ CAFFE  │", "│░1970░░ │", "╰────────╯"],
+                  },
+                  {
+                    name: "Cinéma Beaubien",
+                    art: ["╔CINEMA═╗ ", "║BEAUBIEN║", "║ ◢▓▓◣  ║ ", "║ ◥▓▓◤  ║ ", "║ 1938  ║ ", "╚═══════╝ "],
+                  },
+                  {
+                    name: "La Vitrola",
+                    art: ["╭LA─────╮ ", "│VITROLA│ ", "╰────────╯"],
+                  },
+                  {
+                    name: "Palais Royale",
+                    art: ["▀PALAIS▀▀▀", "█ ROYALE █", "█ RESTO  █", "▔▔▔▔▔▔▔▔▔▔"],
+                  },
+                  {
+                    name: "Sala Rossa",
+                    art: ["╭SALA───╮ ", "│ ROSSA │ ", "│ ♪ ★ ♫ │ ", "╰────────╯"],
+                  },
+                  {
+                    name: "Notre-Dame Basilica",
+                    art: ["   ╱▲╲    ", "  ╱▲▲╲    ", " ╱NOTRE╲  ", "│  DAME  │", "│ ★ ✦ ★ │", "└────────┘"],
+                  },
+                  {
+                    name: "Café dei Campi",
+                    art: ["╭DEI────╮ ", "│ CAMPI │ ", "│ CAFFE │ ", "│ ☕ ◉  │ ", "╰───────╯ "],
+                  },
+                  {
+                    name: "Arepera du Plateau",
+                    art: ["╭AREPERA╮ ", "│ ◢■◣   │ ", "╰────────╯"],
+                  },
+                  {
+                    name: "Leonard Cohen House",
+                    art: ["  ▁▁▁▁▁   ", " │ 5244 │ ", " │ BLVD │ ", " │★POET★│ ", " └───────┘ "],
+                  },
+                  {
+                    name: "Giant Ring",
+                    art: ["   ◢◣◣    ", "  ◢   ◣   ", " ◢ RING◣  ", " ◥     ◤  ", "  ◥   ◤   ", "   ◥◤◤    "],
+                  },
+                  {
+                    name: "Parquette",
+                    art: ["╭PAR___╮  ", "│ QUET │ ", "│ ★ ☕ ★│ ", "│░.  E░░│ ", "╰────────╯"],
+                  },
+                  {
+                    name: "Café Orr",
+                    art: ["╭──ORR──╮ ", "│ CAFE  │ ", "│ ☕☕☕ │ ", "╰────────╯"],
+                  },
+                  {
+                    name: "Parc Laurier",
+                    art: ["  ☼ ◉ ☼   ", " ░PARC░   ", "░LAURIER░ ", " ░POOL░   ", "  ░░░░░   ", "  ◉ ☼ ◉   "],
+                  },
+                  {
+                    name: "Frédéric-Back Park",
+                    art: ["  ☼ ◉ ☼   ", " ░FRED░   ", "░░BACK░░  ", " ░ORBS░   ", "  ░░░░░   ", "  ◉ ☼ ◉   "],
+                  },
+                  {
+                    name: "Parc Jeanne-Mance",
+                    art: ["  ☼ ◉ ☼   ", " ░JEANNE░ ", "░░MANCE░░ ", " ░PARC░   ", "  ◉ ☼ ◉   "],
+                  },
+                  {
+                    name: "Parc Jarry",
+                    art: ["  ☼ ◉ ☼   ", " ░░PARC░░ ", "░░JARRY░░ ", "  ░░░░░   ", "  ◉ ☼ ◉   "],
+                  },
+                  {
+                    name: "Renaissance",
+                    art: ["╔RENAIS═╗ ", "║ SANCE ║ ", "║ THRIFT║ ", "║ BOOKS ║ ", "╚═══════╝ "],
+                  },
+                  {
+                    name: "Les Petits Frères",
+                    art: ["╭LES────╮ ", "│PETITS │ ", "│FRERES │ ", "│ ★ ♥ ★ │ ", "╰────────╯"],
+                  },
+                  {
+                    name: "Westmount Greenhouse",
+                    art: ["  ╱▔▔▔╲   ", " ╱ ☼ ◉ ╲  ", "│WESTMOU│ ", "│ GREEN │ ", "│░HOUSE░│ ", "╰────────╯"],
+                  },
+                  {
+                    name: "Chatime",
+                    art: ["╭CHATIME╮ ", "│ BUBBLE│ ", "│  TEA  │ ", "│ ◉ ◉ ◉ │ ", "│░BOBA░░│ ", "╰────────╯"],
+                  },
+                  {
+                    name: "Marché PA",
+                    art: ["╔MARCHE═╗ ", "║  PA   ║ ", "║ ◢■◣   ║ ", "║GROCERY║ ", "╚═══════╝ "],
+                  },
+                  {
+                    name: "Samosa King",
+                    art: ["╭SAMOSA─╮ ", "│ KING  │ ", "│  $1   │ ", "│ ◢■◣   │ ", "│░SPICE░│ ", "╰────────╯"],
+                  },
+                  {
+                    name: "Gnocchi $5",
+                    art: ["╭GNOCCHI╮ ", "│  $5   │ ", "│ ◢■◣   │ ", "╰────────╯"],
+                  },
+                  {
+                    name: "St-Viateur Bagel",
+                    art: ["  ╱▔▔▔╲   ", " │ST-VIA│ ", " │ TEUR │ ", " │ ◯ ◯  │ ", " │BAGELS│ ", " ╰──────╯ "],
+                  },
+                  {
+                    name: "Van Horne Underpass",
+                    art: ["  ▀▀▀▀▀   ", " │VAN   │ ", "╱│HORNE│╲ ", "││UNDER││ ", "││░PASS░││", "╰┴──────┴╯"],
+                  },
+                  {
+                    name: "LE_CRAYON_MONTRÉALAIS",
+                    artist: "Aurélie",
+                    art: ["   ⚛ ⚛    ", "   ╔◢◣╗   ", "   ⊡⊡⊡⊡   ", "   ╚▒▒╝   ", "    ▒▒    ", "    ▒▒    "],
+                  },
+                  {
+                    name: "BAIN_COLONIAL",
+                    artist: "Julia",
+                    art: [" ┏━━━━━━┓ ", " ┣━━━━━━┫ ", " ┃ BAIN ┃ ", " ┃      ┃ ", " ┃COLO  ┃ ", " ┃  NIAL┃ ", " ┃      ┃ ", " ┃      ┃ ", " ┗━━━━━━┛ "],
+                  },
+                  {
+                    name: "SNAKE_FACTORY",
+                    artist: "Pen",
+                    art: ["  ∿∿∿⳻    ", "  ∿∿∿5⳻   ", "  ∿∿∿ S⳻  ", "  ∿∿∿ S⚕  ", "  ∿∿∿ S⚕  ", "  ∿∿∿ S⚕  ", "  ∿∿∿ S⚕  ", "  ∿⍝∿ S⚕  "],
+                  },
+                  {
+                    name: "BLOBBY'S_BUNKER",
+                    artist: "Pen",
+                    art: ["   ⌓⌓⌓    ", "  ◯ ❂ ⌇   ", " ◯ ◜ ◝⌇   ", " ◯⋰◟◘◞⦆   "],
+                  },
+                  {
+                    name: "OBSERVATOIRE",
+                    artist: "Pen",
+                    art: [
+                      "   ╭⦿⦿╮   ",
+                      "  ╭ ⠁⠑ ╮  ",
+                      " ╭ ⠛  ⠅⠝╮ ",
+                      " ╰⠇ ⠋   ╯ ",
+                      "  ╰⠕⠜ ⠜╯  ",
+                      "   ╰  ╯   ",
+                      "    ░░    ",
+                      "    ▒▒    ",
+                      "    ▓▓    ",
+                      "    ██    ",
+                    ],
+                  },
+                ];
 
-          cell.addEventListener("touchmove", (e) => {
-            e.preventDefault();
-            if (isDrawing) {
-              const touch = e.touches[0];
-              const element = document.elementFromPoint(touch.clientX, touch.clientY);
-              if (element && element.classList.contains("cell")) {
-                const touchIndex = parseInt(element.dataset.index);
-                handleCellDraw(touchIndex);
-              }
-            }
-          });
+                const paletteCategories = [
+                  {
+                    name: "Buildings",
+                    chars: [
+                      "█",
+                      "▓",
+                      "▒",
+                      "░",
+                      "│",
+                      "─",
+                      "┌",
+                      "┐",
+                      "└",
+                      "┘",
+                      "├",
+                      "┤",
+                      "┬",
+                      "┴",
+                      "┼",
+                      "║",
+                      "═",
+                      "╔",
+                      "╗",
+                      "╚",
+                      "╝",
+                      "╠",
+                      "╣",
+                      "╦",
+                      "╩",
+                      "╬",
+                      "▀",
+                      "▄",
+                      "■",
+                      "□",
+                      "▪",
+                      "▫",
+                      "▁",
+                      "▂",
+                      "▃",
+                      "▅",
+                      "▆",
+                      "▇",
+                      "▉",
+                      "▊",
+                      "▋",
+                      "▌",
+                      "▍",
+                      "▎",
+                      "▏",
+                      "▐",
+                      "▔",
+                      "▕",
+                    ],
+                  },
+                  {
+                    name: "Windows & Doors",
+                    chars: ["◼", "◻", "◾", "◽", "▢", "▣", "▤", "▥", "▦", "▧", "▨", "▩", "⊞", "⊟", "⊠", "⊡", "∥", "≑", "≜", "▬", "▭", "▮", "▯", "▰", "▱"],
+                  },
+                  {
+                    name: "Roofs & Details",
+                    chars: ["◢", "◣", "◤", "◥", "△", "▲", "▽", "▼", "◊", "◇", "⋰", "⋱", "╱", "╲", "╳", "⌒", "⌓"],
+                  },
+                  {
+                    name: "Decorative",
+                    chars: [
+                      "★",
+                      "☆",
+                      "✦",
+                      "✧",
+                      "✩",
+                      "✪",
+                      "✫",
+                      "✬",
+                      "✭",
+                      "✮",
+                      "✯",
+                      "⁂",
+                      "❀",
+                      "❁",
+                      "❂",
+                      "❃",
+                      "⚘",
+                      "○",
+                      "●",
+                      "◐",
+                      "◑",
+                      "⚐",
+                      "⚑",
+                      "⚙",
+                      "⚛",
+                      "⚜",
+                      "⛨",
+                      "⛩",
+                      "⛫",
+                      "⛬",
+                    ],
+                  },
+                  {
+                    name: "Lines & Corners",
+                    chars: [
+                      "─",
+                      "━",
+                      "│",
+                      "┃",
+                      "┌",
+                      "┍",
+                      "┎",
+                      "┏",
+                      "┐",
+                      "┑",
+                      "┒",
+                      "┓",
+                      "└",
+                      "┕",
+                      "┖",
+                      "┗",
+                      "┘",
+                      "┙",
+                      "┚",
+                      "┛",
+                      "├",
+                      "┝",
+                      "┞",
+                      "┟",
+                      "┠",
+                      "┡",
+                      "┢",
+                      "┣",
+                      "┤",
+                      "┥",
+                      "┦",
+                      "┧",
+                      "┨",
+                      "┩",
+                      "┪",
+                      "┫",
+                      "┬",
+                      "┭",
+                      "┮",
+                      "┯",
+                      "┰",
+                      "┱",
+                      "┲",
+                      "┳",
+                      "┴",
+                      "┵",
+                      "┶",
+                      "┷",
+                      "┸",
+                      "┹",
+                      "┺",
+                      "┻",
+                      "┼",
+                      "┽",
+                      "┾",
+                      "┿",
+                      "╀",
+                      "╁",
+                      "╂",
+                      "╃",
+                      "╄",
+                      "╅",
+                      "╆",
+                      "╇",
+                      "╈",
+                      "╉",
+                      "╊",
+                      "╋",
+                      "╌",
+                      "╍",
+                      "╎",
+                      "╏",
+                      "┄",
+                      "┅",
+                      "┆",
+                      "┇",
+                      "┈",
+                      "┉",
+                      "┊",
+                      "┋",
+                      "╼",
+                      "╽",
+                      "╾",
+                      "╿",
+                    ],
+                  },
+                  {
+                    name: "Double Lines",
+                    chars: [
+                      "═",
+                      "║",
+                      "╒",
+                      "╓",
+                      "╔",
+                      "╕",
+                      "╖",
+                      "╗",
+                      "╘",
+                      "╙",
+                      "╚",
+                      "╛",
+                      "╜",
+                      "╝",
+                      "╞",
+                      "╟",
+                      "╠",
+                      "╡",
+                      "╢",
+                      "╣",
+                      "╤",
+                      "╥",
+                      "╦",
+                      "╧",
+                      "╨",
+                      "╩",
+                      "╪",
+                      "╫",
+                      "╬",
+                    ],
+                  },
+                  {
+                    name: "Curved & Round",
+                    chars: [
+                      "╭",
+                      "╮",
+                      "╯",
+                      "╰",
+                      "⌜",
+                      "⌝",
+                      "⌞",
+                      "⌟",
+                      "⌈",
+                      "⌉",
+                      "⌊",
+                      "⌋",
+                      "〈",
+                      "〉",
+                      "《",
+                      "》",
+                      "「",
+                      "」",
+                      "『",
+                      "』",
+                      "(",
+                      ")",
+                      "⟨",
+                      "⟩",
+                      "⦅",
+                      "⦆",
+                    ],
+                  },
+                  {
+                    name: "Patterns",
+                    chars: [
+                      "░",
+                      "▒",
+                      "▓",
+                      "█",
+                      "▀",
+                      "▄",
+                      "▌",
+                      "▐",
+                      "▖",
+                      "▗",
+                      "▘",
+                      "▙",
+                      "▚",
+                      "▛",
+                      "▜",
+                      "▝",
+                      "▞",
+                      "▟",
+                      "⬒",
+                      "⬓",
+                      "⬔",
+                      "⬕",
+                      "⠀",
+                      "⠁",
+                      "⠂",
+                      "⠃",
+                      "⠄",
+                      "⠅",
+                      "⠆",
+                      "⠇",
+                      "⠈",
+                      "⠉",
+                      "⠊",
+                      "⠋",
+                      "⠌",
+                      "⠍",
+                      "⠎",
+                      "⠏",
+                      "⠐",
+                      "⠑",
+                      "⠒",
+                      "⠓",
+                      "⠔",
+                      "⠕",
+                      "⠖",
+                      "⠗",
+                      "⠘",
+                      "⠙",
+                      "⠚",
+                      "⠛",
+                      "⠜",
+                      "⠝",
+                      "⠞",
+                      "⠟",
+                    ],
+                  },
+                  {
+                    name: "Circles & Dots",
+                    chars: [
+                      "○",
+                      "●",
+                      "◐",
+                      "◑",
+                      "⚬",
+                      "⚭",
+                      "⦾",
+                      "⦿",
+                      "⧂",
+                      "⧃",
+                      "◌",
+                      "◍",
+                      "◔",
+                      "◕",
+                      "◖",
+                      "◗",
+                      "◘",
+                      "◙",
+                      "◚",
+                      "◛",
+                      "◜",
+                      "◝",
+                      "◞",
+                      "◟",
+                      "◠",
+                      "◡",
+                      "◯",
+                      "⦁",
+                      "∘",
+                    ],
+                  },
+                  {
+                    name: "Triangles & Arrows",
+                    chars: ["△", "▲", "▽", "▼", "◄", "◅", "►", "▻", "▴", "▵", "▸", "▹", "▾", "▿", "◂", "◃", "▷", "◁", "⯅", "⯆", "⯇", "⯈"],
+                  },
+                  {
+                    name: "Symbols",
+                    chars: [
+                      "~",
+                      "≈",
+                      "≋",
+                      "∿",
+                      "〜",
+                      "⌇",
+                      "⌠",
+                      "⌡",
+                      "⌢",
+                      "⌣",
+                      "⌯",
+                      "⍝",
+                      "⍞",
+                      "⍟",
+                      "◄",
+                      "►",
+                      "⳺",
+                      "⳻",
+                      "o",
+                      "O",
+                      "°",
+                      "⚬",
+                      "⚭",
+                      "⌘",
+                      "⌥",
+                      "⎋",
+                      "⌫",
+                      "⌦",
+                      "␣",
+                      "⏎",
+                      "⏏",
+                      "⎈",
+                      "⎆",
+                      "⎇",
+                      "⌤",
+                      "⌧",
+                      "⚠",
+                      "⚡",
+                      "☢",
+                      "☣",
+                      "⚕",
+                    ],
+                  },
+                  {
+                    name: "Letters (A-Z)",
+                    chars: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
+                  },
+                  {
+                    name: "Numbers (0-9)",
+                    chars: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
+                  },
+                  {
+                    name: "Basic",
+                    chars: ["#", "@", "*", "+", "=", "-", "_", "|", "/", "\\", "^", "v", "<", ">", ".", ",", ":", ";", "!", "?", "~", "[", "]", "{", "}"],
+                  },
+                ];
+        function copyCell() {
+          // Use hoveredCell instead of selectedCell
+          const cellIndex = hoveredCell !== null ? hoveredCell : selectedCell;
 
-          gridElement.appendChild(cell);
-        }
-
-        // Stop drawing when mouse is released anywhere
-        document.addEventListener("mouseup", () => {
-          isDrawing = false;
-          lastDrawnCell = null;
-        });
-
-        // Stop drawing when touch ends
-        document.addEventListener("touchend", () => {
-          isDrawing = false;
-          lastDrawnCell = null;
-        });
-      }
-
-      function updateCellCursor(cellElement) {
-        if (isEraserMode) {
-          cellElement.style.cursor =
-            'url(\'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><text x="2" y="18" font-size="18" font-family="Courier New, monospace" fill="%23999">X</text></svg>\') 12 12, crosshair';
-        } else {
-          // Create a simple cursor showing just the current character
-          const char = currentChar || "█";
-          const encodedChar = encodeURIComponent(char);
-          cellElement.style.cursor = `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><text x="2" y="18" font-size="18" font-family="Courier New, monospace" fill="%23999">${encodedChar}</text></svg>') 12 12, crosshair`;
-        }
-      }
-
-      function toggleEraser() {
-        isEraserMode = !isEraserMode;
-        const eraserBtn = document.getElementById("eraserBtn");
-
-        if (isEraserMode) {
-          eraserBtn.classList.add("active");
-          showToast("Eraser mode activated");
-          // Deselect all palette buttons
-          document.querySelectorAll(".char-btn").forEach((btn) => {
-            btn.classList.remove("selected");
-          });
-        } else {
-          eraserBtn.classList.remove("active");
-          showToast("Eraser mode deactivated");
-          // Re-select the current character
-          selectChar(currentChar);
-        }
-      }
-
-      function initPalette() {
-        const paletteElement = document.getElementById("palette");
-
-        paletteCategories.forEach((category) => {
-          const categoryDiv = document.createElement("div");
-          categoryDiv.className = "palette-category";
-
-          const title = document.createElement("div");
-          title.className = "palette-title";
-          title.textContent = category.name;
-          title.setAttribute("data-i18n", category.name);
-          categoryDiv.appendChild(title);
-
-          const charsDiv = document.createElement("div");
-          charsDiv.className = "palette-chars";
-
-          category.chars.forEach((char) => {
-            const btn = document.createElement("button");
-            btn.className = "char-btn";
-            btn.textContent = char;
-            btn.addEventListener("click", () => selectChar(char));
-            charsDiv.appendChild(btn);
-          });
-
-          categoryDiv.appendChild(charsDiv);
-          paletteElement.appendChild(categoryDiv);
-        });
-      }
-
-      function handleCellClick(index) {
-        const row = Math.floor(index / GRID_SIZE);
-        const col = index % GRID_SIZE;
-
-        if (isEraserMode) {
-          // Erase the cell
-          grid[row][col] = "";
-          updateGrid();
-        } else {
-          // If cell has content, pick that character
-          if (grid[row][col]) {
-            selectChar(grid[row][col]);
+          if (cellIndex !== null) {
+            const row = Math.floor(cellIndex / GRID_SIZE);
+            const col = cellIndex % GRID_SIZE;
+            copiedCell = grid[row][col];
+            // ALSO make it the current stamp!
+            currentChar = copiedCell || "";
+            selectChar(currentChar);
+            showToast(copiedCell ? `Copied: ${copiedCell}` : "Copied empty cell");
           } else {
-            // Otherwise, place current character
-            grid[row][col] = currentChar;
+            showToast("Hover over a cell first!");
+          }
+        }
+
+        function pasteCell() {
+          if (copiedCell === null) {
+            showToast("Nothing to paste! Copy a cell first.");
+            return;
+          }
+
+          // Use hoveredCell instead of selectedCell
+          const cellIndex = hoveredCell !== null ? hoveredCell : selectedCell;
+
+          if (cellIndex !== null) {
+            const row = Math.floor(cellIndex / GRID_SIZE);
+            const col = cellIndex % GRID_SIZE;
+            grid[row][col] = copiedCell;
+            // Make it the current stamp when we paste
+            currentChar = copiedCell;
+            selectChar(currentChar);
             updateGrid();
-          }
-        }
-
-        selectedCell = index;
-        highlightCell(index);
-      }
-
-      function handleCellDraw(index) {
-        // Prevent drawing the same cell multiple times in one drag
-        if (lastDrawnCell === index) return;
-
-        const row = Math.floor(index / GRID_SIZE);
-        const col = index % GRID_SIZE;
-
-        if (isEraserMode) {
-          grid[row][col] = "";
-        } else {
-          grid[row][col] = currentChar;
-        }
-        updateGrid();
-        lastDrawnCell = index;
-      }
-
-      function selectChar(char) {
-        currentChar = char;
-        document.getElementById("currentCharDisplay").textContent = char;
-        isEraserMode = false;
-        document.getElementById("eraserBtn").classList.remove("active");
-
-        // Update palette selection
-        document.querySelectorAll(".char-btn").forEach((btn) => {
-          btn.classList.toggle("selected", btn.textContent === char);
-        });
-      }
-
-      function highlightCell(index) {
-        document.querySelectorAll(".cell").forEach((cell) => {
-          cell.classList.remove("active");
-        });
-        if (index !== null) {
-          document.querySelector(`[data-index="${index}"]`).classList.add("active");
-        }
-      }
-
-      function updateGrid() {
-        document.querySelectorAll(".cell").forEach((cell, index) => {
-          const row = Math.floor(index / GRID_SIZE);
-          const col = index % GRID_SIZE;
-          cell.textContent = grid[row][col];
-        });
-      }
-
-      function loadRandomExample() {
-        // Pick a random example
-        const randomIndex = Math.floor(Math.random() * exampleBuildings.length);
-        const example = exampleBuildings[randomIndex];
-
-        // Clear the grid first
-        grid = Array(GRID_SIZE)
-          .fill()
-          .map(() => Array(GRID_SIZE).fill(""));
-
-        // Calculate starting row for bottom alignment
-        const startRow = GRID_SIZE - example.art.length;
-
-        // Load the example art into the grid (bottom-aligned)
-        example.art.forEach((line, artRowIndex) => {
-          const gridRowIndex = startRow + artRowIndex;
-          for (let colIndex = 0; colIndex < GRID_SIZE; colIndex++) {
-            // Get character at this position, default to empty space
-            const char = line[colIndex] || "";
-            grid[gridRowIndex][colIndex] = char === " " ? "" : char;
-          }
-        });
-
-        updateGrid();
-        selectedCell = null;
-        highlightCell(null);
-        showToast(`${t("loadedExample")}${example.name}!`);
-      }
-
-      function clearGrid() {
-        grid = Array(GRID_SIZE)
-          .fill()
-          .map(() => Array(GRID_SIZE).fill(""));
-        updateGrid();
-        selectedCell = null;
-        highlightCell(null);
-        showToast(t("gridCleared"));
-        // if (confirm('Clear your building? This cannot be undone.')) {
-        // }
-      }
-
-      function getBuildingText() {
-        return grid.map((row) => row.join("")).join("\n");
-      }
-
-      function addToGame() {
-        // Show the modal with building preview
-        const previewContainer = document.getElementById("buildingPreview");
-        previewContainer.innerHTML = "";
-        previewContainer.style.display = "grid";
-        previewContainer.style.gridTemplateColumns = "repeat(10, 1fr)";
-        previewContainer.style.gap = "2px";
-        previewContainer.style.maxWidth = "450px";
-
-        grid.forEach((row) => {
-          row.forEach((cell) => {
-            const cellDiv = document.createElement("div");
-            cellDiv.textContent = cell;
-            cellDiv.style.background = "#120303";
-            cellDiv.style.color = "#d1feff";
-            cellDiv.style.aspectRatio = "1 / 1.5";
-            cellDiv.style.display = "flex";
-            cellDiv.style.alignItems = "center";
-            cellDiv.style.justifyContent = "center";
-            cellDiv.style.fontSize = "10px";
-            cellDiv.style.minHeight = "4px";
-            previewContainer.style.gap = "2px";
-            previewContainer.appendChild(cellDiv);
-          });
-        });
-        document.getElementById("modalOverlay").classList.add("show");
-
-        // Focus on the first input
-        setTimeout(() => {
-          document.getElementById("modalBuildingName").focus();
-        }, 100);
-      }
-
-      function closeModal() {
-        document.getElementById("modalOverlay").classList.remove("show");
-        document.getElementById("modalBuildingName").value = "";
-        document.getElementById("modalArtistName").value = "";
-      }
-
-      function submitBuilding() {
-        let buildingName = document.getElementById("modalBuildingName").value.trim();
-        let artistName = document.getElementById("modalArtistName").value.trim();
-
-        if (!buildingName) {
-          showToast(t("enterBuildingName"));
-          document.getElementById("modalBuildingName").focus();
-          return;
-        }
-
-        if (!artistName) {
-          showToast(t("enterArtistName"));
-          document.getElementById("modalArtistName").focus();
-          return;
-        }
-
-        // Check character limits
-        if (buildingName.length > 30) {
-          showToast(t("buildingNameTooLong"));
-          document.getElementById("modalBuildingName").focus();
-          return;
-        }
-
-        if (artistName.length > 30) {
-          showToast(t("artistNameTooLong"));
-          document.getElementById("modalArtistName").focus();
-          return;
-        }
-
-        // Remove spaces from inputs (as per form requirements)
-        buildingName = buildingName.replace(/\s+/g, "_").toUpperCase();
-        artistName = artistName.replace(/\s+/g, "_");
-
-        // Trim empty rows from top and bottom
-        let trimmedGrid = [...grid];
-
-        // Remove empty rows from top
-        while (trimmedGrid.length > 0 && trimmedGrid[0].every((cell) => cell === "")) {
-          trimmedGrid.shift();
-        }
-
-        // Remove empty rows from bottom
-        while (trimmedGrid.length > 0 && trimmedGrid[trimmedGrid.length - 1].every((cell) => cell === "")) {
-          trimmedGrid.pop();
-        }
-
-        // Generate the art array - each line is exactly GRID_SIZE (10) characters
-        const artLines = trimmedGrid.map((row) => {
-          // Convert empty strings to spaces, then join
-          const line = row.map((cell) => (cell === "" ? " " : cell)).join("");
-          // Ensure line is exactly GRID_SIZE characters by padding with spaces
-          const paddedLine = line.padEnd(GRID_SIZE, " ");
-          return `            "${paddedLine}"`;
-        });
-
-        // Create the complete JavaScript object format
-        const formattedObject = `    {
-        name: "${buildingName}",
-        artist: "${artistName}",
-        art: [
-${artLines.join(",\n")}
-        ]
-    },`;
-
-        // Log to verify spaces are preserved
-        console.log("Formatted building object:");
-        console.log(formattedObject);
-
-        // Prepare form data for Google Form submission
-        const formData = new URLSearchParams();
-        formData.append("entry.1432455807", "Montreal"); // Location (default Montreal)
-        formData.append("entry.540203602", buildingName); // Building_Name
-        formData.append("entry.1023700221", artistName); // Your Name or Handle
-        formData.append("entry.1869243340", formattedObject); // Your art! (full formatted object)
-
-        // Submit to Google Form
-        fetch("https://docs.google.com/forms/d/e/1FAIpQLSeI6SFIJq0mfRlNYxAKm-36wQas02aU5HM4EyQZiIhEKZhdag/formResponse", {
-          method: "POST",
-          mode: "no-cors",
-          body: formData,
-        })
-          .then(() => {
-            closeModal();
-            showToast(t("submitSuccess"));
-
-            // Optional: Clear the grid after successful submission
-            // setTimeout(() => clearGrid(), 1000);
-          })
-          .catch((error) => {
-            closeModal();
-            showToast(t("submitFailed"));
-            console.error("Submission error:", error);
-          });
-      }
-
-      function showToast(message) {
-        const toast = document.getElementById("toast");
-        toast.textContent = message;
-        toast.classList.add("show");
-        setTimeout(() => {
-          toast.classList.remove("show");
-        }, 2500);
-      }
-
-      // Keyboard support
-      document.addEventListener("keydown", (e) => {
-        // Handle modal keyboard shortcuts
-        if (document.getElementById("modalOverlay").classList.contains("show")) {
-          if (e.key === "Enter") {
-            submitBuilding();
-            e.preventDefault();
-          } else if (e.key === "Escape") {
-            closeModal();
-            e.preventDefault();
-          }
-          return;
-        }
-
-        if (selectedCell === null) {
-          selectedCell = 0;
-          highlightCell(0);
-        }
-
-        const row = Math.floor(selectedCell / GRID_SIZE);
-        const col = selectedCell % GRID_SIZE;
-
-        // Handle arrow keys
-        if (e.key === "ArrowUp" && row > 0) {
-          selectedCell -= GRID_SIZE;
-          highlightCell(selectedCell);
-          e.preventDefault();
-        } else if (e.key === "ArrowDown" && row < GRID_SIZE - 1) {
-          selectedCell += GRID_SIZE;
-          highlightCell(selectedCell);
-          e.preventDefault();
-        } else if (e.key === "ArrowLeft" && col > 0) {
-          selectedCell--;
-          highlightCell(selectedCell);
-          e.preventDefault();
-        } else if (e.key === "ArrowRight" && col < GRID_SIZE - 1) {
-          selectedCell++;
-          highlightCell(selectedCell);
-          e.preventDefault();
-        }
-        // Handle backspace/delete - acts as eraser
-        else if (e.key === "Backspace" || e.key === "Delete") {
-          grid[row][col] = "";
-          updateGrid();
-          e.preventDefault();
-        }
-        // Handle 'E' key to toggle eraser
-        else if (e.key.toLowerCase() === "e" && !e.ctrlKey && !e.metaKey) {
-          toggleEraser();
-          e.preventDefault();
-        }
-        // Handle space to place current character
-        else if (e.key === " ") {
-          if (isEraserMode) {
-            grid[row][col] = "";
+            showToast(copiedCell ? `Pasted: ${copiedCell}` : "Pasted empty cell");
           } else {
-            grid[row][col] = currentChar;
+            showToast("Hover over a cell first!");
           }
-          updateGrid();
-          e.preventDefault();
         }
-        // Handle any printable character
-        else if (e.key.length === 1 && !e.ctrlKey && !e.metaKey) {
-          selectChar(e.key);
-          grid[row][col] = e.key;
-          updateGrid();
-          e.preventDefault();
-        }
-      });
 
-      // Initialize
-      initGrid();
-      initPalette();
-      selectChar(currentChar);
-    </script>
-  </body>
+                function initGrid() {
+                  const gridElement = document.getElementById("grid");
+                  gridElement.innerHTML = "";
+
+                  for (let i = 0; i < GRID_SIZE * GRID_SIZE; i++) {
+                    const cell = document.createElement("div");
+                    cell.className = "cell";
+                    cell.dataset.index = i;
+        cell.draggable = true;
+                    // Drag-and-drop handlers
+                    cell.addEventListener("dragstart", (e) => {
+                      if (!isShiftPressed) {
+                        e.preventDefault();
+                        return;
+                      }
+
+                      isDraggingToMove = true;
+                      const row = Math.floor(i / GRID_SIZE);
+                      const col = i % GRID_SIZE;
+                      draggedCell = i;
+                      draggedContent = grid[row][col];
+                      cell.style.opacity = "0.5";
+                      e.dataTransfer.effectAllowed = "move";
+                    });
+
+                    cell.addEventListener("dragend", (e) => {
+                      cell.style.opacity = "1";
+                      draggedCell = null;
+                      draggedContent = null;
+                      isDraggingToMove = false;
+                    });
+
+                    cell.addEventListener("dragover", (e) => {
+                      if (!isDraggingToMove) return;
+                      e.preventDefault();
+                      e.dataTransfer.dropEffect = "move";
+                      cell.style.background = "rgba(99, 248, 99, 0.3)";
+                    });
+
+                    cell.addEventListener("dragleave", (e) => {
+                      if (!isDraggingToMove) return;
+                      cell.style.background = "";
+                    });
+
+                    cell.addEventListener("drop", (e) => {
+                      if (!isDraggingToMove) return;
+                      e.preventDefault();
+                      cell.style.background = "";
+
+                      if (draggedCell !== null && draggedCell !== i) {
+                        const fromRow = Math.floor(draggedCell / GRID_SIZE);
+                        const fromCol = draggedCell % GRID_SIZE;
+                        const toRow = Math.floor(i / GRID_SIZE);
+                        const toCol = i % GRID_SIZE;
+
+                        // Move the character
+                        grid[toRow][toCol] = draggedContent;
+                        grid[fromRow][fromCol] = ""; // Clear source cell
+
+                        updateGrid();
+                        showToast(`Moved: ${draggedContent || "empty"}`);
+                      }
+                    });
+
+                    // Mouse events for drag-to-paint
+                    cell.addEventListener("mousedown", (e) => {
+                      // Only start drawing if Shift is NOT pressed
+                      if (!isShiftPressed) {
+                        isDrawing = true;
+                        lastDrawnCell = null;
+                        handleCellDraw(i);
+                      }
+                    });
+
+                  cell.addEventListener("mouseenter", (e) => {
+              hoveredCell = i; // Track which cell is hovered
+
+        if (isShiftPressed) {
+                cell.style.background = "rgba(99, 248, 99, 0.4)";
+                cell.style.transform = "scale(1.05)";
+              }
+
+              if (isDrawing && !isShiftPressed && !isDraggingToMove) {
+                handleCellDraw(i);
+              }
+              // Update custom cursor only when not in drag-to-move mode
+           if (!isDraggingToMove) {
+                updateCellCursor(e.target);
+              }
+            });
+
+                    cell.addEventListener("mouseleave", (e) => {
+              hoveredCell = null; // Clear hover tracking
+              // Reset cursor
+         if (isShiftPressed) {
+                e.target.style.background = "";
+                e.target.style.transform = "";
+              }
+              // Reset cursor
+              e.target.style.cursor = "";
+            });
+                    cell.addEventListener("click", () => {
+                      if (!isDraggingToMove) {
+                        handleCellClick(i);
+                      }
+                    });
+
+                    cell.addEventListener("contextmenu", (e) => {
+                      e.preventDefault();
+                      showContextMenu(e, i);
+                    });
+
+                    // Touch events for mobile
+                    cell.addEventListener("touchstart", (e) => {
+                      e.preventDefault();
+                      isDrawing = true;
+                      lastDrawnCell = null;
+                      handleCellDraw(i);
+                    });
+
+                    cell.addEventListener("touchmove", (e) => {
+                      e.preventDefault();
+                      if (isDrawing) {
+                        const touch = e.touches[0];
+                        const element = document.elementFromPoint(touch.clientX, touch.clientY);
+                        if (element && element.classList.contains("cell")) {
+                          const touchIndex = parseInt(element.dataset.index);
+                          handleCellDraw(touchIndex);
+                        }
+                      }
+                    });
+
+                    gridElement.appendChild(cell);
+                  }
+
+                  // Stop drawing when mouse is released anywhere
+                  document.addEventListener("mouseup", () => {
+                    isDrawing = false;
+                    lastDrawnCell = null;
+                  });
+
+                  // Stop drawing when touch ends
+                  document.addEventListener("touchend", () => {
+                    isDrawing = false;
+                    lastDrawnCell = null;
+                  });
+                }
+                function updateCellCursor(cellElement) {
+                  if (isEraserMode) {
+                    cellElement.style.cursor =
+                      'url(\'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><text x="2" y="18" font-size="18" font-family="Courier New, monospace" fill="%23999">X</text></svg>\') 12 12, crosshair';
+                  } else {
+                    // Create a simple cursor showing just the current character
+                    const char = currentChar || "█";
+                    const encodedChar = encodeURIComponent(char);
+                    cellElement.style.cursor = `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><text x="2" y="18" font-size="18" font-family="Courier New, monospace" fill="%23999">${encodedChar}</text></svg>') 12 12, crosshair`;
+                  }
+                }
+
+                function toggleEraser() {
+                  isEraserMode = !isEraserMode;
+                  const eraserBtn = document.getElementById("eraserBtn");
+
+                  if (isEraserMode) {
+                    eraserBtn.classList.add("active");
+                    showToast("Eraser mode activated");
+                    // Deselect all palette buttons
+                    document.querySelectorAll(".char-btn").forEach((btn) => {
+                      btn.classList.remove("selected");
+                    });
+                  } else {
+                    eraserBtn.classList.remove("active");
+                    showToast("Eraser mode deactivated");
+                    // Re-select the current character
+                    selectChar(currentChar);
+                  }
+                }
+
+                function saveToLocalStorage() {
+                  try {
+                    localStorage.setItem("loserLaneGrid", JSON.stringify(grid));
+                    localStorage.setItem("loserLaneLastSaved", new Date().toISOString());
+                  } catch (e) {
+                    console.error("Failed to save to localStorage:", e);
+                  }
+                }
+
+                // Load grid from localStorage
+                function loadFromLocalStorage() {
+                  try {
+                    const savedGrid = localStorage.getItem("loserLaneGrid");
+                    const lastSaved = localStorage.getItem("loserLaneLastSaved");
+
+                    if (savedGrid) {
+                      const parsedGrid = JSON.parse(savedGrid);
+                      // Verify it's the correct size
+                      if (parsedGrid.length === GRID_SIZE && parsedGrid[0].length === GRID_SIZE) {
+                        grid = parsedGrid;
+                        updateGrid();
+
+                        if (lastSaved) {
+                          const savedDate = new Date(lastSaved);
+                          // showToast(`Restored your work from ${savedDate.toLocaleString()}`);
+                        } else {
+                          // showToast('Restored your previous work!');
+                        }
+                        return true;
+                      }
+                    }
+                  } catch (e) {
+                    console.error("Failed to load from localStorage:", e);
+                  }
+                  return false;
+                }
+
+                // Clear localStorage
+                function clearLocalStorage() {
+                  try {
+                    localStorage.removeItem("loserLaneGrid");
+                    localStorage.removeItem("loserLaneLastSaved");
+                    showToast("Auto-save cleared");
+                  } catch (e) {
+                    console.error("Failed to clear localStorage:", e);
+                  }
+                }
+
+                function initPalette() {
+                  const paletteElement = document.getElementById("palette");
+
+                  paletteCategories.forEach((category) => {
+                    const categoryDiv = document.createElement("div");
+                    categoryDiv.className = "palette-category";
+
+                    const title = document.createElement("div");
+                    title.className = "palette-title";
+                    title.textContent = category.name;
+                    title.setAttribute("data-i18n", category.name);
+                    categoryDiv.appendChild(title);
+
+                    const charsDiv = document.createElement("div");
+                    charsDiv.className = "palette-chars";
+
+                    category.chars.forEach((char) => {
+                      const btn = document.createElement("button");
+                      btn.className = "char-btn";
+                      btn.textContent = char;
+                      btn.addEventListener("click", () => selectChar(char));
+                      charsDiv.appendChild(btn);
+                    });
+
+                    categoryDiv.appendChild(charsDiv);
+                    paletteElement.appendChild(categoryDiv);
+                  });
+                }
+
+                function handleCellClick(index) {
+                  const row = Math.floor(index / GRID_SIZE);
+                  const col = index % GRID_SIZE;
+
+                  if (isEraserMode) {
+                    // Erase the cell
+                    grid[row][col] = "";
+                    updateGrid();
+                  } else {
+                    // If cell has content, pick that character
+                    if (grid[row][col]) {
+                      selectChar(grid[row][col]);
+                    } else {
+                      // Otherwise, place current character
+                      grid[row][col] = currentChar;
+                      updateGrid();
+                    }
+                  }
+
+                  selectedCell = index;
+                  highlightCell(index);
+                }
+
+                function handleCellDraw(index) {
+                  // Prevent drawing the same cell multiple times in one drag
+                  if (lastDrawnCell === index) return;
+
+                  const row = Math.floor(index / GRID_SIZE);
+                  const col = index % GRID_SIZE;
+
+                  if (isEraserMode) {
+                    grid[row][col] = "";
+                  } else {
+                    grid[row][col] = currentChar;
+                  }
+                  updateGrid();
+                  lastDrawnCell = index;
+                }
+
+                function selectChar(char) {
+                  currentChar = char;
+                  document.getElementById("currentCharDisplay").textContent = char;
+                  isEraserMode = false;
+                  document.getElementById("eraserBtn").classList.remove("active");
+
+                  // Update palette selection
+                  document.querySelectorAll(".char-btn").forEach((btn) => {
+                    btn.classList.toggle("selected", btn.textContent === char);
+                  });
+                }
+
+                function highlightCell(index) {
+                  document.querySelectorAll(".cell").forEach((cell) => {
+                    cell.classList.remove("active");
+                  });
+                  if (index !== null) {
+                    document.querySelector(`[data-index="${index}"]`).classList.add("active");
+                  }
+                }
+
+                function updateGrid() {
+                  document.querySelectorAll(".cell").forEach((cell, index) => {
+                    const row = Math.floor(index / GRID_SIZE);
+                    const col = index % GRID_SIZE;
+                    cell.textContent = grid[row][col];
+                  });
+
+                  // Auto-save after every change
+                  saveToLocalStorage();
+                }
+
+                function loadRandomExample() {
+                  // Pick a random example
+                  const randomIndex = Math.floor(Math.random() * exampleBuildings.length);
+                  const example = exampleBuildings[randomIndex];
+
+                  // Clear the grid first
+                  grid = Array(GRID_SIZE)
+                    .fill()
+                    .map(() => Array(GRID_SIZE).fill(""));
+
+                  // Calculate starting row for bottom alignment
+                  const startRow = GRID_SIZE - example.art.length;
+
+                  // Load the example art into the grid (bottom-aligned)
+                  example.art.forEach((line, artRowIndex) => {
+                    const gridRowIndex = startRow + artRowIndex;
+                    for (let colIndex = 0; colIndex < GRID_SIZE; colIndex++) {
+                      // Get character at this position, default to empty space
+                      const char = line[colIndex] || "";
+                      grid[gridRowIndex][colIndex] = char === " " ? "" : char;
+                    }
+                  });
+
+                  updateGrid();
+                  selectedCell = null;
+                  highlightCell(null);
+                  showToast(`${t("loadedExample")}${example.name}!`);
+                }
+
+                function clearGrid() {
+                  grid = Array(GRID_SIZE)
+                    .fill()
+                    .map(() => Array(GRID_SIZE).fill(""));
+                  updateGrid();
+                  selectedCell = null;
+                  highlightCell(null);
+                  clearLocalStorage();
+
+                  showToast(t("gridCleared"));
+                  // if (confirm('Clear your building? This cannot be undone.')) {
+                  // }
+                }
+
+                function getBuildingText() {
+                  return grid.map((row) => row.join("")).join("\n");
+                }
+
+                function addToGame() {
+                  // Show the modal with building preview
+                  const previewContainer = document.getElementById("buildingPreview");
+                  previewContainer.innerHTML = "";
+                  previewContainer.style.display = "grid";
+                  previewContainer.style.gridTemplateColumns = "repeat(10, 1fr)";
+                  previewContainer.style.gap = "2px";
+                  previewContainer.style.maxWidth = "450px";
+
+                  grid.forEach((row) => {
+                    row.forEach((cell) => {
+                      const cellDiv = document.createElement("div");
+                      cellDiv.textContent = cell;
+                      cellDiv.style.background = "#120303";
+                      cellDiv.style.color = "#d1feff";
+                      cellDiv.style.aspectRatio = "1 / 1.5";
+                      cellDiv.style.display = "flex";
+                      cellDiv.style.alignItems = "center";
+                      cellDiv.style.justifyContent = "center";
+                      cellDiv.style.fontSize = "10px";
+                      cellDiv.style.minHeight = "4px";
+                      previewContainer.style.gap = "2px";
+                      previewContainer.appendChild(cellDiv);
+                    });
+                  });
+                  document.getElementById("modalOverlay").classList.add("show");
+
+                  // Focus on the first input
+                  setTimeout(() => {
+                    document.getElementById("modalBuildingName").focus();
+                  }, 100);
+                }
+
+                function closeModal() {
+                  document.getElementById("modalOverlay").classList.remove("show");
+                  document.getElementById("modalBuildingName").value = "";
+                  document.getElementById("modalArtistName").value = "";
+                }
+
+                function submitBuilding() {
+                  let buildingName = document.getElementById("modalBuildingName").value.trim();
+                  let artistName = document.getElementById("modalArtistName").value.trim();
+
+                  if (!buildingName) {
+                    showToast(t("enterBuildingName"));
+                    document.getElementById("modalBuildingName").focus();
+                    return;
+                  }
+
+                  if (!artistName) {
+                    showToast(t("enterArtistName"));
+                    document.getElementById("modalArtistName").focus();
+                    return;
+                  }
+
+                  // Check character limits
+                  if (buildingName.length > 30) {
+                    showToast(t("buildingNameTooLong"));
+                    document.getElementById("modalBuildingName").focus();
+                    return;
+                  }
+
+                  if (artistName.length > 30) {
+                    showToast(t("artistNameTooLong"));
+                    document.getElementById("modalArtistName").focus();
+                    return;
+                  }
+
+                  // Remove spaces from inputs (as per form requirements)
+                  buildingName = buildingName.replace(/\s+/g, "_").toUpperCase();
+                  artistName = artistName.replace(/\s+/g, "_");
+
+                  // Trim empty rows from top and bottom
+                  let trimmedGrid = [...grid];
+
+                  // Remove empty rows from top
+                  while (trimmedGrid.length > 0 && trimmedGrid[0].every((cell) => cell === "")) {
+                    trimmedGrid.shift();
+                  }
+
+                  // Remove empty rows from bottom
+                  while (trimmedGrid.length > 0 && trimmedGrid[trimmedGrid.length - 1].every((cell) => cell === "")) {
+                    trimmedGrid.pop();
+                  }
+
+                  // Generate the art array - each line is exactly GRID_SIZE (10) characters
+                  const artLines = trimmedGrid.map((row) => {
+                    // Convert empty strings to spaces, then join
+                    const line = row.map((cell) => (cell === "" ? " " : cell)).join("");
+                    // Ensure line is exactly GRID_SIZE characters by padding with spaces
+                    const paddedLine = line.padEnd(GRID_SIZE, " ");
+                    return `            "${paddedLine}"`;
+                  });
+
+                  // Create the complete JavaScript object format
+                  const formattedObject = `    {
+                name: "${buildingName}",
+                artist: "${artistName}",
+                art: [
+        ${artLines.join(",\n")}
+                ]
+            },`;
+
+                  // Log to verify spaces are preserved
+                  console.log("Formatted building object:");
+                  console.log(formattedObject);
+
+                  // Prepare form data for Google Form submission
+                  const formData = new URLSearchParams();
+                  formData.append("entry.1432455807", "Montreal"); // Location (default Montreal)
+                  formData.append("entry.540203602", buildingName); // Building_Name
+                  formData.append("entry.1023700221", artistName); // Your Name or Handle
+                  formData.append("entry.1869243340", formattedObject); // Your art! (full formatted object)
+
+                  // Submit to Google Form
+                  fetch("https://docs.google.com/forms/d/e/1FAIpQLSeI6SFIJq0mfRlNYxAKm-36wQas02aU5HM4EyQZiIhEKZhdag/formResponse", {
+                    method: "POST",
+                    mode: "no-cors",
+                    body: formData,
+                  })
+                    .then(() => {
+                      closeModal();
+                      showToast(t("submitSuccess"));
+
+                      // Optional: Clear the grid after successful submission
+                      // setTimeout(() => clearGrid(), 1000);
+                    })
+                    .catch((error) => {
+                      closeModal();
+                      showToast(t("submitFailed"));
+                      console.error("Submission error:", error);
+                    });
+                }
+
+                // Context menu functionality
+                let contextMenuElement = null;
+
+                function showContextMenu(e, cellIndex) {
+                  // Remove any existing context menu
+                  if (contextMenuElement) {
+                    contextMenuElement.remove();
+                  }
+
+                  // Create context menu
+                  contextMenuElement = document.createElement("div");
+                  contextMenuElement.style.position = "fixed";
+                  contextMenuElement.style.top = e.clientY + "px";
+                  contextMenuElement.style.left = e.clientX + "px";
+                  contextMenuElement.style.backgroundColor = "white";
+                  contextMenuElement.style.border = "1px solid #ccc";
+                  contextMenuElement.style.borderRadius = "4px";
+                  contextMenuElement.style.boxShadow = "0 2px 8px rgba(0,0,0,0.15)";
+                  contextMenuElement.style.zIndex = "10000";
+                  contextMenuElement.style.minWidth = "140px";
+                  contextMenuElement.style.padding = "4px 0";
+
+                  // Copy option
+                  const copyBtn = document.createElement("button");
+                  copyBtn.textContent = "Copy (C)";
+                  copyBtn.style.cssText =
+                    "display:block; width:100%; padding:8px 12px; border:none; background:none; text-align:left; cursor:pointer; font-size:14px;";
+                  copyBtn.onmouseover = () => (copyBtn.style.backgroundColor = "#f0f0f0");
+                  copyBtn.onmouseout = () => (copyBtn.style.backgroundColor = "transparent");
+                  copyBtn.onclick = () => {
+                    const row = Math.floor(cellIndex / GRID_SIZE);
+                    const col = cellIndex % GRID_SIZE;
+                    copiedCell = grid[row][col];
+                    currentChar = copiedCell || "";
+                    selectChar(currentChar);
+                    showToast(copiedCell ? `Copied: ${copiedCell}` : "Copied empty cell");
+                    contextMenuElement.remove();
+                  };
+
+                  // Paste option
+                  const pasteBtn = document.createElement("button");
+                  pasteBtn.textContent = "Paste (V)";
+                  pasteBtn.disabled = copiedCell === null;
+                  pasteBtn.style.cssText = `display:block; width:100%; padding:8px 12px; border:none; background:none; text-align:left; cursor:${
+                    copiedCell === null ? "not-allowed" : "pointer"
+                  }; font-size:14px; opacity:${copiedCell === null ? "0.5" : "1"};`;
+                  if (copiedCell !== null) {
+                    pasteBtn.onmouseover = () => (pasteBtn.style.backgroundColor = "#f0f0f0");
+                    pasteBtn.onmouseout = () => (pasteBtn.style.backgroundColor = "transparent");
+                  }
+                  pasteBtn.onclick = () => {
+                    if (copiedCell !== null) {
+                      const row = Math.floor(cellIndex / GRID_SIZE);
+                      const col = cellIndex % GRID_SIZE;
+                      grid[row][col] = copiedCell;
+                      currentChar = copiedCell;
+                      selectChar(currentChar);
+                      updateGrid();
+                      showToast(copiedCell ? `Pasted: ${copiedCell}` : "Pasted empty cell");
+                    }
+                    contextMenuElement.remove();
+                  };
+
+                  // Clear option
+                  const clearBtn = document.createElement("button");
+                  clearBtn.textContent = "Clear (X)";
+                  clearBtn.style.cssText =
+                    "display:block; width:100%; padding:8px 12px; border:none; background:none; text-align:left; cursor:pointer; font-size:14px;";
+                  clearBtn.onmouseover = () => (clearBtn.style.backgroundColor = "#f0f0f0");
+                  clearBtn.onmouseout = () => (clearBtn.style.backgroundColor = "transparent");
+                  clearBtn.onclick = () => {
+                    const row = Math.floor(cellIndex / GRID_SIZE);
+                    const col = cellIndex % GRID_SIZE;
+                    grid[row][col] = "";
+                    updateGrid();
+                    showToast("Cleared cell");
+                    contextMenuElement.remove();
+                  };
+
+                  contextMenuElement.appendChild(copyBtn);
+                  contextMenuElement.appendChild(pasteBtn);
+                  contextMenuElement.appendChild(clearBtn);
+                  document.body.appendChild(contextMenuElement);
+
+                  // Close menu when clicking outside
+                  setTimeout(() => {
+                    document.addEventListener("click", closeContextMenu);
+                  }, 0);
+                }
+
+                function closeContextMenu() {
+                  if (contextMenuElement) {
+                    contextMenuElement.remove();
+                    contextMenuElement = null;
+                  }
+                  document.removeEventListener("click", closeContextMenu);
+                }
+
+                function showToast(message) {
+                  const toast = document.getElementById("toast");
+                  toast.textContent = message;
+                  toast.classList.add("show");
+                  setTimeout(() => {
+                    toast.classList.remove("show");
+                  }, 2500);
+                }
+
+                // Keyboard support
+                document.addEventListener("keyup", (e) => {
+                  if (e.key === "Shift") {
+                    isShiftPressed = false;
+              isDraggingToMove = false;
+              // Remove visual indicator
+              document.querySelectorAll(".cell").forEach((cell) => {
+                cell.style.borderColor = "";
+                cell.style.borderWidth = "";
+                cell.style.borderStyle = "";
+              });
+                    // isShiftPressed = false;
+                    // isDraggingToMove = false;
+                    // Make all cells non-draggable when shift is released
+                    // document.querySelectorAll(".cell").forEach((cell) => {
+                    //   cell.draggable = false;
+                    // });
+                  }
+                });
+
+                document.addEventListener("keydown", (e) => {
+                  if (e.key === "Shift") {
+              isShiftPressed = true;
+              // Add visual indicator to show shift-drag mode is active
+              document.querySelectorAll(".cell").forEach((cell) => {
+                cell.style.borderColor = "rgba(99, 248, 99, 0.6)";
+                cell.style.borderWidth = "2px";
+                cell.style.borderStyle = "solid";
+              });
+            
+
+                  // if (e.key === "Shift") {
+                  //   isShiftPressed = true;
+                    // Make all cells draggable when shift is pressed
+                    // document.querySelectorAll(".cell").forEach((cell) => {
+                    //   cell.draggable = true;
+                    // });
+                  }
+                  // Handle modal keyboard shortcuts
+                  if (document.getElementById("modalOverlay").classList.contains("show")) {
+                    if (e.key === "Enter") {
+                      submitBuilding();
+                      e.preventDefault();
+                    } else if (e.key === "Escape") {
+                      closeModal();
+                      e.preventDefault();
+                    }
+                    return;
+                  }
+
+                  if (selectedCell === null) {
+                    selectedCell = 0;
+                    highlightCell(0);
+                  }
+
+                  const row = Math.floor(selectedCell / GRID_SIZE);
+                  const col = selectedCell % GRID_SIZE;
+
+                  // Handle C for copy (on hovered cell, no Ctrl needed)
+                  if (e.key.toLowerCase() === "c" && !e.ctrlKey && !e.metaKey) {
+                    copyCell();
+                    e.preventDefault();
+                  }
+                  // Handle V for paste (on hovered cell, no Ctrl needed)
+                  else if (e.key.toLowerCase() === "v" && !e.ctrlKey && !e.metaKey) {
+                    pasteCell();
+                    e.preventDefault();
+                  }
+                  // Also support Ctrl+C and Ctrl+V for compatibility
+                  else if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "c") {
+                    copyCell();
+                    e.preventDefault();
+                  } else if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "v") {
+                    pasteCell();
+                    e.preventDefault();
+                  }
+                  // Handle arrow keys
+                  else if (e.key === "ArrowUp" && row > 0) {
+                    selectedCell -= GRID_SIZE;
+                    highlightCell(selectedCell);
+                    e.preventDefault();
+                  } else if (e.key === "ArrowDown" && row < GRID_SIZE - 1) {
+                    selectedCell += GRID_SIZE;
+                    highlightCell(selectedCell);
+                    e.preventDefault();
+                  } else if (e.key === "ArrowLeft" && col > 0) {
+                    selectedCell--;
+                    highlightCell(selectedCell);
+                    e.preventDefault();
+                  } else if (e.key === "ArrowRight" && col < GRID_SIZE - 1) {
+                    selectedCell++;
+                    highlightCell(selectedCell);
+                    e.preventDefault();
+                  }
+                  // Handle backspace/delete - acts as eraser
+                  else if (e.key === "Backspace" || e.key === "Delete") {
+                    grid[row][col] = "";
+                    updateGrid();
+                    e.preventDefault();
+                  }
+
+                  // Handle space to place current character
+                  else if (e.key === " ") {
+                    if (isEraserMode) {
+                      grid[row][col] = "";
+                    } else {
+                      grid[row][col] = currentChar;
+                    }
+                    updateGrid();
+                    e.preventDefault();
+                  }
+                  // Handle any printable character
+                  else if (e.key.length === 1 && !e.ctrlKey && !e.metaKey) {
+                    selectChar(e.key);
+                    grid[row][col] = e.key;
+                    updateGrid();
+                    e.preventDefault();
+                  }
+                });
+                // Initialize
+                initGrid();
+                initPalette();
+                selectChar(currentChar);
+
+                // Try to load from localStorage on startup
+
+                const loaded = loadFromLocalStorage();
+                if (!loaded) {
+                  // If nothing was loaded, make sure grid is displayed
+                  updateGrid();
+                }
+
+                // Gentle landscape mode hint - shows once on mobile portrait
+                function showLandscapeHint() {
+                  // Check if we've already shown this hint
+                  // if (localStorage.getItem('landscapeHintShown')) {
+                  //   return;
+                  // }
+
+                  // Only show on mobile-sized screens in portrait orientation
+                  const isMobile = window.innerWidth <= 768;
+                  const isPortrait = window.innerHeight > window.innerWidth;
+
+                  if (isMobile && isPortrait) {
+                    const hint = document.getElementById("landscapeHint");
+
+                    // Show the hint after a brief delay
+                    setTimeout(() => {
+                      hint.classList.add("show");
+                      hint.textContent = t("landscapeHint");
+
+                      // Hide after 3 seconds
+                      setTimeout(() => {
+                        hint.classList.remove("show");
+                      }, 4000);
+                    }, 500);
+
+                    // Mark that we've shown it
+                    localStorage.setItem("landscapeHintShown", "true");
+                  }
+                }
+
+                // Show hint after page loads
+                window.addEventListener("load", showLandscapeHint);
+      </script>
+    </body>
+  </html>
 </html>
