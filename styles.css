@@ -175,24 +175,31 @@ a {
   margin: 0;
   padding: 0;
 }
-
 #game-screen {
   font-family: "Courier New", "Consolas", "Monaco", "Lucida Console", monospace;
   font-variant-ligatures: none;
-  font-feature-settings: "liga" 0;
-  text-rendering: optimizeSpeed;
+  font-feature-settings: "liga" 0, "calt" 0;
+  text-rendering: geometricPrecision;
+  letter-spacing: 0;
+  word-spacing: 0;
   background: var(--dark-grey);
-  /* width: 100vw; */
   width: 44ch;
   max-width: 100vw;
   overflow: hidden;
   white-space: pre;
   box-sizing: border-box;
   transition: dark-grey 0.1s;
-  /* font-family: monospace; */
-  /* line-height: 1; */
   padding: 0;
   margin: 0;
+  line-height: 1.2;
+}
+
+/* Target ONLY the building class spans, not all spans */
+#game-screen .building {
+  display: inline-block;
+  width: 0.6em;
+  text-align: center;
+  /* overflow: hidden; */
 }
 
 @media (max-height: 600px) {
