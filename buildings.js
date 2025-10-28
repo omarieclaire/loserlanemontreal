@@ -253,15 +253,7 @@ const TORONTO_BUILDINGS = [
       "╚════════╝"
     ]
   },
-  {
-    name: "Greenroom",
-    art: [
-      "╭─GREEN──╮",
-      "│ ROOM   │",
-      "│ ♆♆★♆♆  │",
-      "╰────────╯"
-    ]
-  },
+
   {
     name: "McCord Museum",
     art: [
@@ -323,16 +315,7 @@ const TORONTO_BUILDINGS = [
       "╚══════╝  "
     ]
   },
-    {
-    name: "Parc Jarry",
-    art: [
-      "  ☼ ◉ ☼   ",
-      " ░░PARC░░ ",
-      "░░JARRY░░ ",
-      "  ░░░░░   ",
-      "  ◉ ☼ ◉   "
-    ]
-  },
+ 
   {
     name: "L'Escalier",
     art: [
@@ -353,36 +336,9 @@ const TORONTO_BUILDINGS = [
       "▔▔▔▔▔▔▔▔▔▔"
     ]
   },
-  {
-    name: "Croissanterie Figaro",
-    art: [
-      "  ╱▔▔▔▔╲   ",
-      " │CROIS │ ",
-      " │SANTE │ ",
-      " │FIGARO│ ",
-      " │ ◯☕◯☕ │ ",
-      " ╰──────╯ "
-    ]
-  },
-  {
-    name: "Barraca",
-    art: [
-      "╭ BARRACA╮ ",
-      "│  RHUMBA│ ",
-      "╰────────╯"
-    ]
-  },
-  {
-    name: "Espace pour la vie",
-    art: [
-      "  ╱▲╲     ",
-      " │ESPACE│ ",
-      " │ POUR │ ",
-      " │ LA   │ ",
-      " │ VIE ☼│ ",
-      " └──────┘ "
-    ]
-  },
+
+
+
   {
     name: "Café Olimpico",
     art: [
@@ -458,16 +414,7 @@ const TORONTO_BUILDINGS = [
       "╰────────╯"
     ]
   },
-  {
-    name: "Leonard Cohen House",
-    art: [
-      "  ▁▁▁▁▁   ",
-      " │ 5244 │ ",
-      " │ BLVD │ ",
-      " │★POET★│ ",
-      " └──────┘ "
-    ]
-  },
+
   {
     name: "Giant Ring",
     art: [
@@ -558,10 +505,10 @@ const TORONTO_BUILDINGS = [
     name: "Frédéric-Back Park",
     art: [
       "  ☼ ◉ ☼   ",
-      " ░FRED░   ",
+      " ░FRED░ ◉ ",
       "░░BACK░░  ",
       " ░ORBS░   ",
-      "  ░░░░░   ",
+      "◉ ░░░◉░ ◉ ",
       "  ◉ ☼ ◉   "
     ]
   },
@@ -670,16 +617,7 @@ const TORONTO_BUILDINGS = [
       "└────────┘"
     ]
   },
-  {
-    "name": "BRUTOPIA",
-    "art": [
-      "┌────────┐",
-      "│BRUTO   │",
-      "│ PIA    │",
-      "│  BAR   │",
-      "└────────┘"
-    ]
-  },
+
   {
     "name": "BEAUTY_S",
     "art": [
@@ -701,27 +639,9 @@ const TORONTO_BUILDINGS = [
       "└────────┘"
     ]
   },
-  {
-    "name": "FAMEUX",
-    "art": [
-      "⸨⎻⎻⎻◄o►⎻⎻⸩",
-      "│FAMEUX  │",
-      "│⊰BURGER⊱│",
-      "│ 99 ♡   │",
-      "╚═⳺⳻⳺⳻⳺⳻═╝"
-    ]
-  },
 
-  {
-    name: "Parc Jeanne-Mance",
-    art: [
-      "  ☼ ◉ ☼   ",
-      " ░JEANNE░ ",
-      "░░MANCE░░ ",
-      " ░PARC░   ",
-      "  ◉ ☼ ◉   "
-    ]
-  },
+
+
   {
     "name": "DRAWN_QUARTER",
     "art": [
@@ -733,18 +653,7 @@ const TORONTO_BUILDINGS = [
       "╰────────┘"
     ]
   },
-  {
-    "name": "LE_DEVOIR",
-    "artist": "AT",
-    "art": [
-      "┌────────┐",
-      "│ϟ LE   ϟ│",
-      "│ϟDEVOIRϟ│",
-      "│JOURNAL││",
-      "│ϟϟϟϟϟϟϟ││",
-      "╰───────┴╯"
-    ]
-  },
+
   {
     "name": "MAMIE_CLAFOUTIS",
     "artist": "des",
@@ -754,7 +663,7 @@ const TORONTO_BUILDINGS = [
       " │Claftis│",
       "_│ΞΞΞΞ│ ☐│",
       "_╰────┴──╯",
-      "〚︸︸〛_♞_   "
+      "〚︸︸〛_♞_  "
     ]
   },
   {
@@ -780,19 +689,7 @@ const TORONTO_BUILDINGS = [
       "╰┴──────┴╯"
     ]
   },
-  {
-    "name": "LAFONTAINERINK",
-    "artist": "AT",
-    "art": [
-      "┌────────┐",
-      "│❄   ❅  ❄│",
-      "│  LA    │",
-      "│FONTAINE│",
-      "│ RINK   │",
-      "│❄   ❅  ❄│",
-      "╰┴──────┴╯"
-    ]
-  },
+
   {
     "name": "CHEVAL_BLANC",
     "art": [
@@ -814,71 +711,8 @@ const TORONTO_BUILDINGS = [
       "└────────┘"
     ]
   },
-  {
-    "name": "AMIR",
-    "art": [
-      "╔═══◊◊◊══╗",
-      "│ AMIR   │",
-      "│RESTO   │",
-      "│        │",
-      "└────────┘"
-    ]
-  },
-  {
-    "name": "DIPERIE",
-    "artist": "mclf",
-    "art": [
-      "╒═════╤══╕",
-      "│⋰⋱⋰⋱    │",
-      "│ │DIPÉRI│",
-      "│ │E ICE │",
-      "│ │CREAM │",
-      "│ └──────│"
-    ]
-  },
-  {
-    "name": "MILE_END",
-    "art": [
-      "┌───[]───┐",
-      "│MILE END│",
-      "│        │",
-      "│  [[]]  │",
-      "└────────┘"
-    ]
-  },
-  {
-    "name": "SQDC",
-    "art": [
-      "┌═▲═▼═▼═─┐",
-      "│SQDC    │",
-      "│        │",
-      "│  WEEEED│",
-      "│  WEEEED│",
-      "└────────┘"
-    ]
-  },
-  {
-    "name": "BOULANGIE",
-    "art": [
-      "┌──(█)───┐",
-      "│BOULANG │",
-      "│ ERIE   │",
-      "│ YUM    │",
-      "└────────┘"
-    ]
-  },
-  {
-    "name": "BOITANOIR",
-    "art": [
-      "┌─(⌒∩∩⌒)─┐",
-      "│BOITE   │",
-      "│ NOIR   │",
-      "│ VHS    │",
-      "│ DVD    │",
-      "│ *&*&*  │",
-      "└────────┘"
-    ]
-  },
+
+
   {
     "name": "YMCA",
     "art": [
@@ -962,16 +796,6 @@ const TORONTO_BUILDINGS = [
     ]
   },
   {
-    "name": "MAINOMAINON",
-    "art": [
-      "┌─◢───◣──┐",
-      "│MAINOM  │",
-      "│AINON   │",
-      "│        │",
-      "└─◥───◤──┘"
-    ]
-  },
-  {
     "name": "CASA_DEL_POPOLO",
     "art": [
       "┏━━╋━━╋━━┓",
@@ -1011,16 +835,7 @@ const TORONTO_BUILDINGS = [
       "└─∿∿∿∿∿∿─┘"
     ]
   },
-  {
-    "name": "PARC_DU_PORTUGAL",
-    "art": [
-      "┌──⫷─⫸───┐",
-      "│PARC DU │",
-      "│PORTUGAL│",
-      "│ GREEN  │",
-      "└▒░▒▓░▓▒░┘"
-    ]
-  },
+
   {
     "name": "CLUB_SODA",
     "art": [
@@ -1065,66 +880,10 @@ const TORONTO_BUILDINGS = [
       "└────────┘"
     ]
   },
-  {
-    "name": "BERRI_UQAM",
-    "art": [
-      "┌────────┐",
-      "│BERRI   │",
-      "│ UQAM   │",
-      "│ METRO  │",
-      "└────────┘"
-    ]
-  },
-  {
-    "name": "MILE_EX",
-    "art": [
-      "┌────────┐",
-      "│MILE    │",
-      "│ EX     │",
-      "│ HOOD   │",
-      "└────────┘"
-    ]
-  },
-  {
-    "name": "BEAUDRY",
-    "art": [
-      "┌────────┐",
-      "│BEAUDRY │",
-      "│ METRO  │",
-      "│ ♥ ♥ ♥  │",
-      "└────────┘"
-    ]
-  },
-  {
-    "name": "PARC_JARRY",
-    "art": [
-      "┌────────┐",
-      "│PARC    │",
-      "│JARRY   │",
-      "│ ░▒▓    │",
-      "└────────┘"
-    ]
-  },
-  {
-    "name": "BILY_KUN",
-    "art": [
-      "╔════════╗",
-      "║BILY KUN║",
-      "║ ░▒█▓   ║",
-      "║  CZECH ║",
-      "╚════════╝"
-    ]
-  },
-  {
-    "name": "STASH_CAFE",
-    "art": [
-      "╔════════╗",
-      "║ STASH  ║",
-      "║ CAFE   ║",
-      "║ POLISH ║",
-      "╚════════╝"
-    ]
-  },
+
+
+
+
   {
     "name": "BAGEL_BEAUBIEN",
     "art": [
@@ -1135,15 +894,7 @@ const TORONTO_BUILDINGS = [
       "╚════════╝"
     ]
   },
-  {
-    "name": "PARC_METRO",
-    "art": [
-      "┌═══╦════┐",
-      "│PARC    │",
-      "│ METRO  │",
-      "└────────┘"
-    ]
-  },
+  
   {
     "name": "PIKOLO",
     "art": [
@@ -1154,49 +905,7 @@ const TORONTO_BUILDINGS = [
       "╚════════╝"
     ]
   },
-  {
-    "name": "JANKIES_PLACE",
-    "art": [
-      "╔════════╗",
-      "║JANKIE'S║",
-      "║ ─PLACE-║",
-      "║ ▒▒▒▒▒▒ ║",
-      "╰────────╯"
-    ]
-  },
-  {
-    "name": "APT8",
-    "art": [
-      "▓▓▓▓▓▓▓▓▓▓",
-      "║ ► ◄► ◄ ║",
-      "║ ► ◄► ◄ ║",
-      "║ ══════ ║",
-      "║ ░░░░░░ ║",
-      "╰╩╩╩╩╩╩╩╩╯"
-    ]
-  },
-  {
-    "name": "48_MILLION",
-    "art": [
-      "██████████",
-      "║ ◆ 48 ◆ ║",
-      "║ MILLION║",
-      "║ ══════ ║",
-      "║ ▒▒▒▒▒▒ ║",
-      "╰╩╩╩╩╩╩╩╩╯"
-    ]
-  },
-  {
-    "name": "APT10",
-    "art": [
-      "▓▓▓▓▓▓▓▓▓▓",
-      "║ ✱ ✱✱ ✱ ║",
-      "║ ✱ ✱✱ ✱ ║",
-      "║ ────── ║",
-      "║ ░░░░░░ ║",
-      "╰╩╩╩╩╩╩╩╩╯"
-    ]
-  },
+ 
   {
     "name": "RUE_LAJEUNESSE",
     "art": [
@@ -1252,32 +961,7 @@ const TORONTO_BUILDINGS = [
       "╰────────╯"
     ]
   },
-  {
-    "name": "PHO_LIEN",
-    "art": [
-      "::::::::: ",
-      "!       ! ",
-      "!       ! ",
-      "! PHO   ! ",
-      "! LIEN  ! ",
-      "!       ! ",
-      "!       ! ",
-      "::::::::: "
-    ]
-  },
-  {
-    "name": "PLAZA_ST_HUBERT",
-    "art": [
-      "::::::::::",
-      "!        !",
-      "!PLAZA ST!",
-      "! HUBERT !",
-      "!   __   !",
-      "!  :  :  !",
-      "!  :  :  !",
-      "::::  ::::"
-    ]
-  },
+  
   {
     "name": "TAROT_CARDS",
     "artist": "d6",
@@ -1347,17 +1031,6 @@ const TORONTO_BUILDINGS = [
       "⌼ MUSIQUE⌼",
       "⌼ « ▶ ⏏  ⌼",
       "⌼ ⍁⍂ ⍁⍂  ⌼"
-    ]
-  },
-  {
-    "name": "SEGAL_CENTRE",
-    "artist": "katie jensen",
-    "art": [
-      " _________",
-      "↼↼↼↼↼⇀⇀⇀⇀⇀",
-      "│OUI.    │",
-      "│⬚ CENTRE│",
-      "╰≛≛≛≛≛≛≛≛╯"
     ]
   },
   {
