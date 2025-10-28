@@ -20,18 +20,18 @@ const TRANSLATIONS = [
   { key: "tapToTry", en: "Tap to try again!", fr: "Clique pour réessayer!" },
 
   // TRACKS death messages (reason + funny)
-  { key: "tracks_reason_1", en: "TTC TRACKS", fr: "RAILS DE LA STM" },
-  { key: "tracks_funny_1", en: "Track smack! Blast past!", fr: "Boom sur le rail! Faut que tu te tailles!" },
-  { key: "tracks_funny_2", en: "Stuck on the rails? Bail fail", fr: "Pogné sur les rails? C'est plate en maudit!" },
-  { key: "tracks_funny_3", en: "Rail fail? Bad bail!", fr: "Rail raté? T'es dans le trouble mon gars!" },
-  { key: "tracks_funny_4", en: "Rail jail! Harsh bail!", fr: "Prison de rails! Ça fait mal!" },
-  { key: "tracks_funny_5", en: "Stuck in the groove? Move!", fr: "Pris dans l'rail? Faut que tu te grayes!" },
-  { key: "tracks_funny_6", en: "Track attack! Bounce back!", fr: "Attaque de rail! Faut que tu te revires!" },
-  { key: "tracks_funny_7", en: "On the rails? Sad fails!", fr: "Sur les rails? Ça va mal!" },
-  { key: "tracks_funny_8", en: "Tricky track! Step back!", fr: "Rail traître! Recule, tabarnak!" },
-  { key: "tracks_funny_9", en: "Rail fail! Bail!", fr: "Rail raté! Câlisse de steel!" },
-  { key: "tracks_funny_10", en: "Oops, track gap! Smack!", fr: "Oups, trou dans l'rail! Boom!" },
-  { key: "tracks_funny_11", en: "Track fast, can't last!", fr: "Rail rapide, t'as pas duré!" },
+  // { key: "tracks_reason_1", en: "STM TRACKS", fr: "RAILS DE LA STM" },
+  // { key: "tracks_funny_1", en: "Track smack! Blast past!", fr: "Boom sur le rail! Faut que tu te tailles!" },
+  // { key: "tracks_funny_2", en: "Stuck on the rails? Bail fail", fr: "Pogné sur les rails? C'est plate en maudit!" },
+  // { key: "tracks_funny_3", en: "Rail fail? Bad bail!", fr: "Rail raté? T'es dans le trouble mon gars!" },
+  // { key: "tracks_funny_4", en: "Rail jail! Harsh bail!", fr: "Prison de rails! Ça fait mal!" },
+  // { key: "tracks_funny_5", en: "Stuck in the groove? Move!", fr: "Pris dans l'rail? Faut que tu te grayes!" },
+  // { key: "tracks_funny_6", en: "Track attack! Bounce back!", fr: "Attaque de rail! Faut que tu te revires!" },
+  // { key: "tracks_funny_7", en: "On the rails? Sad fails!", fr: "Sur les rails? Ça va mal!" },
+  // { key: "tracks_funny_8", en: "Tricky track! Step back!", fr: "Rail traître! Recule, tabarnak!" },
+  // { key: "tracks_funny_9", en: "Rail fail! Bail!", fr: "Rail raté! Câlisse de steel!" },
+  // { key: "tracks_funny_10", en: "Oops, track gap! Smack!", fr: "Oups, trou dans l'rail! Boom!" },
+  // { key: "tracks_funny_11", en: "Track fast, can't last!", fr: "Rail rapide, t'as pas duré!" },
 
   // ONCOMING_DEATHMACHINE death messages
   { key: "oncoming_reason_1", en: "OH COME ON!", fr: "FRANCHEMENT LÀ!" },
@@ -130,8 +130,8 @@ const TRANSLATIONS = [
   { key: "building_funny_13", en: "Watch the display, stay away!", fr: "Watch la vitrine! Reste loin!" },
   { key: "building_funny_14", en: "Store smack! Stick to the track!", fr: "Coup d'magasin! Reste dans rue!" },
 
-  // TTC death messages (changed to STM for Montreal)
-  { key: "ttc_reason_1", en: "TTC SMOOCH", fr: "BISOU À LA STM" },
+  // TTC death messages 
+  { key: "ttc_reason_1", en: "STM SMOOCH", fr: "BISOU À LA STM" },
   { key: "ttc_funny_1", en: "STM zap! That's a wrap!", fr: "STM zap! T'es mort!" },
   { key: "ttc_funny_2", en: "STM clash! Hot bash!", fr: "STM clash! Chaud hot!" },
   { key: "ttc_funny_3", en: "Boom! STM in the room!", fr: "Boum! La STM te rentre dedans!" },
@@ -182,7 +182,7 @@ const TRANSLATIONS = [
   { key: "addBuilding", en: "ADD A BUILDING?", fr: "AJOUTER UN BÂTIMENT?" },
 
   // Social sharing
-  { key: "shareText", en: "I survived biking in Toronto for", fr: "J'ai survécu à vélo à Montréal pendant" },
+  { key: "shareText", en: "I survived biking in Montreal for", fr: "J'ai survécu à vélo à Montréal pendant" },
   { key: "seconds", en: "seconds", fr: "secondes" },
   {
     key: "shareTextEnd",
@@ -191,7 +191,7 @@ const TRANSLATIONS = [
   },
   { key: "survivedText", en: "I survived", fr: "J'ai survécu" },
   { key: "withoutLane", en: "without a bike lane", fr: "sans piste cyclable" },
-  { key: "shareWithFriend", en: "share with a friend", fr: "partager avec un ami" },
+  { key: "shareWithFriend", en: "SHARE", fr: "PARTAGER" },
   { key: "shareTitle", en: "No Bike Lanes?", fr: "Pas de pistes cyclables?" },
 
   // Call to action messages
@@ -205,7 +205,7 @@ const TRANSLATIONS = [
     en: "Experience cycling between certain death and probable death in this totally accurate street survival simulator. Life without bike lanes? Thanks Doug.",
     fr: "Vis l'expérience du vélo entre la mort certaine et la mort probable dans ce simulateur de survie urbaine totalement réaliste. La vie sans pistes cyclables? Merci Doug.",
   },
-  { key: "metaTitleLong", en: "Loser Lane - Toronto Bike Survival Game", fr: "Loser Lane - Jeu de Survie à Vélo à Montréal" },
+  { key: "metaTitleLong", en: "Loser Lane - Montreal Bike Survival Game", fr: "Loser Lane - Jeu de Survie à Vélo à Montréal" },
 ];
 // Build lookup objects from the array (for performance)
 const LANG = {
