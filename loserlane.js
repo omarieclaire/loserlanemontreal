@@ -1,3 +1,299 @@
+// Translations - English and French side by side
+const TRANSLATIONS = [
+  // Game title
+  { key: "gameTitle", en: "LOSER LANE", fr: "VOIE DES PERDANTS" },
+
+  // Buttons
+  { key: "restart", en: "RESTART", fr: "RECOMMENCER" },
+  { key: "share", en: "SHARE", fr: "PARTAGER" },
+
+  // UI labels
+  { key: "score", en: "Score", fr: "Pointage" },
+  { key: "highScore", en: "High Score", fr: "Record" },
+  { key: "timeAlive", en: "Time Alive", fr: "Temps de survie" },
+
+  // Game messages
+  { key: "gameStart", en: "Left/Right to swerve, double-tap to jump the curve", fr: "Gauche/Droite pour esquiver, double-clic pour sauter" },
+  { key: "gameOver", en: "GAME OVER", fr: "GAME OVER" },
+  { key: "outOfLuck", en: "Out of luck! Alive for", fr: "T'as pas eu de chance! Survécu pendant" },
+  { key: "seconds", en: "seconds", fr: "secondes" },
+  { key: "tapToTry", en: "Tap to try again!", fr: "Clique pour réessayer!" },
+
+  // TRACKS death messages (reason + funny)
+  { key: "tracks_reason_1", en: "TTC TRACKS", fr: "RAILS DE LA STM" },
+  { key: "tracks_funny_1", en: "Track smack! Blast past!", fr: "Boom sur le rail! Faut que tu te tailles!" },
+  { key: "tracks_funny_2", en: "Stuck on the rails? Bail fail", fr: "Pogné sur les rails? C'est plate en maudit!" },
+  { key: "tracks_funny_3", en: "Rail fail? Bad bail!", fr: "Rail raté? T'es dans le trouble mon gars!" },
+  { key: "tracks_funny_4", en: "Rail jail! Harsh bail!", fr: "Prison de rails! Ça fait mal!" },
+  { key: "tracks_funny_5", en: "Stuck in the groove? Move!", fr: "Pris dans l'rail? Faut que tu te grayes!" },
+  { key: "tracks_funny_6", en: "Track attack! Bounce back!", fr: "Attaque de rail! Faut que tu te revires!" },
+  { key: "tracks_funny_7", en: "On the rails? Sad fails!", fr: "Sur les rails? Ça va mal!" },
+  { key: "tracks_funny_8", en: "Tricky track! Step back!", fr: "Rail traître! Recule, tabarnak!" },
+  { key: "tracks_funny_9", en: "Rail fail! Bail!", fr: "Rail raté! Câlisse de steel!" },
+  { key: "tracks_funny_10", en: "Oops, track gap! Smack!", fr: "Oups, trou dans l'rail! Boom!" },
+  { key: "tracks_funny_11", en: "Track fast, can't last!", fr: "Rail rapide, t'as pas duré!" },
+
+  // ONCOMING_DEATHMACHINE death messages
+  { key: "oncoming_reason_1", en: "OH COME ON!", fr: "FRANCHEMENT LÀ!" },
+  { key: "oncoming_funny_1", en: "Clash crash cash!", fr: "Choc, bloc, croc!" },
+
+  // TRAFFIC death messages
+  { key: "traffic_reason_1", en: "UGH DEATHMACHINES", fr: "OSTI D'CHARS" },
+  { key: "traffic_funny_1", en: "Clash crash cash!", fr: "Crash! Smash! T'es cuit!" },
+  { key: "traffic_funny_2", en: "Bam! Jam! Slam!", fr: "Bam! Pan! T'es dans l'ciment!" },
+  { key: "traffic_funny_3", en: "Zoomed by doom!", fr: "Zoomé vers ton destin!" },
+  { key: "traffic_funny_4", en: "Wheel squeal bad deal!", fr: "Pneu qui crie, t'es fini!" },
+  { key: "traffic_funny_5", en: "Road rage! Off the stage!", fr: "Rage au volant! T'es dans l'champ!" },
+  { key: "traffic_funny_6", en: "Bang! Clang!", fr: "Bang! Clang! T'es mort!" },
+  { key: "traffic_funny_7", en: "Boom! No room to zoom!", fr: "Boum! Pas d'place pour zoomer!" },
+  { key: "traffic_funny_8", en: "Bump thump! Traffic lump!", fr: "Bosse, choc! T'as mangé l'char!" },
+  { key: "traffic_funny_9", en: "Car slam! Bad jam!", fr: "Auto smash! C'est fini le party!" },
+  { key: "traffic_funny_10", en: "Traffic smack! Watch your back!", fr: "Coup d'char! Watch ton arrière!" },
+  { key: "traffic_funny_11", en: "Bash! Dash! Avoid the crash!", fr: "Choc! Fonce! Évite le ciment!" },
+  { key: "traffic_funny_12", en: "Wheel peel! That's the deal!", fr: "Roues qui crissent! T'es fini, c'est ça l'deal!" },
+  { key: "traffic_funny_13", en: "Car crunch! Don't be lunch!", fr: "Char qui crunch! T'es l'lunch!" },
+  { key: "traffic_funny_14", en: "Zoom boom! Traffic doom!", fr: "Zoom boum! Trafic qui tue!" },
+  { key: "traffic_funny_15", en: "Horn blare! Scare!", fr: "Klaxon! T'es carrément mort!" },
+  { key: "traffic_funny_16", en: "Yikes! They hate bikes!", fr: "Ayoye! Y'haïssent les vélos icitte!" },
+
+  // DOOR death messages
+  { key: "door_reason_1", en: "DOORED", fr: "PORTIÈRÉ" },
+  { key: "door_funny_1", en: "Doored! Ignored!", fr: "Portièré! T'as volé!" },
+  { key: "door_funny_2", en: "Door score!", fr: "Point portière!" },
+  { key: "door_funny_3", en: "Sneak a peek!", fr: "Surprise fatale!" },
+  { key: "door_funny_4", en: "Bam! Door slam!", fr: "Bam! Porte en pleine face!" },
+  { key: "door_funny_5", en: "You-ho, peekaboo!", fr: "Coucou! Porte dans l'cou!" },
+  { key: "door_funny_6", en: "Door smack! Hop back!", fr: "Coup d'porte! T'es mort!" },
+  { key: "door_funny_7", en: "Hop back, door crack!", fr: "Recule! La porte te défonce!" },
+  { key: "door_funny_8", en: "Door shock! Big knock!", fr: "Choc d'porte! Méchant coup!" },
+  { key: "door_funny_9", en: "Bam! Door slam!", fr: "Bam! Porte claque!" },
+  { key: "door_funny_10", en: "No way! Maybe it's ok?", fr: "Ayoye! Peut-être que c'est correct?" },
+  { key: "door_funny_11", en: "Watch the door or hit the floor!", fr: "Watch la porte ou tu manges l'asphalte!" },
+  { key: "door_funny_12", en: "Steer clear! Door too near!", fr: "Tasse-toi! Porte trop proche!" },
+  { key: "door_funny_13", en: "Bang! Door clang!", fr: "Bang! Porte qui claque!" },
+  { key: "door_funny_14", en: "Floored by a door!", fr: "Planté par une porte!" },
+  { key: "door_funny_15", en: "Door dash! Avoid the clash!", fr: "Porte qui fonce! Évite le choc!" },
+  { key: "door_funny_16", en: "Knock knock, door shock!", fr: "Toc toc, boom choc!" },
+
+  // PARKEDDEATHMACHINE death messages
+  { key: "parked_reason_1", en: "PARKED DEATHMACHINE", fr: "CHAR PARQUÉ" },
+  { key: "parked_funny_1", en: "Crash flash! Hit a stash trash!", fr: "Crash! T'as rentré dans un char parké!" },
+  { key: "parked_funny_2", en: "Boom thud, get out of the mud!", fr: "Boum! Sors d'là!" },
+  { key: "parked_funny_3", en: "Ka-boom! Parked car zoom!", fr: "Ka-boum! Char parqué!" },
+  { key: "parked_funny_4", en: "Bumped a junker! What a clunker!", fr: "Rentré dans un bazou! T'es fou!" },
+  { key: "parked_funny_5", en: "Not the goal! Dodging's the role!", fr: "C'est pas l'but! Faut esquiver, verrat!" },
+  { key: "parked_funny_6", en: "A parked car smack! Head back!", fr: "Char parqué smashé! T'es fini!" },
+  { key: "parked_funny_7", en: "Hit the brakes! High stakes!", fr: "Freine donc! C'est intense!" },
+  { key: "parked_funny_8", en: "Parked car doom! Clear that room!", fr: "Char stationné! T'es éliminé!" },
+  { key: "parked_funny_9", en: "Bonk! Dunk! Car Junk!", fr: "Bonk! Plonk! Char funk!" },
+  { key: "parked_funny_10", en: "Crash boom! More road room!", fr: "Crash boum! Faut d'la place sur l'chemin!" },
+  { key: "parked_funny_11", en: "Smack attack! See black!", fr: "Coup fatal! Tu vois noir!" },
+  { key: "parked_funny_12", en: "Junk blunder! Going under!", fr: "Erreur de bazou! T'es dans l'trou!" },
+  { key: "parked_funny_13", en: "Gotcha! Parked car splotcha!", fr: "Gotcha! Char parqué t'a pogné!" },
+  { key: "parked_funny_14", en: "Car crunch! Thanks a bunch!", fr: "Char qui crunch! Merci ben là!" },
+
+  // BACKDOOR death messages
+  { key: "backdoor_reason_1", en: "PARKED", fr: "PARQUÉ" },
+  { key: "backdoor_funny_1", en: "DUUUMP", fr: "DUUUMP" },
+
+  // WANDERER death messages
+  { key: "wanderer_reason_1", en: "NOOOO", fr: "NOOON" },
+  { key: "wanderer_funny_1", en: "Crash! Flash human bash!", fr: "Crash! T'as frappé quelqu'un!" },
+  { key: "wanderer_funny_2", en: "Clock! Human roadblock!", fr: "Cloc! Piéton bloc!" },
+  { key: "wanderer_funny_3", en: "People pop! You gotta stop!", fr: "Monde partout! Faut arrêter, tabarnouche!" },
+  { key: "wanderer_funny_4", en: "Oops! Human boops!", fr: "Oups! T'as fessé du monde!" },
+  { key: "wanderer_funny_5", en: "Sad, wow bad", fr: "Triste en osti" },
+  { key: "wanderer_funny_6", en: "People jam! Big slam!", fr: "Trafic humain! Gros dégât!" },
+  { key: "wanderer_funny_7", en: "Avoid a greet, dodge the meat!", fr: "Évite les piétons, mon chum!" },
+  { key: "wanderer_funny_8", en: "Shuffle bad scuffle!", fr: "Bagarre de piétons! C'est pas bon!" },
+  { key: "wanderer_funny_9", en: "Steer clear! Folks near!", fr: "Tasse-toi! Du monde partout!" },
+  { key: "wanderer_funny_10", en: "Hop hop! People stop!", fr: "Hop hop! Monde stop!" },
+  { key: "wanderer_funny_11", en: "Crowd rush! Don't crush!", fr: "Foule qui rush! Écrase-les pas!" },
+  { key: "wanderer_funny_12", en: "Bad fight! Bike blight", fr: "Mauvais combat! Vélo K.O.!" },
+  { key: "wanderer_funny_13", en: "Human block, avoid the shock!", fr: "Bloc humain, évite l'désastre!" },
+  { key: "wanderer_funny_14", en: "Watch your stroll, dodge the roll!", fr: "Watch où tu roules, évite le monde!" },
+
+  // BUILDING death messages
+  { key: "building_reason_1", en: "OOPS", fr: "OUPS" },
+  { key: "building_funny_1", en: "Shop drop! Street's your stop!", fr: "Boutique! T'es fini, c'est tragique!" },
+  { key: "building_funny_2", en: "Boop! Into the shoop?", fr: "Boum! Dans l'magasin!" },
+  { key: "building_funny_3", en: "Retail fail! Stay on the trail!", fr: "Magasin raté! Reste sur l'chemin!" },
+  { key: "building_funny_4", en: "Shop smack! Street's where you pack!", fr: "Coup d'boutique! Reste dans rue!" },
+  { key: "building_funny_5", en: "Crash! Bad stash!", fr: "Crash! T'es dans marde!" },
+  { key: "building_funny_6", en: "Assurance, hope you have insurance!", fr: "Espère que t'as des assurances!" },
+  { key: "building_funny_7", en: "Do the math! Stick to your path!", fr: "Fais le calcul! Reste sur l'chemin!" },
+  { key: "building_funny_8", en: "Shopping splash, super rash!", fr: "Magasinage crash! Super dégât!" },
+  { key: "building_funny_9", en: "Shop thump! Avoid the bump!", fr: "Coup d'boutique! Évite ça!" },
+  { key: "building_funny_10", en: "Window bump! Time to jump!", fr: "Vitrine bump! Faut sauter!" },
+  { key: "building_funny_11", en: "Crash a store, explore no more!", fr: "Crash dans magasin, c'est fini l'fun!" },
+  { key: "building_funny_12", en: "Store pop! Time to stop!", fr: "Boutique pop! Temps d'arrêter!" },
+  { key: "building_funny_13", en: "Watch the display, stay away!", fr: "Watch la vitrine! Reste loin!" },
+  { key: "building_funny_14", en: "Store smack! Stick to the track!", fr: "Coup d'magasin! Reste dans rue!" },
+
+  // TTC death messages (changed to STM for Montreal)
+  { key: "ttc_reason_1", en: "TTC SMOOCH", fr: "BISOU À LA STM" },
+  { key: "ttc_funny_1", en: "STM zap! That's a wrap!", fr: "STM zap! T'es mort!" },
+  { key: "ttc_funny_2", en: "STM clash! Hot bash!", fr: "STM clash! Chaud hot!" },
+  { key: "ttc_funny_3", en: "Boom! STM in the room!", fr: "Boum! La STM te rentre dedans!" },
+  { key: "ttc_funny_4", en: "Zap! Transit trap!", fr: "Zap! Piège de transport!" },
+  { key: "ttc_funny_5", en: "Squash smash! STM crash!", fr: "Écrasé smash! STM crash!" },
+  { key: "ttc_funny_6", en: "Zap and pop! Hard stop!", fr: "Zap et pop! Stop sec!" },
+  { key: "ttc_funny_7", en: "STM meat, take a seat!", fr: "STM viande, assis-toi!" },
+  { key: "ttc_funny_8", en: "STM greet, move your feet!", fr: "STM salut, bouge tes pieds!" },
+  { key: "ttc_funny_9", en: "Ding ding! Watch that swing!", fr: "Ding ding! Watch le swing!" },
+  { key: "ttc_funny_10", en: "Tram bam! Avoid the jam!", fr: "Tram bam! Évite ça!" },
+  { key: "ttc_funny_11", en: "Clang clang! STM bang!", fr: "Clang clang! STM bang!" },
+
+  // Tutorial messages
+  {
+    key: "tutorialLeftMobile",
+    en: "Tap the <span class='highlight'>left side</span> of the screen to move left",
+    fr: "Clique sur le <span class='highlight'>côté gauche</span> de l'écran pour aller à gauche",
+  },
+  {
+    key: "tutorialLeftDesktop",
+    en: "Use your <span class='highlight'>left arrow key</span> to move left",
+    fr: "Utilise ta <span class='highlight'>flèche gauche</span> pour aller à gauche",
+  },
+  {
+    key: "tutorialRightMobile",
+    en: "Tap the <span class='highlight'>right side</span> of the screen to move right",
+    fr: "Clique sur le <span class='highlight'>côté droit</span> de l'écran pour aller à droite",
+  },
+  {
+    key: "tutorialRightDesktop",
+    en: "Use your <span class='highlight'>right arrow key</span> to move right",
+    fr: "Utilise ta <span class='highlight'>flèche droite</span> pour aller à droite",
+  },
+
+  // Tutorial error messages
+  { key: "otherLeft", en: "Your other left!", fr: "Ton autre gauche!" },
+  { key: "otherRight", en: "Your other right!", fr: "Ton autre droite!" },
+
+  // Tutorial completion
+  { key: "tutorialComplete", en: "TUTORIAL COMPLETE", fr: "TUTORIEL COMPLÉTÉ" },
+  { key: "stayAlive", en: "STAY ALIVE? <br>(you won't)", fr: "RESTE EN VIE? <br>(tu vas mourir pareil)" },
+
+  // Button text
+  { key: "ride", en: "RIDE", fr: "GO!" },
+
+  // Game UI
+  { key: "stayAliveTimer", en: "STAY ALIVE", fr: "RESTE EN VIE" },
+  { key: "addBuilding", en: "ADD A BUILDING?", fr: "AJOUTER UN BÂTIMENT?" },
+
+  // Social sharing
+  { key: 'shareText', en: 'I survived biking in Toronto for', fr: 'J\'ai survécu à vélo à Montréal pendant' },
+  { key: 'seconds', en: 'seconds', fr: 'secondes' },
+  { key: 'shareTextEnd', en: 'seconds without a bike lane. How long will you survive? Try your luck at:', fr: 'secondes sans piste cyclable. Combien de temps vas-tu survivre? Essaye à:' },
+  { key: 'survivedText', en: 'I survived', fr: 'J\'ai survécu' },
+  { key: 'withoutLane', en: 'without a bike lane', fr: 'sans piste cyclable' },
+
+  // Call to action messages
+  { key: 'fightForLanes', en: 'FIGHT FOR YOUR BIKE LANES?', fr: 'BATS-TOI POUR TES PISTES CYCLABLES?' },
+  { key: 'thanksDoug', en: 'THANKS DOUG', fr: 'TOUCHE PAS À NOS PISSYCLABLES' },
+
+  // Meta/SEO content
+  { key: "metaTitle", en: "Loser Lane", fr: "Loser Lane" },
+  {
+    key: "metaDescription",
+    en: "Experience cycling between certain death and probable death in this totally accurate street survival simulator. Life without bike lanes? Thanks Doug.",
+    fr: "Vis l'expérience du vélo entre la mort certaine et la mort probable dans ce simulateur de survie urbaine totalement réaliste. La vie sans pistes cyclables? Merci Doug.",
+  },
+  { key: "metaTitleLong", en: "Loser Lane - Toronto Bike Survival Game", fr: "Loser Lane - Jeu de Survie à Vélo à Montréal" },
+];
+// Build lookup objects from the array (for performance)
+const LANG = {
+  en: {},
+  fr: {},
+};
+
+TRANSLATIONS.forEach((item) => {
+  LANG.en[item.key] = item.en;
+  LANG.fr[item.key] = item.fr;
+});
+
+let currentLang = localStorage.getItem("language") || "en";
+
+// Define the t() function FIRST
+function t(key) {
+  return LANG[currentLang][key] || key;
+}
+
+// NOW assign to window
+window.LANG = LANG;
+window.t = t;
+window.currentLang = currentLang;
+
+// Language switcher - single toggle button
+document.addEventListener("DOMContentLoaded", () => {
+  updateLanguage();
+  updateMetaTags();
+
+  const langToggle = document.getElementById("lang-toggle");
+
+  if (langToggle) {
+    // Set initial button text
+    langToggle.textContent = currentLang === "en" ? "FR" : "EN";
+
+    langToggle.addEventListener("click", () => {
+      currentLang = currentLang === "en" ? "fr" : "en";
+      window.currentLang = currentLang;
+      localStorage.setItem("language", currentLang);
+
+      langToggle.textContent = currentLang === "en" ? "FR" : "EN";
+
+      updateLanguage();
+      updateMetaTags(); // Add this line
+    });
+  }
+});
+
+function updateMetaTags() {
+  // Update page title
+  document.title = t("metaTitle");
+
+  // Update all meta tags
+  const metaTags = [
+    { selector: 'meta[name="title"]', attr: "content", key: "metaTitle" },
+    { selector: 'meta[name="description"]', attr: "content", key: "metaDescription" },
+    { selector: 'meta[property="og:title"]', attr: "content", key: "metaTitle" },
+    { selector: 'meta[property="og:description"]', attr: "content", key: "metaDescription" },
+    { selector: 'meta[name="twitter:title"]', attr: "content", key: "metaTitleLong" },
+    { selector: 'meta[name="twitter:description"]', attr: "content", key: "metaDescription" },
+    { selector: 'meta[property="bsky:title"]', attr: "content", key: "metaTitleLong" },
+    { selector: 'meta[property="bsky:description"]', attr: "content", key: "metaDescription" },
+  ];
+
+  metaTags.forEach(({ selector, attr, key }) => {
+    const element = document.querySelector(selector);
+    if (element) {
+      element.setAttribute(attr, t(key));
+    }
+  });
+}
+
+// Hide language toggle after tutorial
+function hideLangToggle() {
+  const langContainer = document.getElementById("lang-toggle-container");
+  if (langContainer) {
+    langContainer.style.display = "none";
+  }
+}
+
+function updateLanguage() {
+  document.querySelectorAll("[data-i18n]").forEach((element) => {
+    const key = element.dataset.i18n;
+    if (LANG[currentLang][key]) {
+      // Check if the translation contains HTML tags
+      if (LANG[currentLang][key].includes("<")) {
+        element.innerHTML = LANG[currentLang][key];
+      } else {
+        element.textContent = LANG[currentLang][key];
+      }
+    }
+  });
+}
+
 const CONFIG = {
   GAME: {
     INVINCIBLE: false,
@@ -450,7 +746,7 @@ class GameRenderer {
 
   drawRoadFeatures() {
     for (let y = 0; y < this.config.GAME.HEIGHT; y++) {
-     this.renderGrid.updateCell(this.config.LANES.DIVIDER, y, "║", STYLES.TRAFFIC);
+      this.renderGrid.updateCell(this.config.LANES.DIVIDER, y, "║", STYLES.TRAFFIC);
       this.renderGrid.updateCell(this.config.LANES.DIVIDER + 1, y, "║", STYLES.TRAFFIC);
       this.renderGrid.updateCell(this.config.LANES.TRACKS + 1, y, " ", STYLES.TRACKS);
       this.renderGrid.updateCell(this.config.LANES.TRACKS + 5, y, " ", STYLES.TRACKS);
@@ -3334,7 +3630,7 @@ class GameStateManager {
   updateScoreDisplay() {
     const scoreElement = document.getElementById("time-alive");
     if (scoreElement) {
-      scoreElement.textContent = `STAY ALIVE: ${this.state.score}`;
+      scoreElement.textContent = `${t("stayAliveTimer")}: ${this.state.score}`;
     }
   }
 
@@ -3564,6 +3860,8 @@ class KeyboardControls extends BaseControl {
       if (!this.game.stateManager.isPlaying && this.game.tutorialComplete) {
         if (e.key === " " || e.key === "Spacebar" || e.key === "ArrowLeft" || e.key === "ArrowRight") {
           console.log("⌨️  KEYBOARD: SPACE starting game");
+          hideLangToggle();
+
           this.game.start();
           document.getElementById("pregame-msg-box").style.display = "none";
           let gameInfoContainer = document.getElementById("game-info-container");
@@ -3808,10 +4106,7 @@ class TutorialSystem {
   }
 
   showLeftTutorial() {
-    const text = this.isMobile
-      ? "Tap the <span class='highlight'>left side</span> of the screen to move left"
-     : "Use your <span class='highlight'>left arrow key</span> to move left";
-        // "<span class='highlight'>Left button</span> to move left";
+    const text = this.isMobile ? t("tutorialLeftMobile") : t("tutorialLeftDesktop");
 
     // Only show instruction if we're actually on this step
     if (this.currentStep === "left") {
@@ -3823,10 +4118,7 @@ class TutorialSystem {
   }
 
   showRightTutorial() {
-    const text = this.isMobile
-      ? "Tap the <span class='highlight'>right side</span> of the screen to move right"
-      : "Use your <span class='highlight'>right arrow key</span> to move right";
-        // "<span class='highlight'>Right button</span> to move right";
+    const text = this.isMobile ? t("tutorialRightMobile") : t("tutorialRightDesktop");
 
     // Only show instruction if we're actually on this step
     if (this.currentStep === "right") {
@@ -3867,7 +4159,7 @@ class TutorialSystem {
       wrongHighlight.classList.add("wrong");
       const originalHTML = this.tutorialText.innerHTML;
       this.tutorialText.classList.add("error");
-      this.tutorialText.innerHTML = direction === "right" ? "Your other left!" : "Your other right!";
+      this.tutorialText.innerHTML = direction === "right" ? t("otherLeft") : t("otherRight");
       setTimeout(() => {
         wrongHighlight.classList.remove("wrong");
         this.tutorialText.classList.remove("error");
@@ -3927,7 +4219,7 @@ class TutorialSystem {
       } else if (!this.completedSteps.left) {
         this.showLeftTutorial();
       } else {
-        this.tutorialText.innerHTML = "TUTORIAL COMPLETE";
+        this.tutorialText.innerHTML = t("tutorialComplete");
         setTimeout(() => {
           this.completeTutorial();
         }, 1200);
@@ -3954,7 +4246,7 @@ class TutorialSystem {
     this.controlsDiv.style.opacity = "0";
 
     // Show "STAY ALIVE" text
-    this.tutorialText.innerHTML = "STAY ALIVE? <br>(you won't)";
+    this.tutorialText.innerHTML = t("stayAlive");
 
     // Swap bike with start button
     setTimeout(() => {
@@ -4193,7 +4485,7 @@ class LoserLane {
     this.soundManager.addSound("ttcBell3", "sounds/ttcBell3.mp3");
     this.soundManager.addSound("ttcHorn", "sounds/ttcHorn.mp3");
 
-     this.soundManager.addSound("ouch1", "sounds/ouch1.mp3");
+    this.soundManager.addSound("ouch1", "sounds/ouch1.mp3");
     this.soundManager.addSound("ouch2", "sounds/ouch2.mp3");
     this.soundManager.addSound("ouch3", "sounds/ouch3.mp3");
     this.soundManager.addSound("ouch4", "sounds/ouch4.mp3");
@@ -4254,7 +4546,7 @@ class LoserLane {
     ];
     this.soundManager.carCrashSounds = ["hitCar", "hitCarDoor"];
     this.soundManager.personHitSounds = ["hitPerson1", "hitPerson2"];
-        this.soundManager.ouchSounds = ["ouch1", "ouch2", "ouch3", "ouch4"];
+    this.soundManager.ouchSounds = ["ouch1", "ouch2", "ouch3", "ouch4"];
 
     this.soundManager.ttcCollisionSounds = ["ttcHorn"];
     this.soundManager.trackSounds = ["hitTracks"];

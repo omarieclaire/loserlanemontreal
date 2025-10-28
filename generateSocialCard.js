@@ -1,6 +1,6 @@
 const ART = {
   WANDERER: {
-    art: [
+    en: [
       "       WHY HIT FRIEND? ",
       "                       ",
       "               o_/    ",
@@ -8,67 +8,119 @@ const ART = {
       "     _\\<,_    /\\     ",
       "___(*)/(*)___\\_\\____",
     ],
+    fr: [
+      "    POURQUOI FRAPPER AMI? ",
+      "                          ",
+      "               o_/        ",
+      "      __o    _/|          ",
+      "     _\\<,_    /\\         ",
+      "___(*)/(*)___\\_\\____     ",
+    ],
   },
   TTC: {
-    art: [
+    en: [
       "                                       ",
       "     I STILL ♡ U                       ",
       "     __o        ┌═════════^════^═══════",
       "    _\\<,_      / □□□ || □ STM □||□□ ║║",
       " __(*)/(*)_____\\──═══────────────═══───",
     ],
+    fr: [
+      "                                       ",
+      "     JE T'♡ ENCORE                     ",
+      "     __o        ┌═════════^════^═══════",
+      "    _\\<,_      / □□□ || □ STM □||□□ ║║",
+      " __(*)/(*)_____\\──═══────────────═══───",
+    ],
   },
   ONCOMING_DEATHMACHINE: {
-    art: [
+    en: [
       "SO THIS IS HOW IT ENDS____     ",
       "     __o          __/_O│_\\_   ",
       "    _\\<,_      >/_ ____ _ _\\  ",
       " __(*)/(*)_______(_)_____(_)___ ",
     ],
+    fr: [
+      "ALORS C'EST COMME ÇA QUE ÇA FINIT____",
+      "     __o          __/_O│_\\_          ",
+      "    _\\<,_      >/_ ____ _ _\\         ",
+      " __(*)/(*)_______(_)_____(_)___       ",
+    ],
   },
   TRAFFIC: {
-    art: [
-      "     _____        HELP?      ",
-      "   _/_│O_\\_         __o     ",
-      " /_ ____ _ _\\<      _\\<,_  ",
+    en: [
+      "     _____        HELP?      ", 
+      "   _/_│O_\\_         __o     ", 
+      " /_ ____ _ _\\<      _\\<,_  ", 
       "__(_)_____(_)______(*)/(*)___"
-            ],
-  },
-  WANDERER: {
-    art: [
-      "       WHY HIT FRIEND? ",
-      "                       ",
-      "               o_/     ",
-      "      __o    _/|       ",
-      "     _\\<,_    /\\     ",
-      "___(*)/(*)___\\_\\_____",
+    ],
+    fr: [
+      "     _____        AIDE?       ", 
+      "   _/_│O_\\_         __o      ", 
+      " /_ ____ _ _\\<      _\\<,_   ", 
+      "__(_)_____(_)______(*)/(*)___ "
     ],
   },
   PARKEDDEATHMACHINE: {
-    art: [
-      "        NOOOO00  ______     ",
-      "     __o      _/__││__\\__  ",
+    en: [
+      "        NOOOO00  ______     ", 
+      "     __o      _/__││__\\__  ", 
       "    _\\<,_   /_ ______ ___[ ", 
       " __(*)/(*)____(_)_____(_)___ "
     ],
+    fr: [
+      "        NOOON00  ______      ", 
+      "     __o      _/__││__\\__   ", 
+      "    _\\<,_   /_ ______ ___[  ", 
+      " __(*)/(*)____(_)_____(_)___  "
+    ],
   },
   DOOR: {
-    art: [
+    en: [
       "          OOPSIE, DOOR SCORE!",
       "                   _____     ",
       "     __o        __/_│O_\\    ",
       "    _\\<,_     /_ _\\|/___\\ ",
       " __(*)/(*)_____(_)__/\\(_)__ ",
     ],
+    fr: [
+      "          OUPS, POINT PORTIÈRE!",
+      "                   _____        ",
+      "     __o        __/_│O_\\       ",
+      "    _\\<,_     /_ _\\|/___\\    ",
+      " __(*)/(*)_____(_)__/\\(_)__    ",
+    ],
   },
   TRACKS: {
-    art: ["     RAIL BAIL //  //", "       __o   //   // ", "      _\\<,_    //  ", " ════(*)/(*)═══════ ", " ══════════════════ "],
+    en: [
+      "     RAIL BAIL //  //", 
+      "       __o   //   // ", 
+      "      _\\<,_    //  ", 
+      " ════(*)/(*)═══════ ", 
+      " ══════════════════ "
+    ],
+    fr: [
+      "     RAIL RATÉ //  //", 
+      "       __o   //   //  ", 
+      "      _\\<,_    //   ", 
+      " ════(*)/(*)═══════  ", 
+      " ══════════════════  "
+    ],
   },
   BUILDING: {
-    art: [
+    en: [
       " PLEASE DON'T   ╭═══╧════╮",
       "   WRITE THIS   │░SMOKED░│",
       "     IN MY OBIT │∷╳∷∷∷∷╳∷│",
+      "                │░ MEAT ░│",
+      "     __o        │═╥═╦╦═╥═│",
+      "    _\\<,_      │ ║ ║║ ║ ║",
+      " ══(*)/(*)══════└≈≈≈≈≈≈≈≈┘",
+    ],
+    fr: [
+      " SVP N'ÉCRIVEZ  ╭═══╧════╮",
+      "   PAS ÇA DANS  │░SMOKED░│",
+      "   MON OBITUAIRE│∷╳∷∷∷∷╳∷│",
       "                │░ MEAT ░│",
       "     __o        │═╥═╦╦═╥═│",
       "    _\\<,_      │ ║ ║║ ║ ║",
@@ -82,12 +134,12 @@ function createButton(backgroundColor, content, onClick, ariaLabel, isLarge = fa
   // background-color: ${backgroundColor};
 
   button.style.cssText = `
-  padding: ${isLarge ? '12px' : '8px'};
+  padding: ${isLarge ? "12px" : "8px"};
     background-color: ${backgroundColor};
     border: 2px solid ${backgroundColor};
-    width: ${isLarge ? '12rem' : '2.5rem'};
-    height: ${isLarge ? '2.1rem' : '2.1rem'};
-    font-size: ${isLarge ? '1.1rem' : '1.1rem'};
+    width: ${isLarge ? "12rem" : "2.5rem"};
+    height: ${isLarge ? "2.1rem" : "2.1rem"};
+    font-size: ${isLarge ? "1.1rem" : "1.1rem"};
     opacity: .7;
 
     border: none;
@@ -218,10 +270,11 @@ function generateSocialCardNoSS(canvas, reason, score, messageString, randomFace
   backgroundOverlay.classList.add("background-overlay");
   socialCard.appendChild(backgroundOverlay);
 
-  const entityData = ART[reason] || { art: ["N/A"] };
-  const art = Array.isArray(entityData.art) ? entityData.art.join("\n") : "TRAFFIC";
+  const currentLang = window.currentLang || 'en';
+const entityData = ART[reason] || ART.TRAFFIC;
+const art = Array.isArray(entityData[currentLang]) ? entityData[currentLang].join("\n") : ART.TRAFFIC[currentLang].join("\n");
 
-  const contentContainer = document.createElement("div");
+const contentContainer = document.createElement("div");
   contentContainer.className = "sharebox-content-container";
 
   // buttonContainer.className = "button-container";
@@ -236,10 +289,8 @@ function generateSocialCardNoSS(canvas, reason, score, messageString, randomFace
 
   const scoreText = document.createElement("p");
   scoreText.className = "score-text";
-  scoreText.innerHTML = `I survived ${score} seconds without a bike lane`;
+  scoreText.innerHTML = `${t("survivedText")} ${score} ${t("seconds")} ${t("withoutLane")}`;
   contentContainer.appendChild(scoreText);
-
-  
 
   const asciiWrapper = document.createElement("div");
   asciiWrapper.style.position = "relative";
@@ -263,7 +314,7 @@ function generateSocialCardNoSS(canvas, reason, score, messageString, randomFace
 
   const doug2 = document.createElement("p");
   doug2.className = "thanks-doug";
-  doug2.innerHTML = `<br>THANKS DOUG`;
+  doug2.innerHTML = `<br>${t("thanksDoug")}`;
   contentContainer.appendChild(doug2);
 
   socialCard.appendChild(contentContainer);
@@ -296,21 +347,21 @@ function generateSocialCardNoSS(canvas, reason, score, messageString, randomFace
     return html2canvas(socialCard).then((canvas) => canvas.toDataURL("image/png"));
   };
 
-  
   const messageContainer = document.createElement("div");
   messageContainer.id = "message-container";
 
   const messageElement = document.createElement("p");
   messageElement.className = "CTO";
   messageElement.id = "CTO";
-  messageElement.innerHTML = `<a target="_blank" href="https://www.cycleto.ca/keep_lanes_passable">FIGHT FOR YOUR BIKE LANES?</a>`;  
+  messageElement.innerHTML = `<a target="_blank" href="https://newsinteractives.cbc.ca/features/2025/montreal-municipal-election/#intro">${t(
+    "fightForLanes"
+  )}</a>`;
 
   messageContainer.appendChild(messageElement);
 
   // Create a single container for all buttons
   const allButtonsContainer = document.createElement("div");
   allButtonsContainer.className = "all-buttons-container";
-
 
   // Create download button
   const downloadButton = createButton(
@@ -324,7 +375,7 @@ function generateSocialCardNoSS(canvas, reason, score, messageString, randomFace
         link.href = dataUrl;
         link.click();
 
-        const shareText = `I survived for ${score} seconds biking in Toronto without a bike lane. How long will you survive? Try your luck at: ${window.location.href}`;
+        const shareText = `${t("shareText")} ${score} ${t("shareTextEnd")} `;
         navigator.clipboard
           .writeText(shareText)
           .then(() => {
@@ -345,7 +396,7 @@ function generateSocialCardNoSS(canvas, reason, score, messageString, randomFace
 
   // Add all buttons to the container
   allButtonsContainer.appendChild(downloadButton);
-  Array.from(socialButtons.children).forEach(button => {
+  Array.from(socialButtons.children).forEach((button) => {
     allButtonsContainer.appendChild(button);
   });
 
@@ -353,7 +404,6 @@ function generateSocialCardNoSS(canvas, reason, score, messageString, randomFace
   overlay.appendChild(socialCard);
   // overlay.appendChild(allButtonsContainer); // All buttons together
   overlay.appendChild(messageContainer); // Message appears before buttons
-
 
   document.body.appendChild(overlay);
 

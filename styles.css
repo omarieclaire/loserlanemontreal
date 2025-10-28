@@ -15,7 +15,7 @@
 
   /* Font settings */
   --font-main: "Courier New", monospace;
-  --font-size-base: .9rem;
+  --font-size-base: 0.9rem;
   --font-size-large: 1.3rem;
 
   /* Social card font styles */
@@ -96,11 +96,17 @@ a {
   text-transform: capitalize;
   letter-spacing: 0.5rem;
 }
+
+#add-art-link:hover {
+  font-weight: 600;
+  color: #63f863;
+}
+
 @media (min-width: 600px) {
   #add-art-link {
     /* width: 90%; */
     margin: 0;
-    padding: 7px;
+    padding: 7px 0;
   }
 }
 
@@ -109,15 +115,15 @@ a {
   width: 1vw;
   height: 2vh;
 
-    width: 1ch; /* One character width exactly */
+  width: 1ch; /* One character width exactly */
   height: 1.2em; /* Use em for consistent ratio */
   /* border: 0.1px solid rgba(146, 124, 124, 0.2); */
   text-align: center;
 
-    font-variant-numeric: tabular-nums;
+  font-variant-numeric: tabular-nums;
   letter-spacing: 0;
   word-spacing: 0;
-  font-variant-east-asian: normal;  /* Prevents CJK double-width */
+  font-variant-east-asian: normal; /* Prevents CJK double-width */
   -webkit-font-smoothing: antialiased; /* Consistent rendering */
   -moz-osx-font-smoothing: grayscale;
   text-size-adjust: 100%; /* Prevents mobile zoom issues */
@@ -211,8 +217,8 @@ a {
     width: calc(100vw / 42);
     height: 1.5vh;
 
-      width: 1ch; /* One character width exactly */
-  height: 1.2em; /* Use em for consistent ratio */
+    width: 1ch; /* One character width exactly */
+    height: 1.2em; /* Use em for consistent ratio */
   }
 }
 
@@ -378,9 +384,15 @@ a {
 }
 
 @keyframes invincible-pulse {
-  0% { opacity: 1; }
-  50% { opacity: 0.6; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .wanderer {
@@ -740,3 +752,36 @@ button:active {
   }
 }
 
+/* Language Toggle */
+/* Language Toggle - Subtle version */
+.lang-toggle-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  /* opacity: 0.6; */
+  transition: opacity 0.3s ease;
+}
+
+.lang-toggle-container:hover {
+  opacity: 1;
+}
+
+.lang-toggle {
+  background: transparent;
+  border: 1px solid var(--green);
+  padding: 4px 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  width: 50px;
+  font-family: var(--font-main);
+  color: var(--green);
+  letter-spacing: 1px;
+  transition: all 0.2s ease;
+}
+
+.lang-toggle:hover {
+  /* border-color: var(--hot-pink); */
+  /* color: var(--hot-pink); */
+  outline: none;
+}
