@@ -263,6 +263,62 @@ const TORONTO_BUILDINGS = [
       "╰────────╯"
     ]
   },
+      {
+                name: "BUCHI_BOUTIQUE",
+                artist: "Buchi",
+                art: [
+                    "   ≜≜≜≜   ",
+            "  ◇◇◇◇◇◇  ",
+            "  ╱▧▧▧▧╲  ",
+            " ⋰      ⋱ ",
+            " ░ ╳  ╳ ░ ",
+            "⳻▒  ◟◞  ▒⳺",
+            " ▒BUCHI⛫▒ ",
+            " ░      ░ ",
+            " ◣▭▭▭▭▭▭◢ "
+                ]
+            },
+                {
+                name: "DANNY’S",
+                artist: "d",
+                art: [
+                    "⌣┌══════┐ ",
+            "┆║DANNYS║⌣",
+            " C⧂IFFURE✫",
+            "✫║UNISEX║ ",
+            " └══════┘ "
+                ]
+            },
+                {
+                name: "L'INSOUMISE",
+                artist: "Lorenzo",
+                art: [
+                    "L^        ",
+            "INSOUMISE ",
+            "LIBRAIRIE ",
+            "ANARCHISTE",
+            "▒▒▒▒░░▒▒▒▒",
+            "▒▒▒▒  ▒▒▒▒",
+            "▒▒▒▒  ▒▒▒▒"
+                ]
+            },
+
+                {
+                name: "CHAMPS_ETC",
+                artist: "D",
+                art: [
+                    "⌓⚜◊⌓⌓⌓◊⚜⌓ ",
+            "▏STUDIO │ ",
+            "│✫✫✫✫✫✫✫│ ",
+            "▏RIP DB │ ",
+            "⠒⠒⠒⠒⠒⠒⠒⠒⠒ ",
+            "▏       │ ",
+            "CHAMPS  │ ",
+            "⠖⠒⠒⠒    │ ",
+            "▏       │ ",
+            "▏▒      │ "
+                ]
+            },
   {
     name: "Casa d'Italia",
     art: [
