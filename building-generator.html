@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LoserLane Building Creator</title>
-   
-   <style>
+
+    <style>
       * {
         margin: 0;
         padding: 0;
@@ -22,6 +22,37 @@
         background: #120303;
       }
 
+      /* Language Toggle - Subtle version */
+      .lang-toggle-container {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1000;
+        transition: opacity 0.3s ease;
+      }
+
+      .lang-toggle-container:hover {
+        opacity: 1;
+      }
+
+      .lang-toggle {
+        background: transparent;
+        border: 1px solid #63f863;
+        padding: 4px 4px;
+        font-size: 0.8rem;
+        cursor: pointer;
+        width: 50px;
+        font-family: "Courier New", monospace;
+        color: #63f863;
+        letter-spacing: 1px;
+        transition: all 0.2s ease;
+        box-shadow: none;
+      }
+
+      .lang-toggle:hover {
+        outline: none;
+      }
+
       .container {
         background: #1a0505;
         /* border-radius: 10px; */
@@ -33,7 +64,6 @@
       }
       a {
         color: #63f863;
-
       }
 
       h1 {
@@ -67,9 +97,11 @@
         background: #0a0202;
         padding: 10px;
         border-radius: 8px;
-        margin-bottom: 20px;
+        /* margin-bottom: 10px; */
         box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5);
         border: 1px solid #333;
+        max-height: 70vh;
+        overflow: auto;
 
         user-select: none;
         -webkit-user-select: none;
@@ -89,15 +121,15 @@
       }
 
       .cell {
-        aspect-ratio: 1;
+        aspect-ratio: 1 / 1.5;
         background: #120303;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 20px;
+        font-size: 2rem;
         transition: all 0.2s;
         position: relative;
-        min-height: 35px;
+        min-height: 13px;
         color: #d1feff;
       }
 
@@ -164,7 +196,9 @@
         /* color: white; */
       }
 
-      .btn-eraser:hover, .btn-download:hover, .btn-copy:hover {
+      .btn-eraser:hover,
+      .btn-download:hover,
+      .btn-copy:hover {
         background: #63f863;
         /* box-shadow: 0 0 0 3px rgba(255, 167, 38, 0.3); */
       }
@@ -193,7 +227,7 @@
         background: #0a0202;
         padding: 15px;
         border-radius: 8px;
-        max-height: 70vh;
+        max-height: 82vh;
         overflow-y: auto;
         border: 1px solid #333;
       }
@@ -247,7 +281,6 @@
         background: rgba(231, 169, 0, 0.15);
         padding: 10px;
 
-        
         /* border-radius: 8px; */
         margin-bottom: 15px;
         border: 2px solid #ff77df;
@@ -264,7 +297,7 @@
       }
 
       .current-char-display {
-        font-size: 48px;
+        font-size: 14px;
         font-weight: bold;
         color: #d1feff;
       }
@@ -395,7 +428,7 @@
         }
 
         .building-preview {
-          font-size: clamp(12px, 3vw, 18px);
+          font-size: 12px;
           padding: 15px;
         }
 
@@ -487,6 +520,11 @@
 
         .char-btn {
           padding: 6px 10px;
+        }
+
+        .lang-toggle-container {
+          top: 10px;
+          right: 10px;
         }
       }
 
@@ -599,47 +637,51 @@
         color: #dfb1ff;
         margin-bottom: 5px;
         text-transform: uppercase;
-        letter-spacing: 0.5px;
-        font-weight: bold;
+        letter-spacing: 1px;
       }
 
       .modal-input-group input {
         width: 100%;
         padding: 12px;
+        background: #0a0202;
         border: 2px solid #666;
         /* border-radius: 5px; */
+        color: #d1feff;
         font-family: "Courier New", monospace;
         font-size: 16px;
-        transition: border-color 0.2s;
-        background: #120303;
-        color: #d1feff;
+        font-weight: bold;
       }
 
       .modal-input-group input:focus {
         outline: none;
-        border-color: #e7a900;
-        box-shadow: 0 0 10px rgba(231, 169, 0, 0.3);
+        border-color: #63f863;
+        box-shadow: 0 0 0 3px rgba(99, 248, 99, 0.1);
+      }
+
+      .building-preview-container{
+        display: flex;
+        margin: auto;
+        justify-content: center;
+        margin-bottom: 15px;
       }
 
       .building-preview {
         background: #0a0202;
         padding: 20px;
-        /* border-radius: 8px; */
-        margin: 20px 0;
+        border: 1px solid #666;
         font-family: "Courier New", monospace;
+        color: #d1feff;
         white-space: pre;
         overflow-x: auto;
-        text-align: center;
-        font-size: 18px;
-        line-height: 1.2;
-        border: 2px solid #666;
-        color: #d1feff;
+        font-size: 12px;
+        line-height: 1.5;
+        letter-spacing: 0;
       }
 
       .modal-buttons {
         display: flex;
         gap: 10px;
-        margin-top: 20px;
+        justify-content: stretch;
       }
 
       .modal-btn {
@@ -684,27 +726,35 @@
     </style>
   </head>
   <body>
+    <!-- Language Toggle -->
+    <div class="lang-toggle-container" id="lang-toggle-container">
+      <button class="lang-toggle" id="lang-toggle">FR</button>
+    </div>
+
     <div class="container">
-      <h1>Draw a building!</h1>
-      <p class="subtitle">Draw your Montreal building, then add it to <a target="_blank" href="https://omarieclaire.github.io/loserlanemontreal/">Loser Lane</a></p>
+      <h1 data-i18n="title">Draw a building!</h1>
+      <p class="subtitle">
+        <span data-i18n="subtitle">Draw your Montreal building, then add it to</span>
+        <a target="_blank" href="https://omarieclaire.github.io/loserlanemontreal/">Loser Lane</a>
+      </p>
 
       <div class="main-content">
         <div class="grid-section">
           <div class="info-section">
-            <div class="current-char-label">Current Character</div>
-            <div class="current-char-display" id="currentCharDisplay">█</div>
+            <div class="current-char-label" data-i18n="currentCharacter">Current Character</div>
+            <span class="current-char-display" id="currentCharDisplay">█</span>
           </div>
 
           <div class="grid-container">
             <div class="grid" id="grid"></div>
             <div class="controls">
-              <button class="btn-clear" onclick="clearGrid()">ERASE ALL</button>
-              <button class="btn-eraser" id="eraserBtn" onclick="toggleEraser()">Eraser</button>
-              <button class="btn-copy" onclick="loadRandomExample()">Example</button>
+              <button class="btn-clear" onclick="clearGrid()" data-i18n="eraseAll">ERASE ALL</button>
+              <button class="btn-eraser" id="eraserBtn" onclick="toggleEraser()" data-i18n="eraser">Eraser</button>
+              <button class="btn-copy" onclick="loadRandomExample()" data-i18n="example">Example</button>
             </div>
           </div>
 
-          <button class="btn-add-game" onclick="addToGame()">Add your building to LoserLane</button>
+          <button class="btn-add-game" onclick="addToGame()" data-i18n="addButton">Add your building to LoserLane</button>
         </div>
 
         <div class="palette-section">
@@ -716,19 +766,22 @@
     <!-- Modal for adding to game -->
     <div class="modal-overlay" id="modalOverlay">
       <div class="modal">
-        <h2>🎮 Add to Game</h2>
+        <h2 data-i18n="modalTitle">Add to Game</h2>
         <div class="modal-input-group">
-          <label>Building Name</label>
-          <input type="text" id="modalBuildingName" placeholder="e.g., BENELUX" />
+          <label data-i18n="buildingName">Building Name</label>
+          <input type="text" id="modalBuildingName" data-i18n-placeholder="buildingPlaceholder" placeholder="e.g., BENELUX" />
         </div>
         <div class="modal-input-group">
-          <label>Your Name / Handle</label>
-          <input type="text" id="modalArtistName" placeholder="e.g., Avery" />
+          <label data-i18n="artistName">Your Name / Handle</label>
+          <input type="text" id="modalArtistName" data-i18n-placeholder="artistPlaceholder" placeholder="e.g., Avery" />
         </div>
-        <div class="building-preview" id="buildingPreview"></div>
+        <div class="building-preview-container">
+                  <div class="building-preview" id="buildingPreview"></div>
+
+        </div>
         <div class="modal-buttons">
-          <button class="modal-btn modal-btn-cancel" onclick="closeModal()">Cancel</button>
-          <button class="modal-btn modal-btn-submit" onclick="submitBuilding()">Submit 🚀</button>
+          <button class="modal-btn modal-btn-cancel" onclick="closeModal()" data-i18n="cancel">Cancel</button>
+          <button class="modal-btn modal-btn-submit" onclick="submitBuilding()" data-i18n="submit">Submit 🚀</button>
         </div>
       </div>
     </div>
@@ -736,6 +789,93 @@
     <div class="toast" id="toast">Copied!</div>
 
     <script>
+      // Translations
+      const TRANSLATIONS = [
+        { key: "title", en: "Draw a building!", fr: "Dessine un bâtiment!" },
+        { key: "subtitle", en: "Draw your Montreal building, then add it to", fr: "Dessine ton bâtiment montréalais, puis ajoute-le à" },
+        { key: "currentCharacter", en: "Current Character", fr: "Caractère actuel" },
+        { key: "eraseAll", en: "ERASE ALL", fr: "TOUT EFFACER" },
+        { key: "eraser", en: "Eraser", fr: "Efface" },
+        { key: "example", en: "Example", fr: "Exemple" },
+        { key: "addButton", en: "Add your building to LoserLane", fr: "Ajouter ton bâtiment à LoserLane" },
+        { key: "modalTitle", en: "Add to Game", fr: "Ajouter au jeu" },
+        { key: "buildingName", en: "Building Name", fr: "Nom du bâtiment" },
+        { key: "buildingPlaceholder", en: "e.g., BENELUX", fr: "ex: BENELUX" },
+        { key: "artistName", en: "Your Name / Handle", fr: "Ton nom / pseudo" },
+        { key: "artistPlaceholder", en: "e.g., Avery", fr: "ex: Avery" },
+        { key: "cancel", en: "Cancel", fr: "Annuler" },
+        { key: "submit", en: "Submit", fr: "Soumettre" },
+        { key: "copied", en: "Copied!", fr: "Copié!" },
+        { key: "gridCleared", en: "Grid cleared!", fr: "Grille effacée!" },
+        { key: "loadedExample", en: "Loaded: ", fr: "Chargé: " },
+        { key: "enterBuildingName", en: "Please enter a building name!", fr: "Entre un nom de bâtiment!" },
+        { key: "enterArtistName", en: "Please enter your name or handle!", fr: "Entre ton nom ou pseudo!" },
+        { key: "buildingNameTooLong", en: "Building name too long! Max 30 characters.", fr: "Nom trop long! Max 30 caractères." },
+        { key: "artistNameTooLong", en: "Artist name too long! Max 30 characters.", fr: "Nom trop long! Max 30 caractères." },
+        { key: "submitSuccess", en: "Building submitted successfully! Thank you!", fr: "Bâtiment soumis avec succès! Merci!" },
+        { key: "submitFailed", en: "Submission may have failed. Please try again.", fr: "Soumission échouée. Réessaie!" },
+        { key: "walls", en: "Walls", fr: "Murs" },
+        { key: "basic", en: "Basic", fr: "Basique" },
+        { key: "blocks", en: "Blocks", fr: "Blocs" },
+        { key: "lines", en: "Lines", fr: "Lignes" },
+        { key: "shapes", en: "Shapes", fr: "Formes" },
+        { key: "accent", en: "Accent", fr: "Accent" },
+        { key: "montreal", en: "Montreal", fr: "Montréal" },
+      ];
+
+      // Build lookup objects from the array (for performance)
+      const LANG = {
+        en: {},
+        fr: {},
+      };
+
+      TRANSLATIONS.forEach((item) => {
+        LANG.en[item.key] = item.en;
+        LANG.fr[item.key] = item.fr;
+      });
+
+      let currentLang = localStorage.getItem("language") || "en";
+
+      // Define the t() function
+      function t(key) {
+        return LANG[currentLang][key] || key;
+      }
+
+      // Language switcher - single toggle button
+      document.addEventListener("DOMContentLoaded", () => {
+        updateLanguage();
+
+        const langToggle = document.getElementById("lang-toggle");
+
+        if (langToggle) {
+          // Set initial button text
+          langToggle.textContent = currentLang === "en" ? "FR" : "EN";
+          langToggle.addEventListener("click", () => {
+            currentLang = currentLang === "en" ? "fr" : "en";
+            localStorage.setItem("language", currentLang);
+            // Refresh the page to apply new language
+            location.reload();
+          });
+        }
+      });
+
+      function updateLanguage() {
+        document.querySelectorAll("[data-i18n]").forEach((element) => {
+          const key = element.dataset.i18n;
+          if (LANG[currentLang][key]) {
+            element.textContent = LANG[currentLang][key];
+          }
+        });
+
+        // Update placeholders
+        document.querySelectorAll("[data-i18n-placeholder]").forEach((element) => {
+          const key = element.dataset.i18nPlaceholder;
+          if (LANG[currentLang][key]) {
+            element.placeholder = LANG[currentLang][key];
+          }
+        });
+      }
+
       const GRID_SIZE = 10;
       let grid = Array(GRID_SIZE)
         .fill()
@@ -747,1052 +887,621 @@
       let isEraserMode = false;
 
       // Example buildings pool
-    const exampleBuildings = [
-  {
-    name: "Habitat 67",
-    art: [
-      "  ▓▓  ▓▓  ",
-      " ▓▓▓ ▓▓▓  ",
-      "▓▓▓ 67 ▓▓▓",
-      " ▓▓▓▓▓▓▓▓ ",
-      "▓▓▓ ▓▓▓▓▓ ",
-      " ▓▓  ▓▓ ▓▓"
-    ]
-  },
-  {
-    name: "Biosphere",
-    art: [
-      "   ╱◇◇╲   ",
-      "  ◇◇◇◇◇  ",
-      " ◇◇◇◇◇◇◇ ",
-      " ◇◇◇◇◇◇◇ ",
-      "  ◇◇◇◇◇  ",
-      "   ╲◇◇╱   "
-    ]
-  },
-  {
-    name: "Olympic Stadium",
-    art: [
-      "      ╱│  ",
-      "     ╱ │  ",
-      "    ╱  │  ",
-      "   ╱╲  │  ",
-      "  ╱  ╲ │  ",
-      " ◢◣ ◢◣◣│  "
-    ]
-  },
-  {
-    name: "Place des Arts",
-    art: [
-      "▀▀▀▀▀▀▀▀▀▀",
-      "█PLACE   █",
-      "█DES ARTS█",
-      "█ ▢ ▢ ▢ ▢█",
-      "█ ▢ ▢ ▢ ▢█",
-      "▔▔▔▔▔▔▔▔▔▔"
-    ]
-  },
-  {
-    name: "Phi Centre",
-    art: [
-      "╔═══PHI══╗",
-      "║ ◉ ART ◉║",
-      "║▓▓▓▓▓▓▓▓║",
-      "║ CINEMA ║",
-      "║▓▓▓▓▓▓▓▓║",
-      "╚═══════╝"
-    ]
-  },
-  {
-    name: "Main Bistro",
-    art: [
-      "  ▁▁▁▁▁   ",
-      " │ MAIN │ ",
-      " │BISTRO│ ",
-      " │ ☕★☕ │ ",
-      " │░░░░░░│ ",
-      " └──▐▌──┘ "
-    ]
-  },
-  {
-    name: "Casa del Popolo",
-    art: [
-      "╔═CASA═╗  ",
-      "║ DEL  ║  ",
-      "║POPOLO║  ",
-      "║★ ♪ ★║  ",
-      "║▓▓▓▓▓║  ",
-      "╚══════╝  "
-    ]
-  },
-  {
-    name: "Musée d'Art Contemporain",
-    art: [
-      "▀▀▀MAC▀▀▀▀",
-      "█ ◢■◣ ◢■◣█",
-      "█ ◥■◤ ◥■◤█",
-      "█ ART    █",
-      "█CONTEMPO█",
-      "▔▔▔▔▔▔▔▔▔▔"
-    ]
-  },
-  {
-    name: "SAT Societé",
-    art: [
-      "╭{     )─╮",
-      "╭─SAT───╮ ",
-      "│◉AUDIO◉│ ",
-      "│VISUAL │ ",
-      "│▓▓▓▓▓▓▓│ ",
-      "│░IMMR░░│ ",
-      "╰───────╯ "
-    ]
-  },
-  {
-    name: "Tam Tams",
-    art: [
-      "  ♪ ☼ ♪   ",
-      " ○ ● ○ ●  ",
-      "  TAM     ",
-      "  TAMS    ",
-      " ● ○ ● ○  ",
-      "  ♫ ☼ ♫   "
-    ]
-  },
-  {
-    name: "Wilensky's",
-    art: [
-      "╔WILENSKY╗",
-      "║ LIGHT  ║",
-      "║ LUNCH  ║",
-      "╚════════╝"
-    ]
-  },
-  {
-    name: "Fairmount Bagel",
-    art: [
-      "  ╱▔▔▔╲   ",
-      " │FAIR  │ ",
-      " │MOUNT │ ",
-      " │ ◯ ◯  │ ",
-      " │BAGELS│ ",
-      " ╰─────╯  "
-    ]
-  },
-  {
-    name: "Casa d'Italia",
-    art: [
-      "╔═CASA═╗  ",
-      "║D'ITALIA║",
-      "║ ★ ★ ★ ║",
-      "║▓▓▓▓▓▓▓║",
-      "║CULTURA║",
-      "╚═══════╝"
-    ]
-  },
-  {
-    name: "Greenroom",
-    art: [
-      "╭─GREEN──╮",
-      "│ ROOM   │",
-      "│ ♪ ★ ♫  │",
-      "╰────────╯"
-    ]
-  },
-  {
-    name: "McCord Museum",
-    art: [
-      "▀McCORD▀▀▀",
-      "█        █",
-      "█ ◢■◣◢■◣ █",
-      "▔▔▔▔▔▔▔▔▔▔"
-    ]
-  },
-  {
-    name: "Quai des Brumes",
-    art: [
-      "╔═QUAI══╗ ",
-      "║ DES   ║ ",
-      "║BRUMES ║ ",
-      "╚═══════╝ "
-    ]
-  },
-  {
-    name: "Cabaret Mile End",
-    art: [
-      "▁▁CABARET▁",
-      "│ MILE   │",
-      "│  END   │",
-      "│▓STAGE▓▓│",
-      "└─────────┘"
-    ]
-  },
-  {
-    name: "Foufounes Électriques",
-    art: [
-      "╔FOUFOU═╗ ",
-      "║NES    ║ ",
-      "║ELEC   ║ ",
-      "║TRIQUES║ ",
-      "║★♫PUNK♫║ ",
-      "╚═══════╝ "
-    ]
-  },
-  {
-    name: "Le Dépanneur Café",
-    art: [
-      "╭DEPAN──╮ ",
-      "│ NEUR  │ ",
-      "│ CAFE  │ ",
-      "│ ☕ ◉  │ ",
-      "│░RESTO░│ ",
-      "╰───────╯ "
-    ]
-  },
-  {
-    name: "Drawn & Quarterly",
-    art: [
-      "╔DRAWN═╗  ",
-      "║  &   ║  ",
-      "║QRTLY ║  ",
-      "║ ◢■◣  ║  ",
-      "║BOOKS ║  ",
-      "╚══════╝  "
-    ]
-  },
-  {
-    name: "L'Escalier",
-    art: [
-      "╭L'ESCA─╮ ",
-      "│ LIER  │ ",
-      "│ ♪ ★ ♫ │ ",
-      "╰───────╯ "
-    ]
-  },
-  {
-    name: "Cinéma du Parc",
-    art: [
-      "▀▀CINEMA▀▀",
-      "█ DU    █ ",
-      "█ PARC  █ ",
-      "█ ◢▓▓◣  █ ",
-      "█ ◥▓▓◤  █ ",
-      "▔▔▔▔▔▔▔▔▔▔"
-    ]
-  },
-  {
-    name: "Croissanterie Figaro",
-    art: [
-      "  ╱▔▔▔╲   ",
-      " │CROIS │ ",
-      " │SANTE │ ",
-      " │FIGARO│ ",
-      " │◯☕◯☕│ ",
-      " ╰──────╯ "
-    ]
-  },
-  {
-    name: "Barraca",
-    art: [
-      "╭BARRACA╮ ",
-      "│ RHUMBA│ ",
-      "╰────────╯"
-    ]
-  },
-  {
-    name: "Espace pour la vie",
-    art: [
-      "  ╱▲╲ ◉   ",
-      " │ESPACE│ ",
-      " │ POUR │ ",
-      " │ LA   │ ",
-      " │ VIE ☼│ ",
-      " └──────┘ "
-    ]
-  },
-  {
-    name: "Café Olimpico",
-    art: [
-      "╭OLIMPICO╮",
-      "│ESPRESSO│",
-      "│ CAFFE  │",
-      "│░1970░░ │",
-      "╰────────╯"
-    ]
-  },
-  {
-    name: "Cinéma Beaubien",
-    art: [
-      "╔CINEMA═╗ ",
-      "║BEAUBIEN║",
-      "║ ◢▓▓◣  ║ ",
-      "║ ◥▓▓◤  ║ ",
-      "║ 1938  ║ ",
-      "╚═══════╝ "
-    ]
-  },
-  {
-    name: "La Vitrola",
-    art: [
-      "╭LA─────╮ ",
-      "│VITROLA│ ",
-      "╰────────╯"
-    ]
-  },
-  {
-    name: "Palais Royale",
-    art: [
-      "▀PALAIS▀▀▀",
-      "█ ROYALE █",
-      "█ RESTO  █",
-      "▔▔▔▔▔▔▔▔▔▔"
-    ]
-  },
-  {
-    name: "Sala Rossa",
-    art: [
-      "╭SALA───╮ ",
-      "│ ROSSA │ ",
-      "│ ♪ ★ ♫ │ ",
-      "╰────────╯"
-    ]
-  },
-  {
-    name: "Notre-Dame Basilica",
-    art: [
-      "   ╱▲╲    ",
-      "  ╱▲▲╲    ",
-      " ╱NOTRE╲  ",
-      "│  DAME  │",
-      "│ ★ ✦ ★ │",
-      "└────────┘"
-    ]
-  },
-  {
-    name: "Café dei Campi",
-    art: [
-      "╭DEI────╮ ",
-      "│ CAMPI │ ",
-      "│ CAFFE │ ",
-      "│ ☕ ◉  │ ",
-      "╰───────╯ "
-    ]
-  },
-  {
-    name: "Arepera du Plateau",
-    art: [
-      "╭AREPERA╮ ",
-      "│ ◢■◣   │ ",
-      "╰────────╯"
-    ]
-  },
-  {
-    name: "Leonard Cohen House",
-    art: [
-      "  ▁▁▁▁▁   ",
-      " │ 5244 │ ",
-      " │ BLVD │ ",
-      " │★POET★│ ",
-      " └───────┘ "
-    ]
-  },
-  {
-    name: "Giant Ring",
-    art: [
-      "   ◢◣◣    ",
-      "  ◢   ◣   ",
-      " ◢ RING◣  ",
-      " ◥     ◤  ",
-      "  ◥   ◤   ",
-      "   ◥◤◤    "
-    ]
-  },
-  {
-    name: "Parquette",
-    art: [
-      "╭PAR___╮  ",
-      "│ QUET │ ",
-      "│ ★ ☕ ★│ ",
-      "│░.  E░░│ ",
-      "╰────────╯"
-    ]
-  },
-  {
-    name: "Café Orr",
-    art: [
-      "╭──ORR──╮ ",
-      "│ CAFE  │ ",
-      "│ ☕☕☕ │ ",
-      "╰────────╯"
-    ]
-  },
-  {
-    name: "Parc Laurier",
-    art: [
-      "  ☼ ◉ ☼   ",
-      " ░PARC░   ",
-      "░LAURIER░ ",
-      " ░POOL░   ",
-      "  ░░░░░   ",
-      "  ◉ ☼ ◉   "
-    ]
-  },
-  {
-    name: "Frédéric-Back Park",
-    art: [
-      "  ☼ ◉ ☼   ",
-      " ░FRED░   ",
-      "░░BACK░░  ",
-      " ░ORBS░   ",
-      "  ░░░░░   ",
-      "  ◉ ☼ ◉   "
-    ]
-  },
-  {
-    name: "Parc Jeanne-Mance",
-    art: [
-      "  ☼ ◉ ☼   ",
-      " ░JEANNE░ ",
-      "░░MANCE░░ ",
-      " ░PARC░   ",
-      "  ◉ ☼ ◉   "
-    ]
-  },
-  {
-    name: "Parc Jarry",
-    art: [
-      "  ☼ ◉ ☼   ",
-      " ░░PARC░░ ",
-      "░░JARRY░░ ",
-      "  ░░░░░   ",
-      "  ◉ ☼ ◉   "
-    ]
-  },
-  {
-    name: "Renaissance",
-    art: [
-      "╔RENAIS═╗ ",
-      "║ SANCE ║ ",
-      "║ THRIFT║ ",
-      "║ BOOKS ║ ",
-      "╚═══════╝ "
-    ]
-  },
-  {
-    name: "Les Petits Frères",
-    art: [
-      "╭LES────╮ ",
-      "│PETITS │ ",
-      "│FRERES │ ",
-      "│ ★ ♥ ★ │ ",
-      "╰────────╯"
-    ]
-  },
-  {
-    name: "Westmount Greenhouse",
-    art: [
-      "  ╱▔▔▔╲   ",
-      " ╱ ☼ ◉ ╲  ",
-      "│WESTMOU│ ",
-      "│ GREEN │ ",
-      "│░HOUSE░│ ",
-      "╰────────╯"
-    ]
-  },
-  {
-    name: "Chatime",
-    art: [
-      "╭CHATIME╮ ",
-      "│ BUBBLE│ ",
-      "│  TEA  │ ",
-      "│ ◉ ◉ ◉ │ ",
-      "│░BOBA░░│ ",
-      "╰────────╯"
-    ]
-  },
-  {
-    name: "Marché PA",
-    art: [
-      "╔MARCHE═╗ ",
-      "║  PA   ║ ",
-      "║ ◢■◣   ║ ",
-      "║GROCERY║ ",
-      "╚═══════╝ "
-    ]
-  },
-  {
-    name: "Samosa King",
-    art: [
-      "╭SAMOSA─╮ ",
-      "│ KING  │ ",
-      "│  $1   │ ",
-      "│ ◢■◣   │ ",
-      "│░SPICE░│ ",
-      "╰────────╯"
-    ]
-  },
-  {
-    name: "Gnocchi $5",
-    art: [
-      "╭GNOCCHI╮ ",
-      "│  $5   │ ",
-      "│ ◢■◣   │ ",
-      "╰────────╯"
-    ]
-  },
-  {
-    name: "St-Viateur Bagel",
-    art: [
-      "  ╱▔▔▔╲   ",
-      " │ST-VIA│ ",
-      " │ TEUR │ ",
-      " │ ◯ ◯  │ ",
-      " │BAGELS│ ",
-      " ╰──────╯ "
-    ]
-  },
-  {
-    name: "Van Horne Underpass",
-    art: [
-      "  ▀▀▀▀▀   ",
-      " │VAN   │ ",
-      "╱│HORNE│╲ ",
-      "││UNDER││ ",
-      "││░PASS░││",
-      "╰┴──────┴╯"
-    ]
-  }
+      const exampleBuildings = [
+        {
+          name: "Habitat 67",
+          art: ["  ▓▓  ▓▓  ", " ▓▓▓ ▓▓▓  ", "▓▓▓ 67 ▓▓▓", " ▓▓▓▓▓▓▓▓ ", "▓▓▓ ▓▓▓▓▓ ", " ▓▓  ▓▓ ▓▓"],
+        },
+        {
+          name: "Biosphere",
+          art: ["   ╱◇◇╲   ", "  ◇◇◇◇◇  ", " ◇◇◇◇◇◇◇ ", " ◇◇◇◇◇◇◇ ", "  ◇◇◇◇◇  ", "   ╲◇◇╱   "],
+        },
+        {
+          name: "Olympic Stadium",
+          art: ["      ╱│  ", "     ╱ │  ", "    ╱  │  ", "   ╱╲  │  ", "  ╱  ╲ │  ", " ◢◣ ◢◣◣│  "],
+        },
+        {
+          name: "Place des Arts",
+          art: ["▀▀▀▀▀▀▀▀▀▀", "█PLACE   █", "█DES ARTS█", "█ ▢ ▢ ▢ ▢█", "█ ▢ ▢ ▢ ▢█", "▔▔▔▔▔▔▔▔▔▔"],
+        },
+        {
+          name: "Phi Centre",
+          art: ["╔═══PHI══╗", "║ ◉ ART ◉║", "║▓▓▓▓▓▓▓▓║", "║ CINEMA ║", "║▓▓▓▓▓▓▓▓║", "╚═══════╝"],
+        },
+        {
+          name: "LE_CRAYON_MONTRÉALAIS",
+          artist: "Aurélie",
+          art: [" ⚛ ⚛ ", " ╔◢◣╗ ", " ⊡⊡⊡⊡ ", " ╚▒▒╝ ", " ▒▒ ", " ▒▒ "],
+        },
+        {
+          name: "Main Bistro",
+          art: ["  ▁▁▁▁▁   ", " │ MAIN │ ", " │BISTRO│ ", " │ ☕★☕ │ ", " │░░░░░░│ ", " └──▐▌──┘ "],
+        },
+        {
+          name: "Casa del Popolo",
+          art: ["╔═CASA═╗  ", "║ DEL  ║  ", "║POPOLO║  ", "║★ ♪ ★║  ", "║▓▓▓▓▓║  ", "╚══════╝  "],
+        },
+        {
+          name: "Musée d'Art Contemporain",
+          art: ["▀▀▀MAC▀▀▀▀", "█ ◢■◣ ◢■◣█", "█ ◥■◤ ◥■◤█", "█ ART    █", "█CONTEMPO█", "▔▔▔▔▔▔▔▔▔▔"],
+        },
+        {
+          name: "SAT Societé",
+          art: ["╭{     )─╮", "╭─SAT───╮ ", "│◉AUDIO◉│ ", "│VISUAL │ ", "│▓▓▓▓▓▓▓│ ", "│░IMMR░░│ ", "╰───────╯ "],
+        },
+        {
+          name: "Tam Tams",
+          art: ["  ♪ ☼ ♪   ", " ○ ● ○ ●  ", "  TAM     ", "  TAMS    ", " ● ○ ● ○  ", "  ♫ ☼ ♫   "],
+        },
+        {
+          name: "Wilensky's",
+          art: ["╔WILENSKY╗", "║ LIGHT  ║", "║ LUNCH  ║", "╚════════╝"],
+        },
+        {
+          name: "Fairmount Bagel",
+          art: ["  ╱▔▔▔╲   ", " │FAIR  │ ", " │MOUNT │ ", " │ ◯ ◯  │ ", " │BAGELS│ ", " ╰─────╯  "],
+        },
+        {
+          name: "Casa d'Italia",
+          art: ["╔═CASA═╗  ", "║D'ITALIA║", "║ ★ ★ ★ ║", "║▓▓▓▓▓▓▓║", "║CULTURA║", "╚═══════╝"],
+        },
+        {
+          name: "Greenroom",
+          art: ["╭─GREEN──╮", "│ ROOM   │", "│ ♪ ★ ♫  │", "╰────────╯"],
+        },
+        {
+          name: "McCord Museum",
+          art: ["▀McCORD▀▀▀", "█        █", "█ ◢■◣◢■◣ █", "▔▔▔▔▔▔▔▔▔▔"],
+        },
+        {
+          name: "Quai des Brumes",
+          art: ["╔═QUAI══╗ ", "║ DES   ║ ", "║BRUMES ║ ", "╚═══════╝ "],
+        },
+        {
+          name: "Cabaret Mile End",
+          art: ["▁▁CABARET▁", "│ MILE   │", "│  END   │", "│▓STAGE▓▓│", "└─────────┘"],
+        },
+        {
+          name: "Foufounes Électriques",
+          art: ["╔FOUFOU═╗ ", "║NES    ║ ", "║ELEC   ║ ", "║TRIQUES║ ", "║★♫PUNK♫║ ", "╚═══════╝ "],
+        },
+        {
+          name: "Le Dépanneur Café",
+          art: ["╭DEPAN──╮ ", "│ NEUR  │ ", "│ CAFE  │ ", "│ ☕ ◉  │ ", "│░RESTO░│ ", "╰───────╯ "],
+        },
+        {
+          name: "Drawn & Quarterly",
+          art: ["╔DRAWN═╗  ", "║  &   ║  ", "║QRTLY ║  ", "║ ◢■◣  ║  ", "║BOOKS ║  ", "╚══════╝  "],
+        },
+        {
+          name: "L'Escalier",
+          art: ["╭L'ESCA─╮ ", "│ LIER  │ ", "│ ♪ ★ ♫ │ ", "╰───────╯ "],
+        },
+        {
+          name: "Cinéma du Parc",
+          art: ["▀▀CINEMA▀▀", "█ DU    █ ", "█ PARC  █ ", "█ ◢▓▓◣  █ ", "█ ◥▓▓◤  █ ", "▔▔▔▔▔▔▔▔▔▔"],
+        },
+        {
+          name: "Croissanterie Figaro",
+          art: ["  ╱▔▔▔╲   ", " │CROIS │ ", " │SANTE │ ", " │FIGARO│ ", " │◯☕◯☕│ ", " ╰──────╯ "],
+        },
+        {
+          name: "Barraca",
+          art: ["╭BARRACA╮ ", "│ RHUMBA│ ", "╰────────╯"],
+        },
+        {
+          name: "Espace pour la vie",
+          art: ["  ╱▲╲ ◉   ", " │ESPACE│ ", " │ POUR │ ", " │ LA   │ ", " │ VIE ☼│ ", " └──────┘ "],
+        },
+        {
+          name: "Café Olimpico",
+          art: ["╭OLIMPICO╮", "│ESPRESSO│", "│ CAFFE  │", "│░1970░░ │", "╰────────╯"],
+        },
+        {
+          name: "Cinéma Beaubien",
+          art: ["╔CINEMA═╗ ", "║BEAUBIEN║", "║ ◢▓▓◣  ║ ", "║ ◥▓▓◤  ║ ", "║ 1938  ║ ", "╚═══════╝ "],
+        },
+        {
+          name: "La Vitrola",
+          art: ["╭LA─────╮ ", "│VITROLA│ ", "╰────────╯"],
+        },
+        {
+          name: "Palais Royale",
+          art: ["▀PALAIS▀▀▀", "█ ROYALE █", "█ RESTO  █", "▔▔▔▔▔▔▔▔▔▔"],
+        },
+        {
+          name: "Sala Rossa",
+          art: ["╭SALA───╮ ", "│ ROSSA │ ", "│ ♪ ★ ♫ │ ", "╰────────╯"],
+        },
+        {
+          name: "Notre-Dame Basilica",
+          art: ["   ╱▲╲    ", "  ╱▲▲╲    ", " ╱NOTRE╲  ", "│  DAME  │", "│ ★ ✦ ★ │", "└────────┘"],
+        },
+        {
+          name: "Café dei Campi",
+          art: ["╭DEI────╮ ", "│ CAMPI │ ", "│ CAFFE │ ", "│ ☕ ◉  │ ", "╰───────╯ "],
+        },
+        {
+          name: "Arepera du Plateau",
+          art: ["╭AREPERA╮ ", "│ ◢■◣   │ ", "╰────────╯"],
+        },
+        {
+          name: "Leonard Cohen House",
+          art: ["  ▁▁▁▁▁   ", " │ 5244 │ ", " │ BLVD │ ", " │★POET★│ ", " └───────┘ "],
+        },
+        {
+          name: "Giant Ring",
+          art: ["   ◢◣◣    ", "  ◢   ◣   ", " ◢ RING◣  ", " ◥     ◤  ", "  ◥   ◤   ", "   ◥◤◤    "],
+        },
+        {
+          name: "Parquette",
+          art: ["╭PAR___╮  ", "│ QUET │ ", "│ ★ ☕ ★│ ", "│░.  E░░│ ", "╰────────╯"],
+        },
+        {
+          name: "Café Orr",
+          art: ["╭──ORR──╮ ", "│ CAFE  │ ", "│ ☕☕☕ │ ", "╰────────╯"],
+        },
+        {
+          name: "Parc Laurier",
+          art: ["  ☼ ◉ ☼   ", " ░PARC░   ", "░LAURIER░ ", " ░POOL░   ", "  ░░░░░   ", "  ◉ ☼ ◉   "],
+        },
+        {
+          name: "Frédéric-Back Park",
+          art: ["  ☼ ◉ ☼   ", " ░FRED░   ", "░░BACK░░  ", " ░ORBS░   ", "  ░░░░░   ", "  ◉ ☼ ◉   "],
+        },
+        {
+          name: "Parc Jeanne-Mance",
+          art: ["  ☼ ◉ ☼   ", " ░JEANNE░ ", "░░MANCE░░ ", " ░PARC░   ", "  ◉ ☼ ◉   "],
+        },
+        {
+          name: "Parc Jarry",
+          art: ["  ☼ ◉ ☼   ", " ░░PARC░░ ", "░░JARRY░░ ", "  ░░░░░   ", "  ◉ ☼ ◉   "],
+        },
+        {
+          name: "Renaissance",
+          art: ["╔RENAIS═╗ ", "║ SANCE ║ ", "║ THRIFT║ ", "║ BOOKS ║ ", "╚═══════╝ "],
+        },
+        {
+          name: "Les Petits Frères",
+          art: ["╭LES────╮ ", "│PETITS │ ", "│FRERES │ ", "│ ★ ♥ ★ │ ", "╰────────╯"],
+        },
+        {
+          name: "Westmount Greenhouse",
+          art: ["  ╱▔▔▔╲   ", " ╱ ☼ ◉ ╲  ", "│WESTMOU│ ", "│ GREEN │ ", "│░HOUSE░│ ", "╰────────╯"],
+        },
+        {
+          name: "Chatime",
+          art: ["╭CHATIME╮ ", "│ BUBBLE│ ", "│  TEA  │ ", "│ ◉ ◉ ◉ │ ", "│░BOBA░░│ ", "╰────────╯"],
+        },
+        {
+          name: "Marché PA",
+          art: ["╔MARCHE═╗ ", "║  PA   ║ ", "║ ◢■◣   ║ ", "║GROCERY║ ", "╚═══════╝ "],
+        },
+        {
+          name: "Samosa King",
+          art: ["╭SAMOSA─╮ ", "│ KING  │ ", "│  $1   │ ", "│ ◢■◣   │ ", "│░SPICE░│ ", "╰────────╯"],
+        },
+        {
+          name: "Gnocchi $5",
+          art: ["╭GNOCCHI╮ ", "│  $5   │ ", "│ ◢■◣   │ ", "╰────────╯"],
+        },
+        {
+          name: "St-Viateur Bagel",
+          art: ["  ╱▔▔▔╲   ", " │ST-VIA│ ", " │ TEUR │ ", " │ ◯ ◯  │ ", " │BAGELS│ ", " ╰──────╯ "],
+        },
+        {
+          name: "Van Horne Underpass",
+          art: ["  ▀▀▀▀▀   ", " │VAN   │ ", "╱│HORNE│╲ ", "││UNDER││ ", "││░PASS░││", "╰┴──────┴╯"],
+        },
+      ];
 
-];
-      
-
- const paletteCategories = [
-  {
-    name: "Buildings",
-    chars: [
-      "█",
-      "▓",
-      "▒",
-      "░",
-      "│",
-      "─",
-      "┌",
-      "┐",
-      "└",
-      "┘",
-      "├",
-      "┤",
-      "┬",
-      "┴",
-      "┼",
-      "║",
-      "═",
-      "╔",
-      "╗",
-      "╚",
-      "╝",
-      "╠",
-      "╣",
-      "╦",
-      "╩",
-      "╬",
-      "▀",
-      "▄",
-      "■",
-      "□",
-      "▪",
-      "▫",
-      "▁",
-      "▂",
-      "▃",
-      "▅",
-      "▆",
-      "▇",
-      "▉",
-      "▊",
-      "▋",
-      "▌",
-      "▍",
-      "▎",
-      "▏",
-      "▐",
-      "▔",
-      "▕",
-    ],
-  },
-  {
-    name: "Windows & Doors",
-    chars: [
-      "◼",
-      "◻",
-      "◾",
-      "◽",
-      "▢",
-      "▣",
-      "▤",
-      "▥",
-      "▦",
-      "▧",
-      "▨",
-      "▩",
-      "⊞",
-      "⊟",
-      "⊠",
-      "⊡",
-      "∥",
-      "≑",
-      "≜",
-      "▬",
-      "▭",
-      "▮",
-      "▯",
-      "▰",
-      "▱",
-    ],
-  },
-  {
-    name: "Roofs & Details",
-    chars: [
-      "◢",
-      "◣",
-      "◤",
-      "◥",
-      "△",
-      "▲",
-      "▽",
-      "▼",
-      "◊",
-      "◇",
-      "⋰",
-      "⋱",
-      "╱",
-      "╲",
-      "╳",
-      "⌒",
-      "⌓",
-    ],
-  },
-  {
-    name: "Decorative",
-    chars: [
-      "★",
-      "☆",
-      "✦",
-      "✧",
-      "✩",
-      "✪",
-      "✫",
-      "✬",
-      "✭",
-      "✮",
-      "✯",
-      "⁂",
-      "❀",
-      "❁",
-      "❂",
-      "❃",
-      "⚘",
-      "○",
-      "●",
-      "◐",
-      "◑",
-      "⚐",
-      "⚑",
-      "⚙",
-      "⚛",
-      "⚜",
-      "⛨",
-      "⛩",
-      "⛫",
-      "⛬",
-    ],
-  },
-  {
-    name: "Lines & Corners",
-    chars: [
-      "─",
-      "━",
-      "│",
-      "┃",
-      "┌",
-      "┍",
-      "┎",
-      "┏",
-      "┐",
-      "┑",
-      "┒",
-      "┓",
-      "└",
-      "┕",
-      "┖",
-      "┗",
-      "┘",
-      "┙",
-      "┚",
-      "┛",
-      "├",
-      "┝",
-      "┞",
-      "┟",
-      "┠",
-      "┡",
-      "┢",
-      "┣",
-      "┤",
-      "┥",
-      "┦",
-      "┧",
-      "┨",
-      "┩",
-      "┪",
-      "┫",
-      "┬",
-      "┭",
-      "┮",
-      "┯",
-      "┰",
-      "┱",
-      "┲",
-      "┳",
-      "┴",
-      "┵",
-      "┶",
-      "┷",
-      "┸",
-      "┹",
-      "┺",
-      "┻",
-      "┼",
-      "┽",
-      "┾",
-      "┿",
-      "╀",
-      "╁",
-      "╂",
-      "╃",
-      "╄",
-      "╅",
-      "╆",
-      "╇",
-      "╈",
-      "╉",
-      "╊",
-      "╋",
-      "╌",
-      "╍",
-      "╎",
-      "╏",
-      "┄",
-      "┅",
-      "┆",
-      "┇",
-      "┈",
-      "┉",
-      "┊",
-      "┋",
-      "╼",
-      "╽",
-      "╾",
-      "╿",
-    ],
-  },
-  {
-    name: "Double Lines",
-    chars: [
-      "═",
-      "║",
-      "╒",
-      "╓",
-      "╔",
-      "╕",
-      "╖",
-      "╗",
-      "╘",
-      "╙",
-      "╚",
-      "╛",
-      "╜",
-      "╝",
-      "╞",
-      "╟",
-      "╠",
-      "╡",
-      "╢",
-      "╣",
-      "╤",
-      "╥",
-      "╦",
-      "╧",
-      "╨",
-      "╩",
-      "╪",
-      "╫",
-      "╬",
-    ],
-  },
-  {
-    name: "Curved & Round",
-    chars: [
-      "╭",
-      "╮",
-      "╯",
-      "╰",
-      "⌜",
-      "⌝",
-      "⌞",
-      "⌟",
-      "⌈",
-      "⌉",
-      "⌊",
-      "⌋",
-      "〈",
-      "〉",
-      "《",
-      "》",
-      "「",
-      "」",
-      "『",
-      "』",
-      "(",
-      ")",
-      "⟨",
-      "⟩",
-      "⦅",
-      "⦆",
-    ],
-  },
-  {
-    name: "Patterns",
-    chars: [
-      "░",
-      "▒",
-      "▓",
-      "█",
-      "▀",
-      "▄",
-      "▌",
-      "▐",
-      "▖",
-      "▗",
-      "▘",
-      "▙",
-      "▚",
-      "▛",
-      "▜",
-      "▝",
-      "▞",
-      "▟",
-      "⬒",
-      "⬓",
-      "⬔",
-      "⬕",
-      "⠀",
-      "⠁",
-      "⠂",
-      "⠃",
-      "⠄",
-      "⠅",
-      "⠆",
-      "⠇",
-      "⠈",
-      "⠉",
-      "⠊",
-      "⠋",
-      "⠌",
-      "⠍",
-      "⠎",
-      "⠏",
-      "⠐",
-      "⠑",
-      "⠒",
-      "⠓",
-      "⠔",
-      "⠕",
-      "⠖",
-      "⠗",
-      "⠘",
-      "⠙",
-      "⠚",
-      "⠛",
-      "⠜",
-      "⠝",
-      "⠞",
-      "⠟",
-    ],
-  },
-  {
-    name: "Circles & Dots",
-    chars: [
-      "○",
-      "●",
-      "◐",
-      "◑",
-      "⚬",
-      "⚭",
-      "⦾",
-      "⦿",
-      "⧂",
-      "⧃",
-      "◌",
-      "◍",
-      "◔",
-      "◕",
-      "◖",
-      "◗",
-      "◘",
-      "◙",
-      "◚",
-      "◛",
-      "◜",
-      "◝",
-      "◞",
-      "◟",
-      "◠",
-      "◡",
-      "◯",
-      "⦁",
-      "∘",
-    ],
-  },
-  {
-    name: "Triangles & Arrows",
-    chars: [
-      "△",
-      "▲",
-      "▽",
-      "▼",
-      "◄",
-      "◅",
-      "►",
-      "▻",
-      "▴",
-      "▵",
-      "▸",
-      "▹",
-      "▾",
-      "▿",
-      "◂",
-      "◃",
-      "▷",
-      "◁",
-      "⯅",
-      "⯆",
-      "⯇",
-      "⯈",
-    ],
-  },
-  {
-    name: "Symbols",
-    chars: [
-      "~",
-      "≈",
-      "≋",
-      "∿",
-      "〜",
-      "⌇",
-      "⌠",
-      "⌡",
-      "⌢",
-      "⌣",
-      "⌯",
-      "⍝",
-      "⍞",
-      "⍟",
-      "◄",
-      "►",
-      "⳺",
-      "⳻",
-      "o",
-      "O",
-      "°",
-      "⚬",
-      "⚭",
-      "⌘",
-      "⌥",
-      "⎋",
-      "⌫",
-      "⌦",
-      "␣",
-      "⏎",
-      "⏏",
-      "⎈",
-      "⎆",
-      "⎇",
-      "⌤",
-      "⌧",
-      "⚠",
-      "⚡",
-      "☢",
-      "☣",
-      "⚕",
-    ],
-  },
-  {
-    name: "Letters (A-Z)",
-    chars: [
-      "A",
-      "B",
-      "C",
-      "D",
-      "E",
-      "F",
-      "G",
-      "H",
-      "I",
-      "J",
-      "K",
-      "L",
-      "M",
-      "N",
-      "O",
-      "P",
-      "Q",
-      "R",
-      "S",
-      "T",
-      "U",
-      "V",
-      "W",
-      "X",
-      "Y",
-      "Z",
-    ],
-  },
-  {
-    name: "Numbers (0-9)",
-    chars: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
-  },
-  {
-    name: "Basic",
-    chars: [
-      "#",
-      "@",
-      "*",
-      "+",
-      "=",
-      "-",
-      "_",
-      "|",
-      "/",
-      "\\",
-      "^",
-      "v",
-      "<",
-      ">",
-      ".",
-      ",",
-      ":",
-      ";",
-      "!",
-      "?",
-      "~",
-      "[",
-      "]",
-      "{",
-      "}",
-    ],
-  },
-];
+      const paletteCategories = [
+        {
+          name: "Buildings",
+          chars: [
+            "█",
+            "▓",
+            "▒",
+            "░",
+            "│",
+            "─",
+            "┌",
+            "┐",
+            "└",
+            "┘",
+            "├",
+            "┤",
+            "┬",
+            "┴",
+            "┼",
+            "║",
+            "═",
+            "╔",
+            "╗",
+            "╚",
+            "╝",
+            "╠",
+            "╣",
+            "╦",
+            "╩",
+            "╬",
+            "▀",
+            "▄",
+            "■",
+            "□",
+            "▪",
+            "▫",
+            "▁",
+            "▂",
+            "▃",
+            "▅",
+            "▆",
+            "▇",
+            "▉",
+            "▊",
+            "▋",
+            "▌",
+            "▍",
+            "▎",
+            "▏",
+            "▐",
+            "▔",
+            "▕",
+          ],
+        },
+        {
+          name: "Windows & Doors",
+          chars: ["◼", "◻", "◾", "◽", "▢", "▣", "▤", "▥", "▦", "▧", "▨", "▩", "⊞", "⊟", "⊠", "⊡", "∥", "≑", "≜", "▬", "▭", "▮", "▯", "▰", "▱"],
+        },
+        {
+          name: "Roofs & Details",
+          chars: ["◢", "◣", "◤", "◥", "△", "▲", "▽", "▼", "◊", "◇", "⋰", "⋱", "╱", "╲", "╳", "⌒", "⌓"],
+        },
+        {
+          name: "Decorative",
+          chars: [
+            "★",
+            "☆",
+            "✦",
+            "✧",
+            "✩",
+            "✪",
+            "✫",
+            "✬",
+            "✭",
+            "✮",
+            "✯",
+            "⁂",
+            "❀",
+            "❁",
+            "❂",
+            "❃",
+            "⚘",
+            "○",
+            "●",
+            "◐",
+            "◑",
+            "⚐",
+            "⚑",
+            "⚙",
+            "⚛",
+            "⚜",
+            "⛨",
+            "⛩",
+            "⛫",
+            "⛬",
+          ],
+        },
+        {
+          name: "Lines & Corners",
+          chars: [
+            "─",
+            "━",
+            "│",
+            "┃",
+            "┌",
+            "┍",
+            "┎",
+            "┏",
+            "┐",
+            "┑",
+            "┒",
+            "┓",
+            "└",
+            "┕",
+            "┖",
+            "┗",
+            "┘",
+            "┙",
+            "┚",
+            "┛",
+            "├",
+            "┝",
+            "┞",
+            "┟",
+            "┠",
+            "┡",
+            "┢",
+            "┣",
+            "┤",
+            "┥",
+            "┦",
+            "┧",
+            "┨",
+            "┩",
+            "┪",
+            "┫",
+            "┬",
+            "┭",
+            "┮",
+            "┯",
+            "┰",
+            "┱",
+            "┲",
+            "┳",
+            "┴",
+            "┵",
+            "┶",
+            "┷",
+            "┸",
+            "┹",
+            "┺",
+            "┻",
+            "┼",
+            "┽",
+            "┾",
+            "┿",
+            "╀",
+            "╁",
+            "╂",
+            "╃",
+            "╄",
+            "╅",
+            "╆",
+            "╇",
+            "╈",
+            "╉",
+            "╊",
+            "╋",
+            "╌",
+            "╍",
+            "╎",
+            "╏",
+            "┄",
+            "┅",
+            "┆",
+            "┇",
+            "┈",
+            "┉",
+            "┊",
+            "┋",
+            "╼",
+            "╽",
+            "╾",
+            "╿",
+          ],
+        },
+        {
+          name: "Double Lines",
+          chars: [
+            "═",
+            "║",
+            "╒",
+            "╓",
+            "╔",
+            "╕",
+            "╖",
+            "╗",
+            "╘",
+            "╙",
+            "╚",
+            "╛",
+            "╜",
+            "╝",
+            "╞",
+            "╟",
+            "╠",
+            "╡",
+            "╢",
+            "╣",
+            "╤",
+            "╥",
+            "╦",
+            "╧",
+            "╨",
+            "╩",
+            "╪",
+            "╫",
+            "╬",
+          ],
+        },
+        {
+          name: "Curved & Round",
+          chars: [
+            "╭",
+            "╮",
+            "╯",
+            "╰",
+            "⌜",
+            "⌝",
+            "⌞",
+            "⌟",
+            "⌈",
+            "⌉",
+            "⌊",
+            "⌋",
+            "〈",
+            "〉",
+            "《",
+            "》",
+            "「",
+            "」",
+            "『",
+            "』",
+            "(",
+            ")",
+            "⟨",
+            "⟩",
+            "⦅",
+            "⦆",
+          ],
+        },
+        {
+          name: "Patterns",
+          chars: [
+            "░",
+            "▒",
+            "▓",
+            "█",
+            "▀",
+            "▄",
+            "▌",
+            "▐",
+            "▖",
+            "▗",
+            "▘",
+            "▙",
+            "▚",
+            "▛",
+            "▜",
+            "▝",
+            "▞",
+            "▟",
+            "⬒",
+            "⬓",
+            "⬔",
+            "⬕",
+            "⠀",
+            "⠁",
+            "⠂",
+            "⠃",
+            "⠄",
+            "⠅",
+            "⠆",
+            "⠇",
+            "⠈",
+            "⠉",
+            "⠊",
+            "⠋",
+            "⠌",
+            "⠍",
+            "⠎",
+            "⠏",
+            "⠐",
+            "⠑",
+            "⠒",
+            "⠓",
+            "⠔",
+            "⠕",
+            "⠖",
+            "⠗",
+            "⠘",
+            "⠙",
+            "⠚",
+            "⠛",
+            "⠜",
+            "⠝",
+            "⠞",
+            "⠟",
+          ],
+        },
+        {
+          name: "Circles & Dots",
+          chars: [
+            "○",
+            "●",
+            "◐",
+            "◑",
+            "⚬",
+            "⚭",
+            "⦾",
+            "⦿",
+            "⧂",
+            "⧃",
+            "◌",
+            "◍",
+            "◔",
+            "◕",
+            "◖",
+            "◗",
+            "◘",
+            "◙",
+            "◚",
+            "◛",
+            "◜",
+            "◝",
+            "◞",
+            "◟",
+            "◠",
+            "◡",
+            "◯",
+            "⦁",
+            "∘",
+          ],
+        },
+        {
+          name: "Triangles & Arrows",
+          chars: ["△", "▲", "▽", "▼", "◄", "◅", "►", "▻", "▴", "▵", "▸", "▹", "▾", "▿", "◂", "◃", "▷", "◁", "⯅", "⯆", "⯇", "⯈"],
+        },
+        {
+          name: "Symbols",
+          chars: [
+            "~",
+            "≈",
+            "≋",
+            "∿",
+            "〜",
+            "⌇",
+            "⌠",
+            "⌡",
+            "⌢",
+            "⌣",
+            "⌯",
+            "⍝",
+            "⍞",
+            "⍟",
+            "◄",
+            "►",
+            "⳺",
+            "⳻",
+            "o",
+            "O",
+            "°",
+            "⚬",
+            "⚭",
+            "⌘",
+            "⌥",
+            "⎋",
+            "⌫",
+            "⌦",
+            "␣",
+            "⏎",
+            "⏏",
+            "⎈",
+            "⎆",
+            "⎇",
+            "⌤",
+            "⌧",
+            "⚠",
+            "⚡",
+            "☢",
+            "☣",
+            "⚕",
+          ],
+        },
+        {
+          name: "Letters (A-Z)",
+          chars: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
+        },
+        {
+          name: "Numbers (0-9)",
+          chars: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
+        },
+        {
+          name: "Basic",
+          chars: ["#", "@", "*", "+", "=", "-", "_", "|", "/", "\\", "^", "v", "<", ">", ".", ",", ":", ";", "!", "?", "~", "[", "]", "{", "}"],
+        },
+      ];
       function initGrid() {
         const gridElement = document.getElementById("grid");
         for (let i = 0; i < GRID_SIZE * GRID_SIZE; i++) {
@@ -1896,6 +1605,7 @@
           const title = document.createElement("div");
           title.className = "palette-title";
           title.textContent = category.name;
+          title.setAttribute("data-i18n", category.name);
           categoryDiv.appendChild(title);
 
           const charsDiv = document.createElement("div");
@@ -1986,15 +1696,15 @@
         // Pick a random example
         const randomIndex = Math.floor(Math.random() * exampleBuildings.length);
         const example = exampleBuildings[randomIndex];
-        
+
         // Clear the grid first
         grid = Array(GRID_SIZE)
           .fill()
           .map(() => Array(GRID_SIZE).fill(""));
-        
+
         // Calculate starting row for bottom alignment
         const startRow = GRID_SIZE - example.art.length;
-        
+
         // Load the example art into the grid (bottom-aligned)
         example.art.forEach((line, artRowIndex) => {
           const gridRowIndex = startRow + artRowIndex;
@@ -2004,11 +1714,11 @@
             grid[gridRowIndex][colIndex] = char === " " ? "" : char;
           }
         });
-        
+
         updateGrid();
         selectedCell = null;
         highlightCell(null);
-        showToast(`Loaded: ${example.name}! ✨`);
+        showToast(`${t("loadedExample")}${example.name}!`);
       }
 
       function clearGrid() {
@@ -2018,7 +1728,7 @@
         updateGrid();
         selectedCell = null;
         highlightCell(null);
-        showToast("Grid cleared!");
+        showToast(t("gridCleared"));
         // if (confirm('Clear your building? This cannot be undone.')) {
         // }
       }
@@ -2029,8 +1739,30 @@
 
       function addToGame() {
         // Show the modal with building preview
-        const preview = grid.map((row) => row.join("")).join("\n");
-        document.getElementById("buildingPreview").textContent = preview;
+        const previewContainer = document.getElementById("buildingPreview");
+        previewContainer.innerHTML = "";
+        previewContainer.style.display = "grid";
+        previewContainer.style.gridTemplateColumns = "repeat(10, 1fr)";
+        previewContainer.style.gap = "2px";
+        previewContainer.style.maxWidth = "450px";
+
+
+        grid.forEach((row) => {
+          row.forEach((cell) => {
+            const cellDiv = document.createElement("div");
+            cellDiv.textContent = cell;
+            cellDiv.style.background = "#120303";
+            cellDiv.style.color = "#d1feff";
+            cellDiv.style.aspectRatio = "1 / 1.5";
+            cellDiv.style.display = "flex";
+            cellDiv.style.alignItems = "center";
+            cellDiv.style.justifyContent = "center";
+            cellDiv.style.fontSize = "10px";
+            cellDiv.style.minHeight = "4px";
+            previewContainer.style.gap = "2px";
+            previewContainer.appendChild(cellDiv);
+          });
+        });
         document.getElementById("modalOverlay").classList.add("show");
 
         // Focus on the first input
@@ -2050,26 +1782,26 @@
         let artistName = document.getElementById("modalArtistName").value.trim();
 
         if (!buildingName) {
-          showToast("Please enter a building name!");
+          showToast(t("enterBuildingName"));
           document.getElementById("modalBuildingName").focus();
           return;
         }
 
         if (!artistName) {
-          showToast("Please enter your name or handle!");
+          showToast(t("enterArtistName"));
           document.getElementById("modalArtistName").focus();
           return;
         }
 
         // Check character limits
         if (buildingName.length > 30) {
-          showToast("Building name too long! Max 30 characters.");
+          showToast(t("buildingNameTooLong"));
           document.getElementById("modalBuildingName").focus();
           return;
         }
 
         if (artistName.length > 30) {
-          showToast("Artist name too long! Max 30 characters.");
+          showToast(t("artistNameTooLong"));
           document.getElementById("modalArtistName").focus();
           return;
         }
@@ -2095,7 +1827,9 @@
         const artLines = trimmedGrid.map((row) => {
           // Convert empty strings to spaces, then join
           const line = row.map((cell) => (cell === "" ? " " : cell)).join("");
-          return `            "${line}"`;
+          // Ensure line is exactly GRID_SIZE characters by padding with spaces
+          const paddedLine = line.padEnd(GRID_SIZE, " ");
+          return `            "${paddedLine}"`;
         });
 
         // Create the complete JavaScript object format
@@ -2106,6 +1840,10 @@
 ${artLines.join(",\n")}
         ]
     },`;
+
+        // Log to verify spaces are preserved
+        console.log("Formatted building object:");
+        console.log(formattedObject);
 
         // Prepare form data for Google Form submission
         const formData = new URLSearchParams();
@@ -2122,14 +1860,14 @@ ${artLines.join(",\n")}
         })
           .then(() => {
             closeModal();
-            showToast("Building submitted successfully! Thank you!");
+            showToast(t("submitSuccess"));
 
             // Optional: Clear the grid after successful submission
             // setTimeout(() => clearGrid(), 1000);
           })
           .catch((error) => {
             closeModal();
-            showToast("Submission may have failed. Please try again.");
+            showToast(t("submitFailed"));
             console.error("Submission error:", error);
           });
       }
