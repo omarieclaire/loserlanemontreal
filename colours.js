@@ -11,6 +11,13 @@ const STYLES = {
 };
 
 const COLOURS = {
+
+    BUILDINGGEN: [
+    "rgba(65, 211, 255, 1)", // Sky Blue
+    "#ff66b5d3", // Fuchsia
+    "#1effb4d1", // Mint Aqua
+
+  ],
   BUILDINGS: [
     "#FF9999", // Soft Pink
     "#99FF99", // Light Mint Green
@@ -33,6 +40,7 @@ const COLOURS = {
     "#FF9966", // Warm Peach
     "#99CCFF", // Light Sky Blue
   ],
+
 
   VEHICLES: [
     "#A07A7A", // Muted Pink

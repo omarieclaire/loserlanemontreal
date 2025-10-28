@@ -138,11 +138,8 @@
 
         .grid-container {
           background: #0a0202;
-          margin: 10px;
-          border-radius: 8px;
           /* margin-bottom: 10px; */
           box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5);
-          border: 1px solid #333;
           max-height: 60vh;
           overflow: auto;
           user-select: none;
@@ -150,15 +147,20 @@
           -webkit-user-select: none;
           -moz-user-select: none;
           user-select: none;
+          border: 2px solid #ff77df79;
+                    border: 4px solid #333;
+
+;
+          padding: 2px;
+          margin-bottom: 10px;
         }
 
         .grid {
           display: grid;
           grid-template-columns: repeat(10, 1fr);
           gap: 2px;
-          background: #63f86368;
-          padding: 2px;
-          border-radius: 5px;
+          background: rgba(74, 74, 74, 0.389);
+          /* padding: 2px; */
           /* margin-bottom: 8px; */
         }
 
@@ -172,7 +174,7 @@
           transition: all 0.2s;
           position: relative;
           min-height: 10px;
-          color: #d1feff;
+          color: var(--theme-color-alpha);
         }
 
         .cell:hover {
@@ -190,6 +192,11 @@
           gap: 10px;
           flex-wrap: wrap;
           justify-content: center;
+        }
+
+        .controls button {
+          flex: 1;
+          min-width: 0;
         }
 
         button {
@@ -219,12 +226,12 @@
         }
 
         .btn-clear {
-          background: #ff77df;
+          background: #ff77dfb0;
           /* color: white; */
         }
 
         .btn-copy {
-          background: #ff77df;
+          background: #e7a9009c;
           color: #120303;
         }
 
@@ -234,19 +241,24 @@
         }
 
         .btn-eraser {
-          background: #ff77df;
+          background: #ff77dfb0;
           /* color: white; */
         }
 
         .btn-eraser:hover,
+        .btn-clear:hover,
         .btn-download:hover,
         .btn-copy:hover {
-          background: #63f863;
+          background: magenta;
           /* box-shadow: 0 0 0 3px rgba(255, 167, 38, 0.3); */
         }
 
+        .btn-copy:hover {
+          background: #e7a900e0;
+        }
+
         .btn-add-game {
-          background: #63f863;
+          background: #63f8638d;
           color: #120303;
           width: 100%;
           font-size: 15px;
@@ -256,8 +268,8 @@
         }
 
         .btn-add-game:hover {
-          background: #ff77df;
-          color: #fff;
+          background: #63f863;
+          color: black;
         }
 
         .palette-section {
@@ -268,10 +280,9 @@
         .palette {
           background: #0a0202;
           padding: 12px;
-          border-radius: 8px;
           max-height: 75vh;
           overflow-y: auto;
-          border: 1px solid #333;
+          border: 3px solid #333;
         }
 
         .palette-category {
@@ -318,7 +329,7 @@
           color: #120303;
           border-color: #63f863;
         }
-        .info-section {
+        /* .info-section {
           padding: 5px;
           padding-bottom: 7px;
           border: 2px solid #ff77df;
@@ -340,7 +351,7 @@
           color: #63f863;
           margin: 0;
           font-weight: bold;
-        }
+        } */
 
         .output-section {
           margin-top: 20px;
@@ -371,7 +382,7 @@
           font-size: 0.9rem;
           resize: vertical;
           white-space: pre;
-          overflow-x: auto;
+          /* overflow-x: auto; */
         }
 
         /* Modal Styles */
@@ -430,7 +441,7 @@
 
         .modal-input-group label {
           display: block;
-          font-size: 12px;
+          font-size: 1rem;
           color: #dfb1ff;
           margin-bottom: 5px;
           text-transform: uppercase;
@@ -467,9 +478,9 @@
           padding: 20px;
           border: 1px solid #666;
           font-family: "Courier New", monospace;
-          color: #d1feff;
+          /* background: var(--theme-color-alpha); */
           white-space: pre;
-          overflow-x: auto;
+          /* overflow-x: auto; */
           font-size: 12px;
           line-height: 1.5;
           letter-spacing: 0;
@@ -495,22 +506,22 @@
         }
 
         .modal-btn-cancel {
-          background: #666;
+          background: #1f1f1f;
           color: #d1feff;
         }
 
         .modal-btn-cancel:hover {
-          background: #777;
+          background: #000000;
           box-shadow: 6px 6px #333;
         }
 
         .modal-btn-submit {
-          background: #e7a900;
+          background: #63f863a4;
           color: #120303;
         }
 
         .modal-btn-submit:hover {
-          background: #ff77df;
+          background: #63f863;
           color: #fff;
           transform: translateY(-2px);
           box-shadow: 6px 6px #333;
@@ -597,9 +608,10 @@
 
         #buildingPreview {
           margin: 0 auto;
-          background: #63f86368;
+          /* background: var(--theme-color-alpha); */
           padding: 2px;
           border-radius: 5px;
+          color: var(--theme-color-alpha);
         }
 
         .modal-buttons {
@@ -626,13 +638,12 @@
         /* Toast notification */
         .toast {
           position: fixed;
-          bottom: 30px;
+          bottom: 10px;
           left: 50%;
           transform: translateX(-50%) translateY(100px);
           background: #63f863;
           color: #120303;
-          padding: 12px 25px;
-          border-radius: 8px;
+          padding: 5px 20px;
           font-weight: bold;
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
           z-index: 2000;
@@ -724,6 +735,9 @@
       </style>
     </head>
 
+    <script src="colours.js"></script>
+    <script src="buildings.js"></script>
+
     <body>
       <!-- Language Toggle -->
       <div class="lang-toggle-container" id="lang-toggle-container">
@@ -739,16 +753,16 @@
 
         <div class="main-content">
           <div class="grid-section">
-            <div class="info-section">
+            <!-- <div class="info-section">
               <span class="current-char-label" data-i18n="currentCharacter">Current Character</span>
               <span class="current-char-display" id="currentCharDisplay">█</span>
-            </div>
+            </div> -->
 
             <div class="grid-container">
               <div class="grid" id="grid"></div>
             </div>
             <div class="controls">
-              <button class="btn-clear" onclick="clearGrid()" data-i18n="eraseAll">ERASE ALL</button>
+              <button class="btn-clear" onclick="clearGrid()" data-i18n="eraseAll">Clear</button>
               <button class="btn-eraser" id="eraserBtn" onclick="toggleEraser()" data-i18n="eraser">Eraser</button>
               <button class="btn-copy" onclick="loadRandomExample()" data-i18n="example">Example</button>
             </div>
@@ -767,11 +781,11 @@
           <h2 data-i18n="modalTitle">Add to Game</h2>
           <div class="modal-input-group">
             <label data-i18n="buildingName">Building Name</label>
-            <input type="text" id="modalBuildingName" data-i18n-placeholder="buildingPlaceholder" placeholder="e.g., BENELUX" />
+            <input type="text" id="modalBuildingName" data-i18n-placeholder="buildingPlaceholder" placeholder="EG CAFE DEI CAMPI" />
           </div>
           <div class="modal-input-group">
             <label data-i18n="artistName">Your Name / Handle</label>
-            <input type="text" id="modalArtistName" data-i18n-placeholder="artistPlaceholder" placeholder="e.g., Avery" />
+            <input type="text" id="modalArtistName" data-i18n-placeholder="artistPlaceholder" placeholder="EG OMARIECLAIRE" />
           </div>
           <div class="building-preview-container">
             <div class="building-preview" id="buildingPreview"></div>
@@ -789,20 +803,26 @@
       <div class="landscape-hint" id="landscapeHint" data-i18n="landscapeHint">Rotate for better experience!</div>
 
       <script>
+        const THEME_COLOR = COLOURS.BUILDINGGEN[Math.floor(Math.random() * COLOURS.BUILDINGGEN.length)];
+
+        // Apply theme color to CSS variables
+        document.documentElement.style.setProperty("--theme-color", THEME_COLOR);
+        document.documentElement.style.setProperty("--theme-color-alpha", THEME_COLOR);
+
         // Translations
         const TRANSLATIONS = [
           { key: "title", en: "Draw a building!", fr: "Dessine un bâtiment!" },
           { key: "subtitle", en: "Draw your Montreal building & add it to", fr: "Dessine ton bâtiment montréalais & ajoute-le à" },
           { key: "currentCharacter", en: "Current Character", fr: "Caractère actuel" },
-          { key: "eraseAll", en: "ERASE ALL", fr: "TOUT EFFACER" },
+          { key: "eraseAll", en: "Clear all", fr: "Tout Effacer" },
           { key: "eraser", en: "Eraser", fr: "Efface" },
-          { key: "example", en: "Example", fr: "Exemple" },
+          { key: "example", en: "Example?", fr: "Exemple?" },
           { key: "addButton", en: "Add to LoserLane", fr: "L'ajouter à LoserLane" },
           { key: "modalTitle", en: "Add to Game", fr: "Ajouter au jeu" },
           { key: "buildingName", en: "Building Name", fr: "Nom du bâtiment" },
-          { key: "buildingPlaceholder", en: "e.g., BENELUX", fr: "ex: BENELUX" },
+          { key: "buildingPlaceholder", en: "EG CAFE DEI CAMPI", fr: "EX CAFE DEI CAMPI" },
           { key: "artistName", en: "Your Name / Handle", fr: "Ton nom / pseudo" },
-          { key: "artistPlaceholder", en: "e.g., Avery", fr: "ex: Avery" },
+          { key: "artistPlaceholder", en: "EG OMARIECLAIRE", fr: "EX CAFE DEI CAMPI" },
           { key: "cancel", en: "Cancel", fr: "Annuler" },
           { key: "submit", en: "Submit", fr: "Soumettre" },
           { key: "copied", en: "Copied!", fr: "Copié!" },
@@ -895,752 +915,7 @@
         let draggedContent = null;
         let isShiftPressed = false;
 
-        // Example buildings pool
-        const exampleBuildings = [
-           {
-    name: "Habitat 67",
-    art: [
-      "  ▓▓  ▓▓  ",
-      " ▓▓▓ ▓▓▓  ",
-      "▓▓▓ 67 ▓▓▓",
-      " ▓▓  ▓▓▓  ",
-      "▓▓▓ ▓▓ ▓▓ ",
-      " ▓▓  ▓▓ ▓▓"
-    ]
-  },
-  {
-    name: "Biosphere",
-    art: [
-      "   ╱◇◇╲   ",
-      "  ◇◇◇◇◇  ",
-      " ◇◇◇◇◇◇◇ ",
-      " ◇◇◇◇◇◇◇ ",
-      "  ◇◇◇◇◇  ",
-      "   ╲◇◇╱   "
-    ]
-  },
-  {
-    name: "LE_CRAYON_MONTRÉALAIS",
-    artist: "Aurélie",
-    art: [
-      "   ⚛ ⚛    ",
-      "   ╔◢◣╗   ",
-      "   ⊡⊡⊡⊡   ",
-      "   ╚▒▒╝   ",
-      "    ▒▒    ",
-      "    ▒▒    "
-    ]
-  },
-      {
-        name: "BAIN_COLONIAL",
-        artist: "Julia",
-        art: [
-            " ┏━━━━━━┓ ",
-            " ┣━━━━━━┫ ",
-            " ┃ BAIN ┃ ",
-            " ┃      ┃ ",
-            " ┃COLO  ┃ ",
-            " ┃  NIAL┃ ",
-            " ┃      ┃ ",
-            " ┃      ┃ ",
-            " ┗━━━━━━┛ "
-        ]
-    },
-        {
-        name: "SNAKE_FACTORY",
-        artist: "Pen",
-        art: [
-            "  ∿∿∿⳻    ",
-            "  ∿∿∿5⳻   ",
-            "  ∿∿∿ S⳻  ",
-            "  ∿∿∿ S⚕  ",
-            "  ∿∿∿ S⚕  ",
-            "  ∿∿∿ S⚕  ",
-            "  ∿∿∿ S⚕  ",
-            "  ∿⍝∿ S⚕  "
-        ]
-    },
-        {
-        name: "BLOBBY'S_BUNKER",
-        artist: "Pen",
-        art: [
-            "   ⌓⌓⌓    ",
-            "  ◯ ❂ ⌇   ",
-            " ◯ ◜ ◝⌇   ",
-            " ◯⋰◟◘◞⦆   "
-        ]
-    },
-        {
-        name: "OBSERVATOIRE",
-        artist: "Pen",
-        art: [
-            "   ╭⦿⦿╮   ",
-            "  ╭ ⠁⠑ ╮  ",
-            " ╭ ⠛  ⠅⠝╮ ",
-            " ╰⠇ ⠋   ╯ ",
-            "  ╰⠕⠜ ⠜╯  ",
-            "   ╰  ╯   ",
-            "    ░░    ",
-            "    ▒▒    ",
-            "    ▓▓    ",
-            "    ██    "
-        ]
-    },
-        {
-        name: "ÉCOCENTRE_SAINT-LAURENT",
-        artist: "Pen",
-        art: [
-            "    ∥     ",
-            "   HH     ",
-            "  ▲▲▲▲    ",
-            "  ****    ",
-            " ⌠~◊ +≋   ",
-            "/⍞╳ 9 ⌯\  ",
-            "⌞╤╗ ⏏ ⌘╔╕ ",
-            "⌜╪╝⎇U ⠒╚╛ "
-        ]
-    },
-
-        {
-        name: "BANQ",
-        artist: "Julia",
-        art: [
-            " ┏━━━━━━┓ ",
-            " ┃BAnQ  ┃ ",
-            " ┣━━━━━━┛ ",
-            " ┃    ┃   ",
-            " ┃    ┃   ",
-            " ┃    ┃   ",
-            " ┃ ┌┐ ┃   ",
-            " ┃ ││ ┃   ",
-            " ┗━┷┷━┛   "
-        ]
-    },
-  
-  {
-    name: "Olympic Stadium",
-    art: [
-      "      ╱│  ",
-      "     ╱ │  ",
-      "    ╱  │  ",
-      "   ╱╲  │  ",
-      "  ╱  ╲ │  ",
-      " ◢◣ ◢◣◣│  "
-    ]
-  },
-  {
-    name: "Place des Arts",
-    art: [
-      "▀▀▀▀▀▀▀▀▀▀",
-      "█PLACE   █",
-      "█DES ARTS█",
-      "█ ▢ ▢ ▢ ▢█",
-      "█ ▢ ▢ ▢ ▢█",
-      "▔▔▔▔▔▔▔▔▔▔"
-    ]
-  },
-  {
-    name: "Phi Centre",
-    art: [
-      "╔═══PHI══╗",
-      "║ ◉ ART ◉║",
-      "║▓▓▓▓▓▓▓▓║",
-      "║        ║",
-      "║▓▓▓▓▓▓▓▓║",
-      "╚═══════╝"
-    ]
-  },
-  {
-    name: "Musée d'Art Contemporain",
-    art: [
-      "▀▀▀MAC▀▀▀▀",
-      "█ ◢■◣ ◢■◣█",
-      "█ ◥■◤ ◥■◤█",
-      "█ ART    █",
-      "█        █",
-      "▔▔▔▔▔▔▔▔▔▔"
-    ]
-  },
-  {
-    name: "SAT Societé",
-    art: [
-      "   ◢■◣   ",
-      "╭{◉   ◉)╮",
-      "│   ░░  │ ",
-      "│  ░  ░ │",
-      "│░ SAT ░│ ",
-      "│▓▓▓▓▓▓▓│ ",
-      "│░░░░░░░│ ",
-      "╰───────╯ "
-    ]
-  },
-      {
-                name: "BRANCHE_D'OLIVIER",
-                artist: "Alison",
-                art: [
-                    "╔BRANCH═╕ ",
-            "║⁂D◞[] ⁂║ ",
-            "║OLIVIER║ ",
-            "║ ⠀✦✦✦ ⠀║ ",
-            "║⁂⠀⠀⠀⠀ ⁂║ ",
-            "╚═══════╛ "
-                ]
-            },
-                {
-                name: "SLUMLORD_TOWERS",
-                artist: "d6",
-                art: [
-                    "╔════════╗",
-            "║SLUMLORD║",
-            "║ TOWERS ║",
-            "║⋰       ║",
-            "╚════════╝",
-            "▒▀█▀░░░█▀░",
-            "▒▀░◾▒▒▨█▀█",
-            "▒█░█▒▒▒▒█░",
-            "█◾█▄██▄█▄█",
-            "█╳█▌◾◾▐█╳█"
-                ]
-            },
-
-
-  {
-    name: "Wilensky's",
-    art: [
-      "╔WILENSKY╗",
-      "║ LIGHT  ║",
-      "║ LUNCH  ║",
-      "║ ____   ║",
-      "║ =====  ║",
-      "╚════════╝"
-    ]
-  },
-  {
-    name: "Fairmount Bagel",
-    art: [
-      "  ╱▔▔▔▔▔▔▔╲",
-      " │FAIRMOUNT│ ",
-      " │ ◯ (o) ◯ │ ",
-      " │BAGELS.  │ ",
-      " ╰─────────╯"
-    ]
-  },
-  {
-    name: "Casa d'Italia",
-    art: [
-      "╔═CASA═══╗ ",
-      "║D'ITALIA║",
-      "║ ★ ★ ★  ║",
-      "║▓▓▓▓▓▓▓▓║",
-      "║CULTURA ║",
-      "╚════════╝"
-    ]
-  },
-
-  {
-    name: "McCord Museum",
-    art: [
-      "▀McCORD▀▀▀",
-      "█        █",
-      "█        █",
-      "█        █",
-      "█ ◢■◣◢■◣ █",
-      "▔▔▔▔▔▔▔▔▔▔"
-    ]
-  },
-  {
-    name: "Quai des Brumes",
-    art: [
-      "╔═QUAI══╗ ",
-      "║ DES   ║ ",
-      "║BRUMES ║ ",
-      "║♡      ║ ",
-      "╚═══════╝ "
-    ]
-  },
-  {
-    name: "Cabaret Mile End",
-    art: [
-      "▁▁CABARET▁",
-      "│ MILE   │",
-      "│  END   │",
-      "│ STAGE ▓│",
-      "└────────┘"
-    ]
-  },
-  {
-    name: "Foufounes Électriques",
-    art: [
-      "╔FOUFOU═╗ ",
-      "║NES    ║ ",
-      "║ELEC   ║ ",
-      "║TRIQUES║ ",
-      "╚═══════╝ "
-    ]
-  },
-  {
-    name: "Le Dépanneur Café",
-    art: [
-      "╭DEPAN──╮ ",
-      "│ NEUR  │ ",
-      "│ CAFE  │ ",
-      "╰───────╯ "
-    ]
-  },
-  {
-    name: "Drawn & Quarterly",
-    art: [
-      "╔DRAWN═╗  ",
-      "║  &   ║  ",
-      "║QRTLY ║  ",
-      "║ ◢■◣  ║  ",
-      "║BOOKS ║  ",
-      "╚══════╝  "
-    ]
-  },
- 
-  {
-    name: "L'Escalier",
-    art: [
-      "╭L'ESCA─╮ ",
-      "│ LIER  │ ",
-      "│ ♪ ★ ♫ │ ",
-      "╰───────╯ "
-    ]
-  },
-  {
-    name: "Cinéma du Parc",
-    art: [
-      "▀▀CINEMA▀▀",
-      "█ DU    █ ",
-      "█ PARC  █ ",
-      "█ ◢▓▓◣  █ ",
-      "█ ◥▓▓◤  █ ",
-      "▔▔▔▔▔▔▔▔▔▔"
-    ]
-  },
-
-
-
-  {
-    name: "Café Olimpico",
-    art: [
-      "╭OLIMPICO╮",
-      "│ESPRESSO│",
-      "│ CAFFE  │",
-      "│░1970░░ │",
-      "╰────────╯"
-    ]
-  },
-  {
-    name: "Cinéma Beaubien",
-    art: [
-      "╔CINEMA══╗",
-      "║BEAUBIEN║",
-      "║ ◢▓▓◣   ║",
-      "║ ◥▓▓◤   ║",
-      "║ 1938   ║",
-      "╚════════╝ "
-    ]
-  },
-  {
-    name: "La Vitrola",
-    art: [
-      "╭LA─────╮ ",
-      "│VITROLA│ ",
-      "╰────────╯"
-    ]
-  },
-  {
-    name: "Palais Royale",
-    art: [
-      "▀PALAIS▀▀▀",
-      "█ ROYALE █",
-      "█ RESTO  █",
-      "▔▔▔▔▔▔▔▔▔▔"
-    ]
-  },
-  {
-    name: "Sala Rossa",
-    art: [
-      "╭SALA────╮ ",
-      "│ ROSSA  │ ",
-      "╰────────╯"
-    ]
-  },
-  {
-    name: "Notre-Dame Basilica",
-    art: [
-      "   ╱▲╲    ",
-      "  ╱▲▲ ╲   ",
-      " ╱NOTRE ╲ ",
-      "│  DAME  │",
-      "│ ★ ✦ ★  │",
-      "└────────┘"
-    ]
-  },
-  {
-    name: "Café dei Campi",
-    art: [
-      "╭DEI────╮",
-      "│ CAMPI │",
-      "│ CAFFE │",
-      "│ ☕ ◉   │",
-      "╰───────╯"
-    ]
-  },
-  {
-    name: "Arepera du Plateau",
-    art: [
-      "╭AREPERA ╮",
-      "│ ◢■◣    │",
-      "╰────────╯"
-    ]
-  },
-
-  {
-    name: "Giant Ring",
-    art: [
-      "   ◢◣◣    ",
-      "  ◢   ◣   ",
-      " ◢ RING◣  ",
-      " ◥     ◤  ",
-      "  ◥   ◤   ",
-      "   ◥◤◤    "
-    ]
-  },
-  {
-    name: "Parquette",
-    art: [
-      "╭PAR____ ╮",
-      "│ QUETTE │",
-      "│ ★ ☕ ★  │",
-      "│░.   E░░│",
-      "╰────────╯"
-    ]
-  },
-  {
-    name: "Café Orr",
-    art: [
-      "╭──ORR──╮ ",
-      "│ CAFE  │ ",
-      "│       │ ",
-      "╰───────╯"
-    ]
-  },
-  {
-    name: "Parc Laurier",
-    art: [
-      "  ☼ ◉ ☼   ",
-      "║PARC░   ║",
-      "║LAURIER░║",
-      "║░POOL░  ║",
-      "║ ░░░░░  ║",
-      "║ ◉ ☼ ◉  ║"
-    ]
-  },
-
-
-  {
-    name: "Renaissance",
-    art: [
-      "╔RENAIS═╗ ",
-      "║ SANCE ║ ",
-      "║ THRIFT║ ",
-      "║ BOOKS ║ ",
-      "╚═══════╝ "
-    ]
-  },
-          {
-            name: "Habitat 67",
-            art: ["  ▓▓  ▓▓  ", " ▓▓▓ ▓▓▓  ", "▓▓▓ 67 ▓▓▓", " ▓▓▓▓▓▓▓▓ ", "▓▓▓ ▓▓▓▓▓ ", " ▓▓  ▓▓ ▓▓"],
-          },
-          {
-            name: "Biosphere",
-            art: ["   ╱◇◇╲   ", "  ◇◇◇◇◇  ", " ◇◇◇◇◇◇◇ ", " ◇◇◇◇◇◇◇ ", "  ◇◇◇◇◇  ", "   ╲◇◇╱   "],
-          },
-          {
-            name: "Olympic Stadium",
-            art: ["      ╱│  ", "     ╱ │  ", "    ╱  │  ", "   ╱╲  │  ", "  ╱  ╲ │  ", " ◢◣ ◢◣◣│  "],
-          },
-          {
-            name: "Place des Arts",
-            art: ["▀▀▀▀▀▀▀▀▀▀", "█PLACE   █", "█DES ARTS█", "█ ▢ ▢ ▢ ▢█", "█ ▢ ▢ ▢ ▢█", "▔▔▔▔▔▔▔▔▔▔"],
-          },
-          {
-            name: "Phi Centre",
-            art: ["╔═══PHI══╗", "║ ◉ ART ◉║", "║▓▓▓▓▓▓▓▓║", "║ CINEMA ║", "║▓▓▓▓▓▓▓▓║", "╚═══════╝"],
-          },
-          {
-            name: "LE_CRAYON_MONTRÉALAIS",
-            artist: "Aurélie",
-            art: [" ⚛ ⚛ ", " ╔◢◣╗ ", " ⊡⊡⊡⊡ ", " ╚▒▒╝ ", " ▒▒ ", " ▒▒ "],
-          },
-          {
-            name: "Main Bistro",
-            art: ["  ▁▁▁▁▁   ", " │ MAIN │ ", " │BISTRO│ ", " │ ☕★☕ │ ", " │░░░░░░│ ", " └──▐▌──┘ "],
-          },
-          {
-            name: "Casa del Popolo",
-            art: ["╔═CASA═╗  ", "║ DEL  ║  ", "║POPOLO║  ", "║★ ♪ ★║  ", "║▓▓▓▓▓║  ", "╚══════╝  "],
-          },
-          {
-            name: "Musée d'Art Contemporain",
-            art: ["▀▀▀MAC▀▀▀▀", "█ ◢■◣ ◢■◣█", "█ ◥■◤ ◥■◤█", "█ ART    █", "█CONTEMPO█", "▔▔▔▔▔▔▔▔▔▔"],
-          },
-          {
-            name: "SAT Societé",
-            art: ["╭{     )─╮", "╭─SAT───╮ ", "│◉AUDIO◉│ ", "│VISUAL │ ", "│▓▓▓▓▓▓▓│ ", "│░IMMR░░│ ", "╰───────╯ "],
-          },
-          {
-            name: "Tam Tams",
-            art: ["  ♪ ☼ ♪   ", " ○ ● ○ ●  ", "  TAM     ", "  TAMS    ", " ● ○ ● ○  ", "  ♫ ☼ ♫   "],
-          },
-           {
-                name: "WILENSKY'S_DELI",
-                artist: "hlep",
-                art: [
-                    "╱▔▔▔▔▔▔▔▔╲",
-            "║══║▣▣║══║",
-            "║══║▣▣║══║",
-            "║══║▣▣║══║",
-            "▒▒▒▒▒▒▒▒▒▒",
-            "▒▣▣▣▣▣▣▣▣▓",
-            "▒W▣▣▣▣▣▣Y▒",
-            "▒▣I▣▣▣▣K▣▒",
-            "▒▣▣LENS▣▣▒",
-            "██████████"
-                ]
-            },
-                {
-                name: "STADE_OLYMPIQUE",
-                artist: "Darzington",
-                art: [
-                    "    ┌──   ",
-            "    │⚜╱   ",
-            "    ╱╱    ",
-            "   ╱╱     ",
-            "  ╱╱      ",
-            " ╱│────_⚐ ",
-            "╱ │▒▒▒▒▒\⚐",
-            "╱///||\\\╲",
-            "▉▉▉▉▉▉▉▉▉▉"
-                ]
-            },
-          {
-            name: "Fairmount Bagel",
-            art: ["  ╱▔▔▔╲   ", " │FAIR  │ ", " │MOUNT │ ", " │ ◯ ◯  │ ", " │BAGELS│ ", " ╰─────╯  "],
-          },
-          {
-            name: "Casa d'Italia",
-            art: ["╔═CASA═╗  ", "║D'ITALIA║", "║ ★ ★ ★ ║", "║▓▓▓▓▓▓▓║", "║CULTURA║", "╚═══════╝"],
-          },
-          {
-            name: "Greenroom",
-            art: ["╭─GREEN──╮", "│ ROOM   │", "│ ♪ ★ ♫  │", "╰────────╯"],
-          },
-          {
-            name: "McCord Museum",
-            art: ["▀McCORD▀▀▀", "█        █", "█ ◢■◣◢■◣ █", "▔▔▔▔▔▔▔▔▔▔"],
-          },
-          {
-            name: "Quai des Brumes",
-            art: ["╔═QUAI══╗ ", "║ DES   ║ ", "║BRUMES ║ ", "╚═══════╝ "],
-          },
-          {
-            name: "Cabaret Mile End",
-            art: ["▁▁CABARET▁", "│ MILE   │", "│  END   │", "│▓STAGE▓▓│", "└─────────┘"],
-          },
-          {
-            name: "Foufounes Électriques",
-            art: ["╔FOUFOU═╗ ", "║NES    ║ ", "║ELEC   ║ ", "║TRIQUES║ ", "║★♫PUNK♫║ ", "╚═══════╝ "],
-          },
-          {
-            name: "Le Dépanneur Café",
-            art: ["╭DEPAN──╮ ", "│ NEUR  │ ", "│ CAFE  │ ", "│ ☕ ◉  │ ", "│░RESTO░│ ", "╰───────╯ "],
-          },
-          {
-            name: "Drawn & Quarterly",
-            art: ["╔DRAWN═╗  ", "║  &   ║  ", "║QRTLY ║  ", "║ ◢■◣  ║  ", "║BOOKS ║  ", "╚══════╝  "],
-          },
-          {
-            name: "L'Escalier",
-            art: ["╭L'ESCA─╮ ", "│ LIER  │ ", "│ ♪ ★ ♫ │ ", "╰───────╯ "],
-          },
-          {
-            name: "Cinéma du Parc",
-            art: ["▀▀CINEMA▀▀", "█ DU    █ ", "█ PARC  █ ", "█ ◢▓▓◣  █ ", "█ ◥▓▓◤  █ ", "▔▔▔▔▔▔▔▔▔▔"],
-          },
-          {
-            name: "Croissanterie Figaro",
-            art: ["  ╱▔▔▔╲   ", " │CROIS │ ", " │SANTE │ ", " │FIGARO│ ", " │◯☕◯☕│ ", " ╰──────╯ "],
-          },
-          {
-            name: "Barraca",
-            art: ["╭BARRACA╮ ", "│ RHUMBA│ ", "╰────────╯"],
-          },
-          {
-            name: "Espace pour la vie",
-            art: ["  ╱▲╲ ◉   ", " │ESPACE│ ", " │ POUR │ ", " │ LA   │ ", " │ VIE ☼│ ", " └──────┘ "],
-          },
-          {
-            name: "Café Olimpico",
-            art: ["╭OLIMPICO╮", "│ESPRESSO│", "│ CAFFE  │", "│░1970░░ │", "╰────────╯"],
-          },
-          {
-            name: "Cinéma Beaubien",
-            art: ["╔CINEMA═╗ ", "║BEAUBIEN║", "║ ◢▓▓◣  ║ ", "║ ◥▓▓◤  ║ ", "║ 1938  ║ ", "╚═══════╝ "],
-          },
-          {
-            name: "La Vitrola",
-            art: ["╭LA─────╮ ", "│VITROLA│ ", "╰────────╯"],
-          },
-          {
-            name: "Palais Royale",
-            art: ["▀PALAIS▀▀▀", "█ ROYALE █", "█ RESTO  █", "▔▔▔▔▔▔▔▔▔▔"],
-          },
-          {
-            name: "Sala Rossa",
-            art: ["╭SALA───╮ ", "│ ROSSA │ ", "│ ♪ ★ ♫ │ ", "╰────────╯"],
-          },
-          {
-            name: "Notre-Dame Basilica",
-            art: ["   ╱▲╲    ", "  ╱▲▲╲    ", " ╱NOTRE╲  ", "│  DAME  │", "│ ★ ✦ ★ │", "└────────┘"],
-          },
-          {
-            name: "Café dei Campi",
-            art: ["╭DEI────╮ ", "│ CAMPI │ ", "│ CAFFE │ ", "│ ☕ ◉  │ ", "╰───────╯ "],
-          },
-          {
-            name: "Arepera du Plateau",
-            art: ["╭AREPERA╮ ", "│ ◢■◣   │ ", "╰────────╯"],
-          },
-          {
-            name: "Leonard Cohen House",
-            art: ["  ▁▁▁▁▁   ", " │ 5244 │ ", " │ BLVD │ ", " │★POET★│ ", " └───────┘ "],
-          },
-          {
-            name: "Giant Ring",
-            art: ["   ◢◣◣    ", "  ◢   ◣   ", " ◢ RING◣  ", " ◥     ◤  ", "  ◥   ◤   ", "   ◥◤◤    "],
-          },
-          {
-            name: "Parquette",
-            art: ["╭PAR___╮  ", "│ QUET │ ", "│ ★ ☕ ★│ ", "│░.  E░░│ ", "╰────────╯"],
-          },
-          {
-            name: "Café Orr",
-            art: ["╭──ORR──╮ ", "│ CAFE  │ ", "│ ☕☕☕ │ ", "╰────────╯"],
-          },
-          {
-            name: "Parc Laurier",
-            art: ["  ☼ ◉ ☼   ", " ░PARC░   ", "░LAURIER░ ", " ░POOL░   ", "  ░░░░░   ", "  ◉ ☼ ◉   "],
-          },
-          {
-            name: "Frédéric-Back Park",
-            art: ["  ☼ ◉ ☼   ", " ░FRED░   ", "░░BACK░░  ", " ░ORBS░   ", "  ░░░░░   ", "  ◉ ☼ ◉   "],
-          },
-          {
-            name: "Parc Jeanne-Mance",
-            art: ["  ☼ ◉ ☼   ", " ░JEANNE░ ", "░░MANCE░░ ", " ░PARC░   ", "  ◉ ☼ ◉   "],
-          },
-          {
-            name: "Parc Jarry",
-            art: ["  ☼ ◉ ☼   ", " ░░PARC░░ ", "░░JARRY░░ ", "  ░░░░░   ", "  ◉ ☼ ◉   "],
-          },
-          {
-            name: "Renaissance",
-            art: ["╔RENAIS═╗ ", "║ SANCE ║ ", "║ THRIFT║ ", "║ BOOKS ║ ", "╚═══════╝ "],
-          },
-          {
-            name: "Les Petits Frères",
-            art: ["╭LES────╮ ", "│PETITS │ ", "│FRERES │ ", "│ ★ ♥ ★ │ ", "╰────────╯"],
-          },
-          {
-            name: "Westmount Greenhouse",
-            art: ["  ╱▔▔▔╲   ", " ╱ ☼ ◉ ╲  ", "│WESTMOU│ ", "│ GREEN │ ", "│░HOUSE░│ ", "╰────────╯"],
-          },
-          {
-            name: "Chatime",
-            art: ["╭CHATIME╮ ", "│ BUBBLE│ ", "│  TEA  │ ", "│ ◉ ◉ ◉ │ ", "│░BOBA░░│ ", "╰────────╯"],
-          },
-          {
-            name: "Marché PA",
-            art: ["╔MARCHE═╗ ", "║  PA   ║ ", "║ ◢■◣   ║ ", "║GROCERY║ ", "╚═══════╝ "],
-          },
-          {
-            name: "Samosa King",
-            art: ["╭SAMOSA─╮ ", "│ KING  │ ", "│  $1   │ ", "│ ◢■◣   │ ", "│░SPICE░│ ", "╰────────╯"],
-          },
-          {
-            name: "Gnocchi $5",
-            art: ["╭GNOCCHI╮ ", "│  $5   │ ", "│ ◢■◣   │ ", "╰────────╯"],
-          },
-          {
-            name: "St-Viateur Bagel",
-            art: ["  ╱▔▔▔╲   ", " │ST-VIA│ ", " │ TEUR │ ", " │ ◯ ◯  │ ", " │BAGELS│ ", " ╰──────╯ "],
-          },
-          {
-            name: "Van Horne Underpass",
-            art: ["  ▀▀▀▀▀   ", " │VAN   │ ", "╱│HORNE│╲ ", "││UNDER││ ", "││░PASS░││", "╰┴──────┴╯"],
-          },
-          {
-            name: "LE_CRAYON_MONTRÉALAIS",
-            artist: "Aurélie",
-            art: ["   ⚛ ⚛    ", "   ╔◢◣╗   ", "   ⊡⊡⊡⊡   ", "   ╚▒▒╝   ", "    ▒▒    ", "    ▒▒    "],
-          },
-          {
-            name: "BAIN_COLONIAL",
-            artist: "Julia",
-            art: [" ┏━━━━━━┓ ", " ┣━━━━━━┫ ", " ┃ BAIN ┃ ", " ┃      ┃ ", " ┃COLO  ┃ ", " ┃  NIAL┃ ", " ┃      ┃ ", " ┃      ┃ ", " ┗━━━━━━┛ "],
-          },
-          {
-            name: "SNAKE_FACTORY",
-            artist: "Pen",
-            art: ["  ∿∿∿⳻    ", "  ∿∿∿5⳻   ", "  ∿∿∿ S⳻  ", "  ∿∿∿ S⚕  ", "  ∿∿∿ S⚕  ", "  ∿∿∿ S⚕  ", "  ∿∿∿ S⚕  ", "  ∿⍝∿ S⚕  "],
-          },
-          {
-            name: "BLOBBY'S_BUNKER",
-            artist: "Pen",
-            art: ["   ⌓⌓⌓    ", "  ◯ ❂ ⌇   ", " ◯ ◜ ◝⌇   ", " ◯⋰◟◘◞⦆   "],
-          },
-          {
-            name: "OBSERVATOIRE",
-            artist: "Pen",
-            art: [
-              "   ╭⦿⦿╮   ",
-              "  ╭ ⠁⠑ ╮  ",
-              " ╭ ⠛  ⠅⠝╮ ",
-              " ╰⠇ ⠋   ╯ ",
-              "  ╰⠕⠜ ⠜╯  ",
-              "   ╰  ╯   ",
-              "    ░░    ",
-              "    ▒▒    ",
-              "    ▓▓    ",
-              "    ██    ",
-            ],
-          },
-          {
-            name: "BRANCHE_D'OLIVIER",
-            artist: "Alison",
-            art: ["╔BRANCH═╕ ", "║⁂D◞[] ⁂║ ", "║OLIVIER║ ", "║ ⠀✦✦✦ ⠀║ ", "║⁂⠀⠀⠀⠀ ⁂║ ", "╚═══════╛ "],
-          },
-          {
-            name: "SLUMLORD_TOWERS",
-            artist: "d6",
-            art: [
-              "╔════════╗",
-              "║SLUMLORD║",
-              "║ TOWERS ║",
-              "║⋰       ║",
-              "╚════════╝",
-              "▒▀█▀░░░█▀░",
-              "▒▀░◾▒▒▨█▀█",
-              "▒█░█▒▒▒▒█░",
-              "█◾█▄██▄█▄█",
-              "█╳█▌◾◾▐█╳█",
-            ],
-          },
-        ];
+        const exampleBuildings = TORONTO_BUILDINGS;
 
         const paletteCategories = [
           {
@@ -2276,34 +1551,38 @@
           }
         }
 
-        // Load grid from localStorage
-        function loadFromLocalStorage() {
-          try {
-            const savedGrid = localStorage.getItem("loserLaneGrid");
-            const lastSaved = localStorage.getItem("loserLaneLastSaved");
+function loadFromLocalStorage() {
+  try {
+    const savedGrid = localStorage.getItem("loserLaneGrid");
+    const lastSaved = localStorage.getItem("loserLaneLastSaved");
 
-            if (savedGrid) {
-              const parsedGrid = JSON.parse(savedGrid);
-              // Verify it's the correct size
-              if (parsedGrid.length === GRID_SIZE && parsedGrid[0].length === GRID_SIZE) {
-                grid = parsedGrid;
-                updateGrid();
-
-                if (lastSaved) {
-                  const savedDate = new Date(lastSaved);
-                  // showToast(`Restored your work from ${savedDate.toLocaleString()}`);
-                } else {
-                  // showToast('Restored your previous work!');
-                }
-                return true;
-              }
-            }
-          } catch (e) {
-            console.error("Failed to load from localStorage:", e);
+    if (savedGrid) {
+      const parsedGrid = JSON.parse(savedGrid);
+      
+      // More flexible validation - check if it's an array
+      if (Array.isArray(parsedGrid) && parsedGrid.length > 0) {
+        // Ensure the grid is the correct size, padding if necessary
+        grid = Array(GRID_SIZE).fill().map((_, i) => {
+          if (parsedGrid[i] && Array.isArray(parsedGrid[i])) {
+            // Pad or trim each row to GRID_SIZE
+            return [...parsedGrid[i].slice(0, GRID_SIZE), ...Array(GRID_SIZE).fill('')].slice(0, GRID_SIZE);
           }
-          return false;
-        }
-
+          return Array(GRID_SIZE).fill('');
+        });
+        
+        updateGrid();
+        console.log('Successfully restored grid from localStorage');
+        return true;
+      }
+    }
+  } catch (e) {
+    console.error("Failed to load from localStorage:", e);
+    // Clear corrupted data
+    localStorage.removeItem("loserLaneGrid");
+    localStorage.removeItem("loserLaneLastSaved");
+  }
+  return false;
+}
         // Clear localStorage
         function clearLocalStorage() {
           try {
@@ -2384,16 +1663,25 @@
         }
 
         function selectChar(char) {
-          currentChar = char;
-          document.getElementById("currentCharDisplay").textContent = char;
-          isEraserMode = false;
-          document.getElementById("eraserBtn").classList.remove("active");
+  currentChar = char;
+  
+  // Check if element exists before trying to use it
+  const currentCharDisplay = document.getElementById("currentCharDisplay");
+  if (currentCharDisplay) {
+    currentCharDisplay.textContent = char;
+  }
+  
+  isEraserMode = false;
+  const eraserBtn = document.getElementById("eraserBtn");
+  if (eraserBtn) {
+    eraserBtn.classList.remove("active");
+  }
 
-          // Update palette selection
-          document.querySelectorAll(".char-btn").forEach((btn) => {
-            btn.classList.toggle("selected", btn.textContent === char);
-          });
-        }
+  // Update palette selection
+  document.querySelectorAll(".char-btn").forEach((btn) => {
+    btn.classList.toggle("selected", btn.textContent === char);
+  });
+}
 
         function highlightCell(index) {
           document.querySelectorAll(".cell").forEach((cell) => {
@@ -2441,7 +1729,21 @@
           updateGrid();
           selectedCell = null;
           highlightCell(null);
-          showToast(`${t("loadedExample")}${example.name}!`);
+          showToast(`${t("loadedExample")}${example.name} by ${example.artist ? example.artist : getRandomCuteHandle()}!`);
+        }
+
+        function getRandomCuteHandle() {
+          const cuteHandles = [
+            "anonymous_panda",
+            "cosmic_koala",
+            "digital_bunny",
+            "pixel_penguin",
+            "creative_owl",
+            "melody_kitten",
+            "sunny_fox",
+            "starry_sloth",
+          ];
+          return cuteHandles[Math.floor(Math.random() * cuteHandles.length)];
         }
 
         function clearGrid() {
@@ -2476,7 +1778,7 @@
               const cellDiv = document.createElement("div");
               cellDiv.textContent = cell;
               cellDiv.style.background = "#120303";
-              cellDiv.style.color = "#d1feff";
+              cellDiv.style.color = "#var(--theme-color-alpha)";
               cellDiv.style.aspectRatio = "1 / 1.5";
               cellDiv.style.display = "flex";
               cellDiv.style.alignItems = "center";
@@ -2714,12 +2016,7 @@
               cell.style.borderWidth = "";
               cell.style.borderStyle = "";
             });
-            // isShiftPressed = false;
-            // isDraggingToMove = false;
-            // Make all cells non-draggable when shift is released
-            // document.querySelectorAll(".cell").forEach((cell) => {
-            //   cell.draggable = false;
-            // });
+     
           }
         });
 
@@ -2728,17 +2025,10 @@
             isShiftPressed = true;
             // Add visual indicator to show shift-drag mode is active
             document.querySelectorAll(".cell").forEach((cell) => {
-              cell.style.borderColor = "rgba(99, 248, 99, 0.6)";
-              cell.style.borderWidth = "2px";
+              cell.style.borderColor = "rgba(99, 248, 99, 0.3)";
+              cell.style.borderWidth = ".5px";
               cell.style.borderStyle = "solid";
             });
-
-            // if (e.key === "Shift") {
-            //   isShiftPressed = true;
-            // Make all cells draggable when shift is pressed
-            // document.querySelectorAll(".cell").forEach((cell) => {
-            //   cell.draggable = true;
-            // });
           }
           // Handle modal keyboard shortcuts
           if (document.getElementById("modalOverlay").classList.contains("show")) {
@@ -2822,17 +2112,18 @@
           }
         });
         // Initialize
-        initGrid();
-        initPalette();
-        selectChar(currentChar);
+        document.addEventListener('DOMContentLoaded', () => {
+  initGrid();
+  initPalette();
+  selectChar(currentChar);
 
-        // Try to load from localStorage on startup
-
-        const loaded = loadFromLocalStorage();
-        if (!loaded) {
-          // If nothing was loaded, make sure grid is displayed
-          updateGrid();
-        }
+  // Try to load from localStorage on startup
+  const loaded = loadFromLocalStorage();
+  if (!loaded) {
+    // If nothing was loaded, make sure grid is displayed
+    updateGrid();
+  }
+});
 
         // Gentle landscape mode hint - shows once on mobile portrait
         function showLandscapeHint() {

@@ -2294,7 +2294,7 @@ class BuildingBehavior extends EntityBehavior {
 
     // Attempt to find a valid position for the new building
     while (!this.validatePosition(newY, height, buildings) && attempts < MAX_ATTEMPTS) {
-      newY -= this.minSpacing;
+      newY -= CONFIG.SAFE_DISTANCE.BUILDING;
       attempts++;
       console.log(`[BuildingBehavior] Attempt ${attempts}: Trying Y=${newY}`);
     }
@@ -2319,8 +2319,8 @@ class BuildingBehavior extends EntityBehavior {
 
     // Check if the new building's position overlaps with any existing buildings
     const isValid = !existingBuildings.some((building) => {
-      const topOverlap = y < building.position.y + building.height + this.minSpacing;
-      const bottomOverlap = y + height + this.minSpacing > building.position.y;
+      const topOverlap = y < building.position.y + building.height + CONFIG.SAFE_DISTANCE.BUILDING;
+      const bottomOverlap = y + height + CONFIG.SAFE_DISTANCE.BUILDING > building.position.y;
       const sameColumn = Math.abs(building.position.x - this.entity.config.LANES.BUILDINGS) < 0.1;
 
       // If the new building overlaps with an existing building in the same column, return true to indicate an invalid position

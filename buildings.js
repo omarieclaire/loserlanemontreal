@@ -15,7 +15,7 @@
 
 const TORONTO_BUILDINGS = [
     {
-    name: "Habitat 67",
+    name: "Habitat_67",
     art: [
       "  ▓▓  ▓▓  ",
       " ▓▓▓ ▓▓▓  ",
@@ -29,10 +29,10 @@ const TORONTO_BUILDINGS = [
     name: "Biosphere",
     art: [
       "   ╱◇◇╲   ",
-      "  ◇◇◇◇◇  ",
-      " ◇◇◇◇◇◇◇ ",
-      " ◇◇◇◇◇◇◇ ",
-      "  ◇◇◇◇◇  ",
+      "  ◇◇◇◇◇◇  ",
+      " ◇◇◇◇◇◇◇◇ ",
+      " ◇◇◇◇◇◇◇◇ ",
+      "  ◇◇◇◇◇◇  ",
       "   ╲◇◇╱   "
     ]
   },
@@ -164,7 +164,7 @@ const TORONTO_BUILDINGS = [
       "║▓▓▓▓▓▓▓▓║",
       "║        ║",
       "║▓▓▓▓▓▓▓▓║",
-      "╚═══════╝"
+      "╚════════╝"
     ]
   },
   {
@@ -181,10 +181,10 @@ const TORONTO_BUILDINGS = [
   {
     name: "SAT Societé",
     art: [
-      "   ◢■◣   ",
-      "╭{◉   ◉)╮",
+      "   ◢■■◣   ",
+      "╭{      )╮",
       "│   ░░  │ ",
-      "│  ░  ░ │",
+      "│  ░   ░ │",
       "│░ SAT ░│ ",
       "│▓▓▓▓▓▓▓│ ",
       "│░░░░░░░│ ",
@@ -256,17 +256,17 @@ const TORONTO_BUILDINGS = [
   {
     name: "Fairmount Bagel",
     art: [
-      "  ╱▔▔▔▔▔▔▔╲",
-      " │FAIRMOUNT│ ",
-      " │ ◯ (o) ◯ │ ",
-      " │BAGELS.  │ ",
-      " ╰─────────╯"
+      " ╱▔▔▔▔▔▔▔╲",
+      "│FAIRMOUNT│",
+      "│ ◯ (o) ◯│",
+      "│BAGELS. │",
+      "╰────────╯"
     ]
   },
   {
     name: "Casa d'Italia",
     art: [
-      "╔═CASA═══╗ ",
+      "╔═CASA═══╗",
       "║D'ITALIA║",
       "║ ★ ★ ★  ║",
       "║▓▓▓▓▓▓▓▓║",
@@ -378,7 +378,7 @@ const TORONTO_BUILDINGS = [
       "║ ◢▓▓◣   ║",
       "║ ◥▓▓◤   ║",
       "║ 1938   ║",
-      "╚════════╝ "
+      "╚════════╝"
     ]
   },
   {
@@ -401,8 +401,11 @@ const TORONTO_BUILDINGS = [
   {
     name: "Sala Rossa",
     art: [
-      "╭SALA────╮ ",
-      "│ ROSSA  │ ",
+      "╭SALA────╮",
+      "│ ROSSA  │",
+      "│ R0SSA  │",
+      "│ R0SSA  │",
+      "│ R0SSA  │",
       "╰────────╯"
     ]
   },
@@ -420,24 +423,26 @@ const TORONTO_BUILDINGS = [
   {
     name: "Café dei Campi",
     art: [
-      "╭DEI────╮",
-      "│ CAMPI │",
-      "│ CAFFE │",
-      "│ ☕ ◉   │",
-      "╰───────╯"
+      "╭DEI─────╮",
+      "│  CAMPI │",
+      "│  CAFFE │",
+      "│  ☕ ◉   │",
+      "╰────────╯"
     ]
   },
   {
-    name: "Arepera du Plateau",
+    name: "Arepera",
     art: [
       "╭AREPERA ╮",
       "│ ◢■◣    │",
+      "│ ★ ✦ ★  │",
+      "│ ★ ✦ ★  │",
       "╰────────╯"
     ]
   },
 
   {
-    name: "Giant Ring",
+    name: "GiantRing",
     art: [
       "   ◢◣◣    ",
       "  ◢   ◣   ",
@@ -460,10 +465,11 @@ const TORONTO_BUILDINGS = [
   {
     name: "Café Orr",
     art: [
-      "╭──ORR──╮ ",
-      "│ CAFE  │ ",
-      "│       │ ",
-      "╰───────╯"
+      "╭──ORR───╮",
+      "│ CAFE   │",
+      "│        │",
+      "│        │",
+      "╰────────╯"
     ]
   },
   {
@@ -492,11 +498,11 @@ const TORONTO_BUILDINGS = [
   {
     name: "Les Petits Frères",
     art: [
-      "╭LES────╮ ",
-      "│PETITS │ ",
-      "│FRERES │ ",
-      "│ ★ ♥ ★ │ ",
-      "╰───────╯"
+      "╭LES─────╮",
+      "│PETITS  │",
+      "│FRERES  │",
+      "│ ★ ♥ ★  │",
+      "╰────────╯"
     ]
   },
   {
@@ -508,7 +514,7 @@ const TORONTO_BUILDINGS = [
       "│MOUNT  │ ",
       "│ GREEN │ ",
       "│░HOUSE░│ ",
-      "╰───────╯"
+      "╰───────╯ "
     ]
   },
   {
@@ -523,7 +529,7 @@ const TORONTO_BUILDINGS = [
     ]
   },
     {
-    name: "Frédéric-Back Park",
+    name: "Frédéric_Back_Park",
     art: [
       "  ☼ ◉ ☼   ",
       " ░FRED░ ◉ ",
@@ -550,8 +556,8 @@ const TORONTO_BUILDINGS = [
       "│ KING  │ ",
       "│  $1   │ ",
       "│ ◢■◣   │ ",
-      "│░SPICE░│ ",
-      "╰───────╯"
+      "│░~~~~E░│ ",
+      "╰───────╯ "
     ]
   },
   {
@@ -560,7 +566,8 @@ const TORONTO_BUILDINGS = [
       "╭GNOCCHI╮ ",
       "│  $5   │ ",
       "│ ◢■◣   │ ",
-      "╰───────╯"
+      "│ ◢■◣   │ ",
+      "╰───────╯ "
     ]
   },
   {
@@ -684,7 +691,7 @@ const TORONTO_BUILDINGS = [
       " │Claftis│",
       "_│ΞΞΞΞ│ ☐│",
       "_╰────┴──╯",
-      "〚︸︸〛_♞_  "
+      "〚︸︸〛_♞_   "
     ]
   },
   {
@@ -796,16 +803,7 @@ const TORONTO_BUILDINGS = [
       "└────────┘"
     ]
   },
-  {
-    "name": "FAIRMOUNT",
-    "art": [
-      "┌────────┐",
-      "│FAIR    │",
-      "│MOUNT   │",
-      "│ ⊙⊙⊙⊙   │",
-      "└────────┘"
-    ]
-  },
+
   {
     "name": "MARCHE_JEAN_TALON",
     "art": [
@@ -1196,23 +1194,11 @@ const TORONTO_BUILDINGS = [
     "artist": "Dharmy",
     "art": [
       " ◢⬒⬒⬒⬒⬒⬒◣ ",
-      "◢⬒ MAXI ⬒◣",
+      "◢⬒       ⬒◣",
       "│|  FOOD|│",
       "││CHEAP ││",
       "│$      $│",
       "╰‰‰‰‰─⊟⊟┴╯"
-    ]
-  },
-  {
-    "name": "SOCIETE_DES_ARTS",
-    "artist": "",
-    "art": [
-      "┌────────┐",
-      "│SOCIÉTÉ │",
-      "│DES     │",
-      "│ARTS    │",
-      "│TECH    │",
-      "└────────┘"
     ]
   }
 ];
