@@ -54,12 +54,12 @@
       }
 
       .container {
-        background: #1a0505;
+        background: black;
         /* border-radius: 10px; */
-        padding: 30px;
+        padding: 25px;
         border: 2px solid #e7a900;
         box-shadow: 0 0 20px rgba(231, 169, 0, 0.3);
-        max-width: 900px;
+        max-width: 650px;
         width: 100%;
       }
       a {
@@ -70,39 +70,38 @@
         text-align: center;
         color: #63f863;
         margin-bottom: 10px;
-        font-size: 2em;
-        letter-spacing: 8px;
+        font-size: 1.6em;
+        letter-spacing: 6px;
       }
 
       .subtitle {
         text-align: center;
         color: #d1feff;
         margin-bottom: 15px;
-        font-size: 1.25rem;
+        font-size: 1.05rem;
       }
 
       .main-content {
         display: flex;
-        gap: 30px;
+        gap: 25px;
         flex-wrap: wrap;
         justify-content: center;
       }
 
       .grid-section {
         flex: 1;
-        min-width: 300px;
+        min-width: 280px;
       }
 
       .grid-container {
         background: #0a0202;
-        padding: 10px;
+        margin: 10px;
         border-radius: 8px;
         /* margin-bottom: 10px; */
         box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5);
         border: 1px solid #333;
-        max-height: 70vh;
+        max-height: 60vh;
         overflow: auto;
-
         user-select: none;
         -webkit-user-select: none;
         -webkit-user-select: none;
@@ -117,7 +116,7 @@
         background: #63f86368;
         padding: 2px;
         border-radius: 5px;
-        margin-bottom: 15px;
+        /* margin-bottom: 8px; */
       }
 
       .cell {
@@ -126,10 +125,10 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 2rem;
+        font-size: 1.5rem;
         transition: all 0.2s;
         position: relative;
-        min-height: 13px;
+        min-height: 10px;
         color: #d1feff;
       }
 
@@ -147,15 +146,15 @@
         display: flex;
         gap: 10px;
         flex-wrap: wrap;
-        justify-content: center;
+        justify-content:center;
       }
 
       button {
-        padding: 10px 20px;
+        padding: 8px 5px;
         border: 2px solid #666;
         border-radius: 5px;
         font-family: "Courier New", monospace;
-        font-size: 14px;
+        font-size: 13px;
         cursor: pointer;
         transition: all 0.2s;
         font-weight: bold;
@@ -207,8 +206,8 @@
         background: #63f863;
         color: #120303;
         width: 100%;
-        font-size: 16px;
-        padding: 15px;
+        font-size: 15px;
+        padding: 12px;
         margin-top: 10px;
         border: 2px solid #666;
       }
@@ -220,27 +219,27 @@
 
       .palette-section {
         flex: 1;
-        min-width: 300px;
+        min-width: 280px;
       }
 
       .palette {
         background: #0a0202;
-        padding: 15px;
+        padding: 12px;
         border-radius: 8px;
-        max-height: 82vh;
+        max-height: 75vh;
         overflow-y: auto;
         border: 1px solid #333;
       }
 
       .palette-category {
-        margin-bottom: 15px;
+        margin-bottom: 12px;
       }
 
       .palette-title {
-        font-size: 1rem;
+        font-size: 0.9rem;
         font-weight: bold;
         color: #ff77df;
-        margin-bottom: 8px;
+        margin-bottom: 7px;
         text-transform: uppercase;
         letter-spacing: 1px;
       }
@@ -248,18 +247,18 @@
       .palette-chars {
         display: flex;
         flex-wrap: wrap;
-        gap: 5px;
+        gap: 4px;
       }
 
       .char-btn {
-        padding: 8px 12px;
+        padding: 6px 10px;
         background: #120303;
         border: 2px solid #666;
         border-radius: 5px;
-        font-size: 18px;
+        font-size: 16px;
         cursor: pointer;
         transition: all 0.2s;
-        min-width: 40px;
+        min-width: 36px;
         text-align: center;
         color: #d1feff;
         box-shadow: 2px 2px #333;
@@ -276,305 +275,60 @@
         color: #120303;
         border-color: #63f863;
       }
-
       .info-section {
-        background: rgba(231, 169, 0, 0.15);
-        padding: 10px;
-
-        /* border-radius: 8px; */
-        margin-bottom: 15px;
+        padding: 5px;
+        padding-bottom: 7px;
         border: 2px solid #ff77df;
-        text-align: center;
-      }
-
-      .current-char-label {
-        font-size: 1rem;
-        color: #ff77df;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        margin-bottom: 10px;
-        font-weight: bold;
-      }
-
-      .current-char-display {
-        font-size: 14px;
-        font-weight: bold;
-        color: #d1feff;
-      }
-
-      .instructions {
-        background: rgba(99, 248, 99, 0.15);
-        padding: 15px;
-        /* border-radius: 8px; */
-        margin-top: 15px;
-        font-size: 13px;
-        line-height: 1.6;
-        border: 1px solid #63f863;
-        color: #d1feff;
-      }
-
-      .instructions strong {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
         color: #63f863;
       }
 
-      .toast {
-        position: fixed;
-        bottom: 30px;
-        left: 50%;
-        transform: translateX(-50%) translateY(100px);
-        background: #63f863;
-        color: #120303;
-        padding: 15px 30px;
-        /* border-radius: 5px; */
-        opacity: 0;
-        transition: all 0.3s;
-        z-index: 1000;
-        font-size: 14px;
-        border: 2px solid #666;
-        box-shadow: 4px 4px #666;
+      .info-text {
+        color: #63f863;
+        font-size: 0.9rem;
+        margin-bottom: 5px;
       }
 
-      .toast.show {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0);
+      .current-char-display {
+        font-size: 1rem;
+        color: #63f863;
+        margin: 0;
+        font-weight: bold;
       }
 
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-
-      ::-webkit-scrollbar-track {
+      .output-section {
+        margin-top: 20px;
         background: #0a0202;
-        /* border-radius: 5px; */
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid #333;
       }
 
-      ::-webkit-scrollbar-thumb {
-        background: #e7a900;
-        /* border-radius: 5px; */
+      .output-label {
+        color: #ff77df;
+        font-weight: bold;
+        margin-bottom: 10px;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
       }
 
-      ::-webkit-scrollbar-thumb:hover {
-        background: #ff77df;
-      }
-
-      @media (max-width: 768px) {
-        .container {
-          padding: 15px;
-        }
-
-        h1 {
-          font-size: clamp(1.2rem, 5vw, 1.5em);
-          letter-spacing: clamp(2px, 1vw, 8px);
-          margin-bottom: 8px;
-        }
-
-        .subtitle {
-          font-size: clamp(0.75rem, 2.5vw, 0.9em);
-          margin-bottom: 8px;
-        }
-
-        .subtitle:last-of-type {
-          margin-bottom: 15px;
-        }
-
-        .cell {
-          font-size: clamp(14px, 3vw, 16px);
-          min-height: clamp(25px, 8vw, 28px);
-          cursor: pointer;
-          -webkit-tap-highlight-color: transparent;
-        }
-
-        .grid-container {
-          touch-action: none;
-          -webkit-user-select: none;
-          -moz-user-select: none;
-          user-select: none;
-        }
-
-        .grid {
-          gap: 1px;
-        }
-
-        button {
-          font-size: clamp(11px, 2.5vw, 14px);
-          padding: 8px 12px;
-          touch-action: manipulation;
-          -webkit-tap-highlight-color: transparent;
-        }
-
-        .char-btn {
-          font-size: clamp(14px, 3vw, 18px);
-          min-width: clamp(35px, 10vw, 40px);
-          touch-action: manipulation;
-          -webkit-tap-highlight-color: transparent;
-        }
-
-        .palette {
-          -webkit-overflow-scrolling: touch;
-          max-height: min(60vh, 500px);
-        }
-
-        .modal {
-          width: 95%;
-          padding: 20px;
-        }
-
-        .modal h2 {
-          font-size: clamp(1.2rem, 4vw, 1.5em);
-        }
-
-        .modal-input-group input {
-          font-size: clamp(14px, 3vw, 16px);
-        }
-
-        .building-preview {
-          font-size: 12px;
-          padding: 15px;
-        }
-
-        .modal-btn {
-          font-size: clamp(14px, 3vw, 16px);
-          padding: 12px;
-        }
-
-        .main-content {
-          gap: 15px;
-          flex-direction: column-reverse;
-        }
-
-        .instructions {
-          font-size: clamp(11px, 2.5vw, 13px);
-          padding: 10px;
-          margin-top: 10px;
-        }
-
-        /* Mobile-specific: Make palette section more compact and accessible */
-        .info-section {
-          padding: 8px 15px;
-          margin-bottom: 10px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
-        }
-
-        .current-char-label {
-          font-size: 0.85rem;
-          margin-bottom: 0;
-        }
-
-        .current-char-display {
-          font-size: 24px;
-          line-height: 1;
-        }
-
-        /* Mobile-specific: Optimize palette layout - restrict to ~4 lines */
-        .palette {
-          max-height: 220px;
-          padding: 8px;
-          border: 2px solid #63f863;
-          position: relative;
-        }
-
-        /* Make scrollbar more obvious on mobile */
-        .palette::-webkit-scrollbar {
-          width: 12px;
-        }
-
-        .palette::-webkit-scrollbar-track {
-          background: #120303;
-          border-radius: 5px;
-          border: 1px solid #63f863;
-        }
-
-        .palette::-webkit-scrollbar-thumb {
-          background: #63f863;
-          border-radius: 5px;
-          border: 2px solid #0a0202;
-        }
-
-        .palette::-webkit-scrollbar-thumb:hover {
-          background: #ff77df;
-        }
-
-        .palette-section {
-          min-width: 100%;
-        }
-
-        .grid-section {
-          min-width: 100%;
-        }
-
-        .palette-title {
-          font-size: 0.85rem;
-          margin-bottom: 5px;
-        }
-
-        .palette-category {
-          margin-bottom: 10px;
-        }
-
-        .palette-chars {
-          gap: 4px;
-        }
-
-        .char-btn {
-          padding: 6px 10px;
-        }
-
-        .lang-toggle-container {
-          top: 10px;
-          right: 10px;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .container {
-          padding: 10px;
-        }
-
-        .modal-buttons {
-          flex-direction: column;
-        }
-
-        .modal-btn {
-          width: 100%;
-        }
-
-        /* Extra small screens: further optimize space */
-        .info-section {
-          padding: 6px 12px;
-          gap: 8px;
-        }
-
-        .current-char-label {
-          font-size: 0.75rem;
-        }
-
-        .current-char-display {
-          font-size: 20px;
-        }
-
-        .palette {
-          max-height: 200px;
-          padding: 6px;
-        }
-
-        .palette-category {
-          margin-bottom: 8px;
-        }
-
-        .palette-title {
-          margin-bottom: 4px;
-        }
-
-        .palette-chars {
-          gap: 3px;
-        }
-
-        .char-btn {
-          padding: 5px 8px;
-        }
+      #output {
+        width: 100%;
+        min-height: 150px;
+        background: #120303;
+        color: #63f863;
+        border: 2px solid #666;
+        border-radius: 5px;
+        padding: 12px;
+        font-family: "Courier New", monospace;
+        font-size: 0.9rem;
+        resize: vertical;
+        white-space: pre;
+        overflow-x: auto;
       }
 
       /* Modal Styles */
@@ -583,20 +337,20 @@
         position: fixed;
         top: 0;
         left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.9);
-        z-index: 2000;
-        align-items: center;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 1000;
         justify-content: center;
+        align-items: center;
+        padding: 20px;
       }
 
       .modal-overlay.show {
         display: flex;
       }
-
       .modal {
-        background: #1a0505;
+        background: black;
         /* border-radius: 10px; */
         padding: 30px;
         max-width: 500px;
@@ -658,7 +412,7 @@
         box-shadow: 0 0 0 3px rgba(99, 248, 99, 0.1);
       }
 
-      .building-preview-container{
+      .building-preview-container {
         display: flex;
         margin: auto;
         justify-content: center;
@@ -723,6 +477,150 @@
         transform: translate(2px, 2px);
         box-shadow: 1px 1px #333;
       }
+
+      .modal-content {
+        background: black;
+        border: 2px solid #e7a900;
+        border-radius: 10px;
+        padding: 25px;
+        max-width: 550px;
+        width: 100%;
+        box-shadow: 0 0 30px rgba(231, 169, 0, 0.5);
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+
+      .modal-title {
+        color: #63f863;
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+        text-align: center;
+        letter-spacing: 2px;
+      }
+
+      .modal-form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .form-label {
+        color: #ff77df;
+        font-size: 0.9rem;
+        font-weight: bold;
+      }
+
+      .form-input {
+        padding: 10px;
+        background: #120303;
+        border: 2px solid #666;
+        border-radius: 5px;
+        color: #d1feff;
+        font-family: "Courier New", monospace;
+        font-size: 0.95rem;
+      }
+
+      .form-input:focus {
+        outline: none;
+        border-color: #63f863;
+      }
+
+      .form-note {
+        color: #d1feff;
+        font-size: 0.75rem;
+        opacity: 0.8;
+      }
+
+      .building-preview-container {
+        margin: 15px 0;
+        padding: 12px;
+        background: #0a0202;
+        border-radius: 8px;
+        border: 1px solid #333;
+      }
+
+      .preview-label {
+        color: #ff77df;
+        font-size: 0.85rem;
+        margin-bottom: 8px;
+        text-align: center;
+      }
+
+      #buildingPreview {
+        margin: 0 auto;
+        background: #63f86368;
+        padding: 2px;
+        border-radius: 5px;
+      }
+
+      .modal-buttons {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        margin-top: 15px;
+      }
+
+      .btn-submit {
+        background: #63f863;
+        color: #120303;
+        padding: 10px 25px;
+        font-size: 15px;
+      }
+
+      .btn-cancel {
+        background: #ff77df;
+        color: #120303;
+        padding: 10px 25px;
+        font-size: 15px;
+      }
+
+      /* Toast notification */
+      .toast {
+        position: fixed;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%) translateY(100px);
+        background: #63f863;
+        color: #120303;
+        padding: 12px 25px;
+        border-radius: 8px;
+        font-weight: bold;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        z-index: 2000;
+        opacity: 0;
+        transition: all 0.3s ease;
+        font-size: 0.95rem;
+      }
+
+      .toast.show {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+
+      /* Scrollbar styling */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #0a0202;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: #666;
+        border-radius: 4px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: #e7a900;
+      }
     </style>
   </head>
   <body>
@@ -741,20 +639,19 @@
       <div class="main-content">
         <div class="grid-section">
           <div class="info-section">
-            <div class="current-char-label" data-i18n="currentCharacter">Current Character</div>
+            <span class="current-char-label" data-i18n="currentCharacter">Current Character</span>
             <span class="current-char-display" id="currentCharDisplay">█</span>
           </div>
 
           <div class="grid-container">
             <div class="grid" id="grid"></div>
-            <div class="controls">
-              <button class="btn-clear" onclick="clearGrid()" data-i18n="eraseAll">ERASE ALL</button>
-              <button class="btn-eraser" id="eraserBtn" onclick="toggleEraser()" data-i18n="eraser">Eraser</button>
-              <button class="btn-copy" onclick="loadRandomExample()" data-i18n="example">Example</button>
-            </div>
           </div>
-
-          <button class="btn-add-game" onclick="addToGame()" data-i18n="addButton">Add your building to LoserLane</button>
+          <div class="controls">
+            <button class="btn-clear" onclick="clearGrid()" data-i18n="eraseAll">ERASE ALL</button>
+            <button class="btn-eraser" id="eraserBtn" onclick="toggleEraser()" data-i18n="eraser">Eraser</button>
+            <button class="btn-copy" onclick="loadRandomExample()" data-i18n="example">Example</button>
+          </div>
+          <button class="btn-add-game" onclick="addToGame()" data-i18n="addButton">Add to LoserLane</button>
         </div>
 
         <div class="palette-section">
@@ -776,8 +673,7 @@
           <input type="text" id="modalArtistName" data-i18n-placeholder="artistPlaceholder" placeholder="e.g., Avery" />
         </div>
         <div class="building-preview-container">
-                  <div class="building-preview" id="buildingPreview"></div>
-
+          <div class="building-preview" id="buildingPreview"></div>
         </div>
         <div class="modal-buttons">
           <button class="modal-btn modal-btn-cancel" onclick="closeModal()" data-i18n="cancel">Cancel</button>
@@ -797,7 +693,7 @@
         { key: "eraseAll", en: "ERASE ALL", fr: "TOUT EFFACER" },
         { key: "eraser", en: "Eraser", fr: "Efface" },
         { key: "example", en: "Example", fr: "Exemple" },
-        { key: "addButton", en: "Add your building to LoserLane", fr: "Ajouter ton bâtiment à LoserLane" },
+        { key: "addButton", en: "Add to LoserLane", fr: "L'ajouter à LoserLane" },
         { key: "modalTitle", en: "Add to Game", fr: "Ajouter au jeu" },
         { key: "buildingName", en: "Building Name", fr: "Nom du bâtiment" },
         { key: "buildingPlaceholder", en: "e.g., BENELUX", fr: "ex: BENELUX" },
@@ -1745,7 +1641,6 @@
         previewContainer.style.gridTemplateColumns = "repeat(10, 1fr)";
         previewContainer.style.gap = "2px";
         previewContainer.style.maxWidth = "450px";
-
 
         grid.forEach((row) => {
           row.forEach((cell) => {
