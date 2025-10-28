@@ -752,36 +752,107 @@ button:active {
   }
 }
 
-/* Language Toggle */
-/* Language Toggle - Subtle version */
 .lang-toggle-container {
   position: fixed;
   top: 20px;
   right: 20px;
   z-index: 1000;
-  /* opacity: 0.6; */
   transition: opacity 0.3s ease;
 }
 
 .lang-toggle-container:hover {
   opacity: 1;
+
 }
 
 .lang-toggle {
   background: transparent;
-  border: 1px solid var(--green);
-  padding: 4px 4px;
-  font-size: 0.8rem;
+  border: none;
+  outline: none;
+  padding: 8px 10px;
+  font-size: 1.3rem;
   cursor: pointer;
-  width: 50px;
+  width: 40px;
+  height: 40px;
   font-family: var(--font-main);
   color: var(--green);
   letter-spacing: 1px;
-  transition: all 0.2s ease;
+  transition: color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: none;
+  text-shadow: none;
 }
 
 .lang-toggle:hover {
-  /* border-color: var(--hot-pink); */
-  /* color: var(--hot-pink); */
+  color: var(--hot-pink);
+  background: transparent;
+  border: none;
   outline: none;
+  box-shadow: none;
+
+}
+
+.lang-toggle:focus {
+  background: transparent;
+}
+
+.mute-button-container {
+  position: fixed;
+  top: 20px;
+  right: 80px;
+  z-index: 1000;
+  transition: opacity 0.3s ease;
+}
+
+.mute-button-container:hover {
+  opacity: 1;
+}
+
+#mute-button {
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 8px;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  box-shadow: none;
+}
+
+#mute-button:hover .sound-icon {
+  stroke: var(--hot-pink);
+}
+
+.sound-icon {
+  width: 24px;
+  height: 24px;
+  stroke: var(--green);
+  transition: stroke 0.2s ease;
+  filter: none;
+}
+
+#mute-button.muted .sound-icon {
+  stroke: var(--hot-pink);
+}
+
+/* Hide mute X by default */
+.mute-x {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+/* Show mute X when muted */
+#mute-button.muted .mute-x {
+  opacity: 1;
+}
+
+/* Hide sound waves when muted */
+#mute-button.muted .sound-waves {
+  opacity: 0;
 }

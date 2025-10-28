@@ -6,7 +6,6 @@ class SoundManager {
     this.isInitialized = false;
     this.muteKey = "m";
     this.loadSettings();
-    this.setupMuteButton();
     this.setupKeyListener();
   }
 
@@ -25,6 +24,28 @@ class SoundManager {
       console.error("Failed to initialize audio:", error);
     }
   }
+
+updateMuteButton() {
+  const muteButton = document.getElementById("mute-button");
+  if (muteButton) {
+    if (this.isMuted) {
+      muteButton.classList.add("muted");
+    } else {
+      muteButton.classList.remove("muted");
+    }
+  }
+}
+
+// Add this method to get language from your game
+getCurrentLanguage() {
+  // You'll need to hook this up to your language system
+  // For now, check the lang toggle button
+  const langButton = document.getElementById("lang-toggle");
+  if (langButton) {
+    return langButton.textContent === 'FR' ? 'en' : 'fr';
+  }
+  return 'en';
+}
 
   // Add a sound to the manager
   addSound(name, src, loop = false) {
@@ -103,29 +124,36 @@ class SoundManager {
     this.saveSettings();
   }
 
-  // Mute all sounds
-  muteAll() {
+muteAll() {
     this.isMuted = true;
-    this.sounds.forEach((sound) => sound.pause());
+    // Pause any currently playing sounds
+    this.sounds.forEach((sound) => {
+      if (!sound.paused) {
+        sound.pause();
+      }
+    });
     this.saveSettings();
+    this.updateMuteButton(); // Update button here too
   }
 
   // Unmute all sounds
   unmuteAll() {
     this.isMuted = false;
-    this.sounds.forEach((sound) => {
-      if (!sound.paused) {
-        sound.play().catch((error) => console.error("Error resuming sound:", error));
-      }
-    });
     this.saveSettings();
+    this.updateMuteButton(); // Update button here too
   }
 
-  // Toggle mute state
   toggleMute() {
     this.isMuted ? this.unmuteAll() : this.muteAll();
   }
 
+  setupMuteButton() {
+    const muteButton = document.getElementById("mute-button");
+    if (muteButton) {
+      this.updateMuteButton(); // Set initial state
+      muteButton.addEventListener("click", () => this.toggleMute());
+    }
+  }
   // Reset all sounds
   resetAll() {
     this.sounds.forEach((sound) => {
@@ -146,14 +174,6 @@ class SoundManager {
   saveSettings() {
     localStorage.setItem("globalVolume", this.globalVolume);
     localStorage.setItem("isMuted", this.isMuted);
-  }
-
-  // Set up the mute button
-  setupMuteButton() {
-    const muteButton = document.getElementById("mute-button");
-    if (muteButton) {
-      muteButton.addEventListener("click", () => this.toggleMute());
-    }
   }
 
   // Set up key listener for mute toggle
