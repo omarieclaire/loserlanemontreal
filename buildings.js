@@ -191,6 +191,36 @@ const TORONTO_BUILDINGS = [
       "╰───────╯ "
     ]
   },
+      {
+                name: "BRANCHE_D'OLIVIER",
+                artist: "Alison",
+                art: [
+                    "╔BRANCH═╕ ",
+            "║⁂D◞[] ⁂║ ",
+            "║OLIVIER║ ",
+            "║ ⠀✦✦✦ ⠀║ ",
+            "║⁂⠀⠀⠀⠀ ⁂║ ",
+            "╚═══════╛ "
+                ]
+            },
+                {
+                name: "SLUMLORD_TOWERS",
+                artist: "d6",
+                art: [
+                    "╔════════╗",
+            "║SLUMLORD║",
+            "║ TOWERS ║",
+            "║⋰       ║",
+            "╚════════╝",
+            "▒▀█▀░░░█▀░",
+            "▒▀░◾▒▒▨█▀█",
+            "▒█░█▒▒▒▒█░",
+            "█◾█▄██▄█▄█",
+            "█╳█▌◾◾▐█╳█"
+                ]
+            },
+
+
   {
     name: "Wilensky's",
     art: [

@@ -272,7 +272,6 @@
           max-height: 75vh;
           overflow-y: auto;
           border: 1px solid #333;
-          
         }
 
         .palette-category {
@@ -790,764 +789,785 @@
       <div class="landscape-hint" id="landscapeHint" data-i18n="landscapeHint">Rotate for better experience!</div>
 
       <script>
-                // Translations
-                const TRANSLATIONS = [
-                  { key: "title", en: "Draw a building!", fr: "Dessine un bâtiment!" },
-                  { key: "subtitle", en: "Draw your Montreal building & add it to", fr: "Dessine ton bâtiment montréalais & ajoute-le à" },
-                  { key: "currentCharacter", en: "Current Character", fr: "Caractère actuel" },
-                  { key: "eraseAll", en: "ERASE ALL", fr: "TOUT EFFACER" },
-                  { key: "eraser", en: "Eraser", fr: "Efface" },
-                  { key: "example", en: "Example", fr: "Exemple" },
-                  { key: "addButton", en: "Add to LoserLane", fr: "L'ajouter à LoserLane" },
-                  { key: "modalTitle", en: "Add to Game", fr: "Ajouter au jeu" },
-                  { key: "buildingName", en: "Building Name", fr: "Nom du bâtiment" },
-                  { key: "buildingPlaceholder", en: "e.g., BENELUX", fr: "ex: BENELUX" },
-                  { key: "artistName", en: "Your Name / Handle", fr: "Ton nom / pseudo" },
-                  { key: "artistPlaceholder", en: "e.g., Avery", fr: "ex: Avery" },
-                  { key: "cancel", en: "Cancel", fr: "Annuler" },
-                  { key: "submit", en: "Submit", fr: "Soumettre" },
-                  { key: "copied", en: "Copied!", fr: "Copié!" },
-                  { key: "gridCleared", en: "Grid cleared!", fr: "Grille effacée!" },
-                  { key: "loadedExample", en: "Loaded: ", fr: "Chargé: " },
-                  { key: "enterBuildingName", en: "Please enter a building name!", fr: "Entre un nom de bâtiment!" },
-                  { key: "enterArtistName", en: "Please enter your name or handle!", fr: "Entre ton nom ou pseudo!" },
-                  { key: "buildingNameTooLong", en: "Building name too long! Max 30 characters.", fr: "Nom trop long! Max 30 caractères." },
-                  { key: "artistNameTooLong", en: "Artist name too long! Max 30 characters.", fr: "Nom trop long! Max 30 caractères." },
-                  { key: "submitSuccess", en: "Building submitted successfully! Thank you!", fr: "Bâtiment soumis avec succès! Merci!" },
-                  { key: "submitFailed", en: "Submission may have failed. Please try again.", fr: "Soumission échouée. Réessaie!" },
-                  { key: "walls", en: "Walls", fr: "Murs" },
-                  { key: "basic", en: "Basic", fr: "Basique" },
-                  { key: "blocks", en: "Blocks", fr: "Blocs" },
-                  { key: "lines", en: "Lines", fr: "Lignes" },
-                  { key: "shapes", en: "Shapes", fr: "Formes" },
-                  { key: "accent", en: "Accent", fr: "Accent" },
-                  { key: "montreal", en: "Montreal", fr: "Montréal" },
-                  { key: "landscapeHint", en: "rotate your phone? drawing is nicer in landscape mode", fr: "Tourne ton écran!" },
-                ];
+        // Translations
+        const TRANSLATIONS = [
+          { key: "title", en: "Draw a building!", fr: "Dessine un bâtiment!" },
+          { key: "subtitle", en: "Draw your Montreal building & add it to", fr: "Dessine ton bâtiment montréalais & ajoute-le à" },
+          { key: "currentCharacter", en: "Current Character", fr: "Caractère actuel" },
+          { key: "eraseAll", en: "ERASE ALL", fr: "TOUT EFFACER" },
+          { key: "eraser", en: "Eraser", fr: "Efface" },
+          { key: "example", en: "Example", fr: "Exemple" },
+          { key: "addButton", en: "Add to LoserLane", fr: "L'ajouter à LoserLane" },
+          { key: "modalTitle", en: "Add to Game", fr: "Ajouter au jeu" },
+          { key: "buildingName", en: "Building Name", fr: "Nom du bâtiment" },
+          { key: "buildingPlaceholder", en: "e.g., BENELUX", fr: "ex: BENELUX" },
+          { key: "artistName", en: "Your Name / Handle", fr: "Ton nom / pseudo" },
+          { key: "artistPlaceholder", en: "e.g., Avery", fr: "ex: Avery" },
+          { key: "cancel", en: "Cancel", fr: "Annuler" },
+          { key: "submit", en: "Submit", fr: "Soumettre" },
+          { key: "copied", en: "Copied!", fr: "Copié!" },
+          { key: "gridCleared", en: "Grid cleared!", fr: "Grille effacée!" },
+          { key: "loadedExample", en: "Loaded: ", fr: "Chargé: " },
+          { key: "enterBuildingName", en: "Please enter a building name!", fr: "Entre un nom de bâtiment!" },
+          { key: "enterArtistName", en: "Please enter your name or handle!", fr: "Entre ton nom ou pseudo!" },
+          { key: "buildingNameTooLong", en: "Building name too long! Max 30 characters.", fr: "Nom trop long! Max 30 caractères." },
+          { key: "artistNameTooLong", en: "Artist name too long! Max 30 characters.", fr: "Nom trop long! Max 30 caractères." },
+          { key: "submitSuccess", en: "Building submitted successfully! Thank you!", fr: "Bâtiment soumis avec succès! Merci!" },
+          { key: "submitFailed", en: "Submission may have failed. Please try again.", fr: "Soumission échouée. Réessaie!" },
+          { key: "walls", en: "Walls", fr: "Murs" },
+          { key: "basic", en: "Basic", fr: "Basique" },
+          { key: "blocks", en: "Blocks", fr: "Blocs" },
+          { key: "lines", en: "Lines", fr: "Lignes" },
+          { key: "shapes", en: "Shapes", fr: "Formes" },
+          { key: "accent", en: "Accent", fr: "Accent" },
+          { key: "montreal", en: "Montreal", fr: "Montréal" },
+          { key: "landscapeHint", en: "rotate your phone? drawing is nicer in landscape mode", fr: "Tourne ton écran!" },
+        ];
 
-                // Build lookup objects from the array (for performance)
-                const LANG = {
-                  en: {},
-                  fr: {},
-                };
+        // Build lookup objects from the array (for performance)
+        const LANG = {
+          en: {},
+          fr: {},
+        };
 
-                TRANSLATIONS.forEach((item) => {
-                  LANG.en[item.key] = item.en;
-                  LANG.fr[item.key] = item.fr;
-                });
+        TRANSLATIONS.forEach((item) => {
+          LANG.en[item.key] = item.en;
+          LANG.fr[item.key] = item.fr;
+        });
 
-                let currentLang = localStorage.getItem("language") || "en";
+        let currentLang = localStorage.getItem("language") || "en";
 
-                // Define the t() function
-                function t(key) {
-                  return LANG[currentLang][key] || key;
-                }
+        // Define the t() function
+        function t(key) {
+          return LANG[currentLang][key] || key;
+        }
 
-                // Language switcher - single toggle button
-                document.addEventListener("DOMContentLoaded", () => {
-                  updateLanguage();
+        // Language switcher - single toggle button
+        document.addEventListener("DOMContentLoaded", () => {
+          updateLanguage();
 
-                  const langToggle = document.getElementById("lang-toggle");
+          const langToggle = document.getElementById("lang-toggle");
 
-                  if (langToggle) {
-                    // Set initial button text
-                    langToggle.textContent = currentLang === "en" ? "FR" : "EN";
-                    langToggle.addEventListener("click", () => {
-                      currentLang = currentLang === "en" ? "fr" : "en";
-                      localStorage.setItem("language", currentLang);
-                      // Refresh the page to apply new language
-                      location.reload();
-                    });
-                  }
-                });
+          if (langToggle) {
+            // Set initial button text
+            langToggle.textContent = currentLang === "en" ? "FR" : "EN";
+            langToggle.addEventListener("click", () => {
+              currentLang = currentLang === "en" ? "fr" : "en";
+              localStorage.setItem("language", currentLang);
+              // Refresh the page to apply new language
+              location.reload();
+            });
+          }
+        });
 
-                function updateLanguage() {
-                  document.querySelectorAll("[data-i18n]").forEach((element) => {
-                    const key = element.dataset.i18n;
-                    if (LANG[currentLang][key]) {
-                      element.textContent = LANG[currentLang][key];
-                    }
-                  });
+        function updateLanguage() {
+          document.querySelectorAll("[data-i18n]").forEach((element) => {
+            const key = element.dataset.i18n;
+            if (LANG[currentLang][key]) {
+              element.textContent = LANG[currentLang][key];
+            }
+          });
 
-                  // Update placeholders
-                  document.querySelectorAll("[data-i18n-placeholder]").forEach((element) => {
-                    const key = element.dataset.i18nPlaceholder;
-                    if (LANG[currentLang][key]) {
-                      element.placeholder = LANG[currentLang][key];
-                    }
-                  });
-                }
+          // Update placeholders
+          document.querySelectorAll("[data-i18n-placeholder]").forEach((element) => {
+            const key = element.dataset.i18nPlaceholder;
+            if (LANG[currentLang][key]) {
+              element.placeholder = LANG[currentLang][key];
+            }
+          });
+        }
 
-                const GRID_SIZE = 10;
-                let grid = Array(GRID_SIZE)
-                  .fill()
-                  .map(() => Array(GRID_SIZE).fill(""));
-                let currentChar = "█";
-                let selectedCell = null;
-                    let hoveredCell = null;
+        const GRID_SIZE = 10;
+        let grid = Array(GRID_SIZE)
+          .fill()
+          .map(() => Array(GRID_SIZE).fill(""));
+        let currentChar = "█";
+        let selectedCell = null;
+        let hoveredCell = null;
 
-                let isDrawing = false;
-                let lastDrawnCell = null;
-                let isEraserMode = false;
+        let isDrawing = false;
+        let lastDrawnCell = null;
+        let isEraserMode = false;
 
-                let copiedCell = null;
-                let isDraggingToMove = false;
-                let draggedCell = null;
-                let draggedContent = null;
-                let isShiftPressed = false;
+        let copiedCell = null;
+        let isDraggingToMove = false;
+        let draggedCell = null;
+        let draggedContent = null;
+        let isShiftPressed = false;
 
-                // Example buildings pool
-                const exampleBuildings = [
-                  {
-                    name: "Habitat 67",
-                    art: ["  ▓▓  ▓▓  ", " ▓▓▓ ▓▓▓  ", "▓▓▓ 67 ▓▓▓", " ▓▓▓▓▓▓▓▓ ", "▓▓▓ ▓▓▓▓▓ ", " ▓▓  ▓▓ ▓▓"],
-                  },
-                  {
-                    name: "Biosphere",
-                    art: ["   ╱◇◇╲   ", "  ◇◇◇◇◇  ", " ◇◇◇◇◇◇◇ ", " ◇◇◇◇◇◇◇ ", "  ◇◇◇◇◇  ", "   ╲◇◇╱   "],
-                  },
-                  {
-                    name: "Olympic Stadium",
-                    art: ["      ╱│  ", "     ╱ │  ", "    ╱  │  ", "   ╱╲  │  ", "  ╱  ╲ │  ", " ◢◣ ◢◣◣│  "],
-                  },
-                  {
-                    name: "Place des Arts",
-                    art: ["▀▀▀▀▀▀▀▀▀▀", "█PLACE   █", "█DES ARTS█", "█ ▢ ▢ ▢ ▢█", "█ ▢ ▢ ▢ ▢█", "▔▔▔▔▔▔▔▔▔▔"],
-                  },
-                  {
-                    name: "Phi Centre",
-                    art: ["╔═══PHI══╗", "║ ◉ ART ◉║", "║▓▓▓▓▓▓▓▓║", "║ CINEMA ║", "║▓▓▓▓▓▓▓▓║", "╚═══════╝"],
-                  },
-                  {
-                    name: "LE_CRAYON_MONTRÉALAIS",
-                    artist: "Aurélie",
-                    art: [" ⚛ ⚛ ", " ╔◢◣╗ ", " ⊡⊡⊡⊡ ", " ╚▒▒╝ ", " ▒▒ ", " ▒▒ "],
-                  },
-                  {
-                    name: "Main Bistro",
-                    art: ["  ▁▁▁▁▁   ", " │ MAIN │ ", " │BISTRO│ ", " │ ☕★☕ │ ", " │░░░░░░│ ", " └──▐▌──┘ "],
-                  },
-                  {
-                    name: "Casa del Popolo",
-                    art: ["╔═CASA═╗  ", "║ DEL  ║  ", "║POPOLO║  ", "║★ ♪ ★║  ", "║▓▓▓▓▓║  ", "╚══════╝  "],
-                  },
-                  {
-                    name: "Musée d'Art Contemporain",
-                    art: ["▀▀▀MAC▀▀▀▀", "█ ◢■◣ ◢■◣█", "█ ◥■◤ ◥■◤█", "█ ART    █", "█CONTEMPO█", "▔▔▔▔▔▔▔▔▔▔"],
-                  },
-                  {
-                    name: "SAT Societé",
-                    art: ["╭{     )─╮", "╭─SAT───╮ ", "│◉AUDIO◉│ ", "│VISUAL │ ", "│▓▓▓▓▓▓▓│ ", "│░IMMR░░│ ", "╰───────╯ "],
-                  },
-                  {
-                    name: "Tam Tams",
-                    art: ["  ♪ ☼ ♪   ", " ○ ● ○ ●  ", "  TAM     ", "  TAMS    ", " ● ○ ● ○  ", "  ♫ ☼ ♫   "],
-                  },
-                  {
-                    name: "Wilensky's",
-                    art: ["╔WILENSKY╗", "║ LIGHT  ║", "║ LUNCH  ║", "╚════════╝"],
-                  },
-                  {
-                    name: "Fairmount Bagel",
-                    art: ["  ╱▔▔▔╲   ", " │FAIR  │ ", " │MOUNT │ ", " │ ◯ ◯  │ ", " │BAGELS│ ", " ╰─────╯  "],
-                  },
-                  {
-                    name: "Casa d'Italia",
-                    art: ["╔═CASA═╗  ", "║D'ITALIA║", "║ ★ ★ ★ ║", "║▓▓▓▓▓▓▓║", "║CULTURA║", "╚═══════╝"],
-                  },
-                  {
-                    name: "Greenroom",
-                    art: ["╭─GREEN──╮", "│ ROOM   │", "│ ♪ ★ ♫  │", "╰────────╯"],
-                  },
-                  {
-                    name: "McCord Museum",
-                    art: ["▀McCORD▀▀▀", "█        █", "█ ◢■◣◢■◣ █", "▔▔▔▔▔▔▔▔▔▔"],
-                  },
-                  {
-                    name: "Quai des Brumes",
-                    art: ["╔═QUAI══╗ ", "║ DES   ║ ", "║BRUMES ║ ", "╚═══════╝ "],
-                  },
-                  {
-                    name: "Cabaret Mile End",
-                    art: ["▁▁CABARET▁", "│ MILE   │", "│  END   │", "│▓STAGE▓▓│", "└─────────┘"],
-                  },
-                  {
-                    name: "Foufounes Électriques",
-                    art: ["╔FOUFOU═╗ ", "║NES    ║ ", "║ELEC   ║ ", "║TRIQUES║ ", "║★♫PUNK♫║ ", "╚═══════╝ "],
-                  },
-                  {
-                    name: "Le Dépanneur Café",
-                    art: ["╭DEPAN──╮ ", "│ NEUR  │ ", "│ CAFE  │ ", "│ ☕ ◉  │ ", "│░RESTO░│ ", "╰───────╯ "],
-                  },
-                  {
-                    name: "Drawn & Quarterly",
-                    art: ["╔DRAWN═╗  ", "║  &   ║  ", "║QRTLY ║  ", "║ ◢■◣  ║  ", "║BOOKS ║  ", "╚══════╝  "],
-                  },
-                  {
-                    name: "L'Escalier",
-                    art: ["╭L'ESCA─╮ ", "│ LIER  │ ", "│ ♪ ★ ♫ │ ", "╰───────╯ "],
-                  },
-                  {
-                    name: "Cinéma du Parc",
-                    art: ["▀▀CINEMA▀▀", "█ DU    █ ", "█ PARC  █ ", "█ ◢▓▓◣  █ ", "█ ◥▓▓◤  █ ", "▔▔▔▔▔▔▔▔▔▔"],
-                  },
-                  {
-                    name: "Croissanterie Figaro",
-                    art: ["  ╱▔▔▔╲   ", " │CROIS │ ", " │SANTE │ ", " │FIGARO│ ", " │◯☕◯☕│ ", " ╰──────╯ "],
-                  },
-                  {
-                    name: "Barraca",
-                    art: ["╭BARRACA╮ ", "│ RHUMBA│ ", "╰────────╯"],
-                  },
-                  {
-                    name: "Espace pour la vie",
-                    art: ["  ╱▲╲ ◉   ", " │ESPACE│ ", " │ POUR │ ", " │ LA   │ ", " │ VIE ☼│ ", " └──────┘ "],
-                  },
-                  {
-                    name: "Café Olimpico",
-                    art: ["╭OLIMPICO╮", "│ESPRESSO│", "│ CAFFE  │", "│░1970░░ │", "╰────────╯"],
-                  },
-                  {
-                    name: "Cinéma Beaubien",
-                    art: ["╔CINEMA═╗ ", "║BEAUBIEN║", "║ ◢▓▓◣  ║ ", "║ ◥▓▓◤  ║ ", "║ 1938  ║ ", "╚═══════╝ "],
-                  },
-                  {
-                    name: "La Vitrola",
-                    art: ["╭LA─────╮ ", "│VITROLA│ ", "╰────────╯"],
-                  },
-                  {
-                    name: "Palais Royale",
-                    art: ["▀PALAIS▀▀▀", "█ ROYALE █", "█ RESTO  █", "▔▔▔▔▔▔▔▔▔▔"],
-                  },
-                  {
-                    name: "Sala Rossa",
-                    art: ["╭SALA───╮ ", "│ ROSSA │ ", "│ ♪ ★ ♫ │ ", "╰────────╯"],
-                  },
-                  {
-                    name: "Notre-Dame Basilica",
-                    art: ["   ╱▲╲    ", "  ╱▲▲╲    ", " ╱NOTRE╲  ", "│  DAME  │", "│ ★ ✦ ★ │", "└────────┘"],
-                  },
-                  {
-                    name: "Café dei Campi",
-                    art: ["╭DEI────╮ ", "│ CAMPI │ ", "│ CAFFE │ ", "│ ☕ ◉  │ ", "╰───────╯ "],
-                  },
-                  {
-                    name: "Arepera du Plateau",
-                    art: ["╭AREPERA╮ ", "│ ◢■◣   │ ", "╰────────╯"],
-                  },
-                  {
-                    name: "Leonard Cohen House",
-                    art: ["  ▁▁▁▁▁   ", " │ 5244 │ ", " │ BLVD │ ", " │★POET★│ ", " └───────┘ "],
-                  },
-                  {
-                    name: "Giant Ring",
-                    art: ["   ◢◣◣    ", "  ◢   ◣   ", " ◢ RING◣  ", " ◥     ◤  ", "  ◥   ◤   ", "   ◥◤◤    "],
-                  },
-                  {
-                    name: "Parquette",
-                    art: ["╭PAR___╮  ", "│ QUET │ ", "│ ★ ☕ ★│ ", "│░.  E░░│ ", "╰────────╯"],
-                  },
-                  {
-                    name: "Café Orr",
-                    art: ["╭──ORR──╮ ", "│ CAFE  │ ", "│ ☕☕☕ │ ", "╰────────╯"],
-                  },
-                  {
-                    name: "Parc Laurier",
-                    art: ["  ☼ ◉ ☼   ", " ░PARC░   ", "░LAURIER░ ", " ░POOL░   ", "  ░░░░░   ", "  ◉ ☼ ◉   "],
-                  },
-                  {
-                    name: "Frédéric-Back Park",
-                    art: ["  ☼ ◉ ☼   ", " ░FRED░   ", "░░BACK░░  ", " ░ORBS░   ", "  ░░░░░   ", "  ◉ ☼ ◉   "],
-                  },
-                  {
-                    name: "Parc Jeanne-Mance",
-                    art: ["  ☼ ◉ ☼   ", " ░JEANNE░ ", "░░MANCE░░ ", " ░PARC░   ", "  ◉ ☼ ◉   "],
-                  },
-                  {
-                    name: "Parc Jarry",
-                    art: ["  ☼ ◉ ☼   ", " ░░PARC░░ ", "░░JARRY░░ ", "  ░░░░░   ", "  ◉ ☼ ◉   "],
-                  },
-                  {
-                    name: "Renaissance",
-                    art: ["╔RENAIS═╗ ", "║ SANCE ║ ", "║ THRIFT║ ", "║ BOOKS ║ ", "╚═══════╝ "],
-                  },
-                  {
-                    name: "Les Petits Frères",
-                    art: ["╭LES────╮ ", "│PETITS │ ", "│FRERES │ ", "│ ★ ♥ ★ │ ", "╰────────╯"],
-                  },
-                  {
-                    name: "Westmount Greenhouse",
-                    art: ["  ╱▔▔▔╲   ", " ╱ ☼ ◉ ╲  ", "│WESTMOU│ ", "│ GREEN │ ", "│░HOUSE░│ ", "╰────────╯"],
-                  },
-                  {
-                    name: "Chatime",
-                    art: ["╭CHATIME╮ ", "│ BUBBLE│ ", "│  TEA  │ ", "│ ◉ ◉ ◉ │ ", "│░BOBA░░│ ", "╰────────╯"],
-                  },
-                  {
-                    name: "Marché PA",
-                    art: ["╔MARCHE═╗ ", "║  PA   ║ ", "║ ◢■◣   ║ ", "║GROCERY║ ", "╚═══════╝ "],
-                  },
-                  {
-                    name: "Samosa King",
-                    art: ["╭SAMOSA─╮ ", "│ KING  │ ", "│  $1   │ ", "│ ◢■◣   │ ", "│░SPICE░│ ", "╰────────╯"],
-                  },
-                  {
-                    name: "Gnocchi $5",
-                    art: ["╭GNOCCHI╮ ", "│  $5   │ ", "│ ◢■◣   │ ", "╰────────╯"],
-                  },
-                  {
-                    name: "St-Viateur Bagel",
-                    art: ["  ╱▔▔▔╲   ", " │ST-VIA│ ", " │ TEUR │ ", " │ ◯ ◯  │ ", " │BAGELS│ ", " ╰──────╯ "],
-                  },
-                  {
-                    name: "Van Horne Underpass",
-                    art: ["  ▀▀▀▀▀   ", " │VAN   │ ", "╱│HORNE│╲ ", "││UNDER││ ", "││░PASS░││", "╰┴──────┴╯"],
-                  },
-                  {
-                    name: "LE_CRAYON_MONTRÉALAIS",
-                    artist: "Aurélie",
-                    art: ["   ⚛ ⚛    ", "   ╔◢◣╗   ", "   ⊡⊡⊡⊡   ", "   ╚▒▒╝   ", "    ▒▒    ", "    ▒▒    "],
-                  },
-                  {
-                    name: "BAIN_COLONIAL",
-                    artist: "Julia",
-                    art: [" ┏━━━━━━┓ ", " ┣━━━━━━┫ ", " ┃ BAIN ┃ ", " ┃      ┃ ", " ┃COLO  ┃ ", " ┃  NIAL┃ ", " ┃      ┃ ", " ┃      ┃ ", " ┗━━━━━━┛ "],
-                  },
-                  {
-                    name: "SNAKE_FACTORY",
-                    artist: "Pen",
-                    art: ["  ∿∿∿⳻    ", "  ∿∿∿5⳻   ", "  ∿∿∿ S⳻  ", "  ∿∿∿ S⚕  ", "  ∿∿∿ S⚕  ", "  ∿∿∿ S⚕  ", "  ∿∿∿ S⚕  ", "  ∿⍝∿ S⚕  "],
-                  },
-                  {
-                    name: "BLOBBY'S_BUNKER",
-                    artist: "Pen",
-                    art: ["   ⌓⌓⌓    ", "  ◯ ❂ ⌇   ", " ◯ ◜ ◝⌇   ", " ◯⋰◟◘◞⦆   "],
-                  },
-                  {
-                    name: "OBSERVATOIRE",
-                    artist: "Pen",
-                    art: [
-                      "   ╭⦿⦿╮   ",
-                      "  ╭ ⠁⠑ ╮  ",
-                      " ╭ ⠛  ⠅⠝╮ ",
-                      " ╰⠇ ⠋   ╯ ",
-                      "  ╰⠕⠜ ⠜╯  ",
-                      "   ╰  ╯   ",
-                      "    ░░    ",
-                      "    ▒▒    ",
-                      "    ▓▓    ",
-                      "    ██    ",
-                    ],
-                  },
-                ];
+        // Example buildings pool
+        const exampleBuildings = [
+          {
+            name: "Habitat 67",
+            art: ["  ▓▓  ▓▓  ", " ▓▓▓ ▓▓▓  ", "▓▓▓ 67 ▓▓▓", " ▓▓▓▓▓▓▓▓ ", "▓▓▓ ▓▓▓▓▓ ", " ▓▓  ▓▓ ▓▓"],
+          },
+          {
+            name: "Biosphere",
+            art: ["   ╱◇◇╲   ", "  ◇◇◇◇◇  ", " ◇◇◇◇◇◇◇ ", " ◇◇◇◇◇◇◇ ", "  ◇◇◇◇◇  ", "   ╲◇◇╱   "],
+          },
+          {
+            name: "Olympic Stadium",
+            art: ["      ╱│  ", "     ╱ │  ", "    ╱  │  ", "   ╱╲  │  ", "  ╱  ╲ │  ", " ◢◣ ◢◣◣│  "],
+          },
+          {
+            name: "Place des Arts",
+            art: ["▀▀▀▀▀▀▀▀▀▀", "█PLACE   █", "█DES ARTS█", "█ ▢ ▢ ▢ ▢█", "█ ▢ ▢ ▢ ▢█", "▔▔▔▔▔▔▔▔▔▔"],
+          },
+          {
+            name: "Phi Centre",
+            art: ["╔═══PHI══╗", "║ ◉ ART ◉║", "║▓▓▓▓▓▓▓▓║", "║ CINEMA ║", "║▓▓▓▓▓▓▓▓║", "╚═══════╝"],
+          },
+          {
+            name: "LE_CRAYON_MONTRÉALAIS",
+            artist: "Aurélie",
+            art: [" ⚛ ⚛ ", " ╔◢◣╗ ", " ⊡⊡⊡⊡ ", " ╚▒▒╝ ", " ▒▒ ", " ▒▒ "],
+          },
+          {
+            name: "Main Bistro",
+            art: ["  ▁▁▁▁▁   ", " │ MAIN │ ", " │BISTRO│ ", " │ ☕★☕ │ ", " │░░░░░░│ ", " └──▐▌──┘ "],
+          },
+          {
+            name: "Casa del Popolo",
+            art: ["╔═CASA═╗  ", "║ DEL  ║  ", "║POPOLO║  ", "║★ ♪ ★║  ", "║▓▓▓▓▓║  ", "╚══════╝  "],
+          },
+          {
+            name: "Musée d'Art Contemporain",
+            art: ["▀▀▀MAC▀▀▀▀", "█ ◢■◣ ◢■◣█", "█ ◥■◤ ◥■◤█", "█ ART    █", "█CONTEMPO█", "▔▔▔▔▔▔▔▔▔▔"],
+          },
+          {
+            name: "SAT Societé",
+            art: ["╭{     )─╮", "╭─SAT───╮ ", "│◉AUDIO◉│ ", "│VISUAL │ ", "│▓▓▓▓▓▓▓│ ", "│░IMMR░░│ ", "╰───────╯ "],
+          },
+          {
+            name: "Tam Tams",
+            art: ["  ♪ ☼ ♪   ", " ○ ● ○ ●  ", "  TAM     ", "  TAMS    ", " ● ○ ● ○  ", "  ♫ ☼ ♫   "],
+          },
+          {
+            name: "Wilensky's",
+            art: ["╔WILENSKY╗", "║ LIGHT  ║", "║ LUNCH  ║", "╚════════╝"],
+          },
+          {
+            name: "Fairmount Bagel",
+            art: ["  ╱▔▔▔╲   ", " │FAIR  │ ", " │MOUNT │ ", " │ ◯ ◯  │ ", " │BAGELS│ ", " ╰─────╯  "],
+          },
+          {
+            name: "Casa d'Italia",
+            art: ["╔═CASA═╗  ", "║D'ITALIA║", "║ ★ ★ ★ ║", "║▓▓▓▓▓▓▓║", "║CULTURA║", "╚═══════╝"],
+          },
+          {
+            name: "Greenroom",
+            art: ["╭─GREEN──╮", "│ ROOM   │", "│ ♪ ★ ♫  │", "╰────────╯"],
+          },
+          {
+            name: "McCord Museum",
+            art: ["▀McCORD▀▀▀", "█        █", "█ ◢■◣◢■◣ █", "▔▔▔▔▔▔▔▔▔▔"],
+          },
+          {
+            name: "Quai des Brumes",
+            art: ["╔═QUAI══╗ ", "║ DES   ║ ", "║BRUMES ║ ", "╚═══════╝ "],
+          },
+          {
+            name: "Cabaret Mile End",
+            art: ["▁▁CABARET▁", "│ MILE   │", "│  END   │", "│▓STAGE▓▓│", "└─────────┘"],
+          },
+          {
+            name: "Foufounes Électriques",
+            art: ["╔FOUFOU═╗ ", "║NES    ║ ", "║ELEC   ║ ", "║TRIQUES║ ", "║★♫PUNK♫║ ", "╚═══════╝ "],
+          },
+          {
+            name: "Le Dépanneur Café",
+            art: ["╭DEPAN──╮ ", "│ NEUR  │ ", "│ CAFE  │ ", "│ ☕ ◉  │ ", "│░RESTO░│ ", "╰───────╯ "],
+          },
+          {
+            name: "Drawn & Quarterly",
+            art: ["╔DRAWN═╗  ", "║  &   ║  ", "║QRTLY ║  ", "║ ◢■◣  ║  ", "║BOOKS ║  ", "╚══════╝  "],
+          },
+          {
+            name: "L'Escalier",
+            art: ["╭L'ESCA─╮ ", "│ LIER  │ ", "│ ♪ ★ ♫ │ ", "╰───────╯ "],
+          },
+          {
+            name: "Cinéma du Parc",
+            art: ["▀▀CINEMA▀▀", "█ DU    █ ", "█ PARC  █ ", "█ ◢▓▓◣  █ ", "█ ◥▓▓◤  █ ", "▔▔▔▔▔▔▔▔▔▔"],
+          },
+          {
+            name: "Croissanterie Figaro",
+            art: ["  ╱▔▔▔╲   ", " │CROIS │ ", " │SANTE │ ", " │FIGARO│ ", " │◯☕◯☕│ ", " ╰──────╯ "],
+          },
+          {
+            name: "Barraca",
+            art: ["╭BARRACA╮ ", "│ RHUMBA│ ", "╰────────╯"],
+          },
+          {
+            name: "Espace pour la vie",
+            art: ["  ╱▲╲ ◉   ", " │ESPACE│ ", " │ POUR │ ", " │ LA   │ ", " │ VIE ☼│ ", " └──────┘ "],
+          },
+          {
+            name: "Café Olimpico",
+            art: ["╭OLIMPICO╮", "│ESPRESSO│", "│ CAFFE  │", "│░1970░░ │", "╰────────╯"],
+          },
+          {
+            name: "Cinéma Beaubien",
+            art: ["╔CINEMA═╗ ", "║BEAUBIEN║", "║ ◢▓▓◣  ║ ", "║ ◥▓▓◤  ║ ", "║ 1938  ║ ", "╚═══════╝ "],
+          },
+          {
+            name: "La Vitrola",
+            art: ["╭LA─────╮ ", "│VITROLA│ ", "╰────────╯"],
+          },
+          {
+            name: "Palais Royale",
+            art: ["▀PALAIS▀▀▀", "█ ROYALE █", "█ RESTO  █", "▔▔▔▔▔▔▔▔▔▔"],
+          },
+          {
+            name: "Sala Rossa",
+            art: ["╭SALA───╮ ", "│ ROSSA │ ", "│ ♪ ★ ♫ │ ", "╰────────╯"],
+          },
+          {
+            name: "Notre-Dame Basilica",
+            art: ["   ╱▲╲    ", "  ╱▲▲╲    ", " ╱NOTRE╲  ", "│  DAME  │", "│ ★ ✦ ★ │", "└────────┘"],
+          },
+          {
+            name: "Café dei Campi",
+            art: ["╭DEI────╮ ", "│ CAMPI │ ", "│ CAFFE │ ", "│ ☕ ◉  │ ", "╰───────╯ "],
+          },
+          {
+            name: "Arepera du Plateau",
+            art: ["╭AREPERA╮ ", "│ ◢■◣   │ ", "╰────────╯"],
+          },
+          {
+            name: "Leonard Cohen House",
+            art: ["  ▁▁▁▁▁   ", " │ 5244 │ ", " │ BLVD │ ", " │★POET★│ ", " └───────┘ "],
+          },
+          {
+            name: "Giant Ring",
+            art: ["   ◢◣◣    ", "  ◢   ◣   ", " ◢ RING◣  ", " ◥     ◤  ", "  ◥   ◤   ", "   ◥◤◤    "],
+          },
+          {
+            name: "Parquette",
+            art: ["╭PAR___╮  ", "│ QUET │ ", "│ ★ ☕ ★│ ", "│░.  E░░│ ", "╰────────╯"],
+          },
+          {
+            name: "Café Orr",
+            art: ["╭──ORR──╮ ", "│ CAFE  │ ", "│ ☕☕☕ │ ", "╰────────╯"],
+          },
+          {
+            name: "Parc Laurier",
+            art: ["  ☼ ◉ ☼   ", " ░PARC░   ", "░LAURIER░ ", " ░POOL░   ", "  ░░░░░   ", "  ◉ ☼ ◉   "],
+          },
+          {
+            name: "Frédéric-Back Park",
+            art: ["  ☼ ◉ ☼   ", " ░FRED░   ", "░░BACK░░  ", " ░ORBS░   ", "  ░░░░░   ", "  ◉ ☼ ◉   "],
+          },
+          {
+            name: "Parc Jeanne-Mance",
+            art: ["  ☼ ◉ ☼   ", " ░JEANNE░ ", "░░MANCE░░ ", " ░PARC░   ", "  ◉ ☼ ◉   "],
+          },
+          {
+            name: "Parc Jarry",
+            art: ["  ☼ ◉ ☼   ", " ░░PARC░░ ", "░░JARRY░░ ", "  ░░░░░   ", "  ◉ ☼ ◉   "],
+          },
+          {
+            name: "Renaissance",
+            art: ["╔RENAIS═╗ ", "║ SANCE ║ ", "║ THRIFT║ ", "║ BOOKS ║ ", "╚═══════╝ "],
+          },
+          {
+            name: "Les Petits Frères",
+            art: ["╭LES────╮ ", "│PETITS │ ", "│FRERES │ ", "│ ★ ♥ ★ │ ", "╰────────╯"],
+          },
+          {
+            name: "Westmount Greenhouse",
+            art: ["  ╱▔▔▔╲   ", " ╱ ☼ ◉ ╲  ", "│WESTMOU│ ", "│ GREEN │ ", "│░HOUSE░│ ", "╰────────╯"],
+          },
+          {
+            name: "Chatime",
+            art: ["╭CHATIME╮ ", "│ BUBBLE│ ", "│  TEA  │ ", "│ ◉ ◉ ◉ │ ", "│░BOBA░░│ ", "╰────────╯"],
+          },
+          {
+            name: "Marché PA",
+            art: ["╔MARCHE═╗ ", "║  PA   ║ ", "║ ◢■◣   ║ ", "║GROCERY║ ", "╚═══════╝ "],
+          },
+          {
+            name: "Samosa King",
+            art: ["╭SAMOSA─╮ ", "│ KING  │ ", "│  $1   │ ", "│ ◢■◣   │ ", "│░SPICE░│ ", "╰────────╯"],
+          },
+          {
+            name: "Gnocchi $5",
+            art: ["╭GNOCCHI╮ ", "│  $5   │ ", "│ ◢■◣   │ ", "╰────────╯"],
+          },
+          {
+            name: "St-Viateur Bagel",
+            art: ["  ╱▔▔▔╲   ", " │ST-VIA│ ", " │ TEUR │ ", " │ ◯ ◯  │ ", " │BAGELS│ ", " ╰──────╯ "],
+          },
+          {
+            name: "Van Horne Underpass",
+            art: ["  ▀▀▀▀▀   ", " │VAN   │ ", "╱│HORNE│╲ ", "││UNDER││ ", "││░PASS░││", "╰┴──────┴╯"],
+          },
+          {
+            name: "LE_CRAYON_MONTRÉALAIS",
+            artist: "Aurélie",
+            art: ["   ⚛ ⚛    ", "   ╔◢◣╗   ", "   ⊡⊡⊡⊡   ", "   ╚▒▒╝   ", "    ▒▒    ", "    ▒▒    "],
+          },
+          {
+            name: "BAIN_COLONIAL",
+            artist: "Julia",
+            art: [" ┏━━━━━━┓ ", " ┣━━━━━━┫ ", " ┃ BAIN ┃ ", " ┃      ┃ ", " ┃COLO  ┃ ", " ┃  NIAL┃ ", " ┃      ┃ ", " ┃      ┃ ", " ┗━━━━━━┛ "],
+          },
+          {
+            name: "SNAKE_FACTORY",
+            artist: "Pen",
+            art: ["  ∿∿∿⳻    ", "  ∿∿∿5⳻   ", "  ∿∿∿ S⳻  ", "  ∿∿∿ S⚕  ", "  ∿∿∿ S⚕  ", "  ∿∿∿ S⚕  ", "  ∿∿∿ S⚕  ", "  ∿⍝∿ S⚕  "],
+          },
+          {
+            name: "BLOBBY'S_BUNKER",
+            artist: "Pen",
+            art: ["   ⌓⌓⌓    ", "  ◯ ❂ ⌇   ", " ◯ ◜ ◝⌇   ", " ◯⋰◟◘◞⦆   "],
+          },
+          {
+            name: "OBSERVATOIRE",
+            artist: "Pen",
+            art: [
+              "   ╭⦿⦿╮   ",
+              "  ╭ ⠁⠑ ╮  ",
+              " ╭ ⠛  ⠅⠝╮ ",
+              " ╰⠇ ⠋   ╯ ",
+              "  ╰⠕⠜ ⠜╯  ",
+              "   ╰  ╯   ",
+              "    ░░    ",
+              "    ▒▒    ",
+              "    ▓▓    ",
+              "    ██    ",
+            ],
+          },
+          {
+            name: "BRANCHE_D'OLIVIER",
+            artist: "Alison",
+            art: ["╔BRANCH═╕ ", "║⁂D◞[] ⁂║ ", "║OLIVIER║ ", "║ ⠀✦✦✦ ⠀║ ", "║⁂⠀⠀⠀⠀ ⁂║ ", "╚═══════╛ "],
+          },
+          {
+            name: "SLUMLORD_TOWERS",
+            artist: "d6",
+            art: [
+              "╔════════╗",
+              "║SLUMLORD║",
+              "║ TOWERS ║",
+              "║⋰       ║",
+              "╚════════╝",
+              "▒▀█▀░░░█▀░",
+              "▒▀░◾▒▒▨█▀█",
+              "▒█░█▒▒▒▒█░",
+              "█◾█▄██▄█▄█",
+              "█╳█▌◾◾▐█╳█",
+            ],
+          },
+        ];
 
-                const paletteCategories = [
-                  {
-                    name: "Buildings",
-                    chars: [
-                      "█",
-                      "▓",
-                      "▒",
-                      "░",
-                      "│",
-                      "─",
-                      "┌",
-                      "┐",
-                      "└",
-                      "┘",
-                      "├",
-                      "┤",
-                      "┬",
-                      "┴",
-                      "┼",
-                      "║",
-                      "═",
-                      "╔",
-                      "╗",
-                      "╚",
-                      "╝",
-                      "╠",
-                      "╣",
-                      "╦",
-                      "╩",
-                      "╬",
-                      "▀",
-                      "▄",
-                      "■",
-                      "□",
-                      "▪",
-                      "▫",
-                      "▁",
-                      "▂",
-                      "▃",
-                      "▅",
-                      "▆",
-                      "▇",
-                      "▉",
-                      "▊",
-                      "▋",
-                      "▌",
-                      "▍",
-                      "▎",
-                      "▏",
-                      "▐",
-                      "▔",
-                      "▕",
-                    ],
-                  },
-                  {
-                    name: "Windows & Doors",
-                    chars: ["◼", "◻", "◾", "◽", "▢", "▣", "▤", "▥", "▦", "▧", "▨", "▩", "⊞", "⊟", "⊠", "⊡", "∥", "≑", "≜", "▬", "▭", "▮", "▯", "▰", "▱"],
-                  },
-                  {
-                    name: "Roofs & Details",
-                    chars: ["◢", "◣", "◤", "◥", "△", "▲", "▽", "▼", "◊", "◇", "⋰", "⋱", "╱", "╲", "╳", "⌒", "⌓"],
-                  },
-                  {
-                    name: "Decorative",
-                    chars: [
-                      "★",
-                      "☆",
-                      "✦",
-                      "✧",
-                      "✩",
-                      "✪",
-                      "✫",
-                      "✬",
-                      "✭",
-                      "✮",
-                      "✯",
-                      "⁂",
-                      "❀",
-                      "❁",
-                      "❂",
-                      "❃",
-                      "⚘",
-                      "○",
-                      "●",
-                      "◐",
-                      "◑",
-                      "⚐",
-                      "⚑",
-                      "⚙",
-                      "⚛",
-                      "⚜",
-                      "⛨",
-                      "⛩",
-                      "⛫",
-                      "⛬",
-                    ],
-                  },
-                  {
-                    name: "Lines & Corners",
-                    chars: [
-                      "─",
-                      "━",
-                      "│",
-                      "┃",
-                      "┌",
-                      "┍",
-                      "┎",
-                      "┏",
-                      "┐",
-                      "┑",
-                      "┒",
-                      "┓",
-                      "└",
-                      "┕",
-                      "┖",
-                      "┗",
-                      "┘",
-                      "┙",
-                      "┚",
-                      "┛",
-                      "├",
-                      "┝",
-                      "┞",
-                      "┟",
-                      "┠",
-                      "┡",
-                      "┢",
-                      "┣",
-                      "┤",
-                      "┥",
-                      "┦",
-                      "┧",
-                      "┨",
-                      "┩",
-                      "┪",
-                      "┫",
-                      "┬",
-                      "┭",
-                      "┮",
-                      "┯",
-                      "┰",
-                      "┱",
-                      "┲",
-                      "┳",
-                      "┴",
-                      "┵",
-                      "┶",
-                      "┷",
-                      "┸",
-                      "┹",
-                      "┺",
-                      "┻",
-                      "┼",
-                      "┽",
-                      "┾",
-                      "┿",
-                      "╀",
-                      "╁",
-                      "╂",
-                      "╃",
-                      "╄",
-                      "╅",
-                      "╆",
-                      "╇",
-                      "╈",
-                      "╉",
-                      "╊",
-                      "╋",
-                      "╌",
-                      "╍",
-                      "╎",
-                      "╏",
-                      "┄",
-                      "┅",
-                      "┆",
-                      "┇",
-                      "┈",
-                      "┉",
-                      "┊",
-                      "┋",
-                      "╼",
-                      "╽",
-                      "╾",
-                      "╿",
-                    ],
-                  },
-                  {
-                    name: "Double Lines",
-                    chars: [
-                      "═",
-                      "║",
-                      "╒",
-                      "╓",
-                      "╔",
-                      "╕",
-                      "╖",
-                      "╗",
-                      "╘",
-                      "╙",
-                      "╚",
-                      "╛",
-                      "╜",
-                      "╝",
-                      "╞",
-                      "╟",
-                      "╠",
-                      "╡",
-                      "╢",
-                      "╣",
-                      "╤",
-                      "╥",
-                      "╦",
-                      "╧",
-                      "╨",
-                      "╩",
-                      "╪",
-                      "╫",
-                      "╬",
-                    ],
-                  },
-                  {
-                    name: "Curved & Round",
-                    chars: [
-                      "╭",
-                      "╮",
-                      "╯",
-                      "╰",
-                      "⌜",
-                      "⌝",
-                      "⌞",
-                      "⌟",
-                      "⌈",
-                      "⌉",
-                      "⌊",
-                      "⌋",
-                      "〈",
-                      "〉",
-                      "《",
-                      "》",
-                      "「",
-                      "」",
-                      "『",
-                      "』",
-                      "(",
-                      ")",
-                      "⟨",
-                      "⟩",
-                      "⦅",
-                      "⦆",
-                    ],
-                  },
-                  {
-                    name: "Patterns",
-                    chars: [
-                      "░",
-                      "▒",
-                      "▓",
-                      "█",
-                      "▀",
-                      "▄",
-                      "▌",
-                      "▐",
-                      "▖",
-                      "▗",
-                      "▘",
-                      "▙",
-                      "▚",
-                      "▛",
-                      "▜",
-                      "▝",
-                      "▞",
-                      "▟",
-                      "⬒",
-                      "⬓",
-                      "⬔",
-                      "⬕",
-                      "⠀",
-                      "⠁",
-                      "⠂",
-                      "⠃",
-                      "⠄",
-                      "⠅",
-                      "⠆",
-                      "⠇",
-                      "⠈",
-                      "⠉",
-                      "⠊",
-                      "⠋",
-                      "⠌",
-                      "⠍",
-                      "⠎",
-                      "⠏",
-                      "⠐",
-                      "⠑",
-                      "⠒",
-                      "⠓",
-                      "⠔",
-                      "⠕",
-                      "⠖",
-                      "⠗",
-                      "⠘",
-                      "⠙",
-                      "⠚",
-                      "⠛",
-                      "⠜",
-                      "⠝",
-                      "⠞",
-                      "⠟",
-                    ],
-                  },
-                  {
-                    name: "Circles & Dots",
-                    chars: [
-                      "○",
-                      "●",
-                      "◐",
-                      "◑",
-                      "⚬",
-                      "⚭",
-                      "⦾",
-                      "⦿",
-                      "⧂",
-                      "⧃",
-                      "◌",
-                      "◍",
-                      "◔",
-                      "◕",
-                      "◖",
-                      "◗",
-                      "◘",
-                      "◙",
-                      "◚",
-                      "◛",
-                      "◜",
-                      "◝",
-                      "◞",
-                      "◟",
-                      "◠",
-                      "◡",
-                      "◯",
-                      "⦁",
-                      "∘",
-                    ],
-                  },
-                  {
-                    name: "Triangles & Arrows",
-                    chars: ["△", "▲", "▽", "▼", "◄", "◅", "►", "▻", "▴", "▵", "▸", "▹", "▾", "▿", "◂", "◃", "▷", "◁", "⯅", "⯆", "⯇", "⯈"],
-                  },
-                  {
-                    name: "Symbols",
-                    chars: [
-                      "~",
-                      "≈",
-                      "≋",
-                      "∿",
-                      "〜",
-                      "⌇",
-                      "⌠",
-                      "⌡",
-                      "⌢",
-                      "⌣",
-                      "⌯",
-                      "⍝",
-                      "⍞",
-                      "⍟",
-                      "◄",
-                      "►",
-                      "⳺",
-                      "⳻",
-                      "o",
-                      "O",
-                      "°",
-                      "⚬",
-                      "⚭",
-                      "⌘",
-                      "⌥",
-                      "⎋",
-                      "⌫",
-                      "⌦",
-                      "␣",
-                      "⏎",
-                      "⏏",
-                      "⎈",
-                      "⎆",
-                      "⎇",
-                      "⌤",
-                      "⌧",
-                      "⚠",
-                      "⚡",
-                      "☢",
-                      "☣",
-                      "⚕",
-                    ],
-                  },
-                  {
-                    name: "Letters (A-Z)",
-                    chars: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
-                  },
-                  {
-                    name: "Numbers (0-9)",
-                    chars: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
-                  },
-                  {
-                    name: "Basic",
-                    chars: ["#", "@", "*", "+", "=", "-", "_", "|", "/", "\\", "^", "v", "<", ">", ".", ",", ":", ";", "!", "?", "~", "[", "]", "{", "}"],
-                  },
-                ];
+        const paletteCategories = [
+          {
+            name: "Buildings",
+            chars: [
+              "█",
+              "▓",
+              "▒",
+              "░",
+              "│",
+              "─",
+              "┌",
+              "┐",
+              "└",
+              "┘",
+              "├",
+              "┤",
+              "┬",
+              "┴",
+              "┼",
+              "║",
+              "═",
+              "╔",
+              "╗",
+              "╚",
+              "╝",
+              "╠",
+              "╣",
+              "╦",
+              "╩",
+              "╬",
+              "▀",
+              "▄",
+              "■",
+              "□",
+              "▪",
+              "▫",
+              "▁",
+              "▂",
+              "▃",
+              "▅",
+              "▆",
+              "▇",
+              "▉",
+              "▊",
+              "▋",
+              "▌",
+              "▍",
+              "▎",
+              "▏",
+              "▐",
+              "▔",
+              "▕",
+            ],
+          },
+          {
+            name: "Windows & Doors",
+            chars: ["◼", "◻", "◾", "◽", "▢", "▣", "▤", "▥", "▦", "▧", "▨", "▩", "⊞", "⊟", "⊠", "⊡", "∥", "≑", "≜", "▬", "▭", "▮", "▯", "▰", "▱"],
+          },
+          {
+            name: "Roofs & Details",
+            chars: ["◢", "◣", "◤", "◥", "△", "▲", "▽", "▼", "◊", "◇", "⋰", "⋱", "╱", "╲", "╳", "⌒", "⌓"],
+          },
+          {
+            name: "Decorative",
+            chars: [
+              "★",
+              "☆",
+              "✦",
+              "✧",
+              "✩",
+              "✪",
+              "✫",
+              "✬",
+              "✭",
+              "✮",
+              "✯",
+              "⁂",
+              "❀",
+              "❁",
+              "❂",
+              "❃",
+              "⚘",
+              "○",
+              "●",
+              "◐",
+              "◑",
+              "⚐",
+              "⚑",
+              "⚙",
+              "⚛",
+              "⚜",
+              "⛨",
+              "⛩",
+              "⛫",
+              "⛬",
+            ],
+          },
+          {
+            name: "Lines & Corners",
+            chars: [
+              "─",
+              "━",
+              "│",
+              "┃",
+              "┌",
+              "┍",
+              "┎",
+              "┏",
+              "┐",
+              "┑",
+              "┒",
+              "┓",
+              "└",
+              "┕",
+              "┖",
+              "┗",
+              "┘",
+              "┙",
+              "┚",
+              "┛",
+              "├",
+              "┝",
+              "┞",
+              "┟",
+              "┠",
+              "┡",
+              "┢",
+              "┣",
+              "┤",
+              "┥",
+              "┦",
+              "┧",
+              "┨",
+              "┩",
+              "┪",
+              "┫",
+              "┬",
+              "┭",
+              "┮",
+              "┯",
+              "┰",
+              "┱",
+              "┲",
+              "┳",
+              "┴",
+              "┵",
+              "┶",
+              "┷",
+              "┸",
+              "┹",
+              "┺",
+              "┻",
+              "┼",
+              "┽",
+              "┾",
+              "┿",
+              "╀",
+              "╁",
+              "╂",
+              "╃",
+              "╄",
+              "╅",
+              "╆",
+              "╇",
+              "╈",
+              "╉",
+              "╊",
+              "╋",
+              "╌",
+              "╍",
+              "╎",
+              "╏",
+              "┄",
+              "┅",
+              "┆",
+              "┇",
+              "┈",
+              "┉",
+              "┊",
+              "┋",
+              "╼",
+              "╽",
+              "╾",
+              "╿",
+            ],
+          },
+          {
+            name: "Double Lines",
+            chars: [
+              "═",
+              "║",
+              "╒",
+              "╓",
+              "╔",
+              "╕",
+              "╖",
+              "╗",
+              "╘",
+              "╙",
+              "╚",
+              "╛",
+              "╜",
+              "╝",
+              "╞",
+              "╟",
+              "╠",
+              "╡",
+              "╢",
+              "╣",
+              "╤",
+              "╥",
+              "╦",
+              "╧",
+              "╨",
+              "╩",
+              "╪",
+              "╫",
+              "╬",
+            ],
+          },
+          {
+            name: "Curved & Round",
+            chars: [
+              "╭",
+              "╮",
+              "╯",
+              "╰",
+              "⌜",
+              "⌝",
+              "⌞",
+              "⌟",
+              "⌈",
+              "⌉",
+              "⌊",
+              "⌋",
+              "〈",
+              "〉",
+              "《",
+              "》",
+              "「",
+              "」",
+              "『",
+              "』",
+              "(",
+              ")",
+              "⟨",
+              "⟩",
+              "⦅",
+              "⦆",
+            ],
+          },
+          {
+            name: "Patterns",
+            chars: [
+              "░",
+              "▒",
+              "▓",
+              "█",
+              "▀",
+              "▄",
+              "▌",
+              "▐",
+              "▖",
+              "▗",
+              "▘",
+              "▙",
+              "▚",
+              "▛",
+              "▜",
+              "▝",
+              "▞",
+              "▟",
+              "⬒",
+              "⬓",
+              "⬔",
+              "⬕",
+              "⠀",
+              "⠁",
+              "⠂",
+              "⠃",
+              "⠄",
+              "⠅",
+              "⠆",
+              "⠇",
+              "⠈",
+              "⠉",
+              "⠊",
+              "⠋",
+              "⠌",
+              "⠍",
+              "⠎",
+              "⠏",
+              "⠐",
+              "⠑",
+              "⠒",
+              "⠓",
+              "⠔",
+              "⠕",
+              "⠖",
+              "⠗",
+              "⠘",
+              "⠙",
+              "⠚",
+              "⠛",
+              "⠜",
+              "⠝",
+              "⠞",
+              "⠟",
+            ],
+          },
+          {
+            name: "Circles & Dots",
+            chars: [
+              "○",
+              "●",
+              "◐",
+              "◑",
+              "⚬",
+              "⚭",
+              "⦾",
+              "⦿",
+              "⧂",
+              "⧃",
+              "◌",
+              "◍",
+              "◔",
+              "◕",
+              "◖",
+              "◗",
+              "◘",
+              "◙",
+              "◚",
+              "◛",
+              "◜",
+              "◝",
+              "◞",
+              "◟",
+              "◠",
+              "◡",
+              "◯",
+              "⦁",
+              "∘",
+            ],
+          },
+          {
+            name: "Triangles & Arrows",
+            chars: ["△", "▲", "▽", "▼", "◄", "◅", "►", "▻", "▴", "▵", "▸", "▹", "▾", "▿", "◂", "◃", "▷", "◁", "⯅", "⯆", "⯇", "⯈"],
+          },
+          {
+            name: "Symbols",
+            chars: [
+              "~",
+              "≈",
+              "≋",
+              "∿",
+              "〜",
+              "⌇",
+              "⌠",
+              "⌡",
+              "⌢",
+              "⌣",
+              "⌯",
+              "⍝",
+              "⍞",
+              "⍟",
+              "◄",
+              "►",
+              "⳺",
+              "⳻",
+              "o",
+              "O",
+              "°",
+              "⚬",
+              "⚭",
+              "⌘",
+              "⌥",
+              "⎋",
+              "⌫",
+              "⌦",
+              "␣",
+              "⏎",
+              "⏏",
+              "⎈",
+              "⎆",
+              "⎇",
+              "⌤",
+              "⌧",
+              "⚠",
+              "⚡",
+              "☢",
+              "☣",
+              "⚕",
+            ],
+          },
+          {
+            name: "Letters (A-Z)",
+            chars: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
+          },
+          {
+            name: "Numbers (0-9)",
+            chars: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
+          },
+          {
+            name: "Basic",
+            chars: ["#", "@", "*", "+", "=", "-", "_", "|", "/", "\\", "^", "v", "<", ">", ".", ",", ":", ";", "!", "?", "~", "[", "]", "{", "}"],
+          },
+        ];
         function copyCell() {
           // Use hoveredCell instead of selectedCell
           const cellIndex = hoveredCell !== null ? hoveredCell : selectedCell;
@@ -1588,84 +1608,84 @@
           }
         }
 
-                function initGrid() {
-                  const gridElement = document.getElementById("grid");
-                  gridElement.innerHTML = "";
+        function initGrid() {
+          const gridElement = document.getElementById("grid");
+          gridElement.innerHTML = "";
 
-                  for (let i = 0; i < GRID_SIZE * GRID_SIZE; i++) {
-                    const cell = document.createElement("div");
-                    cell.className = "cell";
-                    cell.dataset.index = i;
-        cell.draggable = true;
-                    // Drag-and-drop handlers
-                    cell.addEventListener("dragstart", (e) => {
-                      if (!isShiftPressed) {
-                        e.preventDefault();
-                        return;
-                      }
+          for (let i = 0; i < GRID_SIZE * GRID_SIZE; i++) {
+            const cell = document.createElement("div");
+            cell.className = "cell";
+            cell.dataset.index = i;
+            cell.draggable = true;
+            // Drag-and-drop handlers
+            cell.addEventListener("dragstart", (e) => {
+              if (!isShiftPressed) {
+                e.preventDefault();
+                return;
+              }
 
-                      isDraggingToMove = true;
-                      const row = Math.floor(i / GRID_SIZE);
-                      const col = i % GRID_SIZE;
-                      draggedCell = i;
-                      draggedContent = grid[row][col];
-                      cell.style.opacity = "0.5";
-                      e.dataTransfer.effectAllowed = "move";
-                    });
+              isDraggingToMove = true;
+              const row = Math.floor(i / GRID_SIZE);
+              const col = i % GRID_SIZE;
+              draggedCell = i;
+              draggedContent = grid[row][col];
+              cell.style.opacity = "0.5";
+              e.dataTransfer.effectAllowed = "move";
+            });
 
-                    cell.addEventListener("dragend", (e) => {
-                      cell.style.opacity = "1";
-                      draggedCell = null;
-                      draggedContent = null;
-                      isDraggingToMove = false;
-                    });
+            cell.addEventListener("dragend", (e) => {
+              cell.style.opacity = "1";
+              draggedCell = null;
+              draggedContent = null;
+              isDraggingToMove = false;
+            });
 
-                    cell.addEventListener("dragover", (e) => {
-                      if (!isDraggingToMove) return;
-                      e.preventDefault();
-                      e.dataTransfer.dropEffect = "move";
-                      cell.style.background = "rgba(99, 248, 99, 0.3)";
-                    });
+            cell.addEventListener("dragover", (e) => {
+              if (!isDraggingToMove) return;
+              e.preventDefault();
+              e.dataTransfer.dropEffect = "move";
+              cell.style.background = "rgba(99, 248, 99, 0.3)";
+            });
 
-                    cell.addEventListener("dragleave", (e) => {
-                      if (!isDraggingToMove) return;
-                      cell.style.background = "";
-                    });
+            cell.addEventListener("dragleave", (e) => {
+              if (!isDraggingToMove) return;
+              cell.style.background = "";
+            });
 
-                    cell.addEventListener("drop", (e) => {
-                      if (!isDraggingToMove) return;
-                      e.preventDefault();
-                      cell.style.background = "";
+            cell.addEventListener("drop", (e) => {
+              if (!isDraggingToMove) return;
+              e.preventDefault();
+              cell.style.background = "";
 
-                      if (draggedCell !== null && draggedCell !== i) {
-                        const fromRow = Math.floor(draggedCell / GRID_SIZE);
-                        const fromCol = draggedCell % GRID_SIZE;
-                        const toRow = Math.floor(i / GRID_SIZE);
-                        const toCol = i % GRID_SIZE;
+              if (draggedCell !== null && draggedCell !== i) {
+                const fromRow = Math.floor(draggedCell / GRID_SIZE);
+                const fromCol = draggedCell % GRID_SIZE;
+                const toRow = Math.floor(i / GRID_SIZE);
+                const toCol = i % GRID_SIZE;
 
-                        // Move the character
-                        grid[toRow][toCol] = draggedContent;
-                        grid[fromRow][fromCol] = ""; // Clear source cell
+                // Move the character
+                grid[toRow][toCol] = draggedContent;
+                grid[fromRow][fromCol] = ""; // Clear source cell
 
-                        updateGrid();
-                        showToast(`Moved: ${draggedContent || "empty"}`);
-                      }
-                    });
+                updateGrid();
+                showToast(`Moved: ${draggedContent || "empty"}`);
+              }
+            });
 
-                    // Mouse events for drag-to-paint
-                    cell.addEventListener("mousedown", (e) => {
-                      // Only start drawing if Shift is NOT pressed
-                      if (!isShiftPressed) {
-                        isDrawing = true;
-                        lastDrawnCell = null;
-                        handleCellDraw(i);
-                      }
-                    });
+            // Mouse events for drag-to-paint
+            cell.addEventListener("mousedown", (e) => {
+              // Only start drawing if Shift is NOT pressed
+              if (!isShiftPressed) {
+                isDrawing = true;
+                lastDrawnCell = null;
+                handleCellDraw(i);
+              }
+            });
 
-                  cell.addEventListener("mouseenter", (e) => {
+            cell.addEventListener("mouseenter", (e) => {
               hoveredCell = i; // Track which cell is hovered
 
-        if (isShiftPressed) {
+              if (isShiftPressed) {
                 cell.style.background = "rgba(99, 248, 99, 0.4)";
                 cell.style.transform = "scale(1.05)";
               }
@@ -1674,389 +1694,389 @@
                 handleCellDraw(i);
               }
               // Update custom cursor only when not in drag-to-move mode
-           if (!isDraggingToMove) {
+              if (!isDraggingToMove) {
                 updateCellCursor(e.target);
               }
             });
 
-                    cell.addEventListener("mouseleave", (e) => {
+            cell.addEventListener("mouseleave", (e) => {
               hoveredCell = null; // Clear hover tracking
               // Reset cursor
-         if (isShiftPressed) {
+              if (isShiftPressed) {
                 e.target.style.background = "";
                 e.target.style.transform = "";
               }
               // Reset cursor
               e.target.style.cursor = "";
             });
-                    cell.addEventListener("click", () => {
-                      if (!isDraggingToMove) {
-                        handleCellClick(i);
-                      }
-                    });
+            cell.addEventListener("click", () => {
+              if (!isDraggingToMove) {
+                handleCellClick(i);
+              }
+            });
 
-                    cell.addEventListener("contextmenu", (e) => {
-                      e.preventDefault();
-                      showContextMenu(e, i);
-                    });
+            cell.addEventListener("contextmenu", (e) => {
+              e.preventDefault();
+              showContextMenu(e, i);
+            });
 
-                    // Touch events for mobile
-                    cell.addEventListener("touchstart", (e) => {
-                      e.preventDefault();
-                      isDrawing = true;
-                      lastDrawnCell = null;
-                      handleCellDraw(i);
-                    });
+            // Touch events for mobile
+            cell.addEventListener("touchstart", (e) => {
+              e.preventDefault();
+              isDrawing = true;
+              lastDrawnCell = null;
+              handleCellDraw(i);
+            });
 
-                    cell.addEventListener("touchmove", (e) => {
-                      e.preventDefault();
-                      if (isDrawing) {
-                        const touch = e.touches[0];
-                        const element = document.elementFromPoint(touch.clientX, touch.clientY);
-                        if (element && element.classList.contains("cell")) {
-                          const touchIndex = parseInt(element.dataset.index);
-                          handleCellDraw(touchIndex);
-                        }
-                      }
-                    });
-
-                    gridElement.appendChild(cell);
-                  }
-
-                  // Stop drawing when mouse is released anywhere
-                  document.addEventListener("mouseup", () => {
-                    isDrawing = false;
-                    lastDrawnCell = null;
-                  });
-
-                  // Stop drawing when touch ends
-                  document.addEventListener("touchend", () => {
-                    isDrawing = false;
-                    lastDrawnCell = null;
-                  });
+            cell.addEventListener("touchmove", (e) => {
+              e.preventDefault();
+              if (isDrawing) {
+                const touch = e.touches[0];
+                const element = document.elementFromPoint(touch.clientX, touch.clientY);
+                if (element && element.classList.contains("cell")) {
+                  const touchIndex = parseInt(element.dataset.index);
+                  handleCellDraw(touchIndex);
                 }
-                function updateCellCursor(cellElement) {
-                  if (isEraserMode) {
-                    cellElement.style.cursor =
-                      'url(\'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><text x="2" y="18" font-size="18" font-family="Courier New, monospace" fill="%23999">X</text></svg>\') 12 12, crosshair';
-                  } else {
-                    // Create a simple cursor showing just the current character
-                    const char = currentChar || "█";
-                    const encodedChar = encodeURIComponent(char);
-                    cellElement.style.cursor = `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><text x="2" y="18" font-size="18" font-family="Courier New, monospace" fill="%23999">${encodedChar}</text></svg>') 12 12, crosshair`;
-                  }
+              }
+            });
+
+            gridElement.appendChild(cell);
+          }
+
+          // Stop drawing when mouse is released anywhere
+          document.addEventListener("mouseup", () => {
+            isDrawing = false;
+            lastDrawnCell = null;
+          });
+
+          // Stop drawing when touch ends
+          document.addEventListener("touchend", () => {
+            isDrawing = false;
+            lastDrawnCell = null;
+          });
+        }
+        function updateCellCursor(cellElement) {
+          if (isEraserMode) {
+            cellElement.style.cursor =
+              'url(\'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><text x="2" y="18" font-size="18" font-family="Courier New, monospace" fill="%23999">X</text></svg>\') 12 12, crosshair';
+          } else {
+            // Create a simple cursor showing just the current character
+            const char = currentChar || "█";
+            const encodedChar = encodeURIComponent(char);
+            cellElement.style.cursor = `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><text x="2" y="18" font-size="18" font-family="Courier New, monospace" fill="%23999">${encodedChar}</text></svg>') 12 12, crosshair`;
+          }
+        }
+
+        function toggleEraser() {
+          isEraserMode = !isEraserMode;
+          const eraserBtn = document.getElementById("eraserBtn");
+
+          if (isEraserMode) {
+            eraserBtn.classList.add("active");
+            showToast("Eraser mode activated");
+            // Deselect all palette buttons
+            document.querySelectorAll(".char-btn").forEach((btn) => {
+              btn.classList.remove("selected");
+            });
+          } else {
+            eraserBtn.classList.remove("active");
+            showToast("Eraser mode deactivated");
+            // Re-select the current character
+            selectChar(currentChar);
+          }
+        }
+
+        function saveToLocalStorage() {
+          try {
+            localStorage.setItem("loserLaneGrid", JSON.stringify(grid));
+            localStorage.setItem("loserLaneLastSaved", new Date().toISOString());
+          } catch (e) {
+            console.error("Failed to save to localStorage:", e);
+          }
+        }
+
+        // Load grid from localStorage
+        function loadFromLocalStorage() {
+          try {
+            const savedGrid = localStorage.getItem("loserLaneGrid");
+            const lastSaved = localStorage.getItem("loserLaneLastSaved");
+
+            if (savedGrid) {
+              const parsedGrid = JSON.parse(savedGrid);
+              // Verify it's the correct size
+              if (parsedGrid.length === GRID_SIZE && parsedGrid[0].length === GRID_SIZE) {
+                grid = parsedGrid;
+                updateGrid();
+
+                if (lastSaved) {
+                  const savedDate = new Date(lastSaved);
+                  // showToast(`Restored your work from ${savedDate.toLocaleString()}`);
+                } else {
+                  // showToast('Restored your previous work!');
                 }
+                return true;
+              }
+            }
+          } catch (e) {
+            console.error("Failed to load from localStorage:", e);
+          }
+          return false;
+        }
 
-                function toggleEraser() {
-                  isEraserMode = !isEraserMode;
-                  const eraserBtn = document.getElementById("eraserBtn");
+        // Clear localStorage
+        function clearLocalStorage() {
+          try {
+            localStorage.removeItem("loserLaneGrid");
+            localStorage.removeItem("loserLaneLastSaved");
+            showToast("Auto-save cleared");
+          } catch (e) {
+            console.error("Failed to clear localStorage:", e);
+          }
+        }
 
-                  if (isEraserMode) {
-                    eraserBtn.classList.add("active");
-                    showToast("Eraser mode activated");
-                    // Deselect all palette buttons
-                    document.querySelectorAll(".char-btn").forEach((btn) => {
-                      btn.classList.remove("selected");
-                    });
-                  } else {
-                    eraserBtn.classList.remove("active");
-                    showToast("Eraser mode deactivated");
-                    // Re-select the current character
-                    selectChar(currentChar);
-                  }
-                }
+        function initPalette() {
+          const paletteElement = document.getElementById("palette");
 
-                function saveToLocalStorage() {
-                  try {
-                    localStorage.setItem("loserLaneGrid", JSON.stringify(grid));
-                    localStorage.setItem("loserLaneLastSaved", new Date().toISOString());
-                  } catch (e) {
-                    console.error("Failed to save to localStorage:", e);
-                  }
-                }
+          paletteCategories.forEach((category) => {
+            const categoryDiv = document.createElement("div");
+            categoryDiv.className = "palette-category";
 
-                // Load grid from localStorage
-                function loadFromLocalStorage() {
-                  try {
-                    const savedGrid = localStorage.getItem("loserLaneGrid");
-                    const lastSaved = localStorage.getItem("loserLaneLastSaved");
+            const title = document.createElement("div");
+            title.className = "palette-title";
+            title.textContent = category.name;
+            title.setAttribute("data-i18n", category.name);
+            categoryDiv.appendChild(title);
 
-                    if (savedGrid) {
-                      const parsedGrid = JSON.parse(savedGrid);
-                      // Verify it's the correct size
-                      if (parsedGrid.length === GRID_SIZE && parsedGrid[0].length === GRID_SIZE) {
-                        grid = parsedGrid;
-                        updateGrid();
+            const charsDiv = document.createElement("div");
+            charsDiv.className = "palette-chars";
 
-                        if (lastSaved) {
-                          const savedDate = new Date(lastSaved);
-                          // showToast(`Restored your work from ${savedDate.toLocaleString()}`);
-                        } else {
-                          // showToast('Restored your previous work!');
-                        }
-                        return true;
-                      }
-                    }
-                  } catch (e) {
-                    console.error("Failed to load from localStorage:", e);
-                  }
-                  return false;
-                }
+            category.chars.forEach((char) => {
+              const btn = document.createElement("button");
+              btn.className = "char-btn";
+              btn.textContent = char;
+              btn.addEventListener("click", () => selectChar(char));
+              charsDiv.appendChild(btn);
+            });
 
-                // Clear localStorage
-                function clearLocalStorage() {
-                  try {
-                    localStorage.removeItem("loserLaneGrid");
-                    localStorage.removeItem("loserLaneLastSaved");
-                    showToast("Auto-save cleared");
-                  } catch (e) {
-                    console.error("Failed to clear localStorage:", e);
-                  }
-                }
+            categoryDiv.appendChild(charsDiv);
+            paletteElement.appendChild(categoryDiv);
+          });
+        }
 
-                function initPalette() {
-                  const paletteElement = document.getElementById("palette");
+        function handleCellClick(index) {
+          const row = Math.floor(index / GRID_SIZE);
+          const col = index % GRID_SIZE;
 
-                  paletteCategories.forEach((category) => {
-                    const categoryDiv = document.createElement("div");
-                    categoryDiv.className = "palette-category";
+          if (isEraserMode) {
+            // Erase the cell
+            grid[row][col] = "";
+            updateGrid();
+          } else {
+            // If cell has content, pick that character
+            if (grid[row][col]) {
+              selectChar(grid[row][col]);
+            } else {
+              // Otherwise, place current character
+              grid[row][col] = currentChar;
+              updateGrid();
+            }
+          }
 
-                    const title = document.createElement("div");
-                    title.className = "palette-title";
-                    title.textContent = category.name;
-                    title.setAttribute("data-i18n", category.name);
-                    categoryDiv.appendChild(title);
+          selectedCell = index;
+          highlightCell(index);
+        }
 
-                    const charsDiv = document.createElement("div");
-                    charsDiv.className = "palette-chars";
+        function handleCellDraw(index) {
+          // Prevent drawing the same cell multiple times in one drag
+          if (lastDrawnCell === index) return;
 
-                    category.chars.forEach((char) => {
-                      const btn = document.createElement("button");
-                      btn.className = "char-btn";
-                      btn.textContent = char;
-                      btn.addEventListener("click", () => selectChar(char));
-                      charsDiv.appendChild(btn);
-                    });
+          const row = Math.floor(index / GRID_SIZE);
+          const col = index % GRID_SIZE;
 
-                    categoryDiv.appendChild(charsDiv);
-                    paletteElement.appendChild(categoryDiv);
-                  });
-                }
+          if (isEraserMode) {
+            grid[row][col] = "";
+          } else {
+            grid[row][col] = currentChar;
+          }
+          updateGrid();
+          lastDrawnCell = index;
+        }
 
-                function handleCellClick(index) {
-                  const row = Math.floor(index / GRID_SIZE);
-                  const col = index % GRID_SIZE;
+        function selectChar(char) {
+          currentChar = char;
+          document.getElementById("currentCharDisplay").textContent = char;
+          isEraserMode = false;
+          document.getElementById("eraserBtn").classList.remove("active");
 
-                  if (isEraserMode) {
-                    // Erase the cell
-                    grid[row][col] = "";
-                    updateGrid();
-                  } else {
-                    // If cell has content, pick that character
-                    if (grid[row][col]) {
-                      selectChar(grid[row][col]);
-                    } else {
-                      // Otherwise, place current character
-                      grid[row][col] = currentChar;
-                      updateGrid();
-                    }
-                  }
+          // Update palette selection
+          document.querySelectorAll(".char-btn").forEach((btn) => {
+            btn.classList.toggle("selected", btn.textContent === char);
+          });
+        }
 
-                  selectedCell = index;
-                  highlightCell(index);
-                }
+        function highlightCell(index) {
+          document.querySelectorAll(".cell").forEach((cell) => {
+            cell.classList.remove("active");
+          });
+          if (index !== null) {
+            document.querySelector(`[data-index="${index}"]`).classList.add("active");
+          }
+        }
 
-                function handleCellDraw(index) {
-                  // Prevent drawing the same cell multiple times in one drag
-                  if (lastDrawnCell === index) return;
+        function updateGrid() {
+          document.querySelectorAll(".cell").forEach((cell, index) => {
+            const row = Math.floor(index / GRID_SIZE);
+            const col = index % GRID_SIZE;
+            cell.textContent = grid[row][col];
+          });
 
-                  const row = Math.floor(index / GRID_SIZE);
-                  const col = index % GRID_SIZE;
+          // Auto-save after every change
+          saveToLocalStorage();
+        }
 
-                  if (isEraserMode) {
-                    grid[row][col] = "";
-                  } else {
-                    grid[row][col] = currentChar;
-                  }
-                  updateGrid();
-                  lastDrawnCell = index;
-                }
+        function loadRandomExample() {
+          // Pick a random example
+          const randomIndex = Math.floor(Math.random() * exampleBuildings.length);
+          const example = exampleBuildings[randomIndex];
 
-                function selectChar(char) {
-                  currentChar = char;
-                  document.getElementById("currentCharDisplay").textContent = char;
-                  isEraserMode = false;
-                  document.getElementById("eraserBtn").classList.remove("active");
+          // Clear the grid first
+          grid = Array(GRID_SIZE)
+            .fill()
+            .map(() => Array(GRID_SIZE).fill(""));
 
-                  // Update palette selection
-                  document.querySelectorAll(".char-btn").forEach((btn) => {
-                    btn.classList.toggle("selected", btn.textContent === char);
-                  });
-                }
+          // Calculate starting row for bottom alignment
+          const startRow = GRID_SIZE - example.art.length;
 
-                function highlightCell(index) {
-                  document.querySelectorAll(".cell").forEach((cell) => {
-                    cell.classList.remove("active");
-                  });
-                  if (index !== null) {
-                    document.querySelector(`[data-index="${index}"]`).classList.add("active");
-                  }
-                }
+          // Load the example art into the grid (bottom-aligned)
+          example.art.forEach((line, artRowIndex) => {
+            const gridRowIndex = startRow + artRowIndex;
+            for (let colIndex = 0; colIndex < GRID_SIZE; colIndex++) {
+              // Get character at this position, default to empty space
+              const char = line[colIndex] || "";
+              grid[gridRowIndex][colIndex] = char === " " ? "" : char;
+            }
+          });
 
-                function updateGrid() {
-                  document.querySelectorAll(".cell").forEach((cell, index) => {
-                    const row = Math.floor(index / GRID_SIZE);
-                    const col = index % GRID_SIZE;
-                    cell.textContent = grid[row][col];
-                  });
+          updateGrid();
+          selectedCell = null;
+          highlightCell(null);
+          showToast(`${t("loadedExample")}${example.name}!`);
+        }
 
-                  // Auto-save after every change
-                  saveToLocalStorage();
-                }
+        function clearGrid() {
+          grid = Array(GRID_SIZE)
+            .fill()
+            .map(() => Array(GRID_SIZE).fill(""));
+          updateGrid();
+          selectedCell = null;
+          highlightCell(null);
+          clearLocalStorage();
 
-                function loadRandomExample() {
-                  // Pick a random example
-                  const randomIndex = Math.floor(Math.random() * exampleBuildings.length);
-                  const example = exampleBuildings[randomIndex];
+          showToast(t("gridCleared"));
+          // if (confirm('Clear your building? This cannot be undone.')) {
+          // }
+        }
 
-                  // Clear the grid first
-                  grid = Array(GRID_SIZE)
-                    .fill()
-                    .map(() => Array(GRID_SIZE).fill(""));
+        function getBuildingText() {
+          return grid.map((row) => row.join("")).join("\n");
+        }
 
-                  // Calculate starting row for bottom alignment
-                  const startRow = GRID_SIZE - example.art.length;
+        function addToGame() {
+          // Show the modal with building preview
+          const previewContainer = document.getElementById("buildingPreview");
+          previewContainer.innerHTML = "";
+          previewContainer.style.display = "grid";
+          previewContainer.style.gridTemplateColumns = "repeat(10, 1fr)";
+          previewContainer.style.gap = "2px";
+          previewContainer.style.maxWidth = "450px";
 
-                  // Load the example art into the grid (bottom-aligned)
-                  example.art.forEach((line, artRowIndex) => {
-                    const gridRowIndex = startRow + artRowIndex;
-                    for (let colIndex = 0; colIndex < GRID_SIZE; colIndex++) {
-                      // Get character at this position, default to empty space
-                      const char = line[colIndex] || "";
-                      grid[gridRowIndex][colIndex] = char === " " ? "" : char;
-                    }
-                  });
+          grid.forEach((row) => {
+            row.forEach((cell) => {
+              const cellDiv = document.createElement("div");
+              cellDiv.textContent = cell;
+              cellDiv.style.background = "#120303";
+              cellDiv.style.color = "#d1feff";
+              cellDiv.style.aspectRatio = "1 / 1.5";
+              cellDiv.style.display = "flex";
+              cellDiv.style.alignItems = "center";
+              cellDiv.style.justifyContent = "center";
+              cellDiv.style.fontSize = "10px";
+              cellDiv.style.minHeight = "4px";
+              previewContainer.style.gap = "2px";
+              previewContainer.appendChild(cellDiv);
+            });
+          });
+          document.getElementById("modalOverlay").classList.add("show");
 
-                  updateGrid();
-                  selectedCell = null;
-                  highlightCell(null);
-                  showToast(`${t("loadedExample")}${example.name}!`);
-                }
+          // Focus on the first input
+          setTimeout(() => {
+            document.getElementById("modalBuildingName").focus();
+          }, 100);
+        }
 
-                function clearGrid() {
-                  grid = Array(GRID_SIZE)
-                    .fill()
-                    .map(() => Array(GRID_SIZE).fill(""));
-                  updateGrid();
-                  selectedCell = null;
-                  highlightCell(null);
-                  clearLocalStorage();
+        function closeModal() {
+          document.getElementById("modalOverlay").classList.remove("show");
+          document.getElementById("modalBuildingName").value = "";
+          document.getElementById("modalArtistName").value = "";
+        }
 
-                  showToast(t("gridCleared"));
-                  // if (confirm('Clear your building? This cannot be undone.')) {
-                  // }
-                }
+        function submitBuilding() {
+          let buildingName = document.getElementById("modalBuildingName").value.trim();
+          let artistName = document.getElementById("modalArtistName").value.trim();
 
-                function getBuildingText() {
-                  return grid.map((row) => row.join("")).join("\n");
-                }
+          if (!buildingName) {
+            showToast(t("enterBuildingName"));
+            document.getElementById("modalBuildingName").focus();
+            return;
+          }
 
-                function addToGame() {
-                  // Show the modal with building preview
-                  const previewContainer = document.getElementById("buildingPreview");
-                  previewContainer.innerHTML = "";
-                  previewContainer.style.display = "grid";
-                  previewContainer.style.gridTemplateColumns = "repeat(10, 1fr)";
-                  previewContainer.style.gap = "2px";
-                  previewContainer.style.maxWidth = "450px";
+          if (!artistName) {
+            showToast(t("enterArtistName"));
+            document.getElementById("modalArtistName").focus();
+            return;
+          }
 
-                  grid.forEach((row) => {
-                    row.forEach((cell) => {
-                      const cellDiv = document.createElement("div");
-                      cellDiv.textContent = cell;
-                      cellDiv.style.background = "#120303";
-                      cellDiv.style.color = "#d1feff";
-                      cellDiv.style.aspectRatio = "1 / 1.5";
-                      cellDiv.style.display = "flex";
-                      cellDiv.style.alignItems = "center";
-                      cellDiv.style.justifyContent = "center";
-                      cellDiv.style.fontSize = "10px";
-                      cellDiv.style.minHeight = "4px";
-                      previewContainer.style.gap = "2px";
-                      previewContainer.appendChild(cellDiv);
-                    });
-                  });
-                  document.getElementById("modalOverlay").classList.add("show");
+          // Check character limits
+          if (buildingName.length > 30) {
+            showToast(t("buildingNameTooLong"));
+            document.getElementById("modalBuildingName").focus();
+            return;
+          }
 
-                  // Focus on the first input
-                  setTimeout(() => {
-                    document.getElementById("modalBuildingName").focus();
-                  }, 100);
-                }
+          if (artistName.length > 30) {
+            showToast(t("artistNameTooLong"));
+            document.getElementById("modalArtistName").focus();
+            return;
+          }
 
-                function closeModal() {
-                  document.getElementById("modalOverlay").classList.remove("show");
-                  document.getElementById("modalBuildingName").value = "";
-                  document.getElementById("modalArtistName").value = "";
-                }
+          // Remove spaces from inputs (as per form requirements)
+          buildingName = buildingName.replace(/\s+/g, "_").toUpperCase();
+          artistName = artistName.replace(/\s+/g, "_");
 
-                function submitBuilding() {
-                  let buildingName = document.getElementById("modalBuildingName").value.trim();
-                  let artistName = document.getElementById("modalArtistName").value.trim();
+          // Trim empty rows from top and bottom
+          let trimmedGrid = [...grid];
 
-                  if (!buildingName) {
-                    showToast(t("enterBuildingName"));
-                    document.getElementById("modalBuildingName").focus();
-                    return;
-                  }
+          // Remove empty rows from top
+          while (trimmedGrid.length > 0 && trimmedGrid[0].every((cell) => cell === "")) {
+            trimmedGrid.shift();
+          }
 
-                  if (!artistName) {
-                    showToast(t("enterArtistName"));
-                    document.getElementById("modalArtistName").focus();
-                    return;
-                  }
+          // Remove empty rows from bottom
+          while (trimmedGrid.length > 0 && trimmedGrid[trimmedGrid.length - 1].every((cell) => cell === "")) {
+            trimmedGrid.pop();
+          }
 
-                  // Check character limits
-                  if (buildingName.length > 30) {
-                    showToast(t("buildingNameTooLong"));
-                    document.getElementById("modalBuildingName").focus();
-                    return;
-                  }
+          // Generate the art array - each line is exactly GRID_SIZE (10) characters
+          const artLines = trimmedGrid.map((row) => {
+            // Convert empty strings to spaces, then join
+            const line = row.map((cell) => (cell === "" ? " " : cell)).join("");
+            // Ensure line is exactly GRID_SIZE characters by padding with spaces
+            const paddedLine = line.padEnd(GRID_SIZE, " ");
+            return `            "${paddedLine}"`;
+          });
 
-                  if (artistName.length > 30) {
-                    showToast(t("artistNameTooLong"));
-                    document.getElementById("modalArtistName").focus();
-                    return;
-                  }
-
-                  // Remove spaces from inputs (as per form requirements)
-                  buildingName = buildingName.replace(/\s+/g, "_").toUpperCase();
-                  artistName = artistName.replace(/\s+/g, "_");
-
-                  // Trim empty rows from top and bottom
-                  let trimmedGrid = [...grid];
-
-                  // Remove empty rows from top
-                  while (trimmedGrid.length > 0 && trimmedGrid[0].every((cell) => cell === "")) {
-                    trimmedGrid.shift();
-                  }
-
-                  // Remove empty rows from bottom
-                  while (trimmedGrid.length > 0 && trimmedGrid[trimmedGrid.length - 1].every((cell) => cell === "")) {
-                    trimmedGrid.pop();
-                  }
-
-                  // Generate the art array - each line is exactly GRID_SIZE (10) characters
-                  const artLines = trimmedGrid.map((row) => {
-                    // Convert empty strings to spaces, then join
-                    const line = row.map((cell) => (cell === "" ? " " : cell)).join("");
-                    // Ensure line is exactly GRID_SIZE characters by padding with spaces
-                    const paddedLine = line.padEnd(GRID_SIZE, " ");
-                    return `            "${paddedLine}"`;
-                  });
-
-                  // Create the complete JavaScript object format
-                  const formattedObject = `    {
+          // Create the complete JavaScript object format
+          const formattedObject = `    {
                 name: "${buildingName}",
                 artist: "${artistName}",
                 art: [
@@ -2064,308 +2084,307 @@
                 ]
             },`;
 
-                  // Log to verify spaces are preserved
-                  console.log("Formatted building object:");
-                  console.log(formattedObject);
+          // Log to verify spaces are preserved
+          console.log("Formatted building object:");
+          console.log(formattedObject);
 
-                  // Prepare form data for Google Form submission
-                  const formData = new URLSearchParams();
-                  formData.append("entry.1432455807", "Montreal"); // Location (default Montreal)
-                  formData.append("entry.540203602", buildingName); // Building_Name
-                  formData.append("entry.1023700221", artistName); // Your Name or Handle
-                  formData.append("entry.1869243340", formattedObject); // Your art! (full formatted object)
+          // Prepare form data for Google Form submission
+          const formData = new URLSearchParams();
+          formData.append("entry.1432455807", "Montreal"); // Location (default Montreal)
+          formData.append("entry.540203602", buildingName); // Building_Name
+          formData.append("entry.1023700221", artistName); // Your Name or Handle
+          formData.append("entry.1869243340", formattedObject); // Your art! (full formatted object)
 
-                  // Submit to Google Form
-                  fetch("https://docs.google.com/forms/d/e/1FAIpQLSeI6SFIJq0mfRlNYxAKm-36wQas02aU5HM4EyQZiIhEKZhdag/formResponse", {
-                    method: "POST",
-                    mode: "no-cors",
-                    body: formData,
-                  })
-                    .then(() => {
-                      closeModal();
-                      showToast(t("submitSuccess"));
+          // Submit to Google Form
+          fetch("https://docs.google.com/forms/d/e/1FAIpQLSeI6SFIJq0mfRlNYxAKm-36wQas02aU5HM4EyQZiIhEKZhdag/formResponse", {
+            method: "POST",
+            mode: "no-cors",
+            body: formData,
+          })
+            .then(() => {
+              closeModal();
+              showToast(t("submitSuccess"));
 
-                      // Optional: Clear the grid after successful submission
-                      // setTimeout(() => clearGrid(), 1000);
-                    })
-                    .catch((error) => {
-                      closeModal();
-                      showToast(t("submitFailed"));
-                      console.error("Submission error:", error);
-                    });
-                }
+              // Optional: Clear the grid after successful submission
+              // setTimeout(() => clearGrid(), 1000);
+            })
+            .catch((error) => {
+              closeModal();
+              showToast(t("submitFailed"));
+              console.error("Submission error:", error);
+            });
+        }
 
-                // Context menu functionality
-                let contextMenuElement = null;
+        // Context menu functionality
+        let contextMenuElement = null;
 
-                function showContextMenu(e, cellIndex) {
-                  // Remove any existing context menu
-                  if (contextMenuElement) {
-                    contextMenuElement.remove();
-                  }
+        function showContextMenu(e, cellIndex) {
+          // Remove any existing context menu
+          if (contextMenuElement) {
+            contextMenuElement.remove();
+          }
 
-                  // Create context menu
-                  contextMenuElement = document.createElement("div");
-                  contextMenuElement.style.position = "fixed";
-                  contextMenuElement.style.top = e.clientY + "px";
-                  contextMenuElement.style.left = e.clientX + "px";
-                  contextMenuElement.style.backgroundColor = "white";
-                  contextMenuElement.style.border = "1px solid #ccc";
-                  contextMenuElement.style.borderRadius = "4px";
-                  contextMenuElement.style.boxShadow = "0 2px 8px rgba(0,0,0,0.15)";
-                  contextMenuElement.style.zIndex = "10000";
-                  contextMenuElement.style.minWidth = "140px";
-                  contextMenuElement.style.padding = "4px 0";
+          // Create context menu
+          contextMenuElement = document.createElement("div");
+          contextMenuElement.style.position = "fixed";
+          contextMenuElement.style.top = e.clientY + "px";
+          contextMenuElement.style.left = e.clientX + "px";
+          contextMenuElement.style.backgroundColor = "white";
+          contextMenuElement.style.border = "1px solid #ccc";
+          contextMenuElement.style.borderRadius = "4px";
+          contextMenuElement.style.boxShadow = "0 2px 8px rgba(0,0,0,0.15)";
+          contextMenuElement.style.zIndex = "10000";
+          contextMenuElement.style.minWidth = "140px";
+          contextMenuElement.style.padding = "4px 0";
 
-                  // Copy option
-                  const copyBtn = document.createElement("button");
-                  copyBtn.textContent = "Copy (C)";
-                  copyBtn.style.cssText =
-                    "display:block; width:100%; padding:8px 12px; border:none; background:none; text-align:left; cursor:pointer; font-size:14px;";
-                  copyBtn.onmouseover = () => (copyBtn.style.backgroundColor = "#f0f0f0");
-                  copyBtn.onmouseout = () => (copyBtn.style.backgroundColor = "transparent");
-                  copyBtn.onclick = () => {
-                    const row = Math.floor(cellIndex / GRID_SIZE);
-                    const col = cellIndex % GRID_SIZE;
-                    copiedCell = grid[row][col];
-                    currentChar = copiedCell || "";
-                    selectChar(currentChar);
-                    showToast(copiedCell ? `Copied: ${copiedCell}` : "Copied empty cell");
-                    contextMenuElement.remove();
-                  };
+          // Copy option
+          const copyBtn = document.createElement("button");
+          copyBtn.textContent = "Copy (C)";
+          copyBtn.style.cssText =
+            "display:block; width:100%; padding:8px 12px; border:none; background:none; text-align:left; cursor:pointer; font-size:14px;";
+          copyBtn.onmouseover = () => (copyBtn.style.backgroundColor = "#f0f0f0");
+          copyBtn.onmouseout = () => (copyBtn.style.backgroundColor = "transparent");
+          copyBtn.onclick = () => {
+            const row = Math.floor(cellIndex / GRID_SIZE);
+            const col = cellIndex % GRID_SIZE;
+            copiedCell = grid[row][col];
+            currentChar = copiedCell || "";
+            selectChar(currentChar);
+            showToast(copiedCell ? `Copied: ${copiedCell}` : "Copied empty cell");
+            contextMenuElement.remove();
+          };
 
-                  // Paste option
-                  const pasteBtn = document.createElement("button");
-                  pasteBtn.textContent = "Paste (V)";
-                  pasteBtn.disabled = copiedCell === null;
-                  pasteBtn.style.cssText = `display:block; width:100%; padding:8px 12px; border:none; background:none; text-align:left; cursor:${
-                    copiedCell === null ? "not-allowed" : "pointer"
-                  }; font-size:14px; opacity:${copiedCell === null ? "0.5" : "1"};`;
-                  if (copiedCell !== null) {
-                    pasteBtn.onmouseover = () => (pasteBtn.style.backgroundColor = "#f0f0f0");
-                    pasteBtn.onmouseout = () => (pasteBtn.style.backgroundColor = "transparent");
-                  }
-                  pasteBtn.onclick = () => {
-                    if (copiedCell !== null) {
-                      const row = Math.floor(cellIndex / GRID_SIZE);
-                      const col = cellIndex % GRID_SIZE;
-                      grid[row][col] = copiedCell;
-                      currentChar = copiedCell;
-                      selectChar(currentChar);
-                      updateGrid();
-                      showToast(copiedCell ? `Pasted: ${copiedCell}` : "Pasted empty cell");
-                    }
-                    contextMenuElement.remove();
-                  };
+          // Paste option
+          const pasteBtn = document.createElement("button");
+          pasteBtn.textContent = "Paste (V)";
+          pasteBtn.disabled = copiedCell === null;
+          pasteBtn.style.cssText = `display:block; width:100%; padding:8px 12px; border:none; background:none; text-align:left; cursor:${
+            copiedCell === null ? "not-allowed" : "pointer"
+          }; font-size:14px; opacity:${copiedCell === null ? "0.5" : "1"};`;
+          if (copiedCell !== null) {
+            pasteBtn.onmouseover = () => (pasteBtn.style.backgroundColor = "#f0f0f0");
+            pasteBtn.onmouseout = () => (pasteBtn.style.backgroundColor = "transparent");
+          }
+          pasteBtn.onclick = () => {
+            if (copiedCell !== null) {
+              const row = Math.floor(cellIndex / GRID_SIZE);
+              const col = cellIndex % GRID_SIZE;
+              grid[row][col] = copiedCell;
+              currentChar = copiedCell;
+              selectChar(currentChar);
+              updateGrid();
+              showToast(copiedCell ? `Pasted: ${copiedCell}` : "Pasted empty cell");
+            }
+            contextMenuElement.remove();
+          };
 
-                  // Clear option
-                  const clearBtn = document.createElement("button");
-                  clearBtn.textContent = "Clear (X)";
-                  clearBtn.style.cssText =
-                    "display:block; width:100%; padding:8px 12px; border:none; background:none; text-align:left; cursor:pointer; font-size:14px;";
-                  clearBtn.onmouseover = () => (clearBtn.style.backgroundColor = "#f0f0f0");
-                  clearBtn.onmouseout = () => (clearBtn.style.backgroundColor = "transparent");
-                  clearBtn.onclick = () => {
-                    const row = Math.floor(cellIndex / GRID_SIZE);
-                    const col = cellIndex % GRID_SIZE;
-                    grid[row][col] = "";
-                    updateGrid();
-                    showToast("Cleared cell");
-                    contextMenuElement.remove();
-                  };
+          // Clear option
+          const clearBtn = document.createElement("button");
+          clearBtn.textContent = "Clear (X)";
+          clearBtn.style.cssText =
+            "display:block; width:100%; padding:8px 12px; border:none; background:none; text-align:left; cursor:pointer; font-size:14px;";
+          clearBtn.onmouseover = () => (clearBtn.style.backgroundColor = "#f0f0f0");
+          clearBtn.onmouseout = () => (clearBtn.style.backgroundColor = "transparent");
+          clearBtn.onclick = () => {
+            const row = Math.floor(cellIndex / GRID_SIZE);
+            const col = cellIndex % GRID_SIZE;
+            grid[row][col] = "";
+            updateGrid();
+            showToast("Cleared cell");
+            contextMenuElement.remove();
+          };
 
-                  contextMenuElement.appendChild(copyBtn);
-                  contextMenuElement.appendChild(pasteBtn);
-                  contextMenuElement.appendChild(clearBtn);
-                  document.body.appendChild(contextMenuElement);
+          contextMenuElement.appendChild(copyBtn);
+          contextMenuElement.appendChild(pasteBtn);
+          contextMenuElement.appendChild(clearBtn);
+          document.body.appendChild(contextMenuElement);
 
-                  // Close menu when clicking outside
-                  setTimeout(() => {
-                    document.addEventListener("click", closeContextMenu);
-                  }, 0);
-                }
+          // Close menu when clicking outside
+          setTimeout(() => {
+            document.addEventListener("click", closeContextMenu);
+          }, 0);
+        }
 
-                function closeContextMenu() {
-                  if (contextMenuElement) {
-                    contextMenuElement.remove();
-                    contextMenuElement = null;
-                  }
-                  document.removeEventListener("click", closeContextMenu);
-                }
+        function closeContextMenu() {
+          if (contextMenuElement) {
+            contextMenuElement.remove();
+            contextMenuElement = null;
+          }
+          document.removeEventListener("click", closeContextMenu);
+        }
 
-                function showToast(message) {
-                  const toast = document.getElementById("toast");
-                  toast.textContent = message;
-                  toast.classList.add("show");
-                  setTimeout(() => {
-                    toast.classList.remove("show");
-                  }, 2500);
-                }
+        function showToast(message) {
+          const toast = document.getElementById("toast");
+          toast.textContent = message;
+          toast.classList.add("show");
+          setTimeout(() => {
+            toast.classList.remove("show");
+          }, 2500);
+        }
 
-                // Keyboard support
-                document.addEventListener("keyup", (e) => {
-                  if (e.key === "Shift") {
-                    isShiftPressed = false;
-              isDraggingToMove = false;
-              // Remove visual indicator
-              document.querySelectorAll(".cell").forEach((cell) => {
-                cell.style.borderColor = "";
-                cell.style.borderWidth = "";
-                cell.style.borderStyle = "";
-              });
-                    // isShiftPressed = false;
-                    // isDraggingToMove = false;
-                    // Make all cells non-draggable when shift is released
-                    // document.querySelectorAll(".cell").forEach((cell) => {
-                    //   cell.draggable = false;
-                    // });
-                  }
-                });
+        // Keyboard support
+        document.addEventListener("keyup", (e) => {
+          if (e.key === "Shift") {
+            isShiftPressed = false;
+            isDraggingToMove = false;
+            // Remove visual indicator
+            document.querySelectorAll(".cell").forEach((cell) => {
+              cell.style.borderColor = "";
+              cell.style.borderWidth = "";
+              cell.style.borderStyle = "";
+            });
+            // isShiftPressed = false;
+            // isDraggingToMove = false;
+            // Make all cells non-draggable when shift is released
+            // document.querySelectorAll(".cell").forEach((cell) => {
+            //   cell.draggable = false;
+            // });
+          }
+        });
 
-                document.addEventListener("keydown", (e) => {
-                  if (e.key === "Shift") {
-              isShiftPressed = true;
-              // Add visual indicator to show shift-drag mode is active
-              document.querySelectorAll(".cell").forEach((cell) => {
-                cell.style.borderColor = "rgba(99, 248, 99, 0.6)";
-                cell.style.borderWidth = "2px";
-                cell.style.borderStyle = "solid";
-              });
-            
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Shift") {
+            isShiftPressed = true;
+            // Add visual indicator to show shift-drag mode is active
+            document.querySelectorAll(".cell").forEach((cell) => {
+              cell.style.borderColor = "rgba(99, 248, 99, 0.6)";
+              cell.style.borderWidth = "2px";
+              cell.style.borderStyle = "solid";
+            });
 
-                  // if (e.key === "Shift") {
-                  //   isShiftPressed = true;
-                    // Make all cells draggable when shift is pressed
-                    // document.querySelectorAll(".cell").forEach((cell) => {
-                    //   cell.draggable = true;
-                    // });
-                  }
-                  // Handle modal keyboard shortcuts
-                  if (document.getElementById("modalOverlay").classList.contains("show")) {
-                    if (e.key === "Enter") {
-                      submitBuilding();
-                      e.preventDefault();
-                    } else if (e.key === "Escape") {
-                      closeModal();
-                      e.preventDefault();
-                    }
-                    return;
-                  }
+            // if (e.key === "Shift") {
+            //   isShiftPressed = true;
+            // Make all cells draggable when shift is pressed
+            // document.querySelectorAll(".cell").forEach((cell) => {
+            //   cell.draggable = true;
+            // });
+          }
+          // Handle modal keyboard shortcuts
+          if (document.getElementById("modalOverlay").classList.contains("show")) {
+            if (e.key === "Enter") {
+              submitBuilding();
+              e.preventDefault();
+            } else if (e.key === "Escape") {
+              closeModal();
+              e.preventDefault();
+            }
+            return;
+          }
 
-                  if (selectedCell === null) {
-                    selectedCell = 0;
-                    highlightCell(0);
-                  }
+          if (selectedCell === null) {
+            selectedCell = 0;
+            highlightCell(0);
+          }
 
-                  const row = Math.floor(selectedCell / GRID_SIZE);
-                  const col = selectedCell % GRID_SIZE;
+          const row = Math.floor(selectedCell / GRID_SIZE);
+          const col = selectedCell % GRID_SIZE;
 
-                  // Handle C for copy (on hovered cell, no Ctrl needed)
-                  if (e.key.toLowerCase() === "c" && !e.ctrlKey && !e.metaKey) {
-                    copyCell();
-                    e.preventDefault();
-                  }
-                  // Handle V for paste (on hovered cell, no Ctrl needed)
-                  else if (e.key.toLowerCase() === "v" && !e.ctrlKey && !e.metaKey) {
-                    pasteCell();
-                    e.preventDefault();
-                  }
-                  // Also support Ctrl+C and Ctrl+V for compatibility
-                  else if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "c") {
-                    copyCell();
-                    e.preventDefault();
-                  } else if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "v") {
-                    pasteCell();
-                    e.preventDefault();
-                  }
-                  // Handle arrow keys
-                  else if (e.key === "ArrowUp" && row > 0) {
-                    selectedCell -= GRID_SIZE;
-                    highlightCell(selectedCell);
-                    e.preventDefault();
-                  } else if (e.key === "ArrowDown" && row < GRID_SIZE - 1) {
-                    selectedCell += GRID_SIZE;
-                    highlightCell(selectedCell);
-                    e.preventDefault();
-                  } else if (e.key === "ArrowLeft" && col > 0) {
-                    selectedCell--;
-                    highlightCell(selectedCell);
-                    e.preventDefault();
-                  } else if (e.key === "ArrowRight" && col < GRID_SIZE - 1) {
-                    selectedCell++;
-                    highlightCell(selectedCell);
-                    e.preventDefault();
-                  }
-                  // Handle backspace/delete - acts as eraser
-                  else if (e.key === "Backspace" || e.key === "Delete") {
-                    grid[row][col] = "";
-                    updateGrid();
-                    e.preventDefault();
-                  }
+          // Handle C for copy (on hovered cell, no Ctrl needed)
+          if (e.key.toLowerCase() === "c" && !e.ctrlKey && !e.metaKey) {
+            copyCell();
+            e.preventDefault();
+          }
+          // Handle V for paste (on hovered cell, no Ctrl needed)
+          else if (e.key.toLowerCase() === "v" && !e.ctrlKey && !e.metaKey) {
+            pasteCell();
+            e.preventDefault();
+          }
+          // Also support Ctrl+C and Ctrl+V for compatibility
+          else if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "c") {
+            copyCell();
+            e.preventDefault();
+          } else if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "v") {
+            pasteCell();
+            e.preventDefault();
+          }
+          // Handle arrow keys
+          else if (e.key === "ArrowUp" && row > 0) {
+            selectedCell -= GRID_SIZE;
+            highlightCell(selectedCell);
+            e.preventDefault();
+          } else if (e.key === "ArrowDown" && row < GRID_SIZE - 1) {
+            selectedCell += GRID_SIZE;
+            highlightCell(selectedCell);
+            e.preventDefault();
+          } else if (e.key === "ArrowLeft" && col > 0) {
+            selectedCell--;
+            highlightCell(selectedCell);
+            e.preventDefault();
+          } else if (e.key === "ArrowRight" && col < GRID_SIZE - 1) {
+            selectedCell++;
+            highlightCell(selectedCell);
+            e.preventDefault();
+          }
+          // Handle backspace/delete - acts as eraser
+          else if (e.key === "Backspace" || e.key === "Delete") {
+            grid[row][col] = "";
+            updateGrid();
+            e.preventDefault();
+          }
 
-                  // Handle space to place current character
-                  else if (e.key === " ") {
-                    if (isEraserMode) {
-                      grid[row][col] = "";
-                    } else {
-                      grid[row][col] = currentChar;
-                    }
-                    updateGrid();
-                    e.preventDefault();
-                  }
-                  // Handle any printable character
-                  else if (e.key.length === 1 && !e.ctrlKey && !e.metaKey) {
-                    selectChar(e.key);
-                    grid[row][col] = e.key;
-                    updateGrid();
-                    e.preventDefault();
-                  }
-                });
-                // Initialize
-                initGrid();
-                initPalette();
-                selectChar(currentChar);
+          // Handle space to place current character
+          else if (e.key === " ") {
+            if (isEraserMode) {
+              grid[row][col] = "";
+            } else {
+              grid[row][col] = currentChar;
+            }
+            updateGrid();
+            e.preventDefault();
+          }
+          // Handle any printable character
+          else if (e.key.length === 1 && !e.ctrlKey && !e.metaKey) {
+            selectChar(e.key);
+            grid[row][col] = e.key;
+            updateGrid();
+            e.preventDefault();
+          }
+        });
+        // Initialize
+        initGrid();
+        initPalette();
+        selectChar(currentChar);
 
-                // Try to load from localStorage on startup
+        // Try to load from localStorage on startup
 
-                const loaded = loadFromLocalStorage();
-                if (!loaded) {
-                  // If nothing was loaded, make sure grid is displayed
-                  updateGrid();
-                }
+        const loaded = loadFromLocalStorage();
+        if (!loaded) {
+          // If nothing was loaded, make sure grid is displayed
+          updateGrid();
+        }
 
-                // Gentle landscape mode hint - shows once on mobile portrait
-                function showLandscapeHint() {
-                  // Check if we've already shown this hint
-                  // if (localStorage.getItem('landscapeHintShown')) {
-                  //   return;
-                  // }
+        // Gentle landscape mode hint - shows once on mobile portrait
+        function showLandscapeHint() {
+          // Check if we've already shown this hint
+          // if (localStorage.getItem('landscapeHintShown')) {
+          //   return;
+          // }
 
-                  // Only show on mobile-sized screens in portrait orientation
-                  const isMobile = window.innerWidth <= 768;
-                  const isPortrait = window.innerHeight > window.innerWidth;
+          // Only show on mobile-sized screens in portrait orientation
+          const isMobile = window.innerWidth <= 768;
+          const isPortrait = window.innerHeight > window.innerWidth;
 
-                  if (isMobile && isPortrait) {
-                    const hint = document.getElementById("landscapeHint");
+          if (isMobile && isPortrait) {
+            const hint = document.getElementById("landscapeHint");
 
-                    // Show the hint after a brief delay
-                    setTimeout(() => {
-                      hint.classList.add("show");
-                      hint.textContent = t("landscapeHint");
+            // Show the hint after a brief delay
+            setTimeout(() => {
+              hint.classList.add("show");
+              hint.textContent = t("landscapeHint");
 
-                      // Hide after 3 seconds
-                      setTimeout(() => {
-                        hint.classList.remove("show");
-                      }, 4000);
-                    }, 500);
+              // Hide after 3 seconds
+              setTimeout(() => {
+                hint.classList.remove("show");
+              }, 4000);
+            }, 500);
 
-                    // Mark that we've shown it
-                    localStorage.setItem("landscapeHintShown", "true");
-                  }
-                }
+            // Mark that we've shown it
+            localStorage.setItem("landscapeHintShown", "true");
+          }
+        }
 
-                // Show hint after page loads
-                window.addEventListener("load", showLandscapeHint);
+        // Show hint after page loads
+        window.addEventListener("load", showLandscapeHint);
       </script>
     </body>
   </html>
