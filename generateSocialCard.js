@@ -161,7 +161,7 @@ function createButton(backgroundColor, content, onClick, ariaLabel, isLarge = fa
 
 function createSocialButtons(score, messageString) {
   const shareUrl = window.location.href;
-  const shareText = `I survived biking in Toronto for ${score} seconds without a bike lane. How long will you survive? Try your luck at: `;
+  const shareText = `${t("shareText")} ${score} ${t("shareTextEnd")} `;
 
   const socialContainer = document.createElement("div");
   socialContainer.style.cssText = `
@@ -174,7 +174,7 @@ function createSocialButtons(score, messageString) {
   // Original SVG Icons (kept for reference)
   const icons = {
     share: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>`,
-    twitter: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>`,
+    // twitter: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>`,
     facebook: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>`,
     bluesky: `<svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12.002 0a12 12 0 1 0 12 12 12 12 0 0 0-12-12zm0 21.6a9.6 9.6 0 1 1 9.6-9.6 9.6 9.6 0 0 1-9.6 9.6zm5.643-10.574l-2.327-3.674a3.764 3.764 0 0 0-6.632 0L6.359 11.026a3.764 3.764 0 0 0 3.316 5.558h4.652a3.764 3.764 0 0 0 3.316-5.558z"/></svg>`,
     mastodon: `<svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M21.327 8.566c0-4.339-2.843-5.61-2.843-5.61-1.433-.658-3.894-.935-6.451-.956h-.063c-2.557.021-5.016.298-6.45.956 0 0-2.843 1.272-2.843 5.61 0 .993-.019 2.181.012 3.441.103 4.243.778 8.425 4.701 9.463 1.809.479 3.362.579 4.612.51 2.268-.126 3.541-.809 3.541-.809l-.075-1.646s-1.621.511-3.441.449c-1.804-.062-3.707-.194-3.999-2.409a4.523 4.523 0 0 1-.04-.621s1.77.433 4.014.536c1.372.063 2.658-.08 3.965-.236 2.506-.299 4.688-1.843 4.962-3.254.434-2.223.398-5.424.398-5.424z"/></svg>`,
@@ -182,7 +182,7 @@ function createSocialButtons(score, messageString) {
 
   // Share URLs
   const shareUrls = {
-    twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`,
+    // twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`,
     facebook: `https://www.facebook.com/dialog/feed?app_id=452384931538596&link=${encodeURIComponent(shareUrl)}&quote=${encodeURIComponent(
       shareText
     )}&display=popup&redirect_uri=${encodeURIComponent(shareUrl)}`,
@@ -192,7 +192,7 @@ function createSocialButtons(score, messageString) {
 
   // Social platforms config - using letters instead of icons
   const socialPlatforms = [
-    { name: "twitter", color: "#1DA1F2", content: "X" }, // To use icon instead: content: icons.twitter
+    // { name: "twitter", color: "#1DA1F2", content: "X" }, // To use icon instead: content: icons.twitter
     { name: "facebook", color: "#1877F2", content: "f" }, // To use icon instead: content: icons.facebook
     { name: "bluesky", color: "#0085FF", content: "B" }, // To use icon instead: content: icons.bluesky
     { name: "mastodon", color: "#563ACC", content: "M" }, // To use icon instead: content: icons.mastodon
@@ -202,21 +202,19 @@ function createSocialButtons(score, messageString) {
   if (navigator.share) {
     const shareButton = createButton(
       "#e7a900",
-      // "#ff77df",
-
-      "↑", // To use icon instead: icons.share
+      t("shareWithFriend"), // Translatable text
       async () => {
         try {
           await navigator.share({
-            title: "No Bike Lanes?",
-            text: shareText,
-            url: shareUrl,
+            title: t("shareTitle"),
+            text: `${shareText}${shareUrl}`,
           });
         } catch (err) {
           console.log("Share failed:", err);
         }
       },
-      "Share"
+      t("shareWithFriend"),
+      true // Make it a large button to fit the text
     );
     socialContainer.appendChild(shareButton);
   }
@@ -364,46 +362,46 @@ const contentContainer = document.createElement("div");
   allButtonsContainer.className = "all-buttons-container";
 
   // Create download button
-  const downloadButton = createButton(
-    "#ff77df",
-    // "#e7a900",
-    "↓",
-    () => {
-      generateImage().then((dataUrl) => {
-        const link = document.createElement("a");
-        link.download = `I-survived-${score}s-without-a-bike-lane-thanks-doug.png`;
-        link.href = dataUrl;
-        link.click();
+  // const downloadButton = createButton(
+  //   "#ff77df",
+  //   // "#e7a900",
+  //   "↓",
+  //   () => {
+  //     generateImage().then((dataUrl) => {
+  //       const link = document.createElement("a");
+  //       link.download = `I-survived-${score}s-without-a-bike-lane-thanks-doug.png`;
+  //       link.href = dataUrl;
+  //       link.click();
 
-        const shareText = `${t("shareText")} ${score} ${t("shareTextEnd")} `;
-        navigator.clipboard
-          .writeText(shareText)
-          .then(() => {
-            downloadButton.innerHTML = "✓";
-            setTimeout(() => {
-              downloadButton.innerHTML = "↓";
-            }, 6000);
-          })
-          .catch(() => showMessage("Couldn't copy text", "error"));
-      });
-    },
-    "Save Image and Copy Link",
-    false
-  );
+  //       const shareText = `${t("shareText")} ${score} ${t("shareTextEnd")} `;
+  //       navigator.clipboard
+  //         .writeText(shareText)
+  //         .then(() => {
+  //           downloadButton.innerHTML = "✓";
+  //           setTimeout(() => {
+  //             downloadButton.innerHTML = "↓";
+  //           }, 6000);
+  //         })
+  //         .catch(() => showMessage("Couldn't copy text", "error"));
+  //     });
+  //   },
+  //   "Save Image and Copy Link",
+  //   false
+  // );
 
   // Create social buttons
   const socialButtons = createSocialButtons(score, messageString);
 
   // Add all buttons to the container
-  allButtonsContainer.appendChild(downloadButton);
+  // allButtonsContainer.appendChild(downloadButton);
   Array.from(socialButtons.children).forEach((button) => {
     allButtonsContainer.appendChild(button);
   });
 
   // Add everything to the overlay in the correct order
   overlay.appendChild(socialCard);
-  // overlay.appendChild(allButtonsContainer); // All buttons together
-  overlay.appendChild(messageContainer); // Message appears before buttons
+  overlay.appendChild(allButtonsContainer); // ✅ FIXED: This line was commented out!
+  overlay.appendChild(messageContainer); // Message appears after buttons
 
   document.body.appendChild(overlay);
 

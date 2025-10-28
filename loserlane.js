@@ -1,7 +1,7 @@
 // Translations - English and French side by side
 const TRANSLATIONS = [
   // Game title
-  { key: "gameTitle", en: "LOSER LANE", fr: "VOIE DES PERDANTS" },
+  { key: "gameTitle", en: "LOSER LANE", fr: "LOSER LANE" },
 
   // Buttons
   { key: "restart", en: "RESTART", fr: "RECOMMENCER" },
@@ -182,15 +182,21 @@ const TRANSLATIONS = [
   { key: "addBuilding", en: "ADD A BUILDING?", fr: "AJOUTER UN BÂTIMENT?" },
 
   // Social sharing
-  { key: 'shareText', en: 'I survived biking in Toronto for', fr: 'J\'ai survécu à vélo à Montréal pendant' },
-  { key: 'seconds', en: 'seconds', fr: 'secondes' },
-  { key: 'shareTextEnd', en: 'seconds without a bike lane. How long will you survive? Try your luck at:', fr: 'secondes sans piste cyclable. Combien de temps vas-tu survivre? Essaye à:' },
-  { key: 'survivedText', en: 'I survived', fr: 'J\'ai survécu' },
-  { key: 'withoutLane', en: 'without a bike lane', fr: 'sans piste cyclable' },
+  { key: "shareText", en: "I survived biking in Toronto for", fr: "J'ai survécu à vélo à Montréal pendant" },
+  { key: "seconds", en: "seconds", fr: "secondes" },
+  {
+    key: "shareTextEnd",
+    en: "seconds without a bike lane. How long will you survive? Try your luck at:",
+    fr: "secondes sans piste cyclable. Combien de temps survivrez-vous? Tentez votre chance:",
+  },
+  { key: "survivedText", en: "I survived", fr: "J'ai survécu" },
+  { key: "withoutLane", en: "without a bike lane", fr: "sans piste cyclable" },
+  { key: "shareWithFriend", en: "share with a friend", fr: "partager avec un ami" },
+  { key: "shareTitle", en: "No Bike Lanes?", fr: "Pas de pistes cyclables?" },
 
   // Call to action messages
-  { key: 'fightForLanes', en: 'FIGHT FOR YOUR BIKE LANES?', fr: 'BATS-TOI POUR TES PISTES CYCLABLES?' },
-  { key: 'thanksDoug', en: 'THANKS DOUG', fr: 'TOUCHE PAS À NOS PISSYCLABLES' },
+  { key: "fightForLanes", en: "FIGHT FOR YOUR BIKE LANES?", fr: "BATS-TOI POUR TES PISTES CYCLABLES?" },
+  { key: "thanksDoug", en: "THANKS DOUG", fr: "TOUCHE PAS À NOS REVes" },
 
   // Meta/SEO content
   { key: "metaTitle", en: "Loser Lane", fr: "Loser Lane" },
