@@ -130,7 +130,7 @@ const TRANSLATIONS = [
   { key: "building_funny_13", en: "Watch the display, stay away!", fr: "Watch la vitrine! Reste loin!" },
   { key: "building_funny_14", en: "Store smack! Stick to the track!", fr: "Coup d'magasin! Reste dans rue!" },
 
-  // TTC death messages 
+  // TTC death messages
   { key: "ttc_reason_1", en: "STM SMOOCH", fr: "BISOU À LA STM" },
   { key: "ttc_funny_1", en: "STM zap! That's a wrap!", fr: "STM zap! T'es mort!" },
   { key: "ttc_funny_2", en: "STM clash! Hot bash!", fr: "STM clash! Chaud hot!" },
@@ -196,14 +196,14 @@ const TRANSLATIONS = [
 
   // Call to action messages
   { key: "fightForLanes", en: "FIGHT FOR YOUR BIKE LANES?", fr: "BATS-TOI POUR TES PISTES CYCLABLES?" },
-  { key: "thanksDoug", en: "THANKS DOUG", fr: "TOUCHE PAS À NOS REVes" },
+  { key: "thanksDoug", en: "NO THANKS", fr: "TOUCHE PAS À NOS REVes" },
 
   // Meta/SEO content
   { key: "metaTitle", en: "Loser Lane", fr: "Loser Lane" },
   {
     key: "metaDescription",
-    en: "Experience cycling between certain death and probable death in this totally accurate street survival simulator. Life without bike lanes? Thanks Doug.",
-    fr: "Vis l'expérience du vélo entre la mort certaine et la mort probable dans ce simulateur de survie urbaine totalement réaliste. La vie sans pistes cyclables? Merci Doug.",
+    en: "Experience cycling between certain death and probable death in this totally accurate street survival simulator. Life without bike lanes? No thanks.",
+    fr: "Vis l'expérience du vélo entre la mort certaine et la mort probable dans ce simulateur de survie urbaine totalement réaliste. La vie sans pistes cyclables? Non, Merci.",
   },
   { key: "metaTitleLong", en: "Loser Lane - Montreal Bike Survival Game", fr: "Loser Lane - Jeu de Survie à Vélo à Montréal" },
 ];
@@ -240,16 +240,11 @@ document.addEventListener("DOMContentLoaded", () => {
   if (langToggle) {
     // Set initial button text
     langToggle.textContent = currentLang === "en" ? "FR" : "EN";
-
     langToggle.addEventListener("click", () => {
       currentLang = currentLang === "en" ? "fr" : "en";
-      window.currentLang = currentLang;
       localStorage.setItem("language", currentLang);
-
-      langToggle.textContent = currentLang === "en" ? "FR" : "EN";
-
-      updateLanguage();
-      updateMetaTags(); // Add this line
+      // Refresh the page to apply new language
+      location.reload();
     });
   }
 });
