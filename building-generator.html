@@ -48,786 +48,10 @@
       <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
       <link rel="manifest" href="/favicon/site.webmanifest" />
 
-      <style>
-        * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-        }
+      <link rel="stylesheet" href="mainStyles.css" />
+      <link rel="stylesheet" href="buildingGeneratorStyles.css" />
 
-        body {
-          font-family: "Courier New", monospace;
-          min-height: 100vh;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          padding: 20px;
-          background: #120303;
-        }
-
-        /* Language Toggle - Subtle version */
-        .lang-toggle-container {
-          position: fixed;
-          top: 20px;
-          right: 20px;
-          z-index: 1000;
-          transition: opacity 0.3s ease;
-        }
-
-        .lang-toggle-container:hover {
-          opacity: 1;
-        }
-
-        .lang-toggle {
-          background: transparent;
-          border: 1px solid #63f863;
-          padding: 4px 4px;
-          font-size: 0.8rem;
-          cursor: pointer;
-          width: 50px;
-          font-family: "Courier New", monospace;
-          color: #63f863;
-          letter-spacing: 1px;
-          transition: all 0.2s ease;
-          box-shadow: none;
-        }
-
-        .lang-toggle:hover {
-          outline: none;
-        }
-
-        .container {
-          background: black;
-          /* border-radius: 10px; */
-          padding: 25px;
-          border: 2px solid #e7a900;
-          box-shadow: 0 0 20px rgba(231, 169, 0, 0.1);
-          max-width: 650px;
-          width: 100%;
-        }
-        a {
-          color: #63f863;
-        }
-
-        h1 {
-          text-align: center;
-          color: #63f863;
-          margin-bottom: 10px;
-          font-size: 1.6em;
-          letter-spacing: 6px;
-        }
-
-        .subtitle {
-          text-align: center;
-          color: #d1feff;
-          margin-bottom: 15px;
-          font-size: 1.05rem;
-        }
-
-        .main-content {
-          display: flex;
-          gap: 25px;
-          flex-wrap: wrap;
-          justify-content: center;
-        }
-
-        .grid-section {
-          flex: 1;
-          min-width: 280px;
-        }
-
-        .grid-container {
-          background: #0a0202;
-          /* margin-bottom: 10px; */
-          box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5);
-          max-height: 60vh;
-          overflow: auto;
-          user-select: none;
-          -webkit-user-select: none;
-          -webkit-user-select: none;
-          -moz-user-select: none;
-          user-select: none;
-          border: 2px solid #ff77df79;
-          border: 4px solid #333;
-
-          padding: 2px;
-          margin-bottom: 10px;
-        }
-
-        .grid {
-          display: grid;
-          grid-template-columns: repeat(10, 1fr);
-          gap: 2px;
-          background: rgba(74, 74, 74, 0.389);
-          /* padding: 2px; */
-          /* margin-bottom: 8px; */
-        }
-
-        .cell {
-          aspect-ratio: 1 / 1.5;
-          background: #120303;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 1.5rem;
-          transition: all 0.2s;
-          position: relative;
-          min-height: 10px;
-          color: var(--theme-color-alpha);
-        }
-
-        .cell:hover {
-          background: rgba(99, 248, 99, 0.2);
-          transform: scale(1.1);
-          z-index: 10;
-        }
-
-        .cell.active {
-          background: #120303;
-        }
-
-        .controls {
-          display: flex;
-          gap: 10px;
-          flex-wrap: wrap;
-          justify-content: center;
-        }
-
-        .controls button {
-          flex: 1;
-          min-width: 0;
-        }
-
-        button {
-          padding: 8px 5px;
-          border: 2px solid #666;
-          border-radius: 5px;
-          font-family: "Courier New", monospace;
-          font-size: 13px;
-          cursor: pointer;
-          transition: all 0.2s;
-          font-weight: bold;
-          background-color: #63f863;
-          color: #120303;
-          box-shadow: 4px 4px #666;
-        }
-
-        button:hover {
-          transform: translateY(-2px);
-          box-shadow: 6px 6px #333;
-          background-color: #ff77df;
-          color: #fff;
-        }
-
-        button:active {
-          transform: translate(2px, 2px);
-          /* box-shadow: 1px 1px #333; */
-        }
-
-        .btn-clear {
-          background: #ff77dfb0;
-          /* color: white; */
-        }
-
-        .btn-copy {
-          background: #e7a9009c;
-          color: #120303;
-        }
-
-        .btn-download {
-          background: #d1feff;
-          color: #120303;
-        }
-
-        .btn-eraser {
-          background: #ff77dfb0;
-          /* color: white; */
-        }
-
-        .btn-eraser:hover,
-        .btn-clear:hover,
-        .btn-download:hover,
-        .btn-copy:hover {
-          background: magenta;
-          /* box-shadow: 0 0 0 3px rgba(255, 167, 38, 0.3); */
-        }
-
-        .btn-copy:hover {
-          background: #e7a900e0;
-        }
-
-        .btn-add-game {
-          background: #63f8638d;
-          color: #120303;
-          width: 100%;
-          font-size: 15px;
-          padding: 12px;
-          margin-top: 10px;
-          border: 2px solid #666;
-        }
-
-        .btn-add-game:hover {
-          background: #63f863;
-          color: black;
-        }
-
-        .palette-section {
-          flex: 1;
-          min-width: 280px;
-        }
-
-        .palette {
-          background: #0a0202;
-          padding: 12px;
-          max-height: 75vh;
-          overflow-y: auto;
-          border: 3px solid #333;
-        }
-
-        .palette-category {
-          margin-bottom: 12px;
-        }
-
-        .palette-title {
-          font-size: 0.9rem;
-          font-weight: bold;
-          color: #ff77df;
-          margin-bottom: 7px;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-        }
-
-        .palette-chars {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 4px;
-        }
-
-        .char-btn {
-          padding: 6px 10px;
-          background: #120303;
-          border: 2px solid #666;
-          border-radius: 5px;
-          font-size: 16px;
-          cursor: pointer;
-          transition: all 0.2s;
-          min-width: 36px;
-          text-align: center;
-          color: #d1feff;
-          box-shadow: 2px 2px #333;
-        }
-
-        .char-btn:hover {
-          border-color: #63f863;
-          background: rgba(231, 169, 0, 0.2);
-          transform: scale(1.1);
-        }
-
-        .char-btn.selected {
-          background: #63f863;
-          color: #120303;
-          border-color: #63f863;
-        }
-        /* .info-section {
-          padding: 5px;
-          padding-bottom: 7px;
-          border: 2px solid #ff77df;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 15px;
-          color: #63f863;
-        }
-
-        .info-text {
-          color: #63f863;
-          font-size: 0.9rem;
-          margin-bottom: 5px;
-        }
-
-        .current-char-display {
-          font-size: 1rem;
-          color: #63f863;
-          margin: 0;
-          font-weight: bold;
-        } */
-
-        .output-section {
-          margin-top: 20px;
-          background: #0a0202;
-          padding: 15px;
-          border-radius: 8px;
-          border: 1px solid #333;
-        }
-
-        .output-label {
-          color: #ff77df;
-          font-weight: bold;
-          margin-bottom: 10px;
-          font-size: 0.9rem;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-        }
-
-        #output {
-          width: 100%;
-          min-height: 150px;
-          background: #120303;
-          color: #63f863;
-          border: 2px solid #666;
-          border-radius: 5px;
-          padding: 12px;
-          font-family: "Courier New", monospace;
-          font-size: 0.9rem;
-          resize: vertical;
-          white-space: pre;
-          /* overflow-x: auto; */
-        }
-
-        /* Modal Styles */
-        .modal-overlay {
-          display: none;
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: rgba(0, 0, 0, 0.8);
-          z-index: 1000;
-          justify-content: center;
-          align-items: center;
-          padding: 20px;
-        }
-
-        .modal-overlay.show {
-          display: flex;
-        }
-        .modal {
-          background: black;
-          /* border-radius: 10px; */
-          padding: 30px;
-          max-width: 500px;
-          width: 90%;
-          max-height: 80vh;
-          overflow-y: auto;
-          animation: modalSlideIn 0.3s ease-out;
-          border: 2px solid #e7a900;
-          box-shadow: 0 0 30px rgba(231, 169, 0, 0.5);
-        }
-
-        @keyframes modalSlideIn {
-          from {
-            opacity: 0;
-            transform: translateY(-50px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        .modal h2 {
-          color: #63f863;
-          margin-bottom: 20px;
-          text-align: center;
-          font-size: 1.5em;
-          letter-spacing: 4px;
-        }
-
-        .modal-input-group {
-          margin-bottom: 20px;
-        }
-
-        .modal-input-group label {
-          display: block;
-          font-size: 1rem;
-          color: #dfb1ff;
-          margin-bottom: 5px;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-        }
-
-        .modal-input-group input {
-          width: 100%;
-          padding: 12px;
-          background: #0a0202;
-          border: 2px solid #666;
-          /* border-radius: 5px; */
-          color: #d1feff;
-          font-family: "Courier New", monospace;
-          font-size: 16px;
-          font-weight: bold;
-        }
-
-        .modal-input-group input:focus {
-          outline: none;
-          border-color: #63f863;
-          box-shadow: 0 0 0 3px rgba(99, 248, 99, 0.1);
-        }
-
-        .building-preview-container {
-          display: flex;
-          margin: auto;
-          justify-content: center;
-          margin-bottom: 15px;
-        }
-
-        .building-preview {
-          background: #0a0202;
-          padding: 20px;
-          border: 1px solid #666;
-          font-family: "Courier New", monospace;
-          /* background: var(--theme-color-alpha); */
-          white-space: pre;
-          /* overflow-x: auto; */
-          font-size: 12px;
-          line-height: 1.5;
-          letter-spacing: 0;
-        }
-
-        .modal-buttons {
-          display: flex;
-          gap: 10px;
-          justify-content: stretch;
-        }
-
-        .modal-btn {
-          flex: 1;
-          padding: 15px;
-          border: 2px solid #666;
-          /* border-radius: 5px; */
-          font-family: "Courier New", monospace;
-          font-size: 16px;
-          font-weight: bold;
-          cursor: pointer;
-          transition: all 0.2s;
-          box-shadow: 4px 4px #666;
-        }
-
-        .modal-btn-cancel {
-          background: #1f1f1f;
-          color: #d1feff;
-        }
-
-        .modal-btn-cancel:hover {
-          background: #000000;
-          box-shadow: 6px 6px #333;
-        }
-
-        .modal-btn-submit {
-          background: #63f863a4;
-          color: #120303;
-        }
-
-        .modal-btn-submit:hover {
-          background: #63f863;
-          color: #fff;
-          transform: translateY(-2px);
-          box-shadow: 6px 6px #333;
-        }
-
-        .modal-btn:active {
-          transform: translate(2px, 2px);
-          box-shadow: 1px 1px #333;
-        }
-
-        .modal-content {
-          background: black;
-          border: 2px solid #e7a900;
-          border-radius: 10px;
-          padding: 25px;
-          max-width: 550px;
-          width: 100%;
-          box-shadow: 0 0 30px rgba(231, 169, 0, 0.5);
-          max-height: 90vh;
-          overflow-y: auto;
-        }
-
-        .modal-title {
-          color: #63f863;
-          font-size: 1.4rem;
-          margin-bottom: 15px;
-          text-align: center;
-          letter-spacing: 2px;
-        }
-
-        .modal-form {
-          display: flex;
-          flex-direction: column;
-          gap: 15px;
-        }
-
-        .form-group {
-          display: flex;
-          flex-direction: column;
-          gap: 6px;
-        }
-
-        .form-label {
-          color: #ff77df;
-          font-size: 0.9rem;
-          font-weight: bold;
-        }
-
-        .form-input {
-          padding: 10px;
-          background: #120303;
-          border: 2px solid #666;
-          border-radius: 5px;
-          color: #d1feff;
-          font-family: "Courier New", monospace;
-          font-size: 0.95rem;
-        }
-
-        .form-input:focus {
-          outline: none;
-          border-color: #63f863;
-        }
-
-        .form-note {
-          color: #d1feff;
-          font-size: 0.75rem;
-          opacity: 0.8;
-        }
-
-        .building-preview-container {
-          margin: 15px 0;
-          padding: 12px;
-          background: #0a0202;
-          border-radius: 8px;
-          border: 1px solid #333;
-        }
-
-        .preview-label {
-          color: #ff77df;
-          font-size: 0.85rem;
-          margin-bottom: 8px;
-          text-align: center;
-        }
-
-        #buildingPreview {
-          margin: 0 auto;
-          /* background: var(--theme-color-alpha); */
-          padding: 2px;
-          border-radius: 5px;
-          color: var(--theme-color-alpha);
-        }
-
-        .modal-buttons {
-          display: flex;
-          gap: 10px;
-          justify-content: center;
-          margin-top: 15px;
-        }
-
-        .btn-submit {
-          background: #63f863;
-          color: #120303;
-          padding: 10px 25px;
-          font-size: 15px;
-        }
-
-        .btn-cancel {
-          background: #ff77df;
-          color: #120303;
-          padding: 10px 25px;
-          font-size: 15px;
-        }
-
-        /* Toast notification */
-        .toast {
-          position: fixed;
-          bottom: 10px;
-          left: 50%;
-          transform: translateX(-50%) translateY(100px);
-          background: #63f863;
-          color: #120303;
-          padding: 5px 20px;
-          font-weight: bold;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-          z-index: 2000;
-          opacity: 0;
-          transition: all 0.3s ease;
-          font-size: 0.95rem;
-        }
-
-        .toast.show {
-          opacity: 1;
-          transform: translateX(-50%) translateY(0);
-        }
-
-        .landscape-hint {
-          position: fixed;
-          top: 50px;
-          left: 50%;
-          transform: translateX(-50%);
-          background: rgba(99, 248, 99, 0.95);
-          color: #120303;
-          padding: 12px 20px;
-          font-size: 2rem;
-          opacity: 0;
-          visibility: hidden;
-          transition: opacity 0.5s ease, visibility 0.5s ease;
-          z-index: 999;
-          pointer-events: none;
-          border: 6px solid #120303;
-          outline: 2px solid #63f863;
-          box-shadow: 0 2px 10px rgba(99, 248, 99, 0.3);
-          max-width: 95%;
-          text-align: center;
-        }
-
-        .landscape-hint.show {
-          opacity: 1;
-          visibility: visible;
-        }
-
-        /* Scrollbar styling */
-        ::-webkit-scrollbar {
-          width: 8px;
-          height: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-          background: #0a0202;
-        }
-
-        ::-webkit-scrollbar-thumb {
-          background: #666;
-          border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-          background: #e7a900;
-        }
-
-        /* Mobile landscape optimization */
-        @media (max-width: 900px) and (orientation: landscape) {
-          .container {
-            max-width: 82vw;
-          }
-          .main-content {
-            flex-wrap: nowrap;
-            align-items: flex-start;
-          }
-
-          .grid-section {
-            flex: 0 0 auto;
-            max-width: 35%;
-            min-width: 280px;
-          }
-
-          .grid-container {
-            max-height: none;
-            overflow: visible;
-          }
-
-          .palette-section {
-            flex: 1 1 65%;
-            max-width: 65%;
-          }
-
-          .palette {
-            max-height: 125vh;
-          }
-        }
-
-
-.info-button-container {
-  position: fixed;
-  top: 20px;
-  right: 80px; /* Right after the lang toggle */
-  z-index: 1000;
-  transition: opacity 0.3s ease;
-}
-
-.info-button-container:hover {
-  opacity: 1;
-}
-
-.info-toggle {
-  background: transparent;
-  border: 1px solid #63f863;
-  padding: 4px 4px;
-  font-size: 0.8rem;
-  cursor: pointer;
-  width: 50px;
-  font-family: "Courier New", monospace;
-  color: #63f863;
-  letter-spacing: 1px;
-  transition: all 0.2s ease;
-  box-shadow: none;
-}
-
-.info-toggle:hover {
-  outline: none;
-  color: #ff77df;
-}
-
-/* Info Popup for building generator */
-.info-popup {
-  display: none;
-  position: fixed;
-  top: 70px;
-  right: 20px;
-  background: black;
-  border: 2px solid #e7a900;
-  padding: 20px;
-  max-width: 300px;
-  z-index: 1001;
-  box-shadow: 0 0 20px rgba(231, 169, 0, 0.3);
-  font-family: "Courier New", monospace;
-}
-
-.info-popup.show {
-  display: block;
-}
-
-.info-popup p {
-  color: #d1feff;
-  font-size: 0.95rem;
-  line-height: 1.5;
-  margin: 0;
-}
-
-.info-popup a {
-  color: #63f863;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.info-popup a:hover {
-  color: #ff77df;
-  text-decoration: underline;
-}
-
-.info-close {
-  position: absolute;
-  top: 5px;
-  right: 10px;
-  background: transparent;
-  border: none;
-  color: #ff77df;
-  font-size: 1.5rem;
-  cursor: pointer;
-  width: 30px;
-  height: 30px;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: color 0.2s ease;
-  box-shadow: none;
-  margin: 0;
-}
-
-.info-close:hover {
-  color: #63f863;
-  background: transparent;
-  box-shadow: none;
-  transform: none;
-}
-      </style>
+      <style></style>
     </head>
 
     <script src="colours.js"></script>
@@ -840,8 +64,6 @@
         <button class="lang-toggle" id="lang-toggle">FR</button>
       </div>
 
-
-
       <div class="info-button-container">
         <button class="info-toggle" id="info-toggle" onclick="toggleInfo()">ℹ</button>
       </div>
@@ -851,11 +73,12 @@
         <p><span data-i18n="infoText"></span> <a href="https://marieflanagan.com/about" target="_blank" rel="noopener">marieflanagan.com</a></p>
       </div>
 
-
       <div class="container">
         <h1 data-i18n="title">Draw a building!</h1>
         <p class="subtitle">
-          <span data-i18n="subtitle">Draw your Montreal building and add it to</span>
+          <span data-i18n="subtitle"
+            ></span
+          >
           <a target="_blank" href="https://omarieclaire.github.io/loserlanemontreal/">LoserLane</a>
         </p>
 
@@ -881,6 +104,11 @@
             <div class="palette" id="palette"></div>
           </div>
         </div>
+
+        <div class="community-gallery">
+          <h3 data-i18n="recentBuildings">Gallery: Recent Buildings</h3>
+          <div class="gallery-scroll" id="galleryScroll"></div>
+        </div>
       </div>
 
       <!-- Modal for adding to game -->
@@ -905,6 +133,20 @@
         </div>
       </div>
 
+      <div class="modal-overlay" id="shareModalOverlay">
+        <div class="modal">
+          <h2 data-i18n="shareTitle">Success! 🎉</h2>
+          <p class="share-message" data-i18n="shareMessage">Your building is on its way to LoserLane! Want to share your creation?</p>
+          <div class="building-preview-container">
+            <div class="building-preview" id="shareBuildingPreview"></div>
+          </div>
+          <div class="modal-buttons">
+            <button class="modal-btn modal-btn-submit" onclick="shareToTwitter()" data-i18n="shareTwitter">Share on Twitter/X</button>
+            <button class="modal-btn modal-btn-submit" onclick="copyShareText()" data-i18n="copyLink">Copy Share Text</button>
+            <button class="modal-btn modal-btn-cancel" onclick="closeShareModal()" data-i18n="done">Done</button>
+          </div>
+        </div>
+      </div>
       <div class="toast" id="toast">Copied!</div>
 
       <!-- Gentle landscape mode hint -->
@@ -954,6 +196,7 @@
               location.reload();
             });
           }
+          populateGallery();
         });
 
         function updateLanguage() {
@@ -1375,6 +618,9 @@
         }
 
         function loadRandomExample() {
+          const exampleBtn = document.querySelector(".btn-copy");
+          exampleBtn.classList.remove("first-time");
+          localStorage.setItem("exampleClicked", "true");
           // Pick a random example
           const randomIndex = Math.floor(Math.random() * exampleBuildings.length);
           const example = exampleBuildings[randomIndex];
@@ -1553,6 +799,8 @@
           })
             .then(() => {
               closeModal();
+              showShareOptions(buildingName, artistName);
+
               showToast(t("submitSuccess"));
 
               // Optional: Clear the grid after successful submission
@@ -1789,15 +1037,15 @@
             // If nothing was loaded, make sure grid is displayed
             updateGrid();
           }
+
+          const exampleBtn = document.querySelector(".btn-copy");
+          if (!localStorage.getItem("exampleClicked")) {
+            exampleBtn.classList.add("first-time");
+          }
         });
 
         // Gentle landscape mode hint - shows once on mobile portrait
         function showLandscapeHint() {
-          // Check if we've already shown this hint
-          // if (localStorage.getItem('landscapeHintShown')) {
-          //   return;
-          // }
-
           // Only show on mobile-sized screens in portrait orientation
           const isMobile = window.innerWidth <= 768;
           const isPortrait = window.innerHeight > window.innerWidth;
@@ -1821,29 +1069,169 @@
           }
         }
 
+        function populateGallery() {
+          const galleryElement = document.getElementById("galleryScroll");
+          if (!galleryElement) return;
+
+          // Show last 10 examples
+          const recentBuildings = exampleBuildings.slice(-10).reverse();
+
+          recentBuildings.forEach((building) => {
+            const item = document.createElement("div");
+            item.className = "gallery-item";
+
+            // Pick a random color for this building
+            const buildingColor = COLOURS.BUILDINGGEN[Math.floor(Math.random() * COLOURS.BUILDINGGEN.length)];
+
+            const buildingDiv = document.createElement("div");
+            buildingDiv.className = "gallery-building";
+            buildingDiv.style.color = buildingColor;
+
+            // Calculate how many empty rows to add at the top for bottom alignment
+            const emptyRows = GRID_SIZE - building.art.length;
+
+            // Render exactly like the game does - as text with inline-block spans
+            let buildingHTML = "";
+
+            // Add empty rows at the top
+            for (let rowNum = 0; rowNum < emptyRows; rowNum++) {
+              for (let i = 0; i < 10; i++) {
+                buildingHTML += `<span style="display: inline-block; width: 0.6em; text-align: center;"> </span>`;
+              }
+              buildingHTML += "\n";
+            }
+
+            // Add the actual building art
+            building.art.forEach((line) => {
+              // Each character gets wrapped in a span with width: 0.6em
+              for (let i = 0; i < 10; i++) {
+                const char = line[i] || " ";
+                buildingHTML += `<span style="display: inline-block; width: 0.6em; text-align: center;">${char}</span>`;
+              }
+              buildingHTML += "\n";
+            });
+
+            buildingDiv.innerHTML = buildingHTML;
+
+            // Info section with building and artist name
+            const infoDiv = document.createElement("div");
+            infoDiv.className = "gallery-info";
+
+            const buildingName = document.createElement("div");
+            buildingName.className = "gallery-building-name";
+            buildingName.textContent = building.name;
+
+            const artistName = document.createElement("div");
+            artistName.className = "gallery-artist-name";
+            artistName.textContent = `by ${building.artist || "Anonymous"}`;
+
+            infoDiv.appendChild(buildingName);
+            infoDiv.appendChild(artistName);
+
+            item.appendChild(buildingDiv);
+            item.appendChild(infoDiv);
+
+            // Click to load this building
+            item.onclick = () => {
+              loadSpecificExample(building);
+              showToast(`Loaded: ${building.name}`);
+            };
+
+            galleryElement.appendChild(item);
+          });
+        }
+        function loadSpecificExample(building) {
+          grid = Array(GRID_SIZE)
+            .fill()
+            .map(() => Array(GRID_SIZE).fill(""));
+          const startRow = GRID_SIZE - building.art.length;
+
+          building.art.forEach((line, artRowIndex) => {
+            const gridRowIndex = startRow + artRowIndex;
+            for (let colIndex = 0; colIndex < GRID_SIZE; colIndex++) {
+              const char = line[colIndex] || "";
+              grid[gridRowIndex][colIndex] = char === " " ? "" : char;
+            }
+          });
+
+          updateGrid();
+        }
+
         // Show hint after page loads
         window.addEventListener("load", showLandscapeHint);
       </script>
 
-      <script>function toggleInfo() {
-  const popup = document.getElementById('info-popup');
-  popup.classList.toggle('show');
-}
+      <script>
+        let currentShareData = {};
 
-function closeInfo() {
-  document.getElementById('info-popup').classList.remove('show');
-}
+        function showShareOptions(buildingName, artistName) {
+          currentShareData = { buildingName, artistName };
 
-// Close info popup when clicking outside - add this with the other event listeners
-document.addEventListener('click', (e) => {
-  const popup = document.getElementById('info-popup');
-  const button = document.getElementById('info-toggle');
-  if (popup && button && popup.classList.contains('show')) {
-    if (!popup.contains(e.target) && e.target !== button) {
-      popup.classList.remove('show');
-    }
-  }
-});</script>
+          // Render the building preview
+          const previewContainer = document.getElementById("shareBuildingPreview");
+          previewContainer.innerHTML = "";
+          previewContainer.style.display = "grid";
+          previewContainer.style.gridTemplateColumns = "repeat(10, 1fr)";
+          previewContainer.style.gap = "2px";
+
+          grid.forEach((row) => {
+            row.forEach((cell) => {
+              const cellDiv = document.createElement("div");
+              cellDiv.textContent = cell;
+              cellDiv.style.background = "#120303";
+              cellDiv.style.color = "var(--theme-color-alpha)";
+              cellDiv.style.aspectRatio = "1 / 1.5";
+              cellDiv.style.display = "flex";
+              cellDiv.style.alignItems = "center";
+              cellDiv.style.justifyContent = "center";
+              cellDiv.style.fontSize = "10px";
+              previewContainer.appendChild(cellDiv);
+            });
+          });
+
+          document.getElementById("shareModalOverlay").classList.add("show");
+        }
+
+        function closeShareModal() {
+          document.getElementById("shareModalOverlay").classList.remove("show");
+          clearGrid(); // Clear after sharing
+        }
+
+        function shareToTwitter() {
+          const text = `I just added "${currentShareData.buildingName}" to LoserLane Montreal! 🏙️✨ Draw your own building: https://omarieclaire.github.io/loserlanemontreal/ @omarieclaire`;
+          const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+          window.open(url, "_blank");
+        }
+
+        function copyShareText() {
+          const text = `I just added "${currentShareData.buildingName}" to LoserLane Montreal! 🏙️✨ Check it out: https://omarieclaire.github.io/loserlanemontreal/`;
+          navigator.clipboard.writeText(text).then(() => {
+            showToast("Share text copied! 📋");
+          });
+        }
+      </script>
+
+      <script>
+        function toggleInfo() {
+          const popup = document.getElementById("info-popup");
+          popup.classList.toggle("show");
+        }
+
+        function closeInfo() {
+          document.getElementById("info-popup").classList.remove("show");
+        }
+
+        // Close info popup when clicking outside - add this with the other event listeners
+        document.addEventListener("click", (e) => {
+          const popup = document.getElementById("info-popup");
+          const button = document.getElementById("info-toggle");
+          if (popup && button && popup.classList.contains("show")) {
+            if (!popup.contains(e.target) && e.target !== button) {
+              popup.classList.remove("show");
+            }
+          }
+        });
+      </script>
     </body>
   </html>
 </html>
