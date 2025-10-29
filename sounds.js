@@ -19,42 +19,36 @@ class SoundManager {
         this.audioContext = new AudioContext();
       }
       this.isInitialized = true;
-      console.log("Audio initialized successfully");
     } catch (error) {
       console.error("Failed to initialize audio:", error);
     }
   }
 
-updateMuteButton() {
-  const muteButton = document.getElementById("mute-button");
-  if (muteButton) {
-    if (this.isMuted) {
-      muteButton.classList.add("muted");
-    } else {
-      muteButton.classList.remove("muted");
+  updateMuteButton() {
+    const muteButton = document.getElementById("mute-button");
+    if (muteButton) {
+      if (this.isMuted) {
+        muteButton.classList.add("muted");
+      } else {
+        muteButton.classList.remove("muted");
+      }
     }
   }
-}
 
-// Add this method to get language from your game
-getCurrentLanguage() {
-  // You'll need to hook this up to your language system
-  // For now, check the lang toggle button
-  const langButton = document.getElementById("lang-toggle");
-  if (langButton) {
-    return langButton.textContent === 'FR' ? 'en' : 'fr';
+  // Add this method to get language from your game
+  getCurrentLanguage() {
+    // You'll need to hook this up to your language system
+    // For now, check the lang toggle button
+    const langButton = document.getElementById("lang-toggle");
+    if (langButton) {
+      return langButton.textContent === "FR" ? "en" : "fr";
+    }
+    return "en";
   }
-  return 'en';
-}
 
   // Add a sound to the manager
   addSound(name, src, loop = false) {
-    console.log(`Adding sound: ${name} from ${src}`);
     const audio = new Audio();
-
-    audio.addEventListener("loadeddata", () => {
-      console.log(`Sound loaded: ${name}`);
-    });
 
     audio.addEventListener("error", (e) => {
       console.error(`Failed to load sound ${name}:`, e);
@@ -124,7 +118,7 @@ getCurrentLanguage() {
     this.saveSettings();
   }
 
-muteAll() {
+  muteAll() {
     this.isMuted = true;
     // Pause any currently playing sounds
     this.sounds.forEach((sound) => {

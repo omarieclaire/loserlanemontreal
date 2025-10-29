@@ -148,9 +148,8 @@
           -moz-user-select: none;
           user-select: none;
           border: 2px solid #ff77df79;
-                    border: 4px solid #333;
+          border: 4px solid #333;
 
-;
           padding: 2px;
           margin-bottom: 10px;
         }
@@ -736,6 +735,7 @@
     </head>
 
     <script src="colours.js"></script>
+
     <script src="buildings.js"></script>
 
     <body>
@@ -802,47 +802,15 @@
       <!-- Gentle landscape mode hint -->
       <div class="landscape-hint" id="landscapeHint" data-i18n="landscapeHint">Rotate for better experience!</div>
 
+      <script src="translations.js"></script>
+      <script src="paletteCategories.js"></script>
+
       <script>
         const THEME_COLOR = COLOURS.BUILDINGGEN[Math.floor(Math.random() * COLOURS.BUILDINGGEN.length)];
 
         // Apply theme color to CSS variables
         document.documentElement.style.setProperty("--theme-color", THEME_COLOR);
         document.documentElement.style.setProperty("--theme-color-alpha", THEME_COLOR);
-
-        // Translations
-        const TRANSLATIONS = [
-          { key: "title", en: "Draw a building!", fr: "Dessine un bâtiment!" },
-          { key: "subtitle", en: "Draw your Montreal building & add it to", fr: "Dessine ton bâtiment montréalais & ajoute-le à" },
-          { key: "currentCharacter", en: "Current Character", fr: "Caractère actuel" },
-          { key: "eraseAll", en: "Clear all", fr: "Tout Effacer" },
-          { key: "eraser", en: "Eraser", fr: "Efface" },
-          { key: "example", en: "Example?", fr: "Exemple?" },
-          { key: "addButton", en: "Add to LoserLane", fr: "L'ajouter à LoserLane" },
-          { key: "modalTitle", en: "Add to Game", fr: "Ajouter au jeu" },
-          { key: "buildingName", en: "Building Name", fr: "Nom du bâtiment" },
-          { key: "buildingPlaceholder", en: "EG CAFE DEI CAMPI", fr: "EX CAFE DEI CAMPI" },
-          { key: "artistName", en: "Your Name / Handle", fr: "Ton nom / pseudo" },
-          { key: "artistPlaceholder", en: "EG OMARIECLAIRE", fr: "EX CAFE DEI CAMPI" },
-          { key: "cancel", en: "Cancel", fr: "Annuler" },
-          { key: "submit", en: "Submit", fr: "Soumettre" },
-          { key: "copied", en: "Copied!", fr: "Copié!" },
-          { key: "gridCleared", en: "Grid cleared!", fr: "Grille effacée!" },
-          { key: "loadedExample", en: "Loaded: ", fr: "Chargé: " },
-          { key: "enterBuildingName", en: "Please enter a building name!", fr: "Entre un nom de bâtiment!" },
-          { key: "enterArtistName", en: "Please enter your name or handle!", fr: "Entre ton nom ou pseudo!" },
-          { key: "buildingNameTooLong", en: "Building name too long! Max 30 characters.", fr: "Nom trop long! Max 30 caractères." },
-          { key: "artistNameTooLong", en: "Artist name too long! Max 30 characters.", fr: "Nom trop long! Max 30 caractères." },
-          { key: "submitSuccess", en: "Building submitted successfully! Thank you!", fr: "Bâtiment soumis avec succès! Merci!" },
-          { key: "submitFailed", en: "Submission may have failed. Please try again.", fr: "Soumission échouée. Réessaie!" },
-          { key: "walls", en: "Walls", fr: "Murs" },
-          { key: "basic", en: "Basic", fr: "Basique" },
-          { key: "blocks", en: "Blocks", fr: "Blocs" },
-          { key: "lines", en: "Lines", fr: "Lignes" },
-          { key: "shapes", en: "Shapes", fr: "Formes" },
-          { key: "accent", en: "Accent", fr: "Accent" },
-          { key: "montreal", en: "Montreal", fr: "Montréal" },
-          { key: "landscapeHint", en: "rotate your phone? drawing is nicer in landscape mode", fr: "Tourne ton écran!" },
-        ];
 
         // Build lookup objects from the array (for performance)
         const LANG = {
@@ -916,414 +884,8 @@
         let isShiftPressed = false;
 
         const exampleBuildings = TORONTO_BUILDINGS;
+        const paletteCategories = PALETTE_CATEGORIES;
 
-        const paletteCategories = [
-          {
-            name: "Buildings",
-            chars: [
-              "█",
-              "▓",
-              "▒",
-              "░",
-              "│",
-              "─",
-              "┌",
-              "┐",
-              "└",
-              "┘",
-              "├",
-              "┤",
-              "┬",
-              "┴",
-              "┼",
-              "║",
-              "═",
-              "╔",
-              "╗",
-              "╚",
-              "╝",
-              "╠",
-              "╣",
-              "╦",
-              "╩",
-              "╬",
-              "▀",
-              "▄",
-              "■",
-              "□",
-              "▪",
-              "▫",
-              "▁",
-              "▂",
-              "▃",
-              "▅",
-              "▆",
-              "▇",
-              "▉",
-              "▊",
-              "▋",
-              "▌",
-              "▍",
-              "▎",
-              "▏",
-              "▐",
-              "▔",
-              "▕",
-            ],
-          },
-          {
-            name: "Windows & Doors",
-            chars: ["◼", "◻", "◾", "◽", "▢", "▣", "▤", "▥", "▦", "▧", "▨", "▩", "⊞", "⊟", "⊠", "⊡", "∥", "≑", "≜", "▬", "▭", "▮", "▯", "▰", "▱"],
-          },
-          {
-            name: "Roofs & Details",
-            chars: ["◢", "◣", "◤", "◥", "△", "▲", "▽", "▼", "◊", "◇", "⋰", "⋱", "╱", "╲", "╳", "⌒", "⌓"],
-          },
-          {
-            name: "Decorative",
-            chars: [
-              "★",
-              "☆",
-              "✦",
-              "✧",
-              "✩",
-              "✪",
-              "✫",
-              "✬",
-              "✭",
-              "✮",
-              "✯",
-              "⁂",
-              "❀",
-              "❁",
-              "❂",
-              "❃",
-              "⚘",
-              "○",
-              "●",
-              "◐",
-              "◑",
-              "⚐",
-              "⚑",
-              "⚙",
-              "⚛",
-              "⚜",
-              "⛨",
-              "⛩",
-              "⛫",
-              "⛬",
-            ],
-          },
-          {
-            name: "Lines & Corners",
-            chars: [
-              "─",
-              "━",
-              "│",
-              "┃",
-              "┌",
-              "┍",
-              "┎",
-              "┏",
-              "┐",
-              "┑",
-              "┒",
-              "┓",
-              "└",
-              "┕",
-              "┖",
-              "┗",
-              "┘",
-              "┙",
-              "┚",
-              "┛",
-              "├",
-              "┝",
-              "┞",
-              "┟",
-              "┠",
-              "┡",
-              "┢",
-              "┣",
-              "┤",
-              "┥",
-              "┦",
-              "┧",
-              "┨",
-              "┩",
-              "┪",
-              "┫",
-              "┬",
-              "┭",
-              "┮",
-              "┯",
-              "┰",
-              "┱",
-              "┲",
-              "┳",
-              "┴",
-              "┵",
-              "┶",
-              "┷",
-              "┸",
-              "┹",
-              "┺",
-              "┻",
-              "┼",
-              "┽",
-              "┾",
-              "┿",
-              "╀",
-              "╁",
-              "╂",
-              "╃",
-              "╄",
-              "╅",
-              "╆",
-              "╇",
-              "╈",
-              "╉",
-              "╊",
-              "╋",
-              "╌",
-              "╍",
-              "╎",
-              "╏",
-              "┄",
-              "┅",
-              "┆",
-              "┇",
-              "┈",
-              "┉",
-              "┊",
-              "┋",
-              "╼",
-              "╽",
-              "╾",
-              "╿",
-            ],
-          },
-          {
-            name: "Double Lines",
-            chars: [
-              "═",
-              "║",
-              "╒",
-              "╓",
-              "╔",
-              "╕",
-              "╖",
-              "╗",
-              "╘",
-              "╙",
-              "╚",
-              "╛",
-              "╜",
-              "╝",
-              "╞",
-              "╟",
-              "╠",
-              "╡",
-              "╢",
-              "╣",
-              "╤",
-              "╥",
-              "╦",
-              "╧",
-              "╨",
-              "╩",
-              "╪",
-              "╫",
-              "╬",
-            ],
-          },
-          {
-            name: "Curved & Round",
-            chars: [
-              "╭",
-              "╮",
-              "╯",
-              "╰",
-              "⌜",
-              "⌝",
-              "⌞",
-              "⌟",
-              "⌈",
-              "⌉",
-              "⌊",
-              "⌋",
-              "〈",
-              "〉",
-              "《",
-              "》",
-              "「",
-              "」",
-              "『",
-              "』",
-              "(",
-              ")",
-              "⟨",
-              "⟩",
-              "⦅",
-              "⦆",
-            ],
-          },
-          {
-            name: "Patterns",
-            chars: [
-              "░",
-              "▒",
-              "▓",
-              "█",
-              "▀",
-              "▄",
-              "▌",
-              "▐",
-              "▖",
-              "▗",
-              "▘",
-              "▙",
-              "▚",
-              "▛",
-              "▜",
-              "▝",
-              "▞",
-              "▟",
-              "⬒",
-              "⬓",
-              "⬔",
-              "⬕",
-              "⠀",
-              "⠁",
-              "⠂",
-              "⠃",
-              "⠄",
-              "⠅",
-              "⠆",
-              "⠇",
-              "⠈",
-              "⠉",
-              "⠊",
-              "⠋",
-              "⠌",
-              "⠍",
-              "⠎",
-              "⠏",
-              "⠐",
-              "⠑",
-              "⠒",
-              "⠓",
-              "⠔",
-              "⠕",
-              "⠖",
-              "⠗",
-              "⠘",
-              "⠙",
-              "⠚",
-              "⠛",
-              "⠜",
-              "⠝",
-              "⠞",
-              "⠟",
-            ],
-          },
-          {
-            name: "Circles & Dots",
-            chars: [
-              "○",
-              "●",
-              "◐",
-              "◑",
-              "⚬",
-              "⚭",
-              "⦾",
-              "⦿",
-              "⧂",
-              "⧃",
-              "◌",
-              "◍",
-              "◔",
-              "◕",
-              "◖",
-              "◗",
-              "◘",
-              "◙",
-              "◚",
-              "◛",
-              "◜",
-              "◝",
-              "◞",
-              "◟",
-              "◠",
-              "◡",
-              "◯",
-              "⦁",
-              "∘",
-            ],
-          },
-          {
-            name: "Triangles & Arrows",
-            chars: ["△", "▲", "▽", "▼", "◄", "◅", "►", "▻", "▴", "▵", "▸", "▹", "▾", "▿", "◂", "◃", "▷", "◁", "⯅", "⯆", "⯇", "⯈"],
-          },
-          {
-            name: "Symbols",
-            chars: [
-              "~",
-              "≈",
-              "≋",
-              "∿",
-              "〜",
-              "⌇",
-              "⌠",
-              "⌡",
-              "⌢",
-              "⌣",
-              "⌯",
-              "⍝",
-              "⍞",
-              "⍟",
-              "◄",
-              "►",
-              "⳺",
-              "⳻",
-              "o",
-              "O",
-              "°",
-              "⚬",
-              "⚭",
-              "⌘",
-              "⌥",
-              "⎋",
-              "⌫",
-              "⌦",
-              "␣",
-              "⏎",
-              "⏏",
-              "⎈",
-              "⎆",
-              "⎇",
-              "⌤",
-              "⌧",
-              "⚠",
-              "⚡",
-              "☢",
-              "☣",
-              "⚕",
-            ],
-          },
-          {
-            name: "Letters (A-Z)",
-            chars: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
-          },
-          {
-            name: "Numbers (0-9)",
-            chars: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
-          },
-          {
-            name: "Basic",
-            chars: ["#", "@", "*", "+", "=", "-", "_", "|", "/", "\\", "^", "v", "<", ">", ".", ",", ":", ";", "!", "?", "~", "[", "]", "{", "}"],
-          },
-        ];
         function copyCell() {
           // Use hoveredCell instead of selectedCell
           const cellIndex = hoveredCell !== null ? hoveredCell : selectedCell;
@@ -1551,38 +1113,39 @@
           }
         }
 
-function loadFromLocalStorage() {
-  try {
-    const savedGrid = localStorage.getItem("loserLaneGrid");
-    const lastSaved = localStorage.getItem("loserLaneLastSaved");
+        function loadFromLocalStorage() {
+          try {
+            const savedGrid = localStorage.getItem("loserLaneGrid");
+            const lastSaved = localStorage.getItem("loserLaneLastSaved");
 
-    if (savedGrid) {
-      const parsedGrid = JSON.parse(savedGrid);
-      
-      // More flexible validation - check if it's an array
-      if (Array.isArray(parsedGrid) && parsedGrid.length > 0) {
-        // Ensure the grid is the correct size, padding if necessary
-        grid = Array(GRID_SIZE).fill().map((_, i) => {
-          if (parsedGrid[i] && Array.isArray(parsedGrid[i])) {
-            // Pad or trim each row to GRID_SIZE
-            return [...parsedGrid[i].slice(0, GRID_SIZE), ...Array(GRID_SIZE).fill('')].slice(0, GRID_SIZE);
+            if (savedGrid) {
+              const parsedGrid = JSON.parse(savedGrid);
+
+              // More flexible validation - check if it's an array
+              if (Array.isArray(parsedGrid) && parsedGrid.length > 0) {
+                // Ensure the grid is the correct size, padding if necessary
+                grid = Array(GRID_SIZE)
+                  .fill()
+                  .map((_, i) => {
+                    if (parsedGrid[i] && Array.isArray(parsedGrid[i])) {
+                      // Pad or trim each row to GRID_SIZE
+                      return [...parsedGrid[i].slice(0, GRID_SIZE), ...Array(GRID_SIZE).fill("")].slice(0, GRID_SIZE);
+                    }
+                    return Array(GRID_SIZE).fill("");
+                  });
+
+                updateGrid();
+                return true;
+              }
+            }
+          } catch (e) {
+            console.error("Failed to load from localStorage:", e);
+            // Clear corrupted data
+            localStorage.removeItem("loserLaneGrid");
+            localStorage.removeItem("loserLaneLastSaved");
           }
-          return Array(GRID_SIZE).fill('');
-        });
-        
-        updateGrid();
-        console.log('Successfully restored grid from localStorage');
-        return true;
-      }
-    }
-  } catch (e) {
-    console.error("Failed to load from localStorage:", e);
-    // Clear corrupted data
-    localStorage.removeItem("loserLaneGrid");
-    localStorage.removeItem("loserLaneLastSaved");
-  }
-  return false;
-}
+          return false;
+        }
         // Clear localStorage
         function clearLocalStorage() {
           try {
@@ -1663,25 +1226,25 @@ function loadFromLocalStorage() {
         }
 
         function selectChar(char) {
-  currentChar = char;
-  
-  // Check if element exists before trying to use it
-  const currentCharDisplay = document.getElementById("currentCharDisplay");
-  if (currentCharDisplay) {
-    currentCharDisplay.textContent = char;
-  }
-  
-  isEraserMode = false;
-  const eraserBtn = document.getElementById("eraserBtn");
-  if (eraserBtn) {
-    eraserBtn.classList.remove("active");
-  }
+          currentChar = char;
 
-  // Update palette selection
-  document.querySelectorAll(".char-btn").forEach((btn) => {
-    btn.classList.toggle("selected", btn.textContent === char);
-  });
-}
+          // Check if element exists before trying to use it
+          const currentCharDisplay = document.getElementById("currentCharDisplay");
+          if (currentCharDisplay) {
+            currentCharDisplay.textContent = char;
+          }
+
+          isEraserMode = false;
+          const eraserBtn = document.getElementById("eraserBtn");
+          if (eraserBtn) {
+            eraserBtn.classList.remove("active");
+          }
+
+          // Update palette selection
+          document.querySelectorAll(".char-btn").forEach((btn) => {
+            btn.classList.toggle("selected", btn.textContent === char);
+          });
+        }
 
         function highlightCell(index) {
           document.querySelectorAll(".cell").forEach((cell) => {
@@ -1867,9 +1430,7 @@ function loadFromLocalStorage() {
                 ]
             },`;
 
-          // Log to verify spaces are preserved
-          console.log("Formatted building object:");
-          console.log(formattedObject);
+   
 
           // Prepare form data for Google Form submission
           const formData = new URLSearchParams();
@@ -2016,7 +1577,6 @@ function loadFromLocalStorage() {
               cell.style.borderWidth = "";
               cell.style.borderStyle = "";
             });
-     
           }
         });
 
@@ -2112,18 +1672,18 @@ function loadFromLocalStorage() {
           }
         });
         // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
-  initGrid();
-  initPalette();
-  selectChar(currentChar);
+        document.addEventListener("DOMContentLoaded", () => {
+          initGrid();
+          initPalette();
+          selectChar(currentChar);
 
-  // Try to load from localStorage on startup
-  const loaded = loadFromLocalStorage();
-  if (!loaded) {
-    // If nothing was loaded, make sure grid is displayed
-    updateGrid();
-  }
-});
+          // Try to load from localStorage on startup
+          const loaded = loadFromLocalStorage();
+          if (!loaded) {
+            // If nothing was loaded, make sure grid is displayed
+            updateGrid();
+          }
+        });
 
         // Gentle landscape mode hint - shows once on mobile portrait
         function showLandscapeHint() {

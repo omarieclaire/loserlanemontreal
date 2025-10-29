@@ -1,212 +1,7 @@
-// Translations - English and French side by side
-const TRANSLATIONS = [
-  // Game title
-  { key: "gameTitle", en: "LOSER LANE", fr: "LOSER LANE" },
+////////////////////
+// TRANSLATION CODE
+////////////////////
 
-  // Buttons
-  { key: "restart", en: "RESTART", fr: "RECOMMENCER" },
-  { key: "share", en: "SHARE", fr: "PARTAGER" },
-
-  // UI labels
-  { key: "score", en: "Score", fr: "Pointage" },
-  { key: "highScore", en: "High Score", fr: "Record" },
-  { key: "timeAlive", en: "Time Alive", fr: "Temps de survie" },
-
-  // Game messages
-  { key: "gameStart", en: "Left/Right to swerve, double-tap to jump the curve", fr: "Gauche/Droite pour esquiver, double-clic pour sauter" },
-  { key: "gameOver", en: "GAME OVER", fr: "GAME OVER" },
-  { key: "outOfLuck", en: "Out of luck! Alive for", fr: "T'as pas eu de chance! Survécu pendant" },
-  { key: "seconds", en: "seconds", fr: "secondes" },
-  { key: "tapToTry", en: "Tap to try again!", fr: "Clique pour réessayer!" },
-
-  // TRACKS death messages (reason + funny)
-  // { key: "tracks_reason_1", en: "STM TRACKS", fr: "RAILS DE LA STM" },
-  // { key: "tracks_funny_1", en: "Track smack! Blast past!", fr: "Boom sur le rail! Faut que tu te tailles!" },
-  // { key: "tracks_funny_2", en: "Stuck on the rails? Bail fail", fr: "Pogné sur les rails? C'est plate en maudit!" },
-  // { key: "tracks_funny_3", en: "Rail fail? Bad bail!", fr: "Rail raté? T'es dans le trouble mon gars!" },
-  // { key: "tracks_funny_4", en: "Rail jail! Harsh bail!", fr: "Prison de rails! Ça fait mal!" },
-  // { key: "tracks_funny_5", en: "Stuck in the groove? Move!", fr: "Pris dans l'rail? Faut que tu te grayes!" },
-  // { key: "tracks_funny_6", en: "Track attack! Bounce back!", fr: "Attaque de rail! Faut que tu te revires!" },
-  // { key: "tracks_funny_7", en: "On the rails? Sad fails!", fr: "Sur les rails? Ça va mal!" },
-  // { key: "tracks_funny_8", en: "Tricky track! Step back!", fr: "Rail traître! Recule, tabarnak!" },
-  // { key: "tracks_funny_9", en: "Rail fail! Bail!", fr: "Rail raté! Câlisse de steel!" },
-  // { key: "tracks_funny_10", en: "Oops, track gap! Smack!", fr: "Oups, trou dans l'rail! Boom!" },
-  // { key: "tracks_funny_11", en: "Track fast, can't last!", fr: "Rail rapide, t'as pas duré!" },
-
-  // ONCOMING_DEATHMACHINE death messages
-  { key: "oncoming_reason_1", en: "OH COME ON!", fr: "FRANCHEMENT LÀ!" },
-  { key: "oncoming_funny_1", en: "Clash crash cash!", fr: "Choc, bloc, croc!" },
-
-  // TRAFFIC death messages
-  { key: "traffic_reason_1", en: "UGH DEATHMACHINES", fr: "OSTI D'CHARS" },
-  { key: "traffic_funny_1", en: "Clash crash cash!", fr: "Crash! Smash! T'es cuit!" },
-  { key: "traffic_funny_2", en: "Bam! Jam! Slam!", fr: "Bam! Pan! T'es dans l'ciment!" },
-  { key: "traffic_funny_3", en: "Zoomed by doom!", fr: "Zoomé vers ton destin!" },
-  { key: "traffic_funny_4", en: "Wheel squeal bad deal!", fr: "Pneu qui crie, t'es fini!" },
-  { key: "traffic_funny_5", en: "Road rage! Off the stage!", fr: "Rage au volant! T'es dans l'champ!" },
-  { key: "traffic_funny_6", en: "Bang! Clang!", fr: "Bang! Clang! T'es mort!" },
-  { key: "traffic_funny_7", en: "Boom! No room to zoom!", fr: "Boum! Pas d'place pour zoomer!" },
-  { key: "traffic_funny_8", en: "Bump thump! Traffic lump!", fr: "Bosse, choc! T'as mangé l'char!" },
-  { key: "traffic_funny_9", en: "Car slam! Bad jam!", fr: "Auto smash! C'est fini le party!" },
-  { key: "traffic_funny_10", en: "Traffic smack! Watch your back!", fr: "Coup d'char! Watch ton arrière!" },
-  { key: "traffic_funny_11", en: "Bash! Dash! Avoid the crash!", fr: "Choc! Fonce! Évite le ciment!" },
-  { key: "traffic_funny_12", en: "Wheel peel! That's the deal!", fr: "Roues qui crissent! T'es fini, c'est ça l'deal!" },
-  { key: "traffic_funny_13", en: "Car crunch! Don't be lunch!", fr: "Char qui crunch! T'es l'lunch!" },
-  { key: "traffic_funny_14", en: "Zoom boom! Traffic doom!", fr: "Zoom boum! Trafic qui tue!" },
-  { key: "traffic_funny_15", en: "Horn blare! Scare!", fr: "Klaxon! T'es carrément mort!" },
-  { key: "traffic_funny_16", en: "Yikes! They hate bikes!", fr: "Ayoye! Y'haïssent les vélos icitte!" },
-
-  // DOOR death messages
-  { key: "door_reason_1", en: "DOORED", fr: "PORTIÈRÉ" },
-  { key: "door_funny_1", en: "Doored! Ignored!", fr: "Portièré! T'as volé!" },
-  { key: "door_funny_2", en: "Door score!", fr: "Point portière!" },
-  { key: "door_funny_3", en: "Sneak a peek!", fr: "Surprise fatale!" },
-  { key: "door_funny_4", en: "Bam! Door slam!", fr: "Bam! Porte en pleine face!" },
-  { key: "door_funny_5", en: "You-ho, peekaboo!", fr: "Coucou! Porte dans l'cou!" },
-  { key: "door_funny_6", en: "Door smack! Hop back!", fr: "Coup d'porte! T'es mort!" },
-  { key: "door_funny_7", en: "Hop back, door crack!", fr: "Recule! La porte te défonce!" },
-  { key: "door_funny_8", en: "Door shock! Big knock!", fr: "Choc d'porte! Méchant coup!" },
-  { key: "door_funny_9", en: "Bam! Door slam!", fr: "Bam! Porte claque!" },
-  { key: "door_funny_10", en: "No way! Maybe it's ok?", fr: "Ayoye! Peut-être que c'est correct?" },
-  { key: "door_funny_11", en: "Watch the door or hit the floor!", fr: "Watch la porte ou tu manges l'asphalte!" },
-  { key: "door_funny_12", en: "Steer clear! Door too near!", fr: "Tasse-toi! Porte trop proche!" },
-  { key: "door_funny_13", en: "Bang! Door clang!", fr: "Bang! Porte qui claque!" },
-  { key: "door_funny_14", en: "Floored by a door!", fr: "Planté par une porte!" },
-  { key: "door_funny_15", en: "Door dash! Avoid the clash!", fr: "Porte qui fonce! Évite le choc!" },
-  { key: "door_funny_16", en: "Knock knock, door shock!", fr: "Toc toc, boom choc!" },
-
-  // PARKEDDEATHMACHINE death messages
-  { key: "parked_reason_1", en: "PARKED DEATHMACHINE", fr: "CHAR PARQUÉ" },
-  { key: "parked_funny_1", en: "Crash flash! Hit a stash trash!", fr: "Crash! T'as rentré dans un char parké!" },
-  { key: "parked_funny_2", en: "Boom thud, get out of the mud!", fr: "Boum! Sors d'là!" },
-  { key: "parked_funny_3", en: "Ka-boom! Parked car zoom!", fr: "Ka-boum! Char parqué!" },
-  { key: "parked_funny_4", en: "Bumped a junker! What a clunker!", fr: "Rentré dans un bazou! T'es fou!" },
-  { key: "parked_funny_5", en: "Not the goal! Dodging's the role!", fr: "C'est pas l'but! Faut esquiver, verrat!" },
-  { key: "parked_funny_6", en: "A parked car smack! Head back!", fr: "Char parqué smashé! T'es fini!" },
-  { key: "parked_funny_7", en: "Hit the brakes! High stakes!", fr: "Freine donc! C'est intense!" },
-  { key: "parked_funny_8", en: "Parked car doom! Clear that room!", fr: "Char stationné! T'es éliminé!" },
-  { key: "parked_funny_9", en: "Bonk! Dunk! Car Junk!", fr: "Bonk! Plonk! Char funk!" },
-  { key: "parked_funny_10", en: "Crash boom! More road room!", fr: "Crash boum! Faut d'la place sur l'chemin!" },
-  { key: "parked_funny_11", en: "Smack attack! See black!", fr: "Coup fatal! Tu vois noir!" },
-  { key: "parked_funny_12", en: "Junk blunder! Going under!", fr: "Erreur de bazou! T'es dans l'trou!" },
-  { key: "parked_funny_13", en: "Gotcha! Parked car splotcha!", fr: "Gotcha! Char parqué t'a pogné!" },
-  { key: "parked_funny_14", en: "Car crunch! Thanks a bunch!", fr: "Char qui crunch! Merci ben là!" },
-
-  // BACKDOOR death messages
-  { key: "backdoor_reason_1", en: "PARKED", fr: "PARQUÉ" },
-  { key: "backdoor_funny_1", en: "DUUUMP", fr: "DUUUMP" },
-
-  // WANDERER death messages
-  { key: "wanderer_reason_1", en: "NOOOO", fr: "NOOON" },
-  { key: "wanderer_funny_1", en: "Crash! Flash human bash!", fr: "Crash! T'as frappé quelqu'un!" },
-  { key: "wanderer_funny_2", en: "Clock! Human roadblock!", fr: "Cloc! Piéton bloc!" },
-  { key: "wanderer_funny_3", en: "People pop! You gotta stop!", fr: "Monde partout! Faut arrêter, tabarnouche!" },
-  { key: "wanderer_funny_4", en: "Oops! Human boops!", fr: "Oups! T'as fessé du monde!" },
-  { key: "wanderer_funny_5", en: "Sad, wow bad", fr: "Triste en osti" },
-  { key: "wanderer_funny_6", en: "People jam! Big slam!", fr: "Trafic humain! Gros dégât!" },
-  { key: "wanderer_funny_7", en: "Avoid a greet, dodge the meat!", fr: "Évite les piétons, mon chum!" },
-  { key: "wanderer_funny_8", en: "Shuffle bad scuffle!", fr: "Bagarre de piétons! C'est pas bon!" },
-  { key: "wanderer_funny_9", en: "Steer clear! Folks near!", fr: "Tasse-toi! Du monde partout!" },
-  { key: "wanderer_funny_10", en: "Hop hop! People stop!", fr: "Hop hop! Monde stop!" },
-  { key: "wanderer_funny_11", en: "Crowd rush! Don't crush!", fr: "Foule qui rush! Écrase-les pas!" },
-  { key: "wanderer_funny_12", en: "Bad fight! Bike blight", fr: "Mauvais combat! Vélo K.O.!" },
-  { key: "wanderer_funny_13", en: "Human block, avoid the shock!", fr: "Bloc humain, évite l'désastre!" },
-  { key: "wanderer_funny_14", en: "Watch your stroll, dodge the roll!", fr: "Watch où tu roules, évite le monde!" },
-
-  // BUILDING death messages
-  { key: "building_reason_1", en: "OOPS", fr: "OUPS" },
-  { key: "building_funny_1", en: "Shop drop! Street's your stop!", fr: "Boutique! T'es fini, c'est tragique!" },
-  { key: "building_funny_2", en: "Boop! Into the shoop?", fr: "Boum! Dans l'magasin!" },
-  { key: "building_funny_3", en: "Retail fail! Stay on the trail!", fr: "Magasin raté! Reste sur l'chemin!" },
-  { key: "building_funny_4", en: "Shop smack! Street's where you pack!", fr: "Coup d'boutique! Reste dans rue!" },
-  { key: "building_funny_5", en: "Crash! Bad stash!", fr: "Crash! T'es dans marde!" },
-  { key: "building_funny_6", en: "Assurance, hope you have insurance!", fr: "Espère que t'as des assurances!" },
-  { key: "building_funny_7", en: "Do the math! Stick to your path!", fr: "Fais le calcul! Reste sur l'chemin!" },
-  { key: "building_funny_8", en: "Shopping splash, super rash!", fr: "Magasinage crash! Super dégât!" },
-  { key: "building_funny_9", en: "Shop thump! Avoid the bump!", fr: "Coup d'boutique! Évite ça!" },
-  { key: "building_funny_10", en: "Window bump! Time to jump!", fr: "Vitrine bump! Faut sauter!" },
-  { key: "building_funny_11", en: "Crash a store, explore no more!", fr: "Crash dans magasin, c'est fini l'fun!" },
-  { key: "building_funny_12", en: "Store pop! Time to stop!", fr: "Boutique pop! Temps d'arrêter!" },
-  { key: "building_funny_13", en: "Watch the display, stay away!", fr: "Watch la vitrine! Reste loin!" },
-  { key: "building_funny_14", en: "Store smack! Stick to the track!", fr: "Coup d'magasin! Reste dans rue!" },
-
-  // TTC death messages
-  { key: "ttc_reason_1", en: "STM SMOOCH", fr: "BISOU À LA STM" },
-  { key: "ttc_funny_1", en: "STM zap! That's a wrap!", fr: "STM zap! T'es mort!" },
-  { key: "ttc_funny_2", en: "STM clash! Hot bash!", fr: "STM clash! Chaud hot!" },
-  { key: "ttc_funny_3", en: "Boom! STM in the room!", fr: "Boum! La STM te rentre dedans!" },
-  { key: "ttc_funny_4", en: "Zap! Transit trap!", fr: "Zap! Piège de transport!" },
-  { key: "ttc_funny_5", en: "Squash smash! STM crash!", fr: "Écrasé smash! STM crash!" },
-  { key: "ttc_funny_6", en: "Zap and pop! Hard stop!", fr: "Zap et pop! Stop sec!" },
-  { key: "ttc_funny_7", en: "STM meat, take a seat!", fr: "STM viande, assis-toi!" },
-  { key: "ttc_funny_8", en: "STM greet, move your feet!", fr: "STM salut, bouge tes pieds!" },
-  { key: "ttc_funny_9", en: "Ding ding! Watch that swing!", fr: "Ding ding! Watch le swing!" },
-  { key: "ttc_funny_10", en: "Tram bam! Avoid the jam!", fr: "Tram bam! Évite ça!" },
-  { key: "ttc_funny_11", en: "Clang clang! STM bang!", fr: "Clang clang! STM bang!" },
-
-  // Tutorial messages
-  {
-    key: "tutorialLeftMobile",
-    en: "Tap the <span class='highlight'>left side</span> of the screen to move left",
-    fr: "Clique sur le <span class='highlight'>côté gauche</span> de l'écran pour aller à gauche",
-  },
-  {
-    key: "tutorialLeftDesktop",
-    en: "Use your <span class='highlight'>left arrow key</span> to move left",
-    fr: "Utilise ta <span class='highlight'>flèche gauche</span> pour aller à gauche",
-  },
-  {
-    key: "tutorialRightMobile",
-    en: "Tap the <span class='highlight'>right side</span> of the screen to move right",
-    fr: "Clique sur le <span class='highlight'>côté droit</span> de l'écran pour aller à droite",
-  },
-  {
-    key: "tutorialRightDesktop",
-    en: "Use your <span class='highlight'>right arrow key</span> to move right",
-    fr: "Utilise ta <span class='highlight'>flèche droite</span> pour aller à droite",
-  },
-
-  // Tutorial error messages
-  { key: "otherLeft", en: "Your other left!", fr: "Ton autre gauche!" },
-  { key: "otherRight", en: "Your other right!", fr: "Ton autre droite!" },
-
-  // Tutorial completion
-  { key: "tutorialComplete", en: "TUTORIAL COMPLETE", fr: "TUTORIEL COMPLÉTÉ" },
-  { key: "stayAlive", en: "STAY ALIVE? <br>(you won't)", fr: "RESTE EN VIE? <br>(tu vas mourir pareil)" },
-
-  // Button text
-  { key: "ride", en: "RIDE", fr: "GO!" },
-
-  // Game UI
-  { key: "stayAliveTimer", en: "STAY ALIVE", fr: "RESTE EN VIE" },
-  { key: "addBuilding", en: "ADD A BUILDING?", fr: "AJOUTER UN BÂTIMENT?" },
-
-  // Social sharing
-  { key: "shareText", en: "I survived biking in Montreal for", fr: "J'ai survécu à vélo à Montréal pendant" },
-  { key: "seconds", en: "seconds", fr: "secondes" },
-  {
-    key: "shareTextEnd",
-    en: "seconds without a bike lane. How long will you survive? Try your luck at:",
-    fr: "secondes sans piste cyclable. Combien de temps survivrez-vous? Tentez votre chance:",
-  },
-  { key: "survivedText", en: "I survived", fr: "J'ai survécu" },
-  { key: "withoutLane", en: "without a bike lane", fr: "sans piste cyclable" },
-  { key: "shareWithFriend", en: "SHARE", fr: "PARTAGER" },
-  { key: "shareTitle", en: "No Bike Lanes?", fr: "Pas de pistes cyclables?" },
-
-  // Call to action messages
-  { key: "fightForLanes", en: "FIGHT FOR YOUR BIKE LANES?", fr: "BATS-TOI POUR TES PISTES CYCLABLES?" },
-  { key: "thanksDoug", en: "NO THANKS", fr: "TOUCHE PAS À NOS REVes" },
-
-  // Meta/SEO content
-  { key: "metaTitle", en: "Loser Lane", fr: "Loser Lane" },
-  {
-    key: "metaDescription",
-    en: "Experience cycling between certain death and probable death in this totally accurate street survival simulator. Life without bike lanes? No thanks.",
-    fr: "Vis l'expérience du vélo entre la mort certaine et la mort probable dans ce simulateur de survie urbaine totalement réaliste. La vie sans pistes cyclables? Non, Merci.",
-  },
-  { key: "metaTitleLong", en: "Loser Lane - Montreal Bike Survival Game", fr: "Loser Lane - Jeu de Survie à Vélo à Montréal" },
-];
 // Build lookup objects from the array (for performance)
 const LANG = {
   en: {},
@@ -296,26 +91,28 @@ function updateLanguage() {
 }
 
 const CONFIG = {
+  DEBUG: {
+    SHOW_HITBOXES: false,
+  },
   GAME: {
     INVINCIBLE: false,
-    WIDTH: 44,
+    WIDTH: 39,
     HEIGHT: Math.floor(window.innerHeight / 20),
     INITIAL_SPEED: 50,
     MIN_SPEED: 300,
     SPEED_DECREASE_RATE: 0.995,
     CYCLIST_Y: Math.floor(window.innerHeight / 40),
     ANIMATION_FRAMES: {
-      WANDERER_WAIT: 20,
+      HUMANBEING_WAIT: 20,
       DEATH_SEQUENCE: 15,
     },
   },
   SPAWN_RATES: {
-    TTC: 0.05,
+    TTC: 0.03,
     TTC_LANE_DEATHMACHINE: 0.8,
     ONCOMING_DEATHMACHINE: 0.4,
     PARKED_DEATHMACHINE: 0.2,
-    DOOR_OPENING: 0.1,
-    WANDERER: 0.9,
+    HUMANBEING: 0.9,
     BUILDING: 0.9,
   },
   SAFE_DISTANCE: {
@@ -323,27 +120,17 @@ const CONFIG = {
     TTC_LANE_DEATHMACHINE: 9,
     ONCOMING_DEATHMACHINE: 8,
     PARKED: 5,
-    WANDERER: 3,
+    HUMANBEING: 3,
     BUILDING: 1,
     TTC_TO_TTC: 90,
-
-    // TTC_TO_TTC: 20,
     TTC_TO_DEATHMACHINE: 15,
     DEFAULT: 1,
   },
   TTC: {
-    STOP_INTERVAL: {
-      MIN: 600, // 5 seconds
-      MAX: 900, // 10 seconds
-    },
-    STOP_DURATION: {
-      MIN: 380, // 3 seconds
-      MAX: 800, // 5 seconds
-    },
     DIFFICULTY_LEVELS: {
       HARD: {
-        STOP_INTERVAL_MIN: 24, // Increased from 6
-        STOP_INTERVAL_MAX: 96, // Increased from 24
+        STOP_INTERVAL_MIN: 24,
+        STOP_INTERVAL_MAX: 96,
         STOP_DURATION_MIN: 2,
         STOP_DURATION_MAX: 4,
       },
@@ -360,75 +147,46 @@ const CONFIG = {
     BUILDINGS: 29,
   },
   ANIMATIONS: {
-    DOOR_OPEN_DURATION: 100,
     DOOR_OPEN_DELAY: 25,
-    DEATH_DURATION: 1500,
-    SCREEN_SHAKE_DURATION: 1500,
+    SCREEN_SHAKE_DURATION: 1000,
   },
-
   MOVEMENT: {
-    JUMP_AMOUNT: 3,
-    JUMP_DURATION: 1000,
-    HOLD_DELAY: 2000,
     BASE_MOVE_SPEED: 1,
     BIKE_SPEED: 0.1,
-    WANDERER_SPEED: 0.5,
+    HUMANBEING_SPEED: 0.5,
   },
-  // SPEED: {
-  //   DEFAULT: 1,
-  //   WORLD: 2,
-  //   MOVINGTRAFFIC: 3
-  // },
   COLLISION: {
-    ADJACENT_LANE_THRESHOLD: 1,
     NEARBY_ENTITY_RADIUS: 2,
-    // BUILDING_OVERLAP_THRESHOLD: 0.1,
+    TTC_LANE_DISTANCE: 2,
+    PLAYER_COLLISION_FORGIVENESS: {
+      TTC: {
+        front: 1,
+        back: 1,
+      },
+      TTC_LANE_DEATHMACHINE: {
+        front: 1,
+        back: 1,
+      },
+      ONCOMING_DEATHMACHINE: {
+        front: 1,
+        back: 1,
+      },
+      PARKED_DEATHMACHINE: {
+        front: 1,
+        back: 1,
+      },
+    },
   },
   SPAWNING: {
     PARKED_DEATHMACHINE_DOOR_CHANCE: 0.3,
     PARKED_DEATHMACHINE_MIN_Y: 0.2,
     PARKED_DEATHMACHINE_MAX_Y: 0.3,
-    BUILDING_RESPAWN_COOLDOWN: 100,
     MIN_BUILDING_HEIGHT: -20,
   },
   PARTICLES: {
     MAX_DEATH_PARTICLES: 20,
     PARTICLE_SPREAD: 2,
     PARTICLE_SPEED: 0.5,
-  },
-  PROBABILITIES: {
-    PARKING: 0.01,
-    GAP: 0.6,
-    DOOR_OPENING: 0.3,
-  },
-  DIMENSIONS: {
-    DOOR: {
-      WIDTHS: [0, 0.8, 1, 1.5, 1.8],
-      HEIGHTS: [0.8, 1.8],
-    },
-  },
-  AUDIO: {
-    VOLUME: {
-      MASTER: 1.0,
-      EFFECTS: 0.8,
-      MUSIC: 0.6,
-    },
-    EFFECTS: {
-      COLLISION_DURATION: 300,
-    },
-  },
-  TIMINGS: {
-    ANIMATION_FRAME: 1000 / 60, // ~16.67ms for 60fps
-    MESSAGE_DISPLAY: 1500,
-    SPAWN_CHECK_INTERVAL: 100,
-  },
-
-  BOUNDARIES: {
-    MIN_X: 0,
-    MAX_X: 40,
-    MIN_Y: -10,
-    MAX_Y: null, // Set dynamically based on window height
-    OFFSCREEN_BUFFER: 5,
   },
 };
 
@@ -445,7 +203,7 @@ class DarlingType {
   static TTC_LANE_DEATHMACHINE = "TTC_LANE_DEATHMACHINE";
   static ONCOMING_DEATHMACHINE = "ONCOMING_DEATHMACHINE";
   static PARKED_DEATHMACHINE = "PARKED_DEATHMACHINE";
-  static WANDERER = "WANDERER";
+  static HUMANBEING = "HUMANBEING";
   static BUILDING = "BUILDING";
   static BIKE = "BIKE";
 }
@@ -561,7 +319,7 @@ class SpatialGrid {
   constructor(config) {
     this.config = config;
     this.cellSize = 5; // Size of each grid cell for spatial partitioning
-    this.cells = new Map(); // Map to store entities in grid cells
+    this.cells = new Map(); // Map to store darlings in grid cells
   }
 
   getCellKey(worldXCoords, worldYCoords) {
@@ -723,12 +481,12 @@ class GameRenderer {
     const state = stateManager.state;
 
     // Only render death animation during first part of death sequence
-    if (state.isDead && state.deathState.animation >= 15) return; // Increased from 10 to 15
+    if (state.isDead && state.deathState.animation >= 15) return; // Increased from 10 to 30 .. 6. Extend Death Animation Display
 
     this.renderGrid.clear();
     this.drawRoadFeatures();
 
-    // If dead, apply glitch effect to all entities
+    // If dead, apply glitch effect to all darlings
     if (state.isDead) {
       this.drawDarlings(darlings, true);
       this.drawBike(bike, state);
@@ -756,8 +514,7 @@ class GameRenderer {
         this.renderGrid.updateCell(this.config.LANES.BIKE - 1, y, " ", STYLES.TRAFFIC);
       }
 
-for (let x = this.config.LANES.SIDEWALK; x < this.config.LANES.BUILDINGS - 1; x++) {
-
+      for (let x = this.config.LANES.SIDEWALK; x < this.config.LANES.BUILDINGS - 1; x++) {
         this.renderGrid.updateCell(x, y, " ", STYLES.SIDEWALK);
       }
     }
@@ -775,7 +532,9 @@ for (let x = this.config.LANES.SIDEWALK; x < this.config.LANES.BUILDINGS - 1; x+
     if (!entity || !entity.art) return;
 
     if (entity.position.y + entity.height >= 0 && entity.position.y < CONFIG.GAME.HEIGHT) {
-      const isDying = state.isDead; // Now this will work correctly
+      const isDying = state.isDead;
+
+      const isFlashing = entity.behavior?.isFlashing && entity.behavior.isFlashing();
 
       entity.art.forEach((line, i) => {
         if (entity.position.y + i >= 0 && entity.position.y + i < CONFIG.GAME.HEIGHT) {
@@ -783,7 +542,6 @@ for (let x = this.config.LANES.SIDEWALK; x < this.config.LANES.BUILDINGS - 1; x+
             if (char !== " " && entity.position.x + x >= 0 && entity.position.x + x < CONFIG.GAME.WIDTH) {
               let effectClass = "entity ";
 
-              // Add entity-specific classes
               switch (entity.type) {
                 case DarlingType.TTC:
                   effectClass += "TTC";
@@ -795,7 +553,7 @@ for (let x = this.config.LANES.SIDEWALK; x < this.config.LANES.BUILDINGS - 1; x+
                 case DarlingType.PARKED_DEATHMACHINE:
                   effectClass += entity.behavior?.doorState > 0 ? "door-opening" : "deathMachine";
                   break;
-                case DarlingType.WANDERER:
+                case DarlingType.HUMANBEING:
                   effectClass += "wanderer";
                   break;
                 case DarlingType.BUILDING:
@@ -803,18 +561,144 @@ for (let x = this.config.LANES.SIDEWALK; x < this.config.LANES.BUILDINGS - 1; x+
                   break;
               }
 
-              // Add death glitch classes if dying
+              if (isFlashing) {
+                effectClass += " warning-flash";
+              }
+
               if (isDying) {
                 const isEdge = /[┌┐│╰╯]/.test(char);
                 effectClass += ` char-glitch ${isEdge ? "edge" : "body"}`;
               }
 
               const wrappedChar = `<span class="${effectClass}">${char}</span>`;
+
               this.renderGrid.updateCell(Math.floor(entity.position.x + x), Math.floor(entity.position.y + i), wrappedChar, entity.color);
             }
           });
         }
       });
+    }
+
+    // Draw hitboxes AFTER the entity art
+    if (CONFIG.DEBUG?.SHOW_HITBOXES) {
+      // Only draw hitboxes for vehicles and bike
+      const vehicleTypes = [
+        DarlingType.TTC,
+        DarlingType.TTC_LANE_DEATHMACHINE,
+        DarlingType.ONCOMING_DEATHMACHINE,
+        DarlingType.PARKED_DEATHMACHINE,
+        DarlingType.BIKE,
+      ];
+
+      if (vehicleTypes.includes(entity.type)) {
+        const strictHitbox = entity.getHitbox();
+
+        // For vehicles (not bike), draw BOTH hitboxes
+        if (entity.type !== DarlingType.BIKE && entity.getPlayerCollisionHitbox) {
+          const playerHitbox = entity.getPlayerCollisionHitbox();
+
+          // Check if they're actually different
+          const isDifferent =
+            strictHitbox.y !== playerHitbox.y ||
+            strictHitbox.height !== playerHitbox.height ||
+            strictHitbox.x !== playerHitbox.x ||
+            strictHitbox.width !== playerHitbox.width;
+
+          if (isDifferent) {
+            // Draw GREEN (player/forgiving) hitbox FIRST
+            this.drawHitbox(playerHitbox, "rgba(0, 255, 0, 0.9)", "P");
+            // Draw RED (entity/strict) hitbox SECOND (overlaps on sides)
+            this.drawHitbox(strictHitbox, "rgba(255, 0, 0, 0.9)", "E");
+
+            console.log(`${entity.type} hitboxes:`, {
+              strict: strictHitbox,
+              player: playerHitbox,
+              difference: {
+                frontDiff: playerHitbox.y - strictHitbox.y,
+                backDiff: strictHitbox.y + strictHitbox.height - (playerHitbox.y + playerHitbox.height),
+              },
+            });
+          } else {
+            // Only draw one hitbox if they're the same
+            this.drawHitbox(strictHitbox, "rgba(255, 255, 0, 0.9)", "S");
+          }
+        } else {
+          // For bike, just draw one hitbox
+          this.drawHitbox(strictHitbox, "rgba(0, 0, 255, 0.9)", "B");
+        }
+      }
+
+      // Draw door hitbox for parked cars (ORANGE)
+      if (entity.type === DarlingType.PARKED_DEATHMACHINE && entity.behavior?.doorHitbox) {
+        this.drawHitbox(entity.behavior.doorHitbox, "rgba(255, 165, 0, 0.9)", "D");
+      }
+    }
+  }
+
+  drawHitbox(hitbox, color = "rgba(255, 0, 0, 0.8)", label = "") {
+    const hitboxStyle = `<span style='color: ${color}; font-weight: bold;'>`;
+
+    // Use different characters based on label
+    let topLeft, topRight, bottomLeft, bottomRight, horizontal, vertical;
+
+    if (label === "P") {
+      // Player hitbox - use different characters
+      topLeft = "╔";
+      topRight = "╗";
+      bottomLeft = "╚";
+      bottomRight = "╝";
+      horizontal = "═";
+      vertical = "║";
+    } else {
+      // Entity hitbox - regular characters
+      topLeft = "┌";
+      topRight = "┐";
+      bottomLeft = "└";
+      bottomRight = "┘";
+      horizontal = "─";
+      vertical = "│";
+    }
+
+    // Draw hitbox corners and edges
+    for (let x = 0; x < hitbox.width; x++) {
+      // Top edge
+      if (hitbox.y >= 0 && hitbox.y < CONFIG.GAME.HEIGHT) {
+        let char;
+        if (x === 0) {
+          char = topLeft;
+        } else if (x === hitbox.width - 1) {
+          char = topRight;
+        } else if (label && x === Math.floor(hitbox.width / 2)) {
+          char = label; // Put label in center
+        } else {
+          char = horizontal;
+        }
+        this.renderGrid.updateCell(Math.floor(hitbox.x + x), Math.floor(hitbox.y), `${hitboxStyle}${char}</span>`, null);
+      }
+
+      // Bottom edge
+      if (hitbox.y + hitbox.height - 1 >= 0 && hitbox.y + hitbox.height - 1 < CONFIG.GAME.HEIGHT) {
+        let char;
+        if (x === 0) {
+          char = bottomLeft;
+        } else if (x === hitbox.width - 1) {
+          char = bottomRight;
+        } else {
+          char = horizontal;
+        }
+        this.renderGrid.updateCell(Math.floor(hitbox.x + x), Math.floor(hitbox.y + hitbox.height - 1), `${hitboxStyle}${char}</span>`, null);
+      }
+    }
+
+    // Draw left and right edges
+    for (let y = 1; y < hitbox.height - 1; y++) {
+      if (hitbox.y + y >= 0 && hitbox.y + y < CONFIG.GAME.HEIGHT) {
+        // Left edge
+        this.renderGrid.updateCell(Math.floor(hitbox.x), Math.floor(hitbox.y + y), `${hitboxStyle}${vertical}</span>`, null);
+
+        // Right edge
+        this.renderGrid.updateCell(Math.floor(hitbox.x + hitbox.width - 1), Math.floor(hitbox.y + y), `${hitboxStyle}${vertical}</span>`, null);
+      }
     }
   }
 
@@ -850,16 +734,6 @@ for (let x = this.config.LANES.SIDEWALK; x < this.config.LANES.BUILDINGS - 1; x+
   drawLiveBike(bike, state) {
     const bikeCenterLane = Math.floor(bike.position.x + bike.width / 2);
     const currentBikeLane = Math.floor(bike.position.x);
-
-    // console.log("Bike Debug:", {
-    //   exactX: bike.position.x.toFixed(2),
-    //   centerX: (bike.position.x + bike.width / 2).toFixed(2),
-    //   bikeCenterLane,
-    //   track1: this.config.LANES.TRACKS + 1,
-    //   track2: this.config.LANES.TRACKS + 5,
-    //   bankingLeft: bikeCenterLane === this.config.LANES.TRACKS + 1 || bikeCenterLane === this.config.LANES.TRACKS + 5,
-    // });
-
     const bikeY = this.config.GAME.CYCLIST_Y;
 
     // Debug info at top of screen
@@ -870,13 +744,6 @@ for (let x = this.config.LANES.SIDEWALK; x < this.config.LANES.BUILDINGS - 1; x+
       `Track2: ${this.config.LANES.TRACKS + 5}`,
       `Banking: ${bikeCenterLane === this.config.LANES.TRACKS + 1 || bikeCenterLane === this.config.LANES.TRACKS + 5}`,
     ];
-
-    // Draw debug info
-    // debugInfo.forEach((text, i) => {
-    //     text.split('').forEach((char, x) => {
-    //         this.renderGrid.updateCell(x, i, char, STYLES.RESET);
-    //     });
-    // });
 
     let bikeArt = DARLINGS.BIKE.art;
     let bankingClass = "";
@@ -972,18 +839,6 @@ class CollisionManager {
     this.errorLog = [];
   }
 
-  logError(error, method) {
-    const errorInfo = {
-      timestamp: new Date().toISOString(),
-      method,
-      message: error.message,
-      stack: error.stack,
-      context: error.context || {},
-    };
-    this.errorLog.push(errorInfo);
-    console.error(`SpawnManager Error in ${method}:`, errorInfo);
-  }
-
   checkCollision(hitboxA, hitboxB) {
     try {
       if (!hitboxA || !hitboxB || typeof hitboxA !== "object" || typeof hitboxB !== "object") {
@@ -1007,7 +862,6 @@ class CollisionManager {
         hitboxA.y >= hitboxB.y + hitboxB.height
       );
     } catch (error) {
-      this.logError(error, "checkCollision");
       return false;
     }
   }
@@ -1023,7 +877,9 @@ class CollisionManager {
 
       for (const darling of darlings.darlings) {
         try {
-          const darlingHitbox = darling.getHitbox();
+          // USE PLAYER COLLISION HITBOX (forgiving) for bike collisions
+          const darlingHitbox = darling.getPlayerCollisionHitbox ? darling.getPlayerCollisionHitbox() : darling.getHitbox();
+
           if (this.checkCollision(bikeHitbox, darlingHitbox)) {
             const obstacleHitbox = darlingHitbox;
             const collisionDirection = this.getCollisionDirection(bikeHitbox, obstacleHitbox);
@@ -1034,11 +890,11 @@ class CollisionManager {
                 case DarlingType.TTC:
                   return "TTC";
                 case DarlingType.TTC_LANE_DEATHMACHINE:
-                  return "TRAFFIC"; // This vehicle hit us from behind
+                  return "TRAFFIC";
                 case DarlingType.ONCOMING_DEATHMACHINE:
-                  return "ONCOMING_DEATHMACHINE"; // Fixed: was returning "ONCOMING_DEATHMACHINE"
-                case DarlingType.WANDERER:
-                  return "WANDERER";
+                  return "ONCOMING_DEATHMACHINE";
+                case DarlingType.HUMANBEING:
+                  return "HUMANBEING";
                 case DarlingType.BUILDING:
                   return "BUILDING";
                 default:
@@ -1053,9 +909,9 @@ class CollisionManager {
               case DarlingType.TTC_LANE_DEATHMACHINE:
                 return "TRAFFIC";
               case DarlingType.ONCOMING_DEATHMACHINE:
-                return "ONCOMING_DEATHMACHINE"; // Fixed: was returning "TRAFFIC"
-              case DarlingType.WANDERER:
-                return "WANDERER";
+                return "ONCOMING_DEATHMACHINE";
+              case DarlingType.HUMANBEING:
+                return "HUMANBEING";
               case DarlingType.BUILDING:
                 return "BUILDING";
               default:
@@ -1063,34 +919,22 @@ class CollisionManager {
             }
           }
         } catch (error) {
-          this.logError(
-            new CollisionError("Error getting darling hitbox", {
-              darlingType: darling.type,
-              originalError: error,
-            }),
-            "checkBikeCollisionIsSpecial"
-          );
           continue;
         }
       }
 
-      // Check parked vehicle collisions - unchanged
+      // Check parked vehicle collisions - USE PLAYER COLLISION HITBOX
       for (const deathMachine of darlings.parkedDeathMachines) {
         try {
-          if (this.checkCollision(bikeHitbox, deathMachine.getHitbox())) {
+          const playerHitbox = deathMachine.getPlayerCollisionHitbox ? deathMachine.getPlayerCollisionHitbox() : deathMachine.getHitbox();
+
+          if (this.checkCollision(bikeHitbox, playerHitbox)) {
             return "PARKEDDEATHMACHINE";
           }
           if (deathMachine.behavior?.doorHitbox && this.checkCollision(bikeHitbox, deathMachine.behavior.doorHitbox)) {
             return "DOOR";
           }
         } catch (error) {
-          this.logError(
-            new CollisionError("Error checking death machine collision", {
-              machineId: deathMachine.id,
-              originalError: error,
-            }),
-            "checkBikeCollisionIsSpecial"
-          );
           continue;
         }
       }
@@ -1098,13 +942,9 @@ class CollisionManager {
       // Track collision check - unchanged
       const trackPositions = [this.config.LANES.TRACKS + 1, this.config.LANES.TRACKS + 5];
       const bikeCenter = bikeHitbox.x + bikeHitbox.width / 2;
-      // if (trackPositions.includes(Math.floor(bikeCenter))) {
-      //   return "TRACKS";
-      // }
 
       return null;
     } catch (error) {
-      this.logError(error, "checkBikeCollisionIsSpecial");
       return null;
     }
   }
@@ -1138,29 +978,18 @@ class CollisionManager {
             if (collisionType) {
               bike.behavior.onCollision(obstacle);
             }
-          } catch (error) {
-            this.logError(
-              new CollisionError("Error in bike collision check", {
-                bikeId: bike.id,
-                obstacleId: obstacle.id,
-                originalError: error,
-              }),
-              "collisionManagerUpdate"
-            );
-          }
+          } catch (error) {}
         } else {
           this.handleEntityCollision(entityA, entityB);
         }
       }
-    } catch (error) {
-      this.logError(error, "collisionManagerUpdate");
-    }
+    } catch (error) {}
   }
 
   handleEntityCollision(entityA, entityB) {
     try {
       if (!entityA || !entityB) {
-        throw new CollisionError("Invalid entities for collision handling", {
+        throw new CollisionError("Invalid darlings for collision handling", {
           entityA,
           entityB,
         });
@@ -1173,21 +1002,6 @@ class CollisionManager {
       const priorityA = this.getEntityPriority(entityA);
       const priorityB = this.getEntityPriority(entityB);
 
-      if (entityA.type === DarlingType.PARKED_DEATHMACHINE && entityB.type === DarlingType.PARKED_DEATHMACHINE) {
-        console.log("🚗 Parked Car Collision:", {
-          carA: {
-            id: entityA.id.slice(-6),
-            pos: entityA.position,
-            speed: entityA.behavior?.baseSpeed,
-          },
-          carB: {
-            id: entityB.id.slice(-6),
-            pos: entityB.position,
-            speed: entityB.behavior?.baseSpeed,
-          },
-        });
-      }
-
       if (priorityA > priorityB) {
         this.applyCollisionResponse(entityB, entityA);
       } else if (priorityB > priorityA) {
@@ -1196,15 +1010,13 @@ class CollisionManager {
         this.applyCollisionResponse(entityA, entityB);
         this.applyCollisionResponse(entityB, entityA);
       }
-    } catch (error) {
-      this.logError(error, "handleEntityCollision");
-    }
+    } catch (error) {}
   }
 
   applyCollisionResponse(entity, otherEntity) {
     try {
       if (!entity || !otherEntity) {
-        throw new CollisionError("Invalid entities for collision response", {
+        throw new CollisionError("Invalid darlings for collision response", {
           entity,
           otherEntity,
         });
@@ -1220,15 +1032,7 @@ class CollisionManager {
         setTimeout(() => {
           try {
             entity.behavior.stopped = false;
-          } catch (error) {
-            this.logError(
-              new CollisionError("Error unstopping entity", {
-                entityId: entity.id,
-                originalError: error,
-              }),
-              "applyCollisionResponse"
-            );
-          }
+          } catch (error) {}
         }, 500);
         return;
       }
@@ -1236,9 +1040,7 @@ class CollisionManager {
       if (Math.abs(entity.behavior.baseSpeed) < Math.abs(otherEntity.behavior?.baseSpeed || 0)) {
         entity.behavior.baseSpeed = otherEntity.behavior.baseSpeed;
       }
-    } catch (error) {
-      this.logError(error, "applyCollisionResponse");
-    }
+    } catch (error) {}
   }
 
   validateMovement(entity, newPosition) {
@@ -1254,21 +1056,6 @@ class CollisionManager {
         const nearbyParkedCars = this.spatialManager.grid
           .getNearbyDarlings(newPosition, Math.max(entity.width, entity.height) * 2)
           .filter((other) => other.type === DarlingType.PARKED_DEATHMACHINE);
-
-        // console.log("=== Parked Car Position Check ===", {
-        //   id: entity.id.slice(-6),
-        //   currentX: entity.position?.x,
-        //   currentY: entity.position?.y,
-        //   proposedX: newPosition.x,
-        //   proposedY: newPosition.y,
-        //   nearbyParkedCars: nearbyParkedCars.map((other) => ({
-        //     id: other.id.slice(-6),
-        //     x: other.position.x,
-        //     y: other.position.y,
-        //     xDistance: Math.abs(other.position.x - newPosition.x),
-        //     yDistance: Math.abs(other.position.y - newPosition.y),
-        //   })),
-        // });
       }
 
       if (entity.behavior?.ignoreCollisions) {
@@ -1296,16 +1083,6 @@ class CollisionManager {
 
           if (other !== entity && this.shouldCheckCollision(entity, other) && this.checkCollision(entity.getHitbox(), other.getHitbox())) {
             if (entity.type === DarlingType.PARKED_DEATHMACHINE) {
-              // console.log("🚫 Invalid Position:", {
-              //   entityId: entity.id.slice(-6),
-              //   collidingWith: other.id.slice(-6),
-              //   proposedPos: newPosition,
-              //   otherPos: other.position,
-              //   distance: {
-              //     x: Math.abs(newPosition.x - other.position.x),
-              //     y: Math.abs(newPosition.y - other.position.y),
-              //   },
-              // });
             }
             isValid = false;
             break;
@@ -1317,7 +1094,6 @@ class CollisionManager {
         entity.position = tempPosition;
       }
     } catch (error) {
-      this.logError(error, "validateMovement");
       return false;
     }
   }
@@ -1333,12 +1109,11 @@ class CollisionManager {
         [DarlingType.TTC_LANE_DEATHMACHINE]: 4,
         [DarlingType.ONCOMING_DEATHMACHINE]: 3,
         [DarlingType.PARKED_DEATHMACHINE]: 2,
-        [DarlingType.WANDERER]: 1,
+        [DarlingType.HUMANBEING]: 1,
         [DarlingType.BUILDING]: 0,
       };
       return priorities[entity.type] || 0;
     } catch (error) {
-      this.logError(error, "getEntityPriority");
       return 0;
     }
   }
@@ -1356,12 +1131,6 @@ class CollisionManager {
       for (let i = 0; i < darlings.length; i++) {
         const entityA = darlings[i];
         if (!entityA?.position) {
-          this.logError(
-            new CollisionError("Invalid entity position", {
-              entityId: entityA?.id,
-            }),
-            "getCollisionPairs"
-          );
           continue;
         }
 
@@ -1372,13 +1141,6 @@ class CollisionManager {
             if (entityA === entityB) continue;
 
             if (!entityA.id || !entityB.id) {
-              this.logError(
-                new CollisionError("Entity missing ID", {
-                  entityAId: entityA?.id,
-                  entityBId: entityB?.id,
-                }),
-                "getCollisionPairs"
-              );
               continue;
             }
 
@@ -1390,32 +1152,15 @@ class CollisionManager {
                 pairs.push([entityA, entityB]);
                 processedPairs.add(pairKey);
               }
-            } catch (error) {
-              this.logError(
-                new CollisionError("Error checking collision pair", {
-                  entityAId: entityA.id,
-                  entityBId: entityB.id,
-                  originalError: error,
-                }),
-                "getCollisionPairs"
-              );
-            }
+            } catch (error) {}
           }
         } catch (error) {
-          this.logError(
-            new CollisionError("Error getting nearby darlings", {
-              entityId: entityA.id,
-              originalError: error,
-            }),
-            "getCollisionPairs"
-          );
           continue;
         }
       }
 
       return pairs;
     } catch (error) {
-      this.logError(error, "getCollisionPairs");
       return [];
     }
   }
@@ -1423,7 +1168,7 @@ class CollisionManager {
   shouldCheckCollision(entityA, entityB) {
     try {
       if (!entityA || !entityB) {
-        throw new CollisionError("Invalid entities for collision check", {
+        throw new CollisionError("Invalid darlings for collision check", {
           entityA,
           entityB,
         });
@@ -1438,7 +1183,7 @@ class CollisionManager {
       }
 
       if (!entityA.position || !entityB.position) {
-        throw new CollisionError("Entities missing position", {
+        throw new CollisionError("Darlings missing position", {
           entityAPos: entityA.position,
           entityBPos: entityB.position,
         });
@@ -1453,12 +1198,11 @@ class CollisionManager {
       }
 
       if (entityA.type === DarlingType.TTC || entityB.type === DarlingType.TTC) {
-        return xDistance <= 2;
+        return xDistance <= CONFIG.COLLISION.TTC_LANE_DISTANCE;
       }
 
       return xDistance <= 1;
     } catch (error) {
-      this.logError(error, "shouldCheckCollision");
       return false;
     }
   }
@@ -1486,7 +1230,6 @@ class CollisionManager {
 
       return Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? "right" : "left") : dy > 0 ? "down" : "up";
     } catch (error) {
-      this.logError(error, "getCollisionDirection");
       return "up"; // Default direction if error occurs
     }
   }
@@ -1505,7 +1248,6 @@ class MovementCoordinator {
     this.spatialManager = spatialManager;
     this.activeMovements = new Map();
     this.moveSpeed = CONFIG.MOVEMENT.BASE_MOVE_SPEED + CONFIG.MOVEMENT.BIKE_SPEED;
-    this.holdDelay = CONFIG.MOVEMENT.HOLD_DELAY;
   }
 
   /**
@@ -1595,7 +1337,7 @@ class MovementCoordinator {
       [DarlingType.TTC_LANE_DEATHMACHINE]: CONFIG.MOVEMENT.PRIORITIES.TTC_LANE_DEATHMACHINE || 8,
       [DarlingType.ONCOMING_DEATHMACHINE]: CONFIG.MOVEMENT.PRIORITIES.ONCOMING_DEATHMACHINE || 7,
       [DarlingType.PARKED_DEATHMACHINE]: CONFIG.MOVEMENT.PRIORITIES.PARKED_DEATHMACHINE || 6,
-      [DarlingType.WANDERER]: CONFIG.MOVEMENT.PRIORITIES.WANDERER || 5,
+      [DarlingType.HUMANBEING]: CONFIG.MOVEMENT.PRIORITIES.HUMANBEING || 5,
       [DarlingType.BUILDING]: CONFIG.MOVEMENT.PRIORITIES.BUILDING || 0,
     };
 
@@ -1630,7 +1372,7 @@ class MovementCoordinator {
 // SpawnManager -  Management
 // =========================================
 /**
- *  handles the creation and placement of new entities in the game
+ *  handles the creation and placement of new darlings in the game
  * Manages spawn rules, spacing, and timing for different entity types
  */
 
@@ -1641,21 +1383,13 @@ class SpawnManager {
     }
     this.spatialManager = spatialManager;
     this.config = config;
-    this.wandererDebugLog = false; // Set to true to debug wanderer spawning
     this.errorLog = [];
     try {
       this.spawnRules = this.createSpawnConfigRulesForAllDarlingTypes();
     } catch (error) {
-      this.logError(error, "constructor");
       this.spawnRules = new Map();
     }
   }
-
-  /**
-   * Creates spawn configuration rules for all entity types
-   * Defines spacing, positioning, and lane rules
-   * @returns {Map} Map of entity types to their spawn rules
-   */
 
   createSpawnConfigRulesForAllDarlingTypes() {
     try {
@@ -1737,12 +1471,12 @@ class SpawnManager {
           },
         ],
         [
-          DarlingType.WANDERER,
+          DarlingType.HUMANBEING,
           {
-            baseSpacing: this.config.SAFE_DISTANCE.WANDERER,
+            baseSpacing: this.config.SAFE_DISTANCE.HUMANBEING,
             randomSpacingRange: {
-              min: Math.floor(this.config.SAFE_DISTANCE.WANDERER * 0.3),
-              max: Math.floor(this.config.SAFE_DISTANCE.WANDERER * 0.8),
+              min: Math.floor(this.config.SAFE_DISTANCE.HUMANBEING * 0.3),
+              max: Math.floor(this.config.SAFE_DISTANCE.HUMANBEING * 0.8),
             },
             laneRules: {
               allowedLanes: [this.config.LANES.SIDEWALK, this.config.LANES.SIDEWALK + 3],
@@ -1774,15 +1508,10 @@ class SpawnManager {
         ],
       ]);
     } catch (error) {
-      this.logError(error, "createSpawnConfigRulesForAllDarlingTypes");
       return new Map();
     }
   }
 
-  /**
-   * Determines required spacing between different entity types
-   * Handles special cases like TTC-to-TTC spacing
-   */
   getRequiredSpacingBetweenDifferentDarlingTypes(entityTypeA, entityTypeB) {
     try {
       // Special cases first
@@ -1837,15 +1566,10 @@ class SpawnManager {
 
       return baseDistance * (entityTypeA === entityTypeB ? 1.5 : 1);
     } catch (error) {
-      this.logError(error, "getRequiredSpacingBetweenDifferentDarlingTypes");
       return this.config.SAFE_DISTANCE.DEFAULT || 5; // Safe fallback
     }
   }
 
-  /**
-   * Validates if an entity can be spawned at a specific position
-   * Checks lane rules and spacing requirements
-   */
   canDarlingSpawnAtThisSpecificPos(darlingType, position) {
     try {
       if (!darlingType || !position) {
@@ -1881,7 +1605,7 @@ class SpawnManager {
 
           // Special TTC proximity check
           if (darlingType === DarlingType.TTC || entity.type === DarlingType.TTC) {
-            return xDistance <= 2;
+            return xDistance <= CONFIG.COLLISION.NEARBY_ENTITY_RADIUS;
           }
           return xDistance <= 1;
         });
@@ -1895,25 +1619,11 @@ class SpawnManager {
 
         return isLaneAllowed && hasEnoughSpace;
       } catch (error) {
-        this.logError(error, "canDarlingSpawnAtThisSpecificPos.nearbyCheck");
         return false;
       }
     } catch (error) {
-      this.logError(error, "canDarlingSpawnAtThisSpecificPos");
       return false;
     }
-  }
-
-  logError(error, method) {
-    const errorInfo = {
-      timestamp: new Date().toISOString(),
-      method,
-      message: error.message,
-      stack: error.stack,
-      context: error.context || {},
-    };
-    this.errorLog.push(errorInfo);
-    console.error(`SpawnManager Error in ${method}:`, errorInfo);
   }
 
   spawnEntity(entityType) {
@@ -1934,10 +1644,9 @@ class SpawnManager {
         return null;
       }
 
-      if (entityType === DarlingType.WANDERER) {
+      if (entityType === DarlingType.HUMANBEING) {
         try {
           const isGoingUp = Math.random() < 0.5;
-          // if (this.wandererDebugLog) console.log(`Spawning wanderer going ${isGoingUp ? "up" : "down"}`);
 
           const spawnConfig = {
             position: new Position(
@@ -1947,18 +1656,10 @@ class SpawnManager {
           };
 
           if (this.canDarlingSpawnAtThisSpecificPos(entityType, spawnConfig.position)) {
-            if (this.wandererDebugLog) console.log(`Spawning wanderer at position:`, spawnConfig.position);
             return new Wanderer(this.config, spawnConfig, isGoingUp);
           }
-          // if (this.wandererDebugLog) console.log(`Failed to spawn wanderer - position occupied`);
           return null;
         } catch (error) {
-          this.logError(
-            new SpawnError("Error spawning wanderer", {
-              originalError: error,
-            }),
-            "spawnEntity"
-          );
           return null;
         }
       }
@@ -1966,7 +1667,6 @@ class SpawnManager {
       // Handle other entity types
       const spawnConfig = this.getSpawnConfig(entityType);
       if (!spawnConfig) {
-        if (this.wandererDebugLog) console.log(`No spawn config for ${entityType}`);
         return null;
       }
 
@@ -1979,7 +1679,6 @@ class SpawnManager {
 
       return null;
     } catch (error) {
-      this.logError(error, "spawnEntity");
       return null;
     }
   }
@@ -2004,7 +1703,6 @@ class SpawnManager {
         direction: rules.laneRules.direction,
       };
     } catch (error) {
-      this.logError(error, "getSpawnConfig");
       return null;
     }
   }
@@ -2019,7 +1717,7 @@ class SpawnManager {
         [DarlingType.TTC_LANE_DEATHMACHINE]: TTCLaneDeathmachine,
         [DarlingType.ONCOMING_DEATHMACHINE]: OncomingDeathmachine,
         [DarlingType.PARKED_DEATHMACHINE]: ParkedDeathmachine,
-        [DarlingType.WANDERER]: Wanderer,
+        [DarlingType.HUMANBEING]: Wanderer,
         [DarlingType.BUILDING]: Building,
       };
 
@@ -2107,12 +1805,6 @@ class VehicleClusterManager {
     cluster.targetSize =
       this.clusterConfig.minVehiclesInCluster +
       Math.floor(Math.random() * (this.clusterConfig.maxVehiclesInCluster - this.clusterConfig.minVehiclesInCluster + 1));
-
-    // Optional: Log cluster start
-    // console.log(`Starting cluster for ${entityType}:`, {
-    //   targetSize: cluster.targetSize,
-    //   spawnMultiplier: this.clusterConfig.clusterSpawnMultiplier,
-    // });
   }
 
   endCluster(entityType) {
@@ -2126,9 +1818,6 @@ class VehicleClusterManager {
     cluster.gapTimer =
       this.clusterConfig.minGapAfterCluster +
       Math.floor(Math.random() * (this.clusterConfig.maxGapAfterCluster - this.clusterConfig.minGapAfterCluster));
-
-    // Optional: Log cluster end
-    // console.log(`Ending cluster for ${entityType}, gap timer:`, cluster.gapTimer);
   }
 
   isClusterActive(entityType) {
@@ -2152,13 +1841,6 @@ class VehicleClusterManager {
     });
   }
 }
-
-// =========================================
-// =========================================
-// =========================================
-// =========================================
-// =========================================
-// =========================================
 
 // =========================================
 // EntityBehavior
@@ -2272,13 +1954,6 @@ class BuildingBehavior extends EntityBehavior {
   }
 
   updateBuildingProperties(newY, newBuilding, newHeight) {
-    // Log the updated building properties
-    // console.log(`[BuildingBehavior] Updating building properties:`, {
-    //   name: newBuilding.name,
-    //   y: newY,
-    //   height: newHeight,
-    // });
-
     // Update the building's properties
     this.entity.position.y = newY;
     this.entity.art = newBuilding.art;
@@ -2297,17 +1972,14 @@ class BuildingBehavior extends EntityBehavior {
     while (!this.validatePosition(newY, height, buildings) && attempts < MAX_ATTEMPTS) {
       newY -= CONFIG.SAFE_DISTANCE.BUILDING;
       attempts++;
-      console.log(`[BuildingBehavior] Attempt ${attempts}: Trying Y=${newY}`);
     }
 
     // If a valid position is found
     if (attempts < MAX_ATTEMPTS) {
-      console.log(`[BuildingBehavior] Found valid position after ${attempts} attempts`);
       // Update the building's properties with the new position
       this.updateBuildingProperties(newY, newBuilding, height);
     } else {
       // If no valid position is found after the maximum attempts
-      console.warn(`[BuildingBehavior] Failed to find valid position after ${MAX_ATTEMPTS} attempts`);
     }
   }
 
@@ -2326,18 +1998,10 @@ class BuildingBehavior extends EntityBehavior {
 
       // If the new building overlaps with an existing building in the same column, return true to indicate an invalid position
       if (sameColumn && topOverlap && bottomOverlap) {
-        console.log(`[BuildingBehavior] Collision detected with "${building.name}" at Y=${building.position.y}`);
         return true;
       }
       return false;
     });
-
-    // Log the validation result
-    // console.log(`[BuildingBehavior] Position validation result:`, {
-    //   y,
-    //   height,
-    //   isValid,
-    // });
 
     return isValid;
   }
@@ -2350,7 +2014,6 @@ class VehicleBehaviorBase extends EntityBehavior {
   constructor(entity, options = {}) {
     super(entity);
     this.baseSpeed = options.baseSpeed || CONFIG.MOVEMENT.BASE_MOVE_SPEED;
-    // Remove hardcoded value, use config or default
     this.minDistance = options.minDistance || this.entity.config.SAFE_DISTANCE.DEFAULT;
     this.stopped = false;
     this.ignoreCollisions = options.ignoreCollisions || false;
@@ -2385,8 +2048,6 @@ class VehicleBehaviorBase extends EntityBehavior {
   }
 
   handleMovementBlocked() {
-    console.log(`yo movment blocked`);
-
     this.stopped = true;
     setTimeout(() => {
       this.stopped = false;
@@ -2452,71 +2113,45 @@ class ParkedDeathmachineBehavior extends VehicleBehaviorBase {
     this.soundManager = null;
     this.hasPlayedDoorSound = false;
 
-    // this.shouldOpenDoor = false;
-
-    // console.log(`[ParkedDM] Created:`, {
-    //   id: entity.id,
-    //   position: { x: entity.position.x, y: entity.position.y },
-    //   baseSpeed: this.baseSpeed,
-    //   dimensions: { width: entity.width, height: entity.height },
-    // });
+    this.doorWarning = false;
+    this.doorWarningFrames = 0;
   }
 
-  // update() {
-  //   // Track movement
-  //   const hasntMoved = this.entity.position.x === this.lastPosition.x && this.entity.position.y === this.lastPosition.y;
-
-  //   if (hasntMoved) {
-  //     this.stuckFrames++;
-  //     if (this.stuckFrames % 60 === 0) {
-  //       // Log every second
-  //       console.log(`[ParkedDM] STUCK for ${this.stuckFrames} frames:`, {
-  //         id: this.entity.id,
-  //         position: { x: this.entity.position.x, y: this.entity.position.y },
-  //         stopped: this.stopped,
-  //         baseSpeed: this.baseSpeed,
-  //         nearbyVehicles: this.getNearbyVehicles(),
-  //       });
-  //     }
-  //   } else {
-  //     this.stuckFrames = 0;
-  //   }
-
-  //   // Regular movement handling
-  //   if (this.stopped) {
-  //     console.log(`[ParkedDM] Stopped state:`, {
-  //       id: this.entity.id,
-  //       position: { x: this.entity.position.x, y: this.entity.position.y },
-  //       stuckFrames: this.stuckFrames,
-  //     });
-  //   } else {
-  //     super.update();
-  //   }
-
-  //   // Track position for next frame
-  //   this.lastPosition = { ...this.entity.position };
-
-  //   // Animation update
-  //   if (this.hasAnimation) {
-  //     this.updateAnimation();
-  //   }
-  // }
+  isFlashing() {
+    // Single flash: only frames 2-4 (very brief)
+    if (this.doorWarning && this.doorWarningFrames >= 2 && this.doorWarningFrames <= 4) {
+      return true;
+    }
+    return false;
+  }
 
   updateAnimation() {
     if (
       this.shouldOpenDoor &&
       !this.doorAnimationActive &&
-      this.entity.position.y >= this.doorOpenY &&
+      !this.doorWarning &&
+      this.entity.position.y >= this.doorOpenY - 5 &&
       this.entity.position.y <= this.doorOpenY + 2
     ) {
-      this.doorAnimationActive = true;
+      this.doorWarning = true;
+      this.doorWarningFrames = 0;
+    }
 
-      if (!this.hasPlayedDoorSound && this.soundManager) {
-        this.soundManager.play("doorOpening", 0.5);
-        this.hasPlayedDoorSound = true;
+    if (this.doorWarning) {
+      this.doorWarningFrames++;
+
+      // Reduced from 15 to 5 frames
+      if (this.doorWarningFrames > 5) {
+        this.doorAnimationActive = true;
+        this.doorWarning = false;
+
+        if (!this.hasPlayedDoorSound && this.soundManager) {
+          this.soundManager.play("doorOpening", 0.5);
+          this.hasPlayedDoorSound = true;
+        }
+
+        this.updateDoorState();
       }
-
-      this.updateDoorState();
     }
 
     if (
@@ -2556,8 +2191,6 @@ class ParkedDeathmachineBehavior extends VehicleBehaviorBase {
   }
 
   updateDoorHitbox() {
-    // console.log("yoooo");
-
     if (this.doorHitbox) {
       this.doorHitbox.y = this.entity.position.y + 1;
     }
@@ -2589,11 +2222,6 @@ class ParkedDeathmachineBehavior extends VehicleBehaviorBase {
   }
 
   handleMovementBlocked() {
-    // console.log(`yo [ParkedDM] Movement blocked:`, {
-    //   id: this.entity.id,
-    //   position: { x: this.entity.position.x, y: this.entity.position.y },
-    //   nearbyVehicles: this.getNearbyVehicles(),
-    // });
     super.handleMovementBlocked();
   }
 }
@@ -2632,7 +2260,6 @@ class TTCBehavior extends VehicleBehaviorBase {
         this.isAtStop = true;
         this.stopTimer = this.getRandomStopDuration();
         this.wanderersSpawnedAtStop = false; // Reset flag when starting new stop
-        console.log("TTC stopping at:", this.entity.position);
 
         // Play stop sound
         if (this.soundManager) {
@@ -2646,7 +2273,6 @@ class TTCBehavior extends VehicleBehaviorBase {
 
     if (this.isAtStop) {
       if (!this.wanderersSpawnedAtStop) {
-        console.log("Attempting to spawn wanderers at TTC stop");
         this.spawnWanderers();
       }
 
@@ -2655,12 +2281,6 @@ class TTCBehavior extends VehicleBehaviorBase {
         this.isAtStop = false;
         this.nextStopTime = this.getRandomStopTime();
 
-        // Play start sound
-        // if (this.soundManager) {
-        //   this.soundManager.play("ttcStart");
-        // }
-
-        console.log("TTC resuming movement");
         return;
       }
       return; // Stay stopped
@@ -2762,8 +2382,8 @@ class CrossingBehavior extends EntityBehavior {
     super(entity);
     this.state = "WAITING_TO_CROSS";
     this.targetX = CONFIG.LANES.SIDEWALK + 1;
-    this.moveSpeed = CONFIG.MOVEMENT.WANDERER_SPEED * 2;
-    this.baseSpeed = CONFIG.MOVEMENT.WANDERER_SPEED;
+    this.moveSpeed = CONFIG.MOVEMENT.HUMANBEING_SPEED * 2;
+    this.baseSpeed = CONFIG.MOVEMENT.HUMANBEING_SPEED;
     this.waitTime = 0;
     this.minWaitTime = 1;
     this.mergeAttempts = 0;
@@ -2839,12 +2459,12 @@ class CrossingBehavior extends EntityBehavior {
       height: this.entity.height,
     };
 
-    const nearbyEntities = this.entity.spatialManager.grid
+    const nearbyDarlings = this.entity.spatialManager.grid
       .getNearbyDarlings(position, 3)
-      .filter((entity) => entity !== this.entity && (entity.type === DarlingType.WANDERER || entity.type === DarlingType.PARKED_DEATHMACHINE));
+      .filter((entity) => entity !== this.entity && (entity.type === DarlingType.HUMANBEING || entity.type === DarlingType.PARKED_DEATHMACHINE));
 
-    return !nearbyEntities.some((other) => {
-      if (other.type === DarlingType.WANDERER) {
+    return !nearbyDarlings.some((other) => {
+      if (other.type === DarlingType.HUMANBEING) {
         return Math.abs(other.position.x - position.x) < 0.5 && Math.abs(other.position.y - position.y) < 2;
       }
 
@@ -2872,7 +2492,7 @@ class CrossingBehavior extends EntityBehavior {
   checkAndResolveOverlaps() {
     const nearbyWanderers = this.entity.spatialManager.grid
       .getNearbyDarlings(this.entity.position, 1)
-      .filter((other) => other !== this.entity && other.type === DarlingType.WANDERER);
+      .filter((other) => other !== this.entity && other.type === DarlingType.HUMANBEING);
 
     for (const other of nearbyWanderers) {
       if (this.isOverlapping(other)) {
@@ -2891,7 +2511,7 @@ class CrossingBehavior extends EntityBehavior {
     const safeDistance = 3;
     const nearbyWanderers = this.entity.spatialManager.grid
       .getNearbyDarlings(new Position(this.targetX, this.entity.position.y), safeDistance)
-      .filter((other) => other !== this.entity && other.type === DarlingType.WANDERER && Math.abs(other.position.x - this.targetX) < 0.5);
+      .filter((other) => other !== this.entity && other.type === DarlingType.HUMANBEING && Math.abs(other.position.x - this.targetX) < 0.5);
 
     if (nearbyWanderers.length === 0) return true;
 
@@ -2928,7 +2548,7 @@ class CrossingBehavior extends EntityBehavior {
   }
 
   convertToRegularWanderer() {
-    this.entity.art = DARLINGS.WANDERER.DOWN.art;
+    this.entity.art = DARLINGS.HUMANBEING.DOWN.art;
     this.entity.position.x = this.targetX;
     this.entity.cssClass = "sidewalk-wanderer"; // Update CSS class
     this.entity.behavior = new WandererBehavior(this.entity, false);
@@ -2943,9 +2563,9 @@ class CrossingBehavior extends EntityBehavior {
 
     if (!spatialManager?.grid) return false;
 
-    const nearbyEntities = spatialManager.grid.getNearbyDarlings(this.entity.position, dangerZone);
+    const nearbyDarlings = spatialManager.grid.getNearbyDarlings(this.entity.position, dangerZone);
 
-    return !nearbyEntities.some(
+    return !nearbyDarlings.some(
       (entity) =>
         (entity.type === DarlingType.TTC_LANE_DEATHMACHINE || entity.type === DarlingType.ONCOMING_DEATHMACHINE) &&
         Math.abs(entity.position.x - currentLane) < dangerZone &&
@@ -2960,7 +2580,7 @@ class WandererBehavior extends EntityBehavior {
     this.entity = entity;
     this.config = entity.config;
     this.isGoingUp = isGoingUp;
-    this.baseSpeed = isGoingUp ? -this.config.MOVEMENT.WANDERER_SPEED : this.config.MOVEMENT.WANDERER_SPEED;
+    this.baseSpeed = isGoingUp ? -this.config.MOVEMENT.HUMANBEING_SPEED : this.config.MOVEMENT.HUMANBEING_SPEED;
     this.lane = isGoingUp ? this.config.LANES.SIDEWALK + 2 : this.config.LANES.SIDEWALK + 1;
     this.entity.position.x = this.lane;
   }
@@ -3000,12 +2620,12 @@ class WandererBehavior extends EntityBehavior {
       height: this.entity.height,
     };
 
-    const nearbyEntities = this.entity.spatialManager.grid
+    const nearbyDarlings = this.entity.spatialManager.grid
       .getNearbyDarlings(position, 3)
-      .filter((entity) => entity !== this.entity && (entity.type === DarlingType.WANDERER || entity.type === DarlingType.PARKED_DEATHMACHINE));
+      .filter((entity) => entity !== this.entity && (entity.type === DarlingType.HUMANBEING || entity.type === DarlingType.PARKED_DEATHMACHINE));
 
-    return !nearbyEntities.some((other) => {
-      if (other.type === DarlingType.WANDERER) {
+    return !nearbyDarlings.some((other) => {
+      if (other.type === DarlingType.HUMANBEING) {
         return Math.abs(other.position.x - position.x) < 0.5 && Math.abs(other.position.y - position.y) < 2;
       }
 
@@ -3037,7 +2657,7 @@ class WandererBehavior extends EntityBehavior {
 
     return this.entity.spatialManager.grid
       .getNearbyDarlings(this.entity.position, 3)
-      .filter((entity) => entity !== this.entity && (entity.type === DarlingType.WANDERER || entity.type === DarlingType.PARKED_DEATHMACHINE));
+      .filter((entity) => entity !== this.entity && (entity.type === DarlingType.HUMANBEING || entity.type === DarlingType.PARKED_DEATHMACHINE));
   }
 }
 
@@ -3070,13 +2690,16 @@ class TTCLaneDeathmachineBehavior extends VehicleBehaviorBase {
       minDistance: entity.config.SAFE_DISTANCE.TTC_LANE_DEATHMACHINE,
       ignoreCollisions: false,
     });
-    // entity.config.PROBABILITIES.PARKING findme
-    this.willPark = Math.random() < 0.6;
+    this.willPark = Math.random() < 0.35; // how likely it is to park
     this.isParking = false;
     this.targetLane = entity.config.LANES.PARKED;
     this.originalSpeed = this.baseSpeed;
     this.parkingAttempts = 0;
-    this.maxAttempts = 13; // Add max attempts limit
+    this.maxAttempts = 13;
+
+    this.parkingWarning = false;
+    this.parkingWarningFrames = 0;
+    this.flashState = false;
   }
 
   handleParking() {
@@ -3112,28 +2735,19 @@ class TTCLaneDeathmachineBehavior extends VehicleBehaviorBase {
         this.entity.spatialManager.movementCoordinator.moveEntity(this.entity, newPosition);
 
         if (distanceToLane < 0.5) {
-          // console.log("At parking position, transforming");
           this.transformToParkedDeathmachine();
         }
         return;
       }
     }
-
-    // console.log("All parking movements blocked");
     // If we get here, movement was blocked - force transform after a few attempts
     if (this.parkingAttempts > 3) {
-      // console.log("Movement blocked too many times, forcing transformation");
       this.transformToParkedDeathmachine();
     }
   }
   transformToParkedDeathmachine() {
     const spatialManager = this.entity.spatialManager;
     const targetPosition = new Position(this.targetLane, this.entity.position.y);
-
-    console.log("Original vehicle position:", {
-      x: this.entity.position.x,
-      y: this.entity.position.y,
-    });
 
     // Get nearby darlings before transformation
     const nearbyDarlings = spatialManager.grid.getNearbyDarlings(targetPosition, this.entity.config.SAFE_DISTANCE.PARKED * 2);
@@ -3170,31 +2784,41 @@ class TTCLaneDeathmachineBehavior extends VehicleBehaviorBase {
     }
 
     if (validPosition) {
-      console.log("Found valid position at y:", safeY);
       spatialManager.addEntityToSpatialManagementSystem(parkedDeathmachine);
       spatialManager.removeEntityFromSpatialManagementSystem(this.entity);
-
-      console.log("=== Parking Transform Complete ===");
-      console.log("Final parked deathMachine position:", {
-        x: parkedDeathmachine.position.x,
-        y: parkedDeathmachine.position.y,
-        hitbox: parkedDeathmachine.getHitbox(),
-      });
     } else {
-      console.warn("Failed to find valid parking position after", attempts, "attempts");
       this.willPark = false;
       this.isParking = false;
     }
+  }
+
+  isFlashing() {
+    // Single flash: only frames 2-4 (very brief)
+    if (this.parkingWarning && this.parkingWarningFrames >= 2 && this.parkingWarningFrames <= 4) {
+      return true;
+    }
+    return false;
   }
   update() {
     if (this.isParking) {
       this.handleParking();
     } else if (this.willPark) {
-      if (this.canStartParkingManeuver()) {
-        console.log("Starting parking maneuver");
-        this.isParking = true;
-        this.parkingAttempts = 0;
+      if (!this.parkingWarning && this.canStartParkingManeuver()) {
+        this.parkingWarning = true;
+        this.parkingWarningFrames = 0;
       }
+
+      if (this.parkingWarning) {
+        this.parkingWarningFrames++;
+
+        // Reduced from 20 to 12 frames
+        if (this.parkingWarningFrames > 12) {
+          this.isParking = true;
+          this.parkingWarning = false;
+          this.parkingAttempts = 0;
+        }
+      }
+
       super.update();
     } else {
       super.update();
@@ -3246,6 +2870,7 @@ class BaseEntity {
     }
   }
 
+  // STRICT: Full-size hitbox for entity-entity collisions (NO forgiveness)
   getHitbox() {
     return {
       x: this.position.x,
@@ -3254,16 +2879,43 @@ class BaseEntity {
       height: this.height,
     };
   }
-}
 
+  // FORGIVING: Smaller hitbox for player collisions (front and back only)
+  getPlayerCollisionHitbox() {
+    console.log("getPlayerCollisionHitbox called for:", this.type);
+    console.log("Config:", this.config?.COLLISION?.PLAYER_COLLISION_FORGIVENESS);
+
+    const forgiveness = this.config?.COLLISION?.PLAYER_COLLISION_FORGIVENESS?.[this.type];
+
+    console.log(`Forgiveness for ${this.type}:`, forgiveness);
+
+    if (!forgiveness) {
+      console.log("No forgiveness found, returning standard hitbox");
+      return this.getHitbox();
+    }
+
+    const strictHitbox = this.getHitbox();
+    const forgivingHitbox = {
+      x: strictHitbox.x,
+      y: strictHitbox.y + (forgiveness.front || 0),
+      width: strictHitbox.width,
+      height: strictHitbox.height - (forgiveness.front || 0) - (forgiveness.back || 0),
+    };
+
+    console.log("Strict hitbox:", strictHitbox);
+    console.log("Forgiving hitbox:", forgivingHitbox);
+
+    return forgivingHitbox;
+  }
+}
 class Wanderer extends BaseEntity {
   constructor(config, spawnConfig, isGoingUp = null, isTTCPassenger = false) {
-    super(config, spawnConfig, DarlingType.WANDERER);
+    super(config, spawnConfig, DarlingType.HUMANBEING);
 
     const wandererColor = peopleCol[Math.floor(Math.random() * peopleCol.length)];
 
     // Instead of using a random shape, use the full art template now that it includes body
-    const template = isGoingUp ? DARLINGS.WANDERER.UP : isTTCPassenger ? DARLINGS.WANDERER.CROSSING : DARLINGS.WANDERER.DOWN;
+    const template = isGoingUp ? DARLINGS.HUMANBEING.UP : isTTCPassenger ? DARLINGS.HUMANBEING.CROSSING : DARLINGS.HUMANBEING.DOWN;
 
     this.width = template.width;
     this.height = template.height;
@@ -3326,15 +2978,8 @@ class Building extends BaseEntity {
   static buildingIndex = 0;
 
   constructor(config, spawnY = null) {
-    // console.log("[Building] Creating new building:", {
-    //   spawnY,
-    //   nextSpawnY: Building.nextSpawnY,
-    //   buildingIndex: Building.buildingIndex,
-    // });
-
     // Reshuffle if we've used all buildings
     if (Building.buildingIndex >= Building.availableBuildings.length) {
-      console.log("[Building] Reshuffling building list");
       Building.availableBuildings = Building.shuffleArray([...TORONTO_BUILDINGS]);
       Building.buildingIndex = 0;
     }
@@ -3353,13 +2998,6 @@ class Building extends BaseEntity {
       calculatedY = config.GAME.HEIGHT - height - minSpacing;
     }
 
-    // console.log("[Building] Calculated spawn position:", {
-    //   building: selectedBuilding.name,
-    //   height,
-    //   calculatedY,
-    //   spacing: minSpacing,
-    // });
-
     const spawnConfig = {
       position: new Position(config.LANES.BUILDINGS, calculatedY),
     };
@@ -3375,17 +3013,9 @@ class Building extends BaseEntity {
     this.behavior = new BuildingBehavior(this);
 
     Building.nextSpawnY = calculatedY;
-
-    // console.log("[Building] Building created:", {
-    //   name: this.name,
-    //   position: this.position,
-    //   height: this.height,
-    //   width: this.width,
-    // });
   }
 
   static shuffleArray(array) {
-    console.log("[Building] Shuffling building array");
     const newArray = [...array];
     for (let i = newArray.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -3396,7 +3026,6 @@ class Building extends BaseEntity {
 
   getRandomBuildingColor() {
     const color = COLOURS.BUILDINGS[Math.floor(Math.random() * COLOURS.BUILDINGS.length)];
-    // console.log("[Building] Selected color:", color);
     return color;
   }
 }
@@ -3420,7 +3049,22 @@ class TTCLaneDeathmachine extends BaseEntity {
       x: this.position.x,
       y: this.position.y,
       width: this.width,
-      height: this.height - 1,
+      height: this.height,
+    };
+  }
+
+  getPlayerCollisionHitbox() {
+    const forgiveness = this.config?.COLLISION?.PLAYER_COLLISION_FORGIVENESS?.[this.type];
+
+    if (!forgiveness) {
+      return this.getHitbox();
+    }
+
+    return {
+      x: this.position.x,
+      y: this.position.y + (forgiveness.front || 0),
+      width: this.width,
+      height: this.height - 1 - (forgiveness.front || 0) - (forgiveness.back || 0),
     };
   }
 
@@ -3447,7 +3091,22 @@ class OncomingDeathmachine extends BaseEntity {
       x: this.position.x,
       y: this.position.y,
       width: this.width,
-      height: this.height - 1,
+      height: this.height,
+    };
+  }
+
+  getPlayerCollisionHitbox() {
+    const forgiveness = this.config?.COLLISION?.PLAYER_COLLISION_FORGIVENESS?.[this.type];
+
+    if (!forgiveness) {
+      return this.getHitbox();
+    }
+
+    return {
+      x: this.position.x,
+      y: this.position.y + (forgiveness.front || 0),
+      width: this.width,
+      height: this.height - 1 - (forgiveness.front || 0) - (forgiveness.back || 0),
     };
   }
 
@@ -3480,6 +3139,21 @@ class ParkedDeathmachine extends BaseEntity {
     };
   }
 
+  getPlayerCollisionHitbox() {
+    const forgiveness = this.config?.COLLISION?.PLAYER_COLLISION_FORGIVENESS?.[this.type];
+
+    if (!forgiveness) {
+      return this.getHitbox();
+    }
+
+    return {
+      x: this.position.x + 2, // Keep side offset
+      y: this.position.y + (forgiveness.front || 0),
+      width: 5, // Sides unchanged
+      height: this.height - (forgiveness.front || 0) - (forgiveness.back || 0),
+    };
+  }
+
   getRandomVehicleColor() {
     return COLOURS.VEHICLES[Math.floor(Math.random() * COLOURS.VEHICLES.length)];
   }
@@ -3490,12 +3164,12 @@ class ParkedDeathmachine extends BaseEntity {
 
 // class Wanderer extends BaseEntity {
 //   constructor(config, spawnConfig, isGoingUp) {
-//     super(config, spawnConfig, DarlingType.WANDERER);
+//     super(config, spawnConfig, DarlingType.HUMANBEING);
 
 //     const wandererColor = peopleCol[Math.floor(Math.random() * peopleCol.length)];
 
 //     // Choose art based on direction
-//     const template = isGoingUp ? DARLINGS.WANDERER.UP : DARLINGS.WANDERER.DOWN;
+//     const template = isGoingUp ? DARLINGS.HUMANBEING.UP : DARLINGS.HUMANBEING.DOWN;
 //     this.width = template.width;
 //     this.height = template.height;
 //     this.art = template.art;
@@ -3655,7 +3329,6 @@ class GameStateManager {
   getRandomDeathMessage(type) {
     const messages = MESSAGES.DEATH[type];
     if (!messages?.length) {
-      console.log(`oops no death message ${type}`);
       return {
         reason: "X X!",
         funny: "Sometimes things just happen",
@@ -3664,22 +3337,37 @@ class GameStateManager {
     return messages[Math.floor(Math.random() * messages.length)];
   }
 
-  showDeathMessage(reason) {
-    const messageEl = document.getElementById("pregame-msg-box");
-    if (!messageEl) return;
+showDeathMessage(reason) {
+  const messageEl = document.getElementById("pregame-msg-box");
+  if (!messageEl) return;
 
-    const message = this.getRandomDeathMessage(reason);
-    const randomFace = cuteDeathFaces[Math.floor(Math.random() * cuteDeathFaces.length)];
+  const message = this.getRandomDeathMessage(reason);
+  const randomFace = cuteDeathFaces[Math.floor(Math.random() * cuteDeathFaces.length)];
 
-    messageEl.innerHTML = `
-      <p>${message.funny}</p>
-      <span class="cute-death-face">${randomFace}</span>
-    `;
-    messageEl.style.display = "block";
+  // Map reasons to translation keys
+  const reasonMap = {
+    TTC: "deathTTC",
+    TRAFFIC: "deathTraffic",
+    ONCOMING_DEATHMACHINE: "deathTraffic",
+    PARKEDDEATHMACHINE: "deathParked",
+    DOOR: "deathDoor",
+    HUMANBEING: "deathHuman",
+    TRACKS: "deathTracks",
+    BUILDING: "deathBuilding",
+  };
 
-    return { reason, message, randomFace };
-  }
+  const reasonText = t(reasonMap[reason] || "deathDefault");
 
+  messageEl.classList.add("death-message");
+  messageEl.innerHTML = `
+    <p class="death-reason">${reasonText}</p>
+    <p>${message.funny}</p>
+    <span class="cute-death-face">${randomFace}</span>
+  `;
+  messageEl.style.display = "block";
+
+  return { reason, message, randomFace };
+}
   reset() {
     this.state = new GameState(this.config);
     const messageBox = document.getElementById("pregame-msg-box");
@@ -3723,24 +3411,6 @@ class GameStateManager {
     return true;
   }
 
-  // handleJump(direction) {
-  //   if (this.state.isJumping) return false;
-
-  //   const moveAmount = this.config.MOVEMENT.JUMP_AMOUNT;
-  //   if (direction === "left") {
-  //     this.state.currentLane = Math.max(this.state.currentLane - moveAmount, this.config.LANES.ONCOMING);
-  //   } else {
-  //     this.state.currentLane = Math.min(this.state.currentLane + moveAmount, this.config.LANES.BUILDINGS - 1);
-  //   }
-
-  //   this.state.isJumping = true;
-  //   setTimeout(() => {
-  //     this.state.isJumping = false;
-  //   }, this.config.MOVEMENT.JUMP_DURATION);
-
-  //   return true;
-  // }
-
   get isPaused() {
     return this.state.isPaused;
   }
@@ -3766,6 +3436,12 @@ class GameStateManager {
     this.state.currentLane = this.config.LANES.BIKE;
     this.score = 0;
     this.tutorialComplete = false;
+
+    const messageBox = document.getElementById("pregame-msg-box");
+    if (messageBox) {
+      messageBox.classList.remove("death-message"); // Remove the class
+      messageBox.textContent = "CLICK HERE/SPACEBAR to play ";
+    }
   }
 
   cleanup() {
@@ -3840,28 +3516,22 @@ class KeyboardControls extends BaseControl {
   setupKeyboardControls() {
     this.addEventListenerWithTracking(document, "keydown", (e) => {
       const keyStart = performance.now();
-      console.log(`⌨️  KEYBOARD: "${e.key}" at ${keyStart.toFixed(2)}ms`);
 
       if (!this.game.stateManager.isPlaying && !this.game.tutorialComplete) {
         if (e.key === "ArrowLeft") {
-          console.log("⌨️  KEYBOARD: LEFT tutorial");
           this.game.tutorialSystem.handleMove("left");
           const keyTotal = performance.now() - keyStart;
-          console.log(`⌨️  KEYBOARD LEFT: Tutorial complete in ${keyTotal.toFixed(2)}ms`);
           return;
         }
         if (e.key === "ArrowRight") {
-          console.log("⌨️  KEYBOARD: RIGHT tutorial");
           this.game.tutorialSystem.handleMove("right");
           const keyTotal = performance.now() - keyStart;
-          console.log(`⌨️  KEYBOARD RIGHT: Tutorial complete in ${keyTotal.toFixed(2)}ms`);
           return;
         }
       }
 
       if (!this.game.stateManager.isPlaying && this.game.tutorialComplete) {
         if (e.key === " " || e.key === "Spacebar" || e.key === "ArrowLeft" || e.key === "ArrowRight") {
-          console.log("⌨️  KEYBOARD: SPACE starting game");
           hideLangToggle();
 
           this.game.start();
@@ -3870,27 +3540,21 @@ class KeyboardControls extends BaseControl {
           gameInfoContainer.style.opacity = "1";
           gameInfoContainer.style.visibility = "visible";
           const keyTotal = performance.now() - keyStart;
-          console.log(`⌨️  KEYBOARD SPACE: Complete in ${keyTotal.toFixed(2)}ms`);
         }
         return;
       }
 
       if (e.key === "ArrowLeft") {
-        console.log("⌨️  KEYBOARD: LEFT game input");
         const inputStart = performance.now();
         this.handleInput("left", performance.now());
         const inputTime = performance.now() - inputStart;
         const keyTotal = performance.now() - keyStart;
-        console.log(`⌨️  KEYBOARD LEFT: Input=${inputTime.toFixed(2)}ms, Total=${keyTotal.toFixed(2)}ms`);
       } else if (e.key === "ArrowRight") {
-        console.log("⌨️  KEYBOARD: RIGHT game input");
         const inputStart = performance.now();
         this.handleInput("right", performance.now());
         const inputTime = performance.now() - inputStart;
         const keyTotal = performance.now() - keyStart;
-        console.log(`⌨️  KEYBOARD RIGHT: Input=${inputTime.toFixed(2)}ms, Total=${keyTotal.toFixed(2)}ms`);
       } else if (e.key === "p" || e.key === "P") {
-        console.log("⌨️  KEYBOARD: PAUSE");
         this.game.stateManager.togglePause();
       }
     });
@@ -4042,7 +3706,6 @@ class Controls {
 
 class TutorialSystem {
   constructor(game) {
-    // console.log("🎮 Initializing Tutorial System");
     this.game = game;
     this.config = game.config;
 
@@ -4066,7 +3729,6 @@ class TutorialSystem {
 
     // Check if user is on mobile
     this.isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    // console.log(`📱 Device type detected: ${this.isMobile ? "Mobile" : "Desktop"}`);
 
     // Initial visibility setup
     this.tutorialBike.style.opacity = "0";
@@ -4077,16 +3739,12 @@ class TutorialSystem {
   }
 
   init() {
-    // console.log("🎮 Starting tutorial initialization");
-
     // Show title elements
     if (this.titleBike) this.titleBike.style.opacity = "1";
     if (this.pregameTitle) this.pregameTitle.style.opacity = "1";
 
     // Add timer to show tutorial elements
     setTimeout(() => {
-      // console.log("⏰ Tutorial delay complete, showing tutorial elements");
-
       // Show tutorial elements with fade-in effect
       if (this.tutorialBike) {
         this.tutorialBike.style.transition = "opacity 0.5s ease-in-out";
@@ -4101,10 +3759,6 @@ class TutorialSystem {
       // Start with left control tutorial
       this.showLeftTutorial();
     }, 1500);
-
-    // Add event listeners
-    // this.addControlListeners();
-    // console.log("✅ Tutorial initialization complete");
   }
 
   showLeftTutorial() {
@@ -4132,16 +3786,11 @@ class TutorialSystem {
   }
 
   addControlListeners() {
-    // console.log("🎮 Setting up control listeners");
-    // Use existing control system
     const originalHandleInput = this.game.controls.handleInput;
     this.game.controls.handleInput = (direction, now) => {
-      // console.log(`🕹️ Control input received: ${direction}`);
       if (!this.game.state.isPlaying) {
-        // console.log("🎮 Game not started - handling as tutorial input");
         this.handleMove(direction);
       } else {
-        // console.log("🎮 Game started - passing to game controls");
         originalHandleInput.call(this.game.controls, direction, now);
       }
     };
@@ -4153,7 +3802,6 @@ class TutorialSystem {
 
     // Wrong direction AND tutorial not finished = show error
     if (direction !== this.currentStep && !tutorialFinished) {
-      // Play wrong sound
       if (this.game.soundManager) {
         this.game.soundManager.play("wrong", 0.4);
       }
@@ -4230,8 +3878,6 @@ class TutorialSystem {
   }
 
   completeTutorial() {
-    // console.log("🏁 Completing tutorial");
-
     // Clean up tutorial animations/styles
     this.tutorialBike.style.marginLeft = "0"; // Reset bike position
     this.leftHighlight.classList.remove("active");
@@ -4258,11 +3904,9 @@ class TutorialSystem {
 
       // Add start button listener
       this.startButton.addEventListener("click", () => {
-        // console.log("🎮 Start button clicked - beginning game");
         this.game.start();
 
         // Clean up tutorial elements
-        // console.log("🧹 Cleaning up tutorial elements");
         this.tutorialText.innerHTML = "";
         document.getElementById("pregame-msg-box").style.opacity = "0";
 
@@ -4291,293 +3935,166 @@ class TutorialSystem {
   }
 }
 
-class LoserLane {
-  constructor() {
-    this.initializeCore();
-    this.initializeSystems();
-    this.initializeTimers();
-    this.initializeSounds();
-    try {
-      this.initializeArduino();
-      game.arduino.write("test\n");
-    } catch (error) {
-      console.log("Arduino not available, continuing without it");
+// =========================================
+// DeathHandler - Manages death state and UI
+// =========================================
+
+class DeathHandler {
+  constructor(game) {
+    this.game = game;
+    this.config = game.config;
+    this.stateManager = game.stateManager;
+    this.soundManager = game.soundManager;
+    this.arduino = game.arduino;
+  }
+
+  handleDeath(reason) {
+    if (this.stateManager.state.isDead) return;
+
+    // Send Arduino command first
+    if (this.arduino) {
+      this.sendArduinoCommand("DEATH");
     }
-    this.initializeGameComponents();
-    this.lastAmbientSound = 0;
-    this.ambientSoundInterval = 50000; // 50 seconds
+
+    // Play collision sound immediately
+    this.playCollisionSound(reason);
+
+    // Set death state
+    this.setDeathState();
+
+    // Handle visual effects with small delay for Arduino
+    if (this.arduino && this.arduino.port && this.arduino.port.writable) {
+      setTimeout(() => {
+        this.applyDeathEffects(reason);
+      }, 10);
+    } else {
+      this.applyDeathEffects(reason);
+    }
   }
 
-  // === Initialization Methods ===
+  setDeathState() {
+    // Stop background music and play death sound
+    this.soundManager.stop("backgroundMusic");
+    this.soundManager.play("death", 1.0);
 
-  initializeCore() {
-    this.config = CONFIG;
-    this.eventListeners = new Map();
-    this.debug = true;
-    this.frameId = null;
-    this.tutorialComplete = false;
+    this.stateManager.state.isPaused = true;
+    this.stateManager.state.isDead = true;
+    this.stateManager.state.deathState = {
+      animation: 0,
+      x: Math.round(this.stateManager.currentLane),
+      y: this.stateManager.isJumping ? this.config.GAME.CYCLIST_Y - 1 : this.config.GAME.CYCLIST_Y,
+    };
   }
 
-  initializeSystems() {
-    this.soundManager = new SoundManager();
+  applyDeathEffects(reason) {
+    const gameScreen = document.getElementById("game-screen");
+    if (!gameScreen) return;
 
-    this.stateManager = new GameStateManager(this.config);
-    this.tutorialSystem = new TutorialSystem(this);
+    // Apply visual effects (red flash, shake) immediately
+    gameScreen.classList.add("screen-shake", "death-glitch-active");
 
-    // Pass the sound manager to the spatial manager
-    this.spatialManager = new SpatialManager(this.config, this.soundManager);
-    this.spatialManager.setGame(this);
+    const flashOverlay = document.createElement("div");
+    flashOverlay.className = "death-flash";
+    document.body.appendChild(flashOverlay);
 
-    this.renderGrid = new RenderGrid(this.config.GAME.WIDTH, this.config.GAME.HEIGHT);
-    this.renderer = new GameRenderer(this.config, this.renderGrid);
-  }
+    //Delay showing death message for 1.5 seconds
+    setTimeout(() => {
+      const messageInfo = this.stateManager.handleDeath(reason);
 
-  initializeTimers() {
-    this.initialLastMove = performance.now();
-    this.lastFrameTime = performance.now();
-  }
+      // Keep shake, red, and message for total of 2.5 seconds after message appears
+      setTimeout(() => {
+        gameScreen.classList.remove("screen-shake", "death-glitch-active");
+        flashOverlay.remove();
 
-  initializeArduino() {
-    try {
-      // Only initialize if Web Serial is supported
-      if (!("serial" in navigator)) {
-        console.log("Web Serial API not supported in this browser");
-        return;
-      }
-
-      this.arduino = new ArduinoWebSerial();
-
-      // Handle incoming lines from Arduino - use EXACT same path as keyboard
-      this.arduino.on("line", (line) => {
-        const eventStart = performance.now();
-        console.log(`🎮 Arduino RAW: "${line}" at ${eventStart.toFixed(2)}ms`);
-
-        if (line === "LEFT") {
-          console.log("🔄 Processing LEFT command...");
-
-          const startButton = document.getElementById("start-button");
-          if (startButton && startButton.classList.contains("visible") && !this.stateManager.isPlaying) {
-            console.log("🎯 LEFT: Clicking start button");
-            startButton.click();
-            const totalTime = performance.now() - eventStart;
-            console.log(`✅ LEFT: Start button complete in ${totalTime.toFixed(2)}ms`);
-            return;
-          }
-
-          console.log("🎮 LEFT: Creating fake keyboard event");
-          const fakeEventStart = performance.now();
-          const fakeEvent = new KeyboardEvent("keydown", {
-            key: "ArrowLeft",
-            code: "ArrowLeft",
-            bubbles: true,
-          });
-          const fakeEventTime = performance.now() - fakeEventStart;
-          console.log(`⚡ LEFT: Fake event created in ${fakeEventTime.toFixed(2)}ms`);
-
-          const dispatchStart = performance.now();
-          document.dispatchEvent(fakeEvent);
-          const dispatchTime = performance.now() - dispatchStart;
-          console.log(`🚀 LEFT: Event dispatched in ${dispatchTime.toFixed(2)}ms`);
-
-          const totalTime = performance.now() - eventStart;
-          console.log(`✅ LEFT: Total processing time ${totalTime.toFixed(2)}ms`);
-        } else if (line === "RIGHT") {
-          console.log("🔄 Processing RIGHT command...");
-
-          const startButton = document.getElementById("start-button");
-          if (startButton && startButton.classList.contains("visible") && !this.stateManager.isPlaying) {
-            console.log("🎯 RIGHT: Clicking start button");
-            startButton.click();
-            const totalTime = performance.now() - eventStart;
-            console.log(`✅ RIGHT: Start button complete in ${totalTime.toFixed(2)}ms`);
-            return;
-          }
-
-          console.log("🎮 RIGHT: Creating fake keyboard event");
-          const fakeEventStart = performance.now();
-          const fakeEvent = new KeyboardEvent("keydown", {
-            key: "ArrowRight",
-            code: "ArrowRight",
-            bubbles: true,
-          });
-          const fakeEventTime = performance.now() - fakeEventStart;
-          console.log(`⚡ RIGHT: Fake event created in ${fakeEventTime.toFixed(2)}ms`);
-
-          const dispatchStart = performance.now();
-          document.dispatchEvent(fakeEvent);
-          const dispatchTime = performance.now() - dispatchStart;
-          console.log(`🚀 RIGHT: Event dispatched in ${dispatchTime.toFixed(2)}ms`);
-
-          const totalTime = performance.now() - eventStart;
-          console.log(`✅ RIGHT: Total processing time ${totalTime.toFixed(2)}ms`);
+        // Hide the temporary message box before taking screenshot
+        const messageEl = document.getElementById("pregame-msg-box");
+        if (messageEl) {
+          messageEl.style.display = "none";
         }
-      });
 
-      this.arduino.on("connected", () => {
-        console.log("Arduino connected!");
-        // Update button text
-        const button = document.getElementById("connect-arduino");
-        if (button) button.textContent = "Disconnect Arduino";
-      });
-
-      this.arduino.on("disconnected", () => {
-        console.log("Arduino disconnected");
-        const button = document.getElementById("connect-arduino");
-        if (button) button.textContent = "Connect Arduino";
-      });
-
-      this.arduino.on("error", (error) => {
-        console.log("Arduino error:", error);
-      });
-
-      const connectButton = document.getElementById("connect-arduino");
-      if (connectButton) {
-        connectButton.addEventListener("click", async () => {
-          // Add visual feedback immediately
-          connectButton.textContent = "Connecting...";
-          connectButton.disabled = true;
-
-          try {
-            if (this.arduino.isConnected) {
-              await this.arduino.disconnect();
-              connectButton.textContent = "Connect Arduino";
-            } else {
-              // Check if Web Serial is supported
-              if (!this.arduino.isSupported()) {
-                alert("Web Serial API not supported. Please use Chrome or Edge browser.");
-                connectButton.textContent = "Connect Arduino";
-                connectButton.disabled = false;
-                return;
-              }
-
-              const success = await this.arduino.connect();
-              if (success) {
-                connectButton.textContent = "Disconnect Arduino";
-              } else {
-                connectButton.textContent = "Connect Arduino";
-              }
-            }
-          } catch (error) {
-            console.error("Connection error:", error);
-            alert(`Connection failed: ${error.message}`);
-            connectButton.textContent = "Connect Arduino";
-          }
-
-          connectButton.disabled = false;
+        html2canvas(gameScreen).then((canvas) => {
+          generateSocialCardNoSS(canvas, reason, this.stateManager.state.score, messageInfo.message.funny, messageInfo.randomFace, this.game);
         });
-      }
-    } catch (error) {
-      console.log("Failed to initialize Arduino connection:", error);
+      }, 2300); // 2.3 seconds after message appears
+    }, 1200); // Message appears 1.2 seconds after death
+  }
+
+  playCollisionSound(reason) {
+    switch (reason) {
+      case "ONCOMING_DEATHMACHINE":
+        this.soundManager.playRandomSound(this.soundManager.ouchSounds, 0.6);
+        this.soundManager.playRandomSound(this.soundManager.carHonkSounds, 0.8);
+        break;
+      case "TRAFFIC":
+        this.soundManager.playRandomSound(this.soundManager.ouchSounds, 0.6);
+        this.soundManager.playRandomSound(this.soundManager.carHonkSounds, 0.8);
+        break;
+      case "TTC":
+        this.soundManager.playRandomSound(this.soundManager.ouchSounds, 0.6);
+        this.soundManager.playRandomSound(this.soundManager.ttcCollisionSounds, 0.8);
+        break;
+      case "PARKEDDEATHMACHINE":
+        this.soundManager.play("hitCar", 0.7);
+        this.soundManager.playRandomSound(this.soundManager.ouchSounds, 0.6);
+        this.soundManager.playRandomSound(this.soundManager.carHonkSounds, 0.8);
+        break;
+      case "DOOR":
+        this.soundManager.play("hitCarDoor", 0.7);
+        this.soundManager.playRandomSound(this.soundManager.ouchSounds, 0.6);
+        this.soundManager.playRandomSound(this.soundManager.carHonkSounds, 0.8);
+        break;
+      case "HUMANBEING":
+        this.soundManager.playRandomSound(this.soundManager.ouchSounds, 0.6);
+        this.soundManager.playRandomSound(this.soundManager.personHitSounds, 0.6);
+        break;
+      case "TRACKS":
+        // Currently commented out in original
+        break;
+      case "BUILDING":
+        this.soundManager.play("hitBuilding", 0.8);
+        break;
+      default:
+        this.soundManager.play("hitCar", 0.7);
+        break;
     }
   }
 
-  initializeSounds() {
-    this.soundManager.setupMuteButton();
-
-    this.soundManager.addSound("backgroundMusic", "sounds/background.mp3", true);
-    this.soundManager.addSound("start", "sounds/start.mp3");
-    this.soundManager.addSound("wrong", "sounds/wrong.mp3");
-
-    this.soundManager.addSound("jump", "sounds/jump.mp3");
-    this.soundManager.addSound("death", "sounds/death.mp3");
-
-    // TTC sounds
-    this.soundManager.addSound("ttcBell1", "sounds/ttcBell1.mp3");
-    this.soundManager.addSound("ttcBell2", "sounds/ttcBell2.mp3");
-    this.soundManager.addSound("ttcBell3", "sounds/ttcBell3.mp3");
-    this.soundManager.addSound("ttcHorn", "sounds/ttcHorn.mp3");
-
-    this.soundManager.addSound("ouch1", "sounds/ouch1.mp3");
-    this.soundManager.addSound("ouch2", "sounds/ouch2.mp3");
-    this.soundManager.addSound("ouch3", "sounds/ouch3.mp3");
-    this.soundManager.addSound("ouch4", "sounds/ouch4.mp3");
-
-    this.soundManager.addSound("carHonk1", "sounds/carHonk1.mp3");
-    this.soundManager.addSound("carHonk2", "sounds/carHonk2.mp3");
-    this.soundManager.addSound("carHonk3", "sounds/carHonk3.mp3");
-    this.soundManager.addSound("carHonk4", "sounds/carHonk4.mp3");
-    this.soundManager.addSound("carHonk5", "sounds/carHonk5.mp3");
-    this.soundManager.addSound("carHonk6", "sounds/carHonk6.mp3");
-    this.soundManager.addSound("carHonk7", "sounds/carHonk7.mp3");
-    this.soundManager.addSound("carHonk8", "sounds/carHonk8.mp3");
-    this.soundManager.addSound("carHonk9", "sounds/carHonk9.mp3");
-    this.soundManager.addSound("carHonk10", "sounds/carHonk10.mp3");
-    this.soundManager.addSound("carHonk11", "sounds/carHonk11.mp3");
-    this.soundManager.addSound("carHonk12", "sounds/carHonk12.mp3");
-    this.soundManager.addSound("carHonk13", "sounds/carHonk13.mp3");
-    this.soundManager.addSound("carHonk14", "sounds/carHonk14.mp3");
-    this.soundManager.addSound("carHonk15", "sounds/carHonk15.mp3");
-
-    // Collision sounds
-    this.soundManager.addSound("hitPerson1", "sounds/personHit1.mp3");
-    this.soundManager.addSound("hitPerson2", "sounds/personHit2.mp3");
-    this.soundManager.addSound("hitCarDoor", "sounds/hitCarDoor.mp3");
-    this.soundManager.addSound("hitCar", "sounds/hitCar.mp3");
-    this.soundManager.addSound("hitTTC", "sounds/hitTTC.mp3");
-    this.soundManager.addSound("hitTracks", "sounds/hitTracks.mp3");
-    this.soundManager.addSound("hitBuilding", "sounds/hitBuilding.mp3"); // NEW
-    this.soundManager.addSound("carHitsUs", "sounds/carHitsUs.mp3");
-
-    // Interactive sounds
-    this.soundManager.addSound("doorOpening", "sounds/doorOpening.mp3"); // NEW
-
-    // Ambient traffic sounds
-    this.soundManager.addSound("traffic1", "sounds/traffic1.mp3");
-    this.soundManager.addSound("traffic2", "sounds/traffic2.mp3");
-    this.soundManager.addSound("traffic3", "sounds/traffic3.mp3");
-    this.soundManager.addSound("carMusic1", "sounds/carMusic1.mp3");
-    this.soundManager.addSound("carMusic2", "sounds/carMusic2.mp3");
-
-    // Create sound arrays
-    this.soundManager.carHonkSounds = [
-      "carHonk1",
-      "carHonk2",
-      "carHonk3",
-      "carHonk4",
-      "carHonk5",
-      "carHonk6",
-      "carHonk7",
-      "carHonk8",
-      "carHonk9",
-      "carHonk10",
-      "carHonk11",
-      "carHonk12",
-      "carHonk13",
-      "carHonk14",
-      "carHonk15",
-    ];
-    this.soundManager.carCrashSounds = ["hitCar", "hitCarDoor"];
-    this.soundManager.personHitSounds = ["hitPerson1", "hitPerson2"];
-    this.soundManager.ouchSounds = ["ouch1", "ouch2", "ouch3", "ouch4"];
-
-    this.soundManager.ttcCollisionSounds = ["ttcHorn"];
-    this.soundManager.trackSounds = ["hitTracks"];
-    this.soundManager.ttcEntranceSounds = ["ttcBell1", "ttcBell2", "ttcBell3"];
-    this.soundManager.ambientSounds = ["traffic1", "traffic2", "traffic3", "carMusic1", "carMusic2"];
+  sendArduinoCommand(command) {
+    if (this.arduino && this.arduino.isConnected) {
+      console.log(`Sending to Arduino: ${command}`);
+      this.arduino.write(command + "\n");
+    }
   }
+}
 
-  initializeGameComponents() {
-    this.initializeGameWorld();
-    this.clusterManager = new VehicleClusterManager(CONFIG);
-    this.controls = new Controls(this);
-    this.settingsManager = new SettingsManager(this);
+// =========================================
+// EntityManager - Manages entity spawning and lifecycle
+// =========================================
+
+class EntityManager {
+  constructor(game) {
+    this.game = game;
+    this.config = game.config;
+    this.spatialManager = game.spatialManager;
+    this.soundManager = game.soundManager;
+    this.clusterManager = new VehicleClusterManager(this.config);
   }
 
   initializeGameWorld() {
     this.spatialManager.darlings.clear();
     this.initializeBuildings();
     this.initializeParkedDeathMachines();
-    this.bike = this.createBike();
-    this.spatialManager.addEntityToSpatialManagementSystem(this.bike);
-  }
 
-  // === Entity Creation Methods ===
+    const bike = this.createBike();
+    this.spatialManager.addEntityToSpatialManagementSystem(bike);
+    return bike;
+  }
 
   createBike() {
     const bikeEntity = new BaseEntity(
       this.config,
       {
-        position: new Position(this.stateManager.currentLane, CONFIG.GAME.CYCLIST_Y),
+        position: new Position(this.game.stateManager.currentLane, CONFIG.GAME.CYCLIST_Y),
       },
       DarlingType.BIKE
     );
@@ -4641,14 +4158,245 @@ class LoserLane {
     }
   }
 
-  sendArduinoCommand(command) {
+  spawnDarlings() {
+    const spawnRules = [
+      { type: DarlingType.TTC, rate: CONFIG.SPAWN_RATES.TTC },
+      { type: DarlingType.TTC_LANE_DEATHMACHINE, rate: CONFIG.SPAWN_RATES.TTC_LANE_DEATHMACHINE },
+      { type: DarlingType.ONCOMING_DEATHMACHINE, rate: CONFIG.SPAWN_RATES.ONCOMING_DEATHMACHINE },
+      { type: DarlingType.PARKED_DEATHMACHINE, rate: CONFIG.SPAWN_RATES.PARKED_DEATHMACHINE },
+      { type: DarlingType.HUMANBEING, rate: CONFIG.SPAWN_RATES.HUMANBEING },
+    ];
+
+    spawnRules.forEach(({ type, rate }) => {
+      if (Math.random() < rate) {
+        const entity = this.spatialManager.spawnManager.spawnEntity(type);
+        if (entity) {
+          entity.setSoundManager(this.soundManager);
+          this.spatialManager.addEntityToSpatialManagementSystem(entity);
+        }
+      }
+    });
+  }
+
+  cleanup() {
+    this.clusterManager.cleanup();
+  }
+}
+
+// =========================================
+// ArduinoController - Manages Arduino hardware interface
+// =========================================
+
+class ArduinoController {
+  constructor() {
+    this.arduino = null;
+    this.isAvailable = false;
+  }
+
+  initialize() {
+    try {
+      if (!("serial" in navigator)) {
+        console.log("Web Serial API not supported in this browser");
+        return false;
+      }
+
+      this.arduino = new ArduinoWebSerial();
+      this.setupEventHandlers();
+      this.setupConnectButton();
+      this.isAvailable = true;
+      return true;
+    } catch (error) {
+      console.log("Failed to initialize Arduino connection:", error);
+      return false;
+    }
+  }
+
+  setupEventHandlers() {
+    this.arduino.on("line", (line) => {
+      const eventStart = performance.now();
+
+      if (line === "LEFT" || line === "RIGHT") {
+        this.handleArduinoInput(line, eventStart);
+      }
+    });
+
+    this.arduino.on("connected", () => {
+      const button = document.getElementById("connect-arduino");
+      if (button) button.textContent = "Disconnect Arduino";
+    });
+
+    this.arduino.on("disconnected", () => {
+      const button = document.getElementById("connect-arduino");
+      if (button) button.textContent = "Connect Arduino";
+    });
+
+    this.arduino.on("error", (error) => {});
+  }
+
+  handleArduinoInput(direction, eventStart) {
+    const startButton = document.getElementById("start-button");
+    if (startButton && startButton.classList.contains("visible")) {
+      startButton.click();
+      const totalTime = performance.now() - eventStart;
+      return;
+    }
+
+    const arrowKey = direction === "LEFT" ? "ArrowLeft" : "ArrowRight";
+    const fakeEvent = new KeyboardEvent("keydown", {
+      key: arrowKey,
+      code: arrowKey,
+      bubbles: true,
+    });
+
+    document.dispatchEvent(fakeEvent);
+    const totalTime = performance.now() - eventStart;
+  }
+
+  setupConnectButton() {
+    const connectButton = document.getElementById("connect-arduino");
+    if (!connectButton) return;
+
+    connectButton.addEventListener("click", async () => {
+      connectButton.textContent = "Connecting...";
+      connectButton.disabled = true;
+
+      try {
+        if (this.arduino.isConnected) {
+          await this.arduino.disconnect();
+          connectButton.textContent = "Connect Arduino";
+        } else {
+          if (!this.arduino.isSupported()) {
+            alert("Web Serial API not supported. Please use Chrome or Edge browser.");
+            connectButton.textContent = "Connect Arduino";
+            connectButton.disabled = false;
+            return;
+          }
+
+          const success = await this.arduino.connect();
+          connectButton.textContent = success ? "Disconnect Arduino" : "Connect Arduino";
+        }
+      } catch (error) {
+        console.error("Connection error:", error);
+        alert(`Connection failed: ${error.message}`);
+        connectButton.textContent = "Connect Arduino";
+      }
+
+      connectButton.disabled = false;
+    });
+  }
+
+  sendCommand(command) {
     if (this.arduino && this.arduino.isConnected) {
       console.log(`Sending to Arduino: ${command}`);
       this.arduino.write(command + "\n");
     }
   }
 
-  // === Game Loop Methods ===
+  get isConnected() {
+    return this.arduino && this.arduino.isConnected;
+  }
+}
+
+class LoserLane {
+  constructor() {
+    this.initializeCore();
+    this.initializeSystems();
+    this.initializeSubsystems();
+    this.initializeTimers();
+  }
+
+  initializeCore() {
+    this.config = CONFIG;
+    this.frameId = null;
+    this.tutorialComplete = false;
+  }
+
+  initializeSystems() {
+    this.soundManager = new SoundManager();
+    this.soundManager.setupMuteButton();
+    this.initializeSounds();
+
+    this.stateManager = new GameStateManager(this.config);
+    this.tutorialSystem = new TutorialSystem(this);
+
+    this.spatialManager = new SpatialManager(this.config, this.soundManager);
+    this.spatialManager.setGame(this);
+
+    this.renderGrid = new RenderGrid(this.config.GAME.WIDTH, this.config.GAME.HEIGHT);
+    this.renderer = new GameRenderer(this.config, this.renderGrid);
+  }
+
+  initializeSubsystems() {
+    this.arduinoController = new ArduinoController();
+    this.arduinoController.initialize();
+    this.arduino = this.arduinoController.arduino; // Backward compatibility
+
+    this.entityManager = new EntityManager(this);
+    this.deathHandler = new DeathHandler(this);
+
+    this.controls = new Controls(this);
+    this.settingsManager = new SettingsManager(this);
+
+    this.bike = this.entityManager.initializeGameWorld();
+
+    // Backward compatibility - expose clusterManager
+    this.clusterManager = this.entityManager.clusterManager;
+
+    this.lastAmbientSound = 0;
+    this.ambientSoundInterval = 50000;
+  }
+
+  initializeTimers() {
+    this.initialLastMove = performance.now();
+    this.lastFrameTime = performance.now();
+  }
+
+  initializeSounds() {
+    this.soundManager.addSound("backgroundMusic", "sounds/background.mp3", true);
+    this.soundManager.addSound("start", "sounds/start.mp3");
+    this.soundManager.addSound("wrong", "sounds/wrong.mp3");
+    this.soundManager.addSound("jump", "sounds/jump.mp3");
+    this.soundManager.addSound("death", "sounds/death.mp3");
+
+    this.soundManager.addSound("ttcBell1", "sounds/ttcBell1.mp3");
+    this.soundManager.addSound("ttcBell2", "sounds/ttcBell2.mp3");
+    this.soundManager.addSound("ttcBell3", "sounds/ttcBell3.mp3");
+    this.soundManager.addSound("ttcHorn", "sounds/ttcHorn.mp3");
+
+    this.soundManager.addSound("ouch1", "sounds/ouch1.mp3");
+    this.soundManager.addSound("ouch2", "sounds/ouch2.mp3");
+    this.soundManager.addSound("ouch3", "sounds/ouch3.mp3");
+    this.soundManager.addSound("ouch4", "sounds/ouch4.mp3");
+
+    for (let i = 1; i <= 15; i++) {
+      this.soundManager.addSound(`carHonk${i}`, `sounds/carHonk${i}.mp3`);
+    }
+
+    this.soundManager.addSound("hitPerson1", "sounds/personHit1.mp3");
+    this.soundManager.addSound("hitPerson2", "sounds/personHit2.mp3");
+    this.soundManager.addSound("hitCarDoor", "sounds/hitCarDoor.mp3");
+    this.soundManager.addSound("hitCar", "sounds/hitCar.mp3");
+    this.soundManager.addSound("hitTTC", "sounds/hitTTC.mp3");
+    this.soundManager.addSound("hitTracks", "sounds/hitTracks.mp3");
+    this.soundManager.addSound("hitBuilding", "sounds/hitBuilding.mp3");
+    this.soundManager.addSound("carHitsUs", "sounds/carHitsUs.mp3");
+    this.soundManager.addSound("doorOpening", "sounds/doorOpening.mp3");
+
+    this.soundManager.addSound("traffic1", "sounds/traffic1.mp3");
+    this.soundManager.addSound("traffic2", "sounds/traffic2.mp3");
+    this.soundManager.addSound("traffic3", "sounds/traffic3.mp3");
+    this.soundManager.addSound("carMusic1", "sounds/carMusic1.mp3");
+    this.soundManager.addSound("carMusic2", "sounds/carMusic2.mp3");
+
+    this.soundManager.carHonkSounds = Array.from({ length: 15 }, (_, i) => `carHonk${i + 1}`);
+    this.soundManager.carCrashSounds = ["hitCar", "hitCarDoor"];
+    this.soundManager.personHitSounds = ["hitPerson1", "hitPerson2"];
+    this.soundManager.ouchSounds = ["ouch1", "ouch2", "ouch3", "ouch4"];
+    this.soundManager.ttcCollisionSounds = ["ttcHorn"];
+    this.soundManager.trackSounds = ["hitTracks"];
+    this.soundManager.ttcEntranceSounds = ["ttcBell1", "ttcBell2", "ttcBell3"];
+    this.soundManager.ambientSounds = ["traffic1", "traffic2", "traffic3", "carMusic1", "carMusic2"];
+  }
 
   start() {
     this.soundManager.initializeAudio();
@@ -4657,9 +4405,9 @@ class LoserLane {
       this.lastFrameTime = performance.now();
       this.frameId = requestAnimationFrame((t) => this.update(t));
 
-      this.sendArduinoCommand("START");
+      this.arduinoController.sendCommand("START");
       this.soundManager.play("backgroundMusic", 0.3);
-      // Play start sound for any method of starting
+
       setTimeout(() => {
         this.soundManager.play("traffic1", 0.5);
         this.soundManager.play("start", 0.2);
@@ -4696,7 +4444,7 @@ class LoserLane {
   updateGameState() {
     this.spatialManager.update();
     this.updateBikePosition();
-    this.spawnDarlings();
+    this.entityManager.spawnDarlings();
     this.checkBikeCollisions();
     this.playAmbientSounds();
   }
@@ -4705,20 +4453,10 @@ class LoserLane {
     this.renderer.render(this.stateManager, this.spatialManager.darlings, this.bike);
   }
 
-  // === Player Control Methods ===
-
   movePlayer(direction, timestamp) {
     if (this.stateManager.moveBike(direction, timestamp)) {
       this.updateBikePosition();
-      // Play a subtle movement sound
-      this.soundManager.play("jump", 0.1); // Quieter for movement
-    }
-  }
-
-  handleJump(direction) {
-    if (this.stateManager.handleJump(direction)) {
-      this.updateBikePosition();
-      // this.soundManager.play("jump", 1.0);
+      this.soundManager.play("jump", 0.1);
     }
   }
 
@@ -4735,42 +4473,14 @@ class LoserLane {
     const now = Date.now();
     if (now - this.lastAmbientSound > this.ambientSoundInterval) {
       if (Math.random() < 0.3) {
-        // 30% chance every 5 seconds
         this.soundManager.playRandomSound(this.soundManager.ambientSounds, 0.2);
       }
       this.lastAmbientSound = now;
     }
   }
 
-  // === Entity Management Methods ===
-
-  spawnDarlings() {
-    const spawnRules = [
-      { type: DarlingType.TTC, rate: CONFIG.SPAWN_RATES.TTC },
-      { type: DarlingType.TTC_LANE_DEATHMACHINE, rate: CONFIG.SPAWN_RATES.TTC_LANE_DEATHMACHINE },
-      { type: DarlingType.ONCOMING_DEATHMACHINE, rate: CONFIG.SPAWN_RATES.ONCOMING_DEATHMACHINE },
-      { type: DarlingType.PARKED_DEATHMACHINE, rate: CONFIG.SPAWN_RATES.PARKED_DEATHMACHINE },
-      { type: DarlingType.WANDERER, rate: CONFIG.SPAWN_RATES.WANDERER },
-    ];
-
-    spawnRules.forEach(({ type, rate }) => {
-      if (Math.random() < rate) {
-        const entity = this.spatialManager.spawnManager.spawnEntity(type);
-        if (entity) {
-          // Pass soundManager to the entity
-          entity.setSoundManager(this.soundManager);
-          this.spatialManager.addEntityToSpatialManagementSystem(entity);
-        }
-      }
-    });
-  }
-
-  // === Collision Methods ===
-
   checkBikeCollisions() {
-    if (CONFIG.GAME.INVINCIBLE) {
-      return;
-    }
+    if (CONFIG.GAME.INVINCIBLE) return;
 
     const bikeHitbox = this.getBikeHitbox();
     const darlings = this.getDarlingsForCollision();
@@ -4778,8 +4488,6 @@ class LoserLane {
     const collision = this.spatialManager.collisionManager.checkBikeCollisionIsSpecial(bikeHitbox, darlings, this.stateManager.isJumping);
 
     if (collision) {
-      // console.log(`uuuu $`);
-
       this.die(collision);
     }
   }
@@ -4801,199 +4509,47 @@ class LoserLane {
     };
   }
 
-  // === Game State Methods ===
-  playCollisionSound(reason) {
-    switch (reason) {
-      case "ONCOMING_DEATHMACHINE":
-        // this.soundManager.play("carHitsUs", 0.8);
-        this.soundManager.playRandomSound(this.soundManager.ouchSounds, 0.6);
-        this.soundManager.playRandomSound(this.soundManager.carHonkSounds, 0.8);
-
-        break;
-      case "TRAFFIC": // TTC_LANE_DEATHMACHINE hitting us
-        this.soundManager.playRandomSound(this.soundManager.ouchSounds, 0.6);
-        this.soundManager.playRandomSound(this.soundManager.carHonkSounds, 0.8);
-        break;
-      case "TTC":
-        this.soundManager.playRandomSound(this.soundManager.ouchSounds, 0.6);
-        this.soundManager.playRandomSound(this.soundManager.ttcCollisionSounds, 0.8);
-        break;
-      case "PARKEDDEATHMACHINE":
-        this.soundManager.play("hitCar", 0.7);
-        this.soundManager.playRandomSound(this.soundManager.ouchSounds, 0.6);
-        this.soundManager.playRandomSound(this.soundManager.carHonkSounds, 0.8);
-
-        break;
-      case "DOOR":
-        this.soundManager.play("hitCarDoor", 0.7);
-        this.soundManager.playRandomSound(this.soundManager.ouchSounds, 0.6);
-        this.soundManager.playRandomSound(this.soundManager.carHonkSounds, 0.8);
-
-        break;
-      case "WANDERER":
-        this.soundManager.playRandomSound(this.soundManager.ouchSounds, 0.6);
-        this.soundManager.playRandomSound(this.soundManager.personHitSounds, 0.6);
-        break;
-      case "TRACKS":
-        // this.soundManager.playRandomSound(this.soundManager.ouchSounds, 0.6);
-        // this.soundManager.playRandomSound(this.soundManager.trackSounds, 0.8);
-        break;
-      case "BUILDING": // NEW - was missing
-        this.soundManager.play("hitBuilding", 0.8);
-        break;
-      default:
-        this.soundManager.play("hitCar", 0.7); // Changed from "collision" since that sound is removed
-        break;
-    }
-  }
-
   die(reason) {
-    if (this.stateManager.state.isDead) return;
-
-    // Send DEATH command to Arduino IMMEDIATELY
-    this.sendArduinoCommand("DEATH");
-
-    // Play collision sound IMMEDIATELY (this is the new addition)
-    this.playCollisionSound(reason);
-
-    // Store the death reason for sound selection
-    this.currentDeathReason = reason;
-
-    if (this.arduino && this.arduino.port && this.arduino.port.writable) {
-      setTimeout(() => {
-        this.setDeathState();
-        this.handleDeathEffects(reason);
-      }, 10);
-    } else {
-      this.setDeathState();
-      this.handleDeathEffects(reason);
-    }
+    this.deathHandler.handleDeath(reason);
   }
 
-  setDeathState() {
-    // Stop background music and play death sound
-    this.soundManager.stop("backgroundMusic");
-    this.soundManager.play("death", 1.0);
-
-    this.stateManager.state.isPaused = true;
-    this.stateManager.state.isDead = true;
-    this.stateManager.state.deathState = {
-      animation: 0,
-      x: Math.round(this.stateManager.currentLane),
-      y: this.stateManager.isJumping ? CONFIG.GAME.CYCLIST_Y - 1 : CONFIG.GAME.CYCLIST_Y,
-    };
-  }
-
-  handleDeathEffects(reason) {
-    const gameScreen = document.getElementById("game-screen");
-    if (!gameScreen) return;
-
-    const messageInfo = this.stateManager.handleDeath(reason);
-    this.applyDeathVisualEffects(gameScreen, reason, messageInfo);
-  }
-
-  applyDeathVisualEffects(gameScreen, reason, messageInfo) {
-    gameScreen.classList.add("screen-shake", "death-glitch-active");
-
-    const flashOverlay = document.createElement("div");
-    flashOverlay.className = "death-flash";
-    document.body.appendChild(flashOverlay);
-
-    setTimeout(() => {
-      gameScreen.classList.remove("screen-shake", "death-glitch-active");
-      flashOverlay.remove();
-
-      html2canvas(gameScreen).then((canvas) => {
-        generateSocialCardNoSS(canvas, reason, this.stateManager.state.score, messageInfo.message.funny, messageInfo.randomFace, this);
-      });
-      // death message
-    }, 1000);
+  sendArduinoCommand(command) {
+    this.arduinoController.sendCommand(command);
   }
 
   restart() {
-    console.log("\n=== Game Restart Initiated ===");
+    this.arduinoController.sendCommand("RESTART");
 
-    // Send RESTART command to Arduino to turn LED blue (waiting)
-    this.sendArduinoCommand("RESTART");
-
-    // Stop the current game loop first
     if (this.frameId) {
       cancelAnimationFrame(this.frameId);
       this.frameId = null;
     }
 
-    // 2. Reset audio
     this.soundManager.resetAll();
-
-    // 3. Reset static properties
     Building.nextSpawnY = null;
     Building.buildingManager = null;
 
-    // 4. Clean up existing controls before creating new ones
     if (this.controls) {
       this.controls.cleanup();
     }
 
-    // 5. Wait a brief moment before reinitializing everything
     setTimeout(() => {
-      // Reset game state
       this.stateManager.restart();
-
-      // Create new game systems
       this.spatialManager = new SpatialManager(CONFIG);
       this.spatialManager.setGame(this);
+
+      this.entityManager = new EntityManager(this);
+      this.deathHandler = new DeathHandler(this);
       this.controls = new Controls(this);
       this.settingsManager = new SettingsManager(this);
-      this.clusterManager = new VehicleClusterManager(CONFIG);
 
-      // Initialize new world
-      this.initializeGameWorld();
+      this.bike = this.entityManager.initializeGameWorld();
+      this.clusterManager = this.entityManager.clusterManager; // Update reference
 
-      // Wait another brief moment before starting
       setTimeout(() => {
         this.start();
-      }, 50); // Small delay before starting
-    }, 100); // Small delay for cleanup
-  }
-
-  resetStaticProperties() {
-    Building.nextSpawnY = null;
-    Building.buildingManager = null;
-  }
-
-  reinitializeGame() {
-    this.stateManager.restart();
-    this.spatialManager = new SpatialManager(CONFIG);
-    this.spatialManager.setGame(this);
-    this.controls = new Controls(this);
-    this.settingsManager = new SettingsManager(this);
-    this.clusterManager = new VehicleClusterManager(CONFIG);
-    this.initializeGameWorld();
-  }
-
-  // === Utility Methods ===
-
-  addEventListenerWithTracking(element, type, handler, options = false) {
-    element.addEventListener(type, handler, options);
-    if (!this.eventListeners.has(element)) {
-      this.eventListeners.set(element, []);
-    }
-    this.eventListeners.get(element).push({ type, handler, options });
-  }
-
-  flashScreen() {
-    const gameScreen = document.getElementById("game-screen");
-    if (!gameScreen) return;
-
-    const colors = ["#FF0000", "#000000", "#222"];
-    let delay = 0;
-
-    colors.forEach((color) => {
-      setTimeout(() => (gameScreen.style.backgroundColor = color), delay);
-      delay += 100;
-    });
-
-    setTimeout(() => (gameScreen.style.backgroundColor = ""), delay);
+      }, 50);
+    }, 100);
   }
 
   cleanup() {
@@ -5005,7 +4561,7 @@ class LoserLane {
     this.soundManager?.resetAll();
     this.stateManager.cleanup();
     this.spatialManager.cleanup();
-    this.clusterManager.cleanup();
+    this.entityManager.cleanup();
     this.renderGrid.clear();
     this.controls.cleanup();
     this.settingsManager.cleanup();

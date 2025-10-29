@@ -97,37 +97,18 @@ class SettingsManager {
       "Oncoming traffic speed multiplier"
     );
 
-    this.setupSettingControl(
-      "streetcar-speed",
-      (value) => {
-        CONFIG.MOVEMENT.TTC_SPEED = parseFloat(value);
-      },
-      0.5,
-      3.0,
-      "Streetcar speed multiplier"
-    );
 
     this.setupSettingControl(
       "pedestrian-relative-speed",
       (value) => {
-        CONFIG.MOVEMENT.WANDERER_SPEED = parseFloat(value);
+        CONFIG.MOVEMENT.HUMANBEING_SPEED = parseFloat(value);
       },
       0.1,
       2.0,
       "Pedestrian speed multiplier"
     );
 
-    // Traffic Density
-    this.setupSettingControl(
-      "global-density",
-      (value) => {
-        CONFIG.SPAWN_RATES.GLOBAL_MODIFIER = parseFloat(value);
-        this.updateAllSpawnRates();
-      },
-      0.1,
-      3.0,
-      "Global spawn rate multiplier"
-    );
+    
 
     this.setupSettingControl(
       "streetcar-frequency",
@@ -172,7 +153,7 @@ class SettingsManager {
     this.setupSettingControl(
       "pedestrian-frequency",
       (value) => {
-        CONFIG.SPAWN_RATES.WANDERER = parseFloat(value);
+        CONFIG.SPAWN_RATES.HUMANBEING = parseFloat(value);
       },
       0.01,
       3.0,
@@ -210,67 +191,8 @@ class SettingsManager {
       "Minimum space between parked cars"
     );
 
-    // Behavior Settings
-    this.setupSettingControl(
-      "stop-frequency",
-      (value) => {
-        CONFIG.TTC.STOP_INTERVAL.MIN = parseInt(value);
-      },
-      100,
-      3000,
-      "How often streetcars stop"
-    );
 
-    this.setupSettingControl(
-      "min-stop-time",
-      (value) => {
-        CONFIG.TTC.STOP_DURATION.MIN = parseInt(value);
-      },
-      60,
-      1000,
-      "Minimum streetcar stop duration"
-    );
 
-    this.setupSettingControl(
-      "door-opening-chance",
-      (value) => {
-        CONFIG.SPAWNING.PARKED_DEATHMACHINE_DOOR_CHANCE = parseFloat(value);
-      },
-      0.0,
-      1.0,
-      "Chance of parked car doors opening"
-    );
-
-    this.setupSettingControl(
-      "parking-attempt-rate",
-      (value) => {
-        CONFIG.PROBABILITIES.PARKING = parseFloat(value);
-      },
-      0.0,
-      1.0,
-      "How often vehicles attempt parking"
-    );
-
-    // Player Settings
-    this.setupSettingControl(
-      "jump-distance",
-      (value) => {
-        CONFIG.MOVEMENT.JUMP_AMOUNT = parseInt(value);
-      },
-      1,
-      10,
-      "Lanes covered in one jump"
-    );
-
-    this.setupSettingControl(
-      "jump-duration",
-      (value) => {
-        CONFIG.MOVEMENT.JUMP_DURATION = parseInt(value);
-      },
-      100,
-      2000,
-      "Jump animation duration"
-    );
   }
 
   setupDebugControls() {
@@ -332,7 +254,7 @@ class SettingsManager {
 
   updateAllSpawnRates() {
     const modifier = CONFIG.SPAWN_RATES.GLOBAL_MODIFIER;
-    const spawnRates = ["TTC", "TTC_LANE_DEATHMACHINE", "ONCOMING_DEATHMACHINE", "PARKED_DEATHMACHINE", "WANDERER"];
+    const spawnRates = ["TTC", "TTC_LANE_DEATHMACHINE", "ONCOMING_DEATHMACHINE", "PARKED_DEATHMACHINE", "HUMANBEING"];
 
     spawnRates.forEach((type) => {
       const element = document.getElementById(`${type.toLowerCase()}-frequency`);

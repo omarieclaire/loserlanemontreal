@@ -1,5 +1,5 @@
 const ART = {
-  WANDERER: {
+  HUMANBEING: {
     en: [
       "       WHY HIT FRIEND? ",
       "                       ",

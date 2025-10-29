@@ -73,6 +73,40 @@
   transform: scale(0.8);
 }
 
+
+
+/* Only style the box when it's showing a death message */
+#pregame-msg-box.death-message {
+  border: 3px solid var(--hot-pink);
+  padding: 20px;
+}
+
+#pregame-msg-box.death-message p {
+  font-size: 1.2rem;
+}
+
+@media (min-width: 600px) {
+  #pregame-msg-box.death-message p {
+    font-size: 1.5rem;
+  }
+}
+
+#pregame-msg-box .game-title-text {
+  color: var(--green);
+}
+
+#pregame-msg-box.death-message .death-reason {
+  font-size: 0.9rem;
+  color: var(--green);
+  margin-bottom: 10px;
+}
+
+@media (min-width: 600px) {
+  #pregame-msg-box.death-message .death-reason {
+    font-size: 1.1rem;
+  }
+}
+
 /* Title Box Styles
 -------------------------------------------------- */
 .title-box-container {

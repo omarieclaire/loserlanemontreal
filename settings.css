@@ -237,3 +237,9 @@
       .setting-row label.active {
         color: #4CAF50;
       }
+
+.warning-flash {
+  text-shadow: 0 0 8px rgba(136, 0, 0, 0.513), 
+               0 0 12px rgba(148, 0, 0, 0.433);
+  animation: none; /* Override any other animations */
+}

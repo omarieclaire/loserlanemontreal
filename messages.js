@@ -14,10 +14,14 @@ const MESSAGES = {
       //   { reason: t('tracks_reason_1'), funny: t('tracks_funny_10') },
       //   { reason: t('tracks_reason_1'), funny: t('tracks_funny_11') },
       // ],
-      ONCOMING_DEATHMACHINE: [
-        { reason: t('oncoming_reason_1'), funny: t('oncoming_funny_1') },
-        { reason: t('oncoming_reason_1'), funny: t('oncoming_funny_1') },
-        { reason: t('oncoming_reason_1'), funny: t('oncoming_funny_1') },
+   ONCOMING_DEATHMACHINE: [
+      { reason: t('oncoming_reason_1'), funny: t('oncoming_funny_1') },
+      { reason: t('oncoming_reason_1'), funny: t('oncoming_funny_2') },
+      { reason: t('oncoming_reason_1'), funny: t('oncoming_funny_3') },
+      { reason: t('oncoming_reason_1'), funny: t('oncoming_funny_4') },
+      { reason: t('oncoming_reason_1'), funny: t('oncoming_funny_5') },
+      { reason: t('oncoming_reason_1'), funny: t('oncoming_funny_6') },
+      { reason: t('oncoming_reason_1'), funny: t('oncoming_funny_7') },
       ],
       TRAFFIC: [
         { reason: t('traffic_reason_1'), funny: t('traffic_funny_1') },
@@ -75,7 +79,7 @@ const MESSAGES = {
         { reason: t('backdoor_reason_1'), funny: t('backdoor_funny_1') },
         { reason: t('backdoor_reason_1'), funny: t('backdoor_funny_1') }
       ],
-      WANDERER: [
+      HUMANBEING: [
         { reason: t('wanderer_reason_1'), funny: t('wanderer_funny_1') },
         { reason: t('wanderer_reason_1'), funny: t('wanderer_funny_2') },
         { reason: t('wanderer_reason_1'), funny: t('wanderer_funny_3') },
@@ -206,7 +210,7 @@ const MESSAGES = {
 //       { reason: "PARKED", funny: "DUUUMP" },
 //       { reason: "PARKED", funny: "DUUUMP" }
 //     ],
-//     WANDERER: [
+//     HUMANBEING: [
 //       { reason: "NOOOO", funny: "Crash! Flash human bash!" },
 //       { reason: "NOOOO", funny: "Clock! Human roadblock!" },
 //       { reason: "NOOOO", funny: "People pop! You gotta stop!" },

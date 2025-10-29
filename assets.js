@@ -1,4 +1,4 @@
-// Game Entities
+// Game Darlings
 
 // art: 
 // [" o ", 
@@ -43,7 +43,7 @@ const DARLINGS = {
         height: 4
     },
     
-    WANDERER: {
+    HUMANBEING: {
         SHAPES: [
             "○", "o", "O", "o", "●", "✺", "✹" // Add more shapes as desired
         ],
@@ -74,7 +74,7 @@ const DARLINGS = {
             height: 2
         }
     },
-    // WANDERER: {
+    // HUMANBEING: {
     //     UP: {
     //         art: [
     //             "○", 

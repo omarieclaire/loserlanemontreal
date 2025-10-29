@@ -56,7 +56,11 @@
     <link rel="manifest" href="/favicon/site.webmanifest" />
 
     <title>Loser Lane</title>
+    <link rel="stylesheet" href="mainStyles.css" />
+
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="translations.css" />
+
     <link rel="stylesheet" href="socialCard.css" />
     <link rel="stylesheet" href="tutorial.css" />
     <link rel="stylesheet" href="settings.css" />
@@ -157,17 +161,7 @@
       <div id="settings-window" class="settings-panel">
         <div class="settings-header">
           <h3>Game Settings</h3>
-          <div class="preset-controls">
-            <label for="difficulty-preset">Difficulty:</label>
-            <select id="difficulty-preset">
-              <option value="casual">Casual Ride</option>
-              <option value="normal">Regular Rush Hour</option>
-              <option value="rush">Peak Rush Hour</option>
-              <option value="chaos">Total Chaos</option>
-              <option value="custom">Custom</option>
-            </select>
-            <button id="save-preset">Save Current</button>
-          </div>
+
           <button id="close-settings" class="close-button">×</button>
         </div>
 
@@ -314,130 +308,16 @@
               <input id="oncoming-traffic-frequency" type="range" min="0.01" max="2.0" step="0.01" value="0.4" />
               <span id="oncoming-traffic-frequency-value" class="value-display">0.4</span>
             </div>
-
-            <div class="setting-row">
-              <label for="parked-car-frequency" class="tooltip-trigger">
-                Parked Car Frequency
-                <div class="tooltip">How often parked cars spawn</div>
-              </label>
-              <input id="parked-car-frequency" type="range" min="0.01" max="2.0" step="0.01" value="0.2" />
-              <span id="parked-car-frequency-value" class="value-display">0.2</span>
-            </div>
-
-            <div class="setting-row">
-              <label for="pedestrian-frequency" class="tooltip-trigger">
-                Pedestrian Frequency
-                <div class="tooltip">How often pedestrians spawn (>1 = multiple per frame)</div>
-              </label>
-              <input id="pedestrian-frequency" type="range" min="0.01" max="3.0" step="0.01" value="0.9" />
-              <span id="pedestrian-frequency-value" class="value-display">0.9</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Spacing Controls -->
-        <div class="settings-section">
-          <h4>Entity Spacing</h4>
-          <div class="setting-group">
-            <div class="setting-row">
-              <label for="streetcar-spacing" class="tooltip-trigger">
-                Streetcar Spacing
-                <div class="tooltip">Minimum distance between streetcars</div>
-              </label>
-              <input id="streetcar-spacing" type="range" min="5" max="150" step="5" value="50" />
-              <span id="streetcar-spacing-value" class="value-display">50</span>
-            </div>
-
-            <div class="setting-row">
-              <label for="traffic-vehicle-spacing" class="tooltip-trigger">
-                Traffic Spacing
-                <div class="tooltip">Minimum space between moving vehicles</div>
-              </label>
-              <input id="traffic-vehicle-spacing" type="range" min="3" max="50" step="1" value="15" />
-              <span id="traffic-vehicle-spacing-value" class="value-display">15</span>
-            </div>
-
-            <div class="setting-row">
-              <label for="parked-car-spacing" class="tooltip-trigger">
-                Parked Car Spacing
-                <div class="tooltip">Space between parked cars</div>
-              </label>
-              <input id="parked-car-spacing" type="range" min="2" max="30" step="1" value="10" />
-              <span id="parked-car-spacing-value" class="value-display">10</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Behavior Settings -->
-        <div class="settings-section">
-          <h4>Entity Behavior</h4>
-          <div class="setting-group">
-            <div class="setting-row">
-              <label for="stop-frequency" class="tooltip-trigger">
-                Streetcar Stop Frequency
-                <div class="tooltip">How often streetcars make stops</div>
-              </label>
-              <input id="stop-frequency" type="range" min="100" max="3000" step="100" value="1000" />
-              <span id="stop-frequency-value" class="value-display">1000</span>
-            </div>
-
-            <div class="setting-row">
-              <label for="min-stop-time" class="tooltip-trigger">
-                Minimum Stop Duration
-                <div class="tooltip">Shortest possible streetcar stop</div>
-              </label>
-              <input id="min-stop-time" type="range" min="60" max="1000" step="20" value="300" />
-              <span id="min-stop-time-value" class="value-display">300</span>
-            </div>
-
-            <div class="setting-row">
-              <label for="door-opening-chance" class="tooltip-trigger">
-                Door Opening Chance
-                <div class="tooltip">Probability of parked car doors opening</div>
-              </label>
-              <input id="door-opening-chance" type="range" min="0.0" max="1.0" step="0.05" value="0.3" />
-              <span id="door-opening-chance-value" class="value-display">0.3</span>
-            </div>
-
-            <div class="setting-row">
-              <label for="parking-attempt-rate" class="tooltip-trigger">
-                Parking Attempt Rate
-                <div class="tooltip">How often vehicles try to park</div>
-              </label>
-              <input id="parking-attempt-rate" type="range" min="0.0" max="1.0" step="0.05" value="0.3" />
-              <span id="parking-attempt-rate-value" class="value-display">0.3</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Player Settings -->
-        <div class="settings-section">
-          <h4>Player Controls</h4>
-          <div class="setting-group">
-            <div class="setting-row">
-              <label for="jump-distance" class="tooltip-trigger">
-                Jump Distance
-                <div class="tooltip">How many lanes covered in one jump</div>
-              </label>
-              <input id="jump-distance" type="range" min="1" max="10" step="1" value="3" />
-              <span id="jump-distance-value" class="value-display">3</span>
-            </div>
-
-            <div class="setting-row">
-              <label for="jump-duration" class="tooltip-trigger">
-                Jump Duration
-                <div class="tooltip">How long jumps last (ms)</div>
-              </label>
-              <input id="jump-duration" type="range" min="100" max="2000" step="100" value="1000" />
-              <span id="jump-duration-value" class="value-display">1000</span>
-            </div>
           </div>
         </div>
       </div>
     </div>
+
     <script>
       const infoButton = document.getElementById("add-art-link");
     </script>
+    <script src="translations.js"></script>
+
     <script src="buildings.js"></script>
     <script src="cuteDeathFaces.js"></script>
     <script src="colours.js"></script>
