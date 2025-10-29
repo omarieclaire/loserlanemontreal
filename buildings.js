@@ -1217,7 +1217,81 @@ const TORONTO_BUILDINGS = [
             "▌⌊⌋      ▐"
         ]
     },
+    {
+        name: "BIOSPHERE_ON_A_STICK",
+        artist: "SarahW",
+        art: [
+            "  ████████",
+            " ██≑ ╔╗███",
+            " ██ ≜╚╝ ≑█",
+            " ███ ▉▯ ██",
+            "  ███≑███ ",
+            "     ≑    ",
+            "     ≑    ",
+            "     ≑    ",
+            "    ≑≑≑   "
+        ]
+    },
+    {
+        name: "CHAMPS_ETC",
+        artist: "D",
+        art: [
+            "⌓⚜◊⌓⌓⌓◊⚜⌓ ",
+            "▏STUDIO │ ",
+            "│✫✫✫✫✫✫✫│ ",
+            "▏RIP DB │ ",
+            "⠒⠒⠒⠒⠒⠒⠒⠒⠒ ",
+            "▏       │ ",
+            "CHAMPS  │ ",
+            "⠖⠒⠒⠒    │ ",
+            "▏       │ ",
+            "▏▒      │ "
+        ]
+    },
+    {
+        name: "L'INSOUMISE",
+        artist: "Lorenzo",
+        art: [
+            "L^        ",
+            "INSOUMISE ",
+            "LIBRAIRIE ",
+            "ANARCHISTE",
+            "▒▒▒▒░░▒▒▒▒",
+            "▒▒▒▒  ▒▒▒▒",
+            "▒▒▒▒  ▒▒▒▒"
+        ]
+    },
+    {
+        name: "DANNY’S",
+        artist: "d",
+        art: [
+            "⌣┌══════┐ ",
+            "┆║DANNYS║⌣",
+            " C⧂IFFURE✫",
+            "✫║UNISEX║ ",
+            " └══════┘ "
+        ]
+    },
+    {
+        name: "BUCHI_BOUTIQUE",
+        artist: "Buchi",
+        art: [
+            "   ≜≜≜≜   ",
+            "  ◇◇◇◇◇◇  ",
+            "  ╱▧▧▧▧╲  ",
+            " ⋰      ⋱ ",
+            " ░ ╳  ╳ ░ ",
+            "⳻▒  ◟◞  ▒⳺",
+            " ▒BUCHI⛫▒ ",
+            " ░      ░ ",
+            " ◣▭▭▭▭▭▭◢ "
+        ]
+    },
+
 ];
+
+
+
 
 
 
