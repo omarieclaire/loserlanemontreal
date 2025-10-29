@@ -3,7 +3,8 @@
 // Translations - English and French side by side
 const TRANSLATIONS = [
   // building generator
-  { key: "title", en: "Draw a building!", fr: "Dessine un bâtiment!" },
+  { key: "title", en: "Join Us!", fr: "Dessine un bâtiment!" },
+    { key: "subtitle", en: "Draw your building and see it appear on Montreal's virtual streets in", fr: "Créez votre bâtiment et voyez-le apparaître dans la rue virtuelle de Montréal en" },
   { key: "currentCharacter", en: "Current Character", fr: "Caractère actuel" },
   { key: "eraseAll", en: "Clear all", fr: "Tout Effacer" },
   { key: "eraser", en: "Eraser", fr: "Efface" },
@@ -36,7 +37,6 @@ const TRANSLATIONS = [
 
 
   { key: "shareTitle", en: 'Success! ', fr: 'Succès! ' },
-  { key: "subtitle", en: "Draw your building and see it appear on Montreal's virtual streets in", fr: "Créez votre bâtiment et voyez-le apparaître dans la rue virtuelle de Montréal en" },
 
   { key: "shareMessage", en: 'Your building is on its way to LoserLane! Want to share your creation?', fr: 'Votre bâtiment est en route vers LoserLane! Voulez-vous partager votre création?' },
   { key: "shareTwitter", en: 'Share on Twitter/X', fr: 'Partager sur Twitter/X' },

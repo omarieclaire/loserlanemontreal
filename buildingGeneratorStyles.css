@@ -57,8 +57,8 @@ body {
 }
 
 a {
-  color: #63f863;
-  text-decoration: none;
+  color: var(--hot-pink);
+  /* text-decoration: none; */
   transition: color 0.2s ease;
 }
 
@@ -71,15 +71,18 @@ h1 {
   text-align: center;
   color: #63f863;
   margin-bottom: 10px;
-  font-size: 1.6em;
-  letter-spacing: 6px;
+  font-size: 1.8em;
+  /* letter-spacing: 6px; */
+}
+
+.cta {
+  /* color: var(--hot-pink); */
+  font-weight: bold;
 }
 
 .subtitle {
-  text-align: center;
-  color: #d1feff;
-  margin-bottom: 15px;
-  font-size: 1.05rem;
+    font-size: 1.05rem;
+    border-bottom: 1px solid;
 }
 
 .main-content {
@@ -110,7 +113,7 @@ h1 {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(10, .6em); /* <--    em for scrunch */
+  grid-template-columns: repeat(10, 0.6em); /* <--    em for scrunch */
   /* gap: 1px; */
   background: rgba(91, 91, 91, 0.389);
   justify-content: center;
@@ -128,7 +131,7 @@ h1 {
   position: relative;
   color: var(--theme-color-alpha);
   text-align: center;
-    width: 0.6em; /* <-- Match the grid column width */
+  width: 0.6em; /* <-- Match the grid column width */
   height: 1.2em; /* <-- 0.6em * 1.5 = 0.9em for the aspect ratio */
 }
 
@@ -229,8 +232,6 @@ button:active {
   position: relative;
 }
 
-
-
 .palette-section {
   flex: 1;
   min-width: 280px;
@@ -269,7 +270,7 @@ button:active {
   background: #120303;
   /* border: 2px solid #666; */
 
-  border:1px solid #000000ac;
+  border: 1px solid #000000ac;
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
@@ -791,7 +792,7 @@ button:active {
 
 .community-gallery h3 {
   color: #ff77df;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   margin-bottom: 15px;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -857,4 +858,16 @@ button:active {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+#header-container {
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+#title-bike {
+  text-align: center;
+  font-size: .7rem;
+  color: var(--hot-pink);
+  font-weight: bolder;
 }
