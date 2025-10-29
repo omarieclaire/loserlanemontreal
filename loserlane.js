@@ -357,7 +357,7 @@ const CONFIG = {
     BIKE_RIGHT: 16,
     PARKED: 17,
     SIDEWALK: 25,
-    BUILDINGS: 28,
+    BUILDINGS: 29,
   },
   ANIMATIONS: {
     DOOR_OPEN_DURATION: 100,
@@ -756,7 +756,8 @@ class GameRenderer {
         this.renderGrid.updateCell(this.config.LANES.BIKE - 1, y, " ", STYLES.TRAFFIC);
       }
 
-      for (let x = this.config.LANES.SIDEWALK; x < this.config.LANES.BUILDINGS; x++) {
+for (let x = this.config.LANES.SIDEWALK; x < this.config.LANES.BUILDINGS - 1; x++) {
+
         this.renderGrid.updateCell(x, y, " ", STYLES.SIDEWALK);
       }
     }
