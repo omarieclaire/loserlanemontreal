@@ -73,7 +73,7 @@
   <body>
     <div id="game-container">
       <div id="game-screen"></div>
-      <div id="arduino-status" style="display: none">🟢 Arduino Connected</div>
+      <div id="arduino-status" style="display: none">Arduino Connected</div>
       <div class="lang-toggle-container" id="lang-toggle-container">
         <button class="lang-toggle" id="lang-toggle">FR</button>
       </div>
@@ -91,6 +91,15 @@
           </svg>
         </button>
       </div>
+
+    <div class="info-button-container">
+  <button class="info-toggle" id="info-toggle" onclick="toggleInfo()">ℹ</button>
+</div>
+
+<div class="info-popup" id="info-popup">
+  <button class="info-close" onclick="closeInfo()">×</button>
+  <p><span data-i18n="infoText"></span> <a href="https://marieflanagan.com/about" target="_blank" rel="noopener">marieflanagan.com</a></p>
+</div>
 
       <div id="pregame-msg-box">
         <div id="title-bike" class="bike-art-left bike-art-title">

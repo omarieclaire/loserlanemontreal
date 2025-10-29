@@ -101,7 +101,7 @@
           /* border-radius: 10px; */
           padding: 25px;
           border: 2px solid #e7a900;
-          box-shadow: 0 0 20px rgba(231, 169, 0, 0.3);
+          box-shadow: 0 0 20px rgba(231, 169, 0, 0.1);
           max-width: 650px;
           width: 100%;
         }
@@ -731,6 +731,102 @@
             max-height: 125vh;
           }
         }
+
+
+.info-button-container {
+  position: fixed;
+  top: 20px;
+  right: 80px; /* Right after the lang toggle */
+  z-index: 1000;
+  transition: opacity 0.3s ease;
+}
+
+.info-button-container:hover {
+  opacity: 1;
+}
+
+.info-toggle {
+  background: transparent;
+  border: 1px solid #63f863;
+  padding: 4px 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  width: 50px;
+  font-family: "Courier New", monospace;
+  color: #63f863;
+  letter-spacing: 1px;
+  transition: all 0.2s ease;
+  box-shadow: none;
+}
+
+.info-toggle:hover {
+  outline: none;
+  color: #ff77df;
+}
+
+/* Info Popup for building generator */
+.info-popup {
+  display: none;
+  position: fixed;
+  top: 70px;
+  right: 20px;
+  background: black;
+  border: 2px solid #e7a900;
+  padding: 20px;
+  max-width: 300px;
+  z-index: 1001;
+  box-shadow: 0 0 20px rgba(231, 169, 0, 0.3);
+  font-family: "Courier New", monospace;
+}
+
+.info-popup.show {
+  display: block;
+}
+
+.info-popup p {
+  color: #d1feff;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.info-popup a {
+  color: #63f863;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.info-popup a:hover {
+  color: #ff77df;
+  text-decoration: underline;
+}
+
+.info-close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  color: #ff77df;
+  font-size: 1.5rem;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+  box-shadow: none;
+  margin: 0;
+}
+
+.info-close:hover {
+  color: #63f863;
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+}
       </style>
     </head>
 
@@ -743,6 +839,18 @@
       <div class="lang-toggle-container" id="lang-toggle-container">
         <button class="lang-toggle" id="lang-toggle">FR</button>
       </div>
+
+
+
+      <div class="info-button-container">
+        <button class="info-toggle" id="info-toggle" onclick="toggleInfo()">ℹ</button>
+      </div>
+
+      <div class="info-popup" id="info-popup">
+        <button class="info-close" onclick="closeInfo()">×</button>
+        <p><span data-i18n="infoText"></span> <a href="https://marieflanagan.com/about" target="_blank" rel="noopener">marieflanagan.com</a></p>
+      </div>
+
 
       <div class="container">
         <h1 data-i18n="title">Draw a building!</h1>
@@ -1430,8 +1538,6 @@
                 ]
             },`;
 
-   
-
           // Prepare form data for Google Form submission
           const formData = new URLSearchParams();
           formData.append("entry.1432455807", "Montreal"); // Location (default Montreal)
@@ -1718,6 +1824,26 @@
         // Show hint after page loads
         window.addEventListener("load", showLandscapeHint);
       </script>
+
+      <script>function toggleInfo() {
+  const popup = document.getElementById('info-popup');
+  popup.classList.toggle('show');
+}
+
+function closeInfo() {
+  document.getElementById('info-popup').classList.remove('show');
+}
+
+// Close info popup when clicking outside - add this with the other event listeners
+document.addEventListener('click', (e) => {
+  const popup = document.getElementById('info-popup');
+  const button = document.getElementById('info-toggle');
+  if (popup && button && popup.classList.contains('show')) {
+    if (!popup.contains(e.target) && e.target !== button) {
+      popup.classList.remove('show');
+    }
+  }
+});</script>
     </body>
   </html>
 </html>

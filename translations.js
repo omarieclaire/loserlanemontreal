@@ -43,6 +43,17 @@ const TRANSLATIONS = [
   { key: "restart", en: "RESTART", fr: "RECOMMENCER" },
   { key: "share", en: "SHARE", fr: "PARTAGER" },
 
+  {
+  key: "infoText",
+  en: "Created by Marie LeBlanc Flanagan, who loves bike lanes",
+  fr: "Créé par Marie LeBlanc Flanagan, qui aime les pistes cyclables"
+},
+{
+  key: "infoButton",
+  en: "ℹ",
+  fr: "ℹ"
+},
+
   // UI labels
   { key: "score", en: "Score", fr: "Pointage" },
   { key: "highScore", en: "High Score", fr: "Record" },

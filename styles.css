@@ -783,3 +783,126 @@ button:active {
 #mute-button.muted .sound-waves {
   opacity: 0;
 }
+
+/* Info Button - matches lang-toggle and mute-button style */
+.info-button-container {
+  position: fixed;
+  top: 20px;
+  right: 140px; /* After mute (80px) and lang (20px) */
+  z-index: 1000;
+  transition: opacity 0.3s ease;
+}
+
+.info-button-container:hover {
+  opacity: 1;
+}
+
+.info-toggle {
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 8px 10px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  font-family: "Courier New", monospace;
+  color: var(--green);
+  letter-spacing: 1px;
+  transition: color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: none;
+  text-shadow: none;
+  font-weight: bold;
+}
+
+.info-toggle:hover {
+  color: var(--hot-pink);
+  background: transparent;
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+.info-toggle:focus {
+  background: transparent;
+}
+
+/* Info Popup */
+.info-popup {
+  display: none;
+  position: fixed;
+  top: 70px;
+  right: 20px;
+  background: var(--dark-grey);
+  border: 2px solid var(--dark-yellow);
+  padding: 20px;
+  max-width: 300px;
+  z-index: 1001;
+  box-shadow: 0 0 20px rgba(231, 169, 0, 0.1);
+  font-family: "Courier New", monospace;
+}
+
+.info-popup.show {
+  display: block;
+}
+
+.info-popup p {
+  color: var(--light-blue);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.info-popup a {
+  color: var(--hot-pink);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.info-popup a:hover {
+  color: var(--green);
+  text-decoration: underline;
+}
+
+.info-close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  color: var(--hot-pink);
+  font-size: 1.5rem;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+  box-shadow: none;
+  margin: 0;
+}
+
+.info-close:hover {
+  color: var(--green);
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .info-button-container {
+    right: 120px;
+  }
+  
+  .info-popup {
+    right: 10px;
+    left: 10px;
+    max-width: calc(100vw - 20px);
+  }
+}

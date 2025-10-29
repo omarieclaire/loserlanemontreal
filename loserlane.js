@@ -2,6 +2,15 @@
 // TRANSLATION CODE
 ////////////////////
 
+function toggleInfo() {
+  const popup = document.getElementById('info-popup');
+  popup.classList.toggle('show');
+}
+
+function closeInfo() {
+  document.getElementById('info-popup').classList.remove('show');
+}
+
 // Build lookup objects from the array (for performance)
 const LANG = {
   en: {},
