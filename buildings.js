@@ -155,6 +155,17 @@ const TORONTO_BUILDINGS = [
             "▔▔▔▔▔▔▔▔▔▔"
         ]
     },
+    Michael_Iantorno	{
+    name: "ENCORE_BOOKS",
+        artist: "Michael_Iantorno",
+            art: [
+                "▄▄▄▄▄▄▄▄▄▄",
+                "▌◘ENCORE⦿▐",
+                "┣─┬─┬─┬──┨",
+                "│⋰│▨│█│⋰⋰│",
+                "└─┴─┴─┴──┘"
+            ]
+},
     {
         name: "Phi Centre",
         art: [
