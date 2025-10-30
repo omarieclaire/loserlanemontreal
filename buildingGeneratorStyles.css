@@ -608,11 +608,10 @@ button.first-time {
 }
 
 .gallery-scroll {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   gap: 15px;
-  overflow-x: auto;
   padding: 15px 5px;
-  scroll-snap-type: x mandatory;
 }
 
 .gallery-item {

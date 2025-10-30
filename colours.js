@@ -22,13 +22,13 @@ const COLOURS = {
     // "#1effb4d1", // Mint Aqua
   ],
   BUILDINGS: [
-    "#FF9999", // Soft Pink
+    "#ffa5a5ff", // Soft Pink
     "#99FF99", // Light Mint Green
     "#9595d8ff", // Soft Lavender
-    "#FFFF99", // Soft Yellow
+    "#e5e578ff", // Soft Yellow
     "#FF99FF", // Light Orchid
     "#99FFFF", // Soft Aqua
-    "#66FF66", // Bright Mint Green
+    "#87ff87ff", // Bright Mint Green
     "#66B2FF", // Sky Blue
     "#FFFF66", // Lemon Yellow
     "#FF66FF", // Fuchsia
@@ -36,7 +36,7 @@ const COLOURS = {
     "#FFCC66", // Soft Orange
     "#66FFCC", // Mint Aqua
     "#CC99FF", // Lavender Purple
-    "#FF6666", // Coral
+    "#ff8766ff", // Coral
     "#66FF99", // Pale Green
     "#FF6699", // Rose Pink
     "#66FFFF", // Light Cyan

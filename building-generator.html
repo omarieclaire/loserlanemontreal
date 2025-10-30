@@ -329,7 +329,7 @@
           const buildingDiv = document.createElement("div");
           buildingDiv.className = "gallery-building";
 
-          const buildingColor = COLOURS.BUILDINGGEN[Math.floor(Math.random() * COLOURS.BUILDINGGEN.length)];
+const buildingColor = COLOURS.BUILDINGS[Math.floor(Math.random() * COLOURS.BUILDINGS.length)];
           buildingDiv.style.color = buildingColor;
           buildingDiv.style.fontSize = "14px";
           buildingDiv.style.display = "grid";
@@ -1245,7 +1245,7 @@ ${artLines.join(",\n")}
           const galleryElement = document.getElementById("galleryScroll");
           if (!galleryElement) return;
 
-          const recentBuildings = TORONTO_BUILDINGS.slice(-10).reverse();
+          const recentBuildings = TORONTO_BUILDINGS.slice(-40).reverse();
 
           recentBuildings.forEach((building) => {
             const item = this._createGalleryItem(building);

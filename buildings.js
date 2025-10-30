@@ -15,6 +15,7 @@
 const TORONTO_BUILDINGS = [
     {
         name: "Habitat_67",
+        artist: "pix_peng",
         art: [
             "  ▓▓  ▓▓  ",
             " ▓▓▓ ▓▓▓  ",
@@ -26,6 +27,7 @@ const TORONTO_BUILDINGS = [
     },
     {
         name: "Biosphere",
+        artist: "cos_koa",
         art: [
             "   ╱◇◇╲   ",
             "  ◇◇◇◇◇◇  ",
@@ -135,6 +137,7 @@ const TORONTO_BUILDINGS = [
 
     {
         name: "Olympic Stadium",
+        artist: "cr_owl",
         art: [
             "      ╱│  ",
             "     ╱ │  ",
@@ -146,6 +149,7 @@ const TORONTO_BUILDINGS = [
     },
     {
         name: "Place des Arts",
+        artist: "star_slo",
         art: [
             "▀▀▀▀▀▀▀▀▀▀",
             "█PLACE   █",
@@ -155,19 +159,20 @@ const TORONTO_BUILDINGS = [
             "▔▔▔▔▔▔▔▔▔▔"
         ]
     },
-{
-    name: "ENCORE_BOOKS",
+    {
+        name: "ENCORE_BOOKS",
         artist: "Michael_Iantorno",
-            art: [
-                "▄▄▄▄▄▄▄▄▄▄",
-                "▌◘ENCORE⦿▐",
-                "┣─┬─┬─┬──┨",
-                "│⋰│▨│█│⋰⋰│",
-                "└─┴─┴─┴──┘"
-            ]
-},
+        art: [
+            "▄▄▄▄▄▄▄▄▄▄",
+            "▌◘ENCORE⦿▐",
+            "┣─┬─┬─┬──┨",
+            "│⋰│▨│█│⋰⋰│",
+            "└─┴─┴─┴──┘"
+        ]
+    },
     {
         name: "Phi Centre",
+        artist: "cr_owl",
         art: [
             "╔═══PHI══╗",
             "║ ◉ ART ◉║",
@@ -179,6 +184,7 @@ const TORONTO_BUILDINGS = [
     },
     {
         name: "Musée d'Art Contemporain",
+        artist: "melo_kit",
         art: [
             "▀▀▀MAC▀▀▀▀",
             "█ ◢■◣ ◢■◣█",
@@ -190,6 +196,7 @@ const TORONTO_BUILDINGS = [
     },
     {
         name: "SAT Societé",
+        artist: "su_fox",
         art: [
             "   ◢■■◣   ",
             "╭{      )╮",
@@ -265,6 +272,7 @@ const TORONTO_BUILDINGS = [
     },
     {
         name: "Fairmount Bagel",
+        artist: "ano_pan",
         art: [
             " ╱▔▔▔▔▔▔▔╲",
             "│FAIRMOUNT│",
@@ -276,6 +284,7 @@ const TORONTO_BUILDINGS = [
 
     {
         name: "Casa d'Italia",
+        artist: "whi_wha",
         art: [
             "╔═CASA═══╗",
             "║D'ITALIA║",
@@ -288,6 +297,7 @@ const TORONTO_BUILDINGS = [
 
     {
         name: "McCord Museum",
+        artist: "gen_ot",
         art: [
             "▀McCORD▀▀▀",
             "█        █",
@@ -299,6 +309,7 @@ const TORONTO_BUILDINGS = [
     },
     {
         name: "Quai des Brumes",
+        artist: "vel_de",
         art: [
             "╔═QUAI══╗ ",
             "║ DES   ║ ",
@@ -309,6 +320,7 @@ const TORONTO_BUILDINGS = [
     },
     {
         name: "Cabaret Mile End",
+        artist: "ja_gir",
         art: [
             "▁▁CABARET▁",
             "│ MILE   │",
@@ -319,6 +331,7 @@ const TORONTO_BUILDINGS = [
     },
     {
         name: "Foufounes Électriques",
+        artist: "neon_fer",
         art: [
             "╔FOUFOU═╗ ",
             "║NES    ║ ",
@@ -329,6 +342,7 @@ const TORONTO_BUILDINGS = [
     },
     {
         name: "Le Dépanneur Café",
+        artist: "snu_se",
         art: [
             "╭DEPAN──╮ ",
             "│ NEUR  │ ",
@@ -338,6 +352,7 @@ const TORONTO_BUILDINGS = [
     },
     {
         name: "Drawn & Quarterly",
+        artist: "jazz_gir",
         art: [
             "╔DRAWN═╗  ",
             "║  &   ║  ",
@@ -350,6 +365,7 @@ const TORONTO_BUILDINGS = [
 
     {
         name: "L'Escalier",
+        artist: "jazz_gir",
         art: [
             "╭L'ESCA─╮ ",
             "│ LIER  │ ",
@@ -359,6 +375,7 @@ const TORONTO_BUILDINGS = [
     },
     {
         name: "Cinéma du Parc",
+        artist: "reel_lem",
         art: [
             "▀▀CINEMA▀▀",
             "█ DU    █ ",
@@ -373,6 +390,7 @@ const TORONTO_BUILDINGS = [
 
     {
         name: "Café Olimpico",
+        artist: "esp_eag",
         art: [
             "╭OLIMPICO╮",
             "│ESPRESSO│",
@@ -383,6 +401,7 @@ const TORONTO_BUILDINGS = [
     },
     {
         name: "Cinéma Beaubien",
+        artist: "film_flam",
         art: [
             "╔CINEMA══╗",
             "║BEAUBIEN║",
@@ -394,6 +413,7 @@ const TORONTO_BUILDINGS = [
     },
     {
         name: "La Vitrola",
+        artist: "vin_vole",
         art: [
             "╭LA─────╮ ",
             "│VITROLA│ ",
@@ -402,6 +422,7 @@ const TORONTO_BUILDINGS = [
     },
     {
         name: "Palais Royale",
+        artist: "cr_owl",
         art: [
             "▀PALAIS▀▀▀",
             "█ ROYALE █",
@@ -411,6 +432,7 @@ const TORONTO_BUILDINGS = [
     },
     {
         name: "Sala Rossa",
+        artist: "cri_cro",
         art: [
             "╭SALA────╮",
             "│ ROSSA  │",
@@ -422,6 +444,7 @@ const TORONTO_BUILDINGS = [
     },
     {
         name: "Notre-Dame Basilica",
+        artist: "sac_swa",
         art: [
             "   ╱▲╲    ",
             "  ╱▲▲ ╲   ",
@@ -433,6 +456,7 @@ const TORONTO_BUILDINGS = [
     },
     {
         name: "Café dei Campi",
+        artist: "ca_chi",
         art: [
             "╭DEI─────╮",
             "│  CAMPI │",
@@ -443,6 +467,7 @@ const TORONTO_BUILDINGS = [
     },
     {
         name: "Arepera",
+        artist: "are_alp",
         art: [
             "╭AREPERA ╮",
             "│ ◢■◣    │",
@@ -454,6 +479,7 @@ const TORONTO_BUILDINGS = [
 
     {
         name: "GiantRing",
+        artist: "cr_owl",
         art: [
             "   ◢◣◣    ",
             "  ◢   ◣   ",
@@ -465,6 +491,7 @@ const TORONTO_BUILDINGS = [
     },
     {
         name: "Parquette",
+        artist: "ca_cap",
         art: [
             "╭PAR____ ╮",
             "│ QUETTE │",
@@ -475,6 +502,7 @@ const TORONTO_BUILDINGS = [
     },
     {
         name: "Café Orr",
+        artist: "bre_bea",
         art: [
             "╭──ORR───╮",
             "│ CAFE   │",
@@ -485,6 +513,7 @@ const TORONTO_BUILDINGS = [
     },
     {
         name: "Parc Laurier",
+        artist: "po_pla",
         art: [
             "  ☼ ◉ ☼   ",
             "║PARC░   ║",
@@ -498,6 +527,7 @@ const TORONTO_BUILDINGS = [
 
     {
         name: "Renaissance",
+        artist: "thri_tur",
         art: [
             "╔RENAIS═╗ ",
             "║ SANCE ║ ",
@@ -508,6 +538,7 @@ const TORONTO_BUILDINGS = [
     },
     {
         name: "Les Petits Frères",
+        artist: "car_cari",
         art: [
             "╭LES─────╮",
             "│PETITS  │",
@@ -518,6 +549,7 @@ const TORONTO_BUILDINGS = [
     },
     {
         name: "Westmount Greenhouse",
+        artist: "gar_gaz",
         art: [
             "  ╱▔▔▔╲   ",
             " ╱ ☼ ◉ ╲  ",
@@ -530,6 +562,7 @@ const TORONTO_BUILDINGS = [
     },
     {
         name: "Chatime",
+        artist: "bo_bu",
         art: [
             "╭CHATIME╮ ",
             "│ BUBBLE│ ",
@@ -541,6 +574,7 @@ const TORONTO_BUILDINGS = [
     },
     {
         name: "Frédéric_Back_Park",
+        artist: "orb_oce",
         art: [
             "  ☼ ◉ ☼   ",
             " ░FRED░ ◉ ",
@@ -552,6 +586,7 @@ const TORONTO_BUILDINGS = [
     },
     {
         name: "Marché PA",
+        artist: "mar_mar",
         art: [
             "╔MARCHE═╗ ",
             "║  PA   ║ ",
@@ -562,6 +597,7 @@ const TORONTO_BUILDINGS = [
     },
     {
         name: "Samosa King",
+        artist: "sa_sku",
         art: [
             "╭SAMOSA─╮ ",
             "│ KING  │ ",
@@ -573,6 +609,7 @@ const TORONTO_BUILDINGS = [
     },
     {
         name: "Gnocchi $5",
+        artist: "pa_po",
         art: [
             "╭GNOCCHI╮ ",
             "│  $5   │ ",
@@ -583,6 +620,7 @@ const TORONTO_BUILDINGS = [
     },
     {
         name: "St-Viateur Bagel",
+        artist: "bag_bad",
         art: [
             "  ╱▔▔▔╲   ",
             " │ST-VIA│ ",
@@ -594,6 +632,7 @@ const TORONTO_BUILDINGS = [
     },
     {
         name: "Van Horne Underpass",
+        artist: "tun_tap",
         art: [
             "  ▀▀▀▀▀   ",
             " │VAN   │ ",
@@ -604,8 +643,9 @@ const TORONTO_BUILDINGS = [
         ]
     },
     {
-        "name": "SEGALS",
-        "art": [
+        name: "SEGALS",
+        artist: "deal_ding",
+        art: [
             "╔════════╗",
             "║SEGALS. ║",
             "║DEALZ   ║",
@@ -614,9 +654,9 @@ const TORONTO_BUILDINGS = [
         ]
     },
     {
-        "name": "SWIRL",
-        "artist": "mclf",
-        "art": [
+        name: "SWIRL",
+        artist: "mclf",
+        art: [
             "┌~~~~~~~─┐",
             "│~~SWIRL~│",
             "│~YUM~~~ │",
@@ -625,8 +665,9 @@ const TORONTO_BUILDINGS = [
         ]
     },
     {
-        "name": "MYRIADE",
-        "art": [
+        name: "MYRIADE",
+        artist: "fli-fam",
+        art: [
             "┌✺─✺─✺─✺┐ ",
             "┌───┴┬───┘",
             "│        │",
@@ -636,8 +677,10 @@ const TORONTO_BUILDINGS = [
         ]
     },
     {
-        "name": "DEATH_FACT",
-        "art": [
+        name: "DEATH_FACT",
+        artist: "bag_bad",
+
+        art: [
             "┌────────┐",
             "│74^^^^^ │",
             "│EACH^^^ │",
@@ -647,8 +690,10 @@ const TORONTO_BUILDINGS = [
         ]
     },
     {
-        "name": "AREPARA",
-        "art": [
+        name: "AREPARA",
+        artist: "bag_bad",
+
+        art: [
             "┌────────┐",
             "│AREPARA │",
             "│  (0)   │",
@@ -658,8 +703,9 @@ const TORONTO_BUILDINGS = [
     },
 
     {
-        "name": "BEAUTY_S",
-        "art": [
+        name: "BEAUTY_S",
+        artist: "lio-lip",
+        art: [
             "┌────────┐",
             "│BEAUTY'S│",
             "│LUNCH   │",
@@ -668,8 +714,9 @@ const TORONTO_BUILDINGS = [
         ]
     },
     {
-        "name": "SAQ",
-        "art": [
+        name: "SAQ",
+        artist: "dil-ram",
+        art: [
             "   _____  ",
             "  ╱ ╲╱ ╲  ",
             "╭╴SAQ    │",
@@ -682,8 +729,9 @@ const TORONTO_BUILDINGS = [
 
 
     {
-        "name": "DRAWN_QUARTER",
-        "art": [
+        name: "DRAWN_QUARTER",
+        artist: "lio-lip",
+        art: [
             "   ____   ",
             " ╱ ╲╱╲╱╲  ",
             "│DRAWN & │",
@@ -694,9 +742,9 @@ const TORONTO_BUILDINGS = [
     },
 
     {
-        "name": "MAMIE_CLAFOUTIS",
-        "artist": "des",
-        "art": [
+        name: "MAMIE_CLAFOUTIS",
+        artist: "des",
+        art: [
             " ┌───────┐",
             " │♥ MAMIE│",
             " │Claftis│",
@@ -706,9 +754,9 @@ const TORONTO_BUILDINGS = [
         ]
     },
     {
-        "name": "FOUFOUNES",
-        "artist": "BE",
-        "art": [
+        name: "FOUFOUNES",
+        artist: "BE",
+        art: [
             "⚡ϟϟϟϟϟϟ⚡  ",
             "◢ϟFOUFO ϟ◣",
             "││FOUNES │",
@@ -717,9 +765,9 @@ const TORONTO_BUILDINGS = [
         ]
     },
     {
-        "name": "CASERNE26",
-        "artist": "dz_ntz",
-        "art": [
+        name: "CASERNE26",
+        artist: "dz_ntz",
+        art: [
             "    ◢◣    ",
             " ◢✦✦  ✦✦◣ ",
             "◢✶✶FIRE✶✶◣",
@@ -730,8 +778,10 @@ const TORONTO_BUILDINGS = [
     },
 
     {
-        "name": "CHEVAL_BLANC",
-        "art": [
+        name: "CHEVAL_BLANC",
+        artist: "bag_bad",
+
+        art: [
             "┌──╦──╦──┐",
             "│CHEVAL  │",
             "│BLANC   │",
@@ -740,8 +790,10 @@ const TORONTO_BUILDINGS = [
         ]
     },
     {
-        "name": "BOUSTAN",
-        "art": [
+        name: "BOUSTAN",
+        artist: "bag_bad",
+
+        art: [
             "   ╱╲╱╲   ",
             " ╱╲╱╲╱╲╱╲ ",
             "╭─BOUSTAN│",
@@ -753,8 +805,10 @@ const TORONTO_BUILDINGS = [
 
 
     {
-        "name": "YMCA",
-        "art": [
+        name: "YMCA",
+        artist: "bag_bad",
+
+        art: [
             "┌────────┐",
             "│YMCA    │",
             "│ {{}}}} │",
@@ -762,9 +816,9 @@ const TORONTO_BUILDINGS = [
         ]
     },
     {
-        "name": "CAFE_OLIMPICO",
-        "artist": "katie jensen",
-        "art": [
+        name: "CAFE_OLIMPICO",
+        artist: "katie jensen",
+        art: [
             "⌯⌯⌯⤚⤙⌯⌯⌯⌯⌯",
             "│ ⊹ CAFÉ │",
             "│OLIMPICO│",
@@ -773,8 +827,8 @@ const TORONTO_BUILDINGS = [
         ]
     },
     {
-        "name": "MONT_ROYAL",
-        "art": [
+        name: "MONT_ROYAL",
+        art: [
             "┌────────┐",
             "│MONT    │",
             "│  /   \\ │",
@@ -784,8 +838,8 @@ const TORONTO_BUILDINGS = [
         ]
     },
     {
-        "name": "SOUBOIS",
-        "art": [
+        name: "SOUBOIS",
+        art: [
             " ╭──────╮ ",
             "╭│SOUBO│╮ ",
             "│││IS   ││",
@@ -794,9 +848,9 @@ const TORONTO_BUILDINGS = [
         ]
     },
     {
-        "name": "SANTROPOL",
-        "artist": "mclf",
-        "art": [
+        name: "SANTROPOL",
+        artist: "mclf",
+        art: [
             "┌◢╱╲◣◢╱╲◣ ",
             "│SANTRO  │",
             "│ POL    │",
@@ -805,8 +859,8 @@ const TORONTO_BUILDINGS = [
         ]
     },
     {
-        "name": "INFINITE_LIBRARY",
-        "art": [
+        name: "INFINITE_LIBRARY",
+        art: [
             "┌────────┐",
             "│INFINITE│",
             "│LIBRARY │",
@@ -816,8 +870,9 @@ const TORONTO_BUILDINGS = [
     },
 
     {
-        "name": "MARCHE_JEAN_TALON",
-        "art": [
+        name: "MARCHE_JEAN_TALON",
+        artist: "bag_bad",
+        art: [
             "┌─━━━╋━━─┐",
             "│MARCHE  │",
             "│JEAN    │",
@@ -826,8 +881,8 @@ const TORONTO_BUILDINGS = [
         ]
     },
     {
-        "name": "CASA_DEL_POPOLO",
-        "art": [
+        name: "CASA_DEL_POPOLO",
+        art: [
             "┏━━╋━━╋━━┓",
             "│CASA DEL│",
             "│ POPOLO │",
@@ -836,8 +891,8 @@ const TORONTO_BUILDINGS = [
         ]
     },
     {
-        "name": "PARC_LAFONTAINE",
-        "art": [
+        name: "PARC_LAFONTAINE",
+        art: [
             "┌────────┐",
             "│PARC LA │",
             "│FONT    │",
@@ -846,8 +901,8 @@ const TORONTO_BUILDINGS = [
         ]
     },
     {
-        "name": "CAMPI",
-        "art": [
+        name: "CAMPI",
+        art: [
             "┌────‡───┐",
             "│ CAFE ‡ │",
             "│ DEI ‡  │",
@@ -856,8 +911,10 @@ const TORONTO_BUILDINGS = [
         ]
     },
     {
-        "name": "QUAI_DES_BRUMES",
-        "art": [
+        name: "QUAI_DES_BRUMES",
+        artist: "bag_bad",
+
+        art: [
             "┌◬◬◬◬◬◬◬◬┐",
             "│ QUAI   │",
             "│ DES    │",
@@ -867,8 +924,10 @@ const TORONTO_BUILDINGS = [
     },
 
     {
-        "name": "CLUB_SODA",
-        "art": [
+        name: "CLUB_SODA",
+        artist: "bag_bad",
+
+        art: [
             "┌∃∃─∃∃─∃∃┐",
             "│ CLUB   │",
             "│ SODA   │",
@@ -877,8 +936,10 @@ const TORONTO_BUILDINGS = [
         ]
     },
     {
-        "name": "REUBEN",
-        "art": [
+        name: "REUBEN",
+        artist: "bag_bad",
+
+        art: [
             "    ┌✷─✷┐ ",
             "  ┌─✷─✷─┐ ",
             "┌─✷─✷─✷─┐ ",
@@ -889,9 +950,11 @@ const TORONTO_BUILDINGS = [
         ]
     },
     {
-        "name": "BIXI",
-        "artist": "Shreddy Acorn",
-        "art": [
+        name: "BIXI",
+        artist: "Shreddy Acorn",
+        artist: "bag_bad",
+
+        art: [
             " * * * * *",
             " ,,,,,,,,,",
             " |  BIXI |",
@@ -901,8 +964,10 @@ const TORONTO_BUILDINGS = [
         ]
     },
     {
-        "name": "ATWATER",
-        "art": [
+        name: "ATWATER",
+        artist: "bag_bad",
+
+        art: [
             "   ╱■╲    ",
             " ╱╲╱╲╱╲   ",
             "│ATWATER│ ",
@@ -915,8 +980,10 @@ const TORONTO_BUILDINGS = [
 
 
     {
-        "name": "BAGEL_BEAUBIEN",
-        "art": [
+        name: "BAGEL_BEAUBIEN",
+        artist: "bag_bad",
+
+        art: [
             "╔════════╗",
             "║ BAGEL  ║",
             "║BEAUBIEN║",
@@ -926,8 +993,10 @@ const TORONTO_BUILDINGS = [
     },
 
     {
-        "name": "PIKOLO",
-        "art": [
+        name: "PIKOLO",
+        artist: "bag_bad",
+
+        art: [
             "╔════════╗",
             "║ PIKOLO ║",
             "║ CAFE   ║",
@@ -937,8 +1006,10 @@ const TORONTO_BUILDINGS = [
     },
 
     {
-        "name": "RUE_LAJEUNESSE",
-        "art": [
+        name: "RUE_LAJEUNESSE",
+        artist: "bag_bad",
+
+        art: [
             "    ||    ",
             "  |    |  ",
             " |      │ ",
@@ -948,8 +1019,10 @@ const TORONTO_BUILDINGS = [
         ]
     },
     {
-        "name": "APT11",
-        "art": [
+        name: "APT11",
+        artist: "bag_bad",
+
+        art: [
             "██████████",
             "║ ░ ░░ ░ ║",
             "║ ░ ░░ ░ ║",
@@ -959,8 +1032,10 @@ const TORONTO_BUILDINGS = [
         ]
     },
     {
-        "name": "APT12",
-        "art": [
+        name: "APT12",
+        artist: "bag_bad",
+
+        art: [
             "▓▓▓▓▓▓▓▓▓▓",
             "║ ○●● ●● ║",
             "║ ○●● ●● ║",
@@ -971,8 +1046,10 @@ const TORONTO_BUILDINGS = [
         ]
     },
     {
-        "name": "APT14",
-        "art": [
+        name: "APT14",
+        artist: "bag_bad",
+
+        art: [
             "▓▓▓▓▓▓▓▓▓▓",
             "║ ▲ ▲ ▲  ║",
             "║ ▲ ▲ ▲  ║",
@@ -981,8 +1058,10 @@ const TORONTO_BUILDINGS = [
         ]
     },
     {
-        "name": "PETIT_LAURIER",
-        "art": [
+        name: "PETIT_LAURIER",
+        artist: "bag_bad",
+
+        art: [
             "╭────────╮",
             "│PETIT   │",
             "│LAURIER │",
@@ -993,9 +1072,11 @@ const TORONTO_BUILDINGS = [
     },
 
     {
-        "name": "TAROT_CARDS",
-        "artist": "d6",
-        "art": [
+        name: "TAROT_CARDS",
+        artist: "bag_bad",
+
+        artist: "d6",
+        art: [
             " ◢⬒⬒◣◢⬒⬒◣ ",
             "◢⊞TAROT♀⊞◣",
             "││♂CARDS││",
@@ -1004,9 +1085,9 @@ const TORONTO_BUILDINGS = [
         ]
     },
     {
-        "name": "MAISON_VELOS",
-        "artist": "B. R. Atislava",
-        "art": [
+        name: "MAISON_VELOS",
+        artist: "B. R. Atislava",
+        art: [
             " ︻︻︻︻︻    ",
             "|MAISON  |",
             "|⌾VÉLOS⌾ |",
@@ -1016,9 +1097,9 @@ const TORONTO_BUILDINGS = [
         ]
     },
     {
-        "name": "COOP_LA_MAISON",
-        "artist": "nexy",
-        "art": [
+        name: "COOP_LA_MAISON",
+        artist: "nexy",
+        art: [
             " ♡♥♡♥♡♥♡♥ ",
             "││COOP LA╮",
             "││MAISON │",
@@ -1027,9 +1108,9 @@ const TORONTO_BUILDINGS = [
         ]
     },
     {
-        "name": "MAISON_VERTE",
-        "artist": "KDI",
-        "art": [
+        name: "MAISON_VERTE",
+        artist: "KDI",
+        art: [
             "   /\\  /\\\\",
             "/\\ ||_/\\||",
             "||/__ ||/|",
@@ -1039,9 +1120,9 @@ const TORONTO_BUILDINGS = [
         ]
     },
     {
-        "name": "PATATERIE",
-        "artist": "nexy",
-        "art": [
+        name: "PATATERIE",
+        artist: "nexy",
+        art: [
             "┌────────┐",
             "│ ⊞ ⊞ ⊞  │",
             "│PATATES │",
@@ -1051,9 +1132,9 @@ const TORONTO_BUILDINGS = [
         ]
     },
     {
-        "name": "BOITE_A_MUSIQUE",
-        "artist": "katie jensen",
-        "art": [
+        name: "BOITE_A_MUSIQUE",
+        artist: "katie jensen",
+        art: [
             " ✦ ☾ ✧ ☁  ",
             "≡█▓≡█▓≡█▓≡",
             "⌼ BOÎTE ⌼ ",
@@ -1064,9 +1145,9 @@ const TORONTO_BUILDINGS = [
         ]
     },
     {
-        "name": "PHONOPOLIS",
-        "artist": "FP",
-        "art": [
+        name: "PHONOPOLIS",
+        artist: "FP",
+        art: [
             "[[[[[]]]]]",
             "│{PHONO} │",
             "│││POLIS││",
@@ -1075,9 +1156,9 @@ const TORONTO_BUILDINGS = [
         ]
     },
     {
-        "name": "LUX_CAFE",
-        "artist": "Bea",
-        "art": [
+        name: "LUX_CAFE",
+        artist: "Bea",
+        art: [
             " ❀⁑╲☾☽╱⁑❀ ",
             "╭│⁂ LUX⁂╮ ",
             "││⁂CAFÉ⁂│ ",
@@ -1086,9 +1167,9 @@ const TORONTO_BUILDINGS = [
         ]
     },
     {
-        "name": "CHEZ_CLAUDETTE",
-        "artist": "MOTCH",
-        "art": [
+        name: "CHEZ_CLAUDETTE",
+        artist: "MOTCH",
+        art: [
             " ◢╱╲◣ ◢╱╲◣",
             "╭│CHEZ   ╮",
             "│CLAUDET │",
@@ -1097,9 +1178,9 @@ const TORONTO_BUILDINGS = [
         ]
     },
     {
-        "name": "CAFE_MYRIADE",
-        "artist": "FADA",
-        "art": [
+        name: "CAFE_MYRIADE",
+        artist: "FADA",
+        art: [
             " ◢╱╲◣ ◢╱╲◣",
             "╭││CAFE │╮",
             "│││MYRIAD│",
@@ -1108,9 +1189,9 @@ const TORONTO_BUILDINGS = [
         ]
     },
     {
-        "name": "RENAISSANCE",
-        "artist": "katie jensen",
-        "art": [
+        name: "RENAISSANCE",
+        artist: "katie jensen",
+        art: [
             "▓▓▓▓▓▓▓▓▓▓",
             "┇RENAIS- ┇",
             "┇SANCE   ┇",
@@ -1118,9 +1199,9 @@ const TORONTO_BUILDINGS = [
         ]
     },
     {
-        "name": "ST_VIATEUR",
-        "artist": "Nathan",
-        "art": [
+        name: "ST_VIATEUR",
+        artist: "Nathan",
+        art: [
             " ________ ",
             "╭│ST    │╮",
             "││VIATEUR│",
@@ -1129,9 +1210,9 @@ const TORONTO_BUILDINGS = [
         ]
     },
     {
-        "name": "CINEMA_BEAUBIEN",
-        "artist": "Nathan",
-        "art": [
+        name: "CINEMA_BEAUBIEN",
+        artist: "Nathan",
+        art: [
             " _________",
             "╭ CINEMA ╮",
             "│BEAUBIEN│",
@@ -1141,9 +1222,9 @@ const TORONTO_BUILDINGS = [
         ]
     },
     {
-        "name": "TURBO_HAÜS",
-        "artist": "KingBain",
-        "art": [
+        name: "TURBO_HAÜS",
+        artist: "KingBain",
+        art: [
             "⬣⬒⬒⬒⬒⬒⬒⬒⬒⬣",
             "⬣TURBO ↱ ⬣",
             "⬣ ⇎⇎⇎⇎   ⬣",
@@ -1152,9 +1233,9 @@ const TORONTO_BUILDINGS = [
         ]
     },
     {
-        "name": "CINEMA_DU_PARC",
-        "artist": "Michael Iantorno",
-        "art": [
+        name: "CINEMA_DU_PARC",
+        artist: "Michael Iantorno",
+        art: [
             "︻︻︻︻︻     ",
             "│⬒CINEMA │",
             "│⬒⬒ DU ⬒⬒│",
@@ -1164,9 +1245,9 @@ const TORONTO_BUILDINGS = [
         ]
     },
     {
-        "name": "BENELUX",
-        "artist": "Avery",
-        "art": [
+        name: "BENELUX",
+        artist: "Avery",
+        art: [
             " ◢╱╲◣◢╱╲◣ ",
             "|BENELUX │",
             "│ ⚄BIÈRE⚄│",
@@ -1177,9 +1258,9 @@ const TORONTO_BUILDINGS = [
         ]
     },
     {
-        "name": "JEWISH_GENERAL",
-        "artist": "Daniel O",
-        "art": [
+        name: "JEWISH_GENERAL",
+        artist: "Daniel O",
+        art: [
             "  ╓ ✚ ╖   ",
             "║ ▨GENER▧║",
             "║ ▨AL   ▧║",
@@ -1190,9 +1271,9 @@ const TORONTO_BUILDINGS = [
         ]
     },
     {
-        "name": "DEPOT",
-        "artist": "weftandweaving",
-        "art": [
+        name: "DEPOT",
+        artist: "weftandweaving",
+        art: [
             "╭ DÉPÔT  ╮",
             "│││    ╭⌼│",
             "│││    │⌼│",
@@ -1201,9 +1282,9 @@ const TORONTO_BUILDINGS = [
         ]
     },
     {
-        "name": "MAXI",
-        "artist": "Dharmy",
-        "art": [
+        name: "MAXI",
+        artist: "Dharmy",
+        art: [
             " ◢⬒⬒⬒⬒⬒⬒◣ ",
             "◢⬒       ⬒◣",
             "│|  FOOD|│",
@@ -1273,7 +1354,7 @@ const TORONTO_BUILDINGS = [
         ]
     },
     {
-        name: "DANNY’S",
+        name: "DANNY'S",
         artist: "d",
         art: [
             "⌣┌══════┐ ",
@@ -1300,14 +1381,6 @@ const TORONTO_BUILDINGS = [
     },
 
 ];
-
-
-
-
-
-
-
-
 
 
 function checkBuildingWidth(buildings) {
