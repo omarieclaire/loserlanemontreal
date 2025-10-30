@@ -272,7 +272,7 @@ const TRANSLATIONS = [
   { key: "survivedText", en: "I survived", fr: "J'ai survécu" },
   { key: "withoutLane", en: "without a bike lane", fr: "sans piste cyclable" },
   { key: "shareWithFriend", en: "SHARE", fr: "PARTAGER" },
-  { key: "shareTitle", en: "No Bike Lanes?", fr: "Pas de pistes cyclables?" },
+  { key: "shareTitle", en: "We need bike lanes!", fr: "Pas de pistes cyclables?" },
 
   // Call to action messages
   { key: "fightForLanes", en: "FIGHT FOR YOUR BIKE LANES?", fr: "BATS-TOI POUR TES PISTES CYCLABLES?" },
