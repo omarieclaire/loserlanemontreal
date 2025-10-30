@@ -130,6 +130,7 @@ h1 {
   transition: all 0.2s;
   position: relative;
   color: var(--theme-color-alpha);
+  opacity: .9;
   text-align: center;
   width: 0.6em; /* <-- Match the grid column width */
   height: 1.2em; /* <-- 0.6em * 1.5 = 0.9em for the aspect ratio */
@@ -188,7 +189,7 @@ button:active {
 }
 
 .btn-copy {
-  background: #e7a9009c;
+  background: #e7a900df;
   color: #120303;
 }
 
@@ -277,7 +278,8 @@ button:active {
   transition: all 0.2s;
   min-width: 36px;
   text-align: center;
-  color: #d1feff;
+  color: var(--theme-color-alpha);
+  opacity: .8;
   box-shadow: 2px 2px #333;
 }
 
@@ -288,9 +290,9 @@ button:active {
 }
 
 .char-btn.selected {
-  background: #63f863;
+  background: var(--theme-color-alpha);
   color: #120303;
-  border-color: #63f863;
+  border-color: var(--theme-color-alpha);
 }
 
 .output-section {
@@ -352,7 +354,7 @@ button:active {
   max-height: 90vh;
   overflow-y: auto;
   animation: modalSlideIn 0.3s ease-out;
-  /* border: 2px solid #e7a900; */
+  border: 2px solid var(--dark-yellow)
   /* box-shadow: 0 0 30px rgba(231, 169, 0, 0.5); */
 }
 
@@ -448,7 +450,7 @@ button:active {
   padding: 12px;
   background: #0a0202;
   border-radius: 8px;
-  border: 1px solid #333;
+  /* border: 1px solid #333; */
 }
 
 .preview-label {
@@ -462,11 +464,11 @@ button:active {
 #buildingPreview {
   background: #0a0202;
   padding: 20px;
-  border: 1px solid #666;
+  /* border: 1px solid #666; */
   font-family: "Courier New", monospace;
   white-space: pre;
   font-size: 12px;
-  line-height: 1.5;
+  /* line-height: 1.5; */
   letter-spacing: 0;
   color: var(--theme-color-alpha);
 }
@@ -635,7 +637,7 @@ button:active {
   }
 
   .palette {
-    max-height: 125vh;
+           max-height: 74vh;
   }
 }
 
@@ -870,4 +872,216 @@ button:active {
   font-size: .7rem;
   color: var(--hot-pink);
   font-weight: bolder;
+}
+
+.share-message {
+  text-align: center;
+    color: var(--hot-pink);
+
+}
+
+.share-buttons-container {
+  display:flex;
+  justify-content: space-evenly;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+  #shareCardContainer {
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          z-index: 9999;
+        }
+        
+        .share-card {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 400px;
+          max-width: 90vw;
+          background-color: #000;
+          padding: 30px;
+          font-family: 'Courier New', monospace;
+          box-sizing: border-box;
+        }
+
+        .share-card-building-display {
+          background: #000;
+          padding: 20px;
+          margin-bottom: 15px;
+          width: 100%;
+          max-width: 350px;
+        }
+        
+        .share-card-building-art {
+          font-family: 'Courier New', monospace;
+          white-space: pre;
+          line-height: 1.2;
+          color: var(--theme-color);
+          font-size: 18px;
+          text-align: center;
+          margin: 0;
+          min-height: 180px;
+        }
+
+        .share-card-building-name {
+          color: var(--green);
+          font-size: 1.1rem;
+          margin: 10px 0 5px 0;
+          text-align: center;
+          text-transform: uppercase;
+          font-family: 'Courier New', monospace;
+          font-weight: bold;
+        }
+
+        .share-card-artist-name {
+          color: var(--light-blue);
+          opacity: 0.8;
+          font-size: 0.85rem;
+          margin: 0 0 10px 0;
+          text-align: center;
+          font-family: 'Courier New', monospace;
+        }
+
+        .share-card-footer {
+          color: var(--light-blue);
+          font-size: 0.7rem;
+          margin-top: 15px;
+          text-align: center;
+          opacity: 0.5;
+          font-family: 'Courier New', monospace;
+        }
+
+        .share-buttons-container {
+          display: flex;
+          gap: 10px;
+          justify-content: center;
+          margin-top: 1.5rem;
+          flex-wrap: wrap;
+          width: 100%;
+        }
+
+        .share-button {
+          padding: 10px 20px;
+          border: 2px solid var(--green);
+          background-color: transparent;
+          color: var(--green);
+          cursor: pointer;
+          font-size: 0.9rem;
+          font-family: 'Courier New', monospace;
+          text-transform: uppercase;
+          transition: all 0.2s;
+          border-radius: 5px;
+        }
+
+        .share-button:hover {
+          background-color: var(--hot-pink);
+          border-color: var(--hot-pink);
+          color: #fff;
+          transform: translateY(-2px);
+        }
+
+        .share-button:active {
+          transform: translate(2px, 2px);
+        }
+        
+        .share-button-primary {
+          background-color: #63f8638d;
+          color: #120303;
+          border-color: #666;
+        }
+        
+        .share-button-primary:hover {
+          background-color: var(--green);
+          color: black;
+        }
+
+        .validation-error {
+          color: #ff6b6b;
+          font-size: 0.9rem;
+          margin-top: 0.3rem;
+          min-height: 1.2rem;
+        }
+        
+        /* Hide share card container initially */
+        #shareCardContainer.hidden {
+          display: none !important;
+        }
+
+
+        .gallery-building {
+  font-size: 14px !important;
+  line-height: 1 !important;
+  font-family: "Courier New", monospace;
+  min-height: 180px;
+  overflow: hidden;
+  display: grid !important;
+  grid-template-columns: repeat(10, 0.6em) !important;
+  gap: 0 !important;
+  justify-content: center;
+  white-space: normal !important; /* Changed from pre */
+}
+
+.gallery-building span {
+  display: inline-block;
+  width: 0.6em;
+  height: 0.9em;
+  aspect-ratio: 1 / 1.5;
+  text-align: center;
+}
+
+/* Building preview in modals - standardized */
+.building-preview,
+#buildingPreview,
+#shareBuildingPreview {
+  background: #0a0202;
+  font-family: "Courier New", monospace;
+  color: var(--theme-color-alpha);
+  display: grid;
+  grid-template-columns: repeat(10, 0.6em);
+  gap: 0;
+  font-size: 14px;
+  line-height: 1;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+#buildingPreview span,
+#shareBuildingPreview span {
+  display: inline-block;
+  width: 0.6em;
+  height: 0.9em;
+  aspect-ratio: 1 / 1.5;
+  text-align: center;
+}
+
+#shareBuildingPreview {
+  font-size: 1.4rem;
+}
+
+/* Share card building display */
+.share-card-building-art {
+  font-family: 'Courier New', monospace;
+  color: var(--theme-color);
+  font-size: 18px;
+  line-height: 1;
+  margin: 0;
+  min-height: 180px;
+  display: grid;
+  grid-template-columns: repeat(10, 0.6em);
+  gap: 0;
+  justify-content: center;
 }

@@ -11,17 +11,20 @@ const STYLES = {
 };
 
 const COLOURS = {
-
-    BUILDINGGEN: [
+  BUILDINGGEN: [
     "rgba(65, 211, 255, 1)", // Sky Blue
-    "#ff66b5d3", // Fuchsia
-    "#1effb4d1", // Mint Aqua
+    "rgba(42, 166, 204, 1)", // Sky Blue
+    "rgba(65, 195, 255, 1)", // Sky Blue
+    "rgba(65, 179, 255, 1)", // Sky Blue
+    "rgba(65, 182, 255, 1)", // Sky Blue
 
+    // "#e7a900", // Fuchsia
+    // "#1effb4d1", // Mint Aqua
   ],
   BUILDINGS: [
     "#FF9999", // Soft Pink
     "#99FF99", // Light Mint Green
-    "#9999FF", // Soft Lavender
+    "#9595d8ff", // Soft Lavender
     "#FFFF99", // Soft Yellow
     "#FF99FF", // Light Orchid
     "#99FFFF", // Soft Aqua
@@ -40,7 +43,6 @@ const COLOURS = {
     "#FF9966", // Warm Peach
     "#99CCFF", // Light Sky Blue
   ],
-
 
   VEHICLES: [
     "#A07A7A", // Muted Pink
@@ -107,17 +109,17 @@ const peopleCol = [
   // '#8D5524', // Dark
   // '#4C3024', // Very dark
 
-  '#FFD1DC', // Pastel pink
-  '#FFB6C1', // Light pink
-  '#FFEC8B', // Light yellow
-  '#B0E57C', // Pastel green
-  '#ADD8E6', // Light blue
-  '#D1C4E9', // Lavender
-  '#F5DEB3', // Light wheat
-  '#FFC0CB', // Baby pink
-  '#FFFACD', // Lemon chiffon
-  '#FFE4E1', // Misty rose
-  '#E0FFFF', // Light cyan
-  '#F0E68C', // Khaki
-  '#FAEBD7', // Antique white
+  "#FFD1DC", // Pastel pink
+  "#FFB6C1", // Light pink
+  "#FFEC8B", // Light yellow
+  "#B0E57C", // Pastel green
+  "#ADD8E6", // Light blue
+  "#D1C4E9", // Lavender
+  "#F5DEB3", // Light wheat
+  "#FFC0CB", // Baby pink
+  "#FFFACD", // Lemon chiffon
+  "#FFE4E1", // Misty rose
+  "#E0FFFF", // Light cyan
+  "#F0E68C", // Khaki
+  "#FAEBD7", // Antique white
 ];

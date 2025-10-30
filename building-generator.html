@@ -53,154 +53,6 @@
 
       <!-- Add html2canvas library -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-
-      <style>
-        /* CSS Variables */
-        :root {
-          --vh: 1vh;
-          
-          /* Colours */
-          --dark-yellow: #e7a900;
-          --light-blue: #d1feff;
-          --light-purp: #dfb1ff;
-          --hot-pink: #ff77df;
-          --med-purp: #b19eff;
-          --green: #63f863;
-          --dark-grey: #120303;
-          --black: #000000;
-          
-          --overlay-background: rgba(0, 0, 0, 0.8);
-          
-          /* Font settings */
-          --font-main: "Courier New", monospace;
-          --font-size-base: 0.9rem;
-          --font-size-large: 1.3rem;
-        }
-
-        /* Share modal styles - matching gallery aesthetic */
-        #shareCardContainer {
-          position: fixed;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          z-index: 9999;
-        }
-        
-        .share-card {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          width: 400px;
-          max-width: 90vw;
-          background-color: #000;
-          padding: 30px;
-          font-family: 'Courier New', monospace;
-          box-sizing: border-box;
-        }
-
-        .share-card-building-display {
-          background: #000;
-          padding: 20px;
-          margin-bottom: 15px;
-          width: 100%;
-          max-width: 350px;
-        }
-        
-        .share-card-building-art {
-          font-family: 'Courier New', monospace;
-          white-space: pre;
-          line-height: 1.2;
-          color: var(--theme-color);
-          font-size: 18px;
-          text-align: center;
-          margin: 0;
-          min-height: 180px;
-        }
-
-        .share-card-building-name {
-          color: var(--green);
-          font-size: 1.1rem;
-          margin: 10px 0 5px 0;
-          text-align: center;
-          text-transform: uppercase;
-          font-family: 'Courier New', monospace;
-          font-weight: bold;
-        }
-
-        .share-card-artist-name {
-          color: var(--light-blue);
-          opacity: 0.8;
-          font-size: 0.85rem;
-          margin: 0 0 10px 0;
-          text-align: center;
-          font-family: 'Courier New', monospace;
-        }
-
-        .share-card-footer {
-          color: var(--light-blue);
-          font-size: 0.7rem;
-          margin-top: 15px;
-          text-align: center;
-          opacity: 0.5;
-          font-family: 'Courier New', monospace;
-        }
-
-        .share-buttons-container {
-          display: flex;
-          gap: 10px;
-          justify-content: center;
-          margin-top: 1.5rem;
-          flex-wrap: wrap;
-          width: 100%;
-        }
-
-        .share-button {
-          padding: 10px 20px;
-          border: 2px solid var(--green);
-          background-color: transparent;
-          color: var(--green);
-          cursor: pointer;
-          font-size: 0.9rem;
-          font-family: 'Courier New', monospace;
-          text-transform: uppercase;
-          transition: all 0.2s;
-          border-radius: 5px;
-        }
-
-        .share-button:hover {
-          background-color: var(--hot-pink);
-          border-color: var(--hot-pink);
-          color: #fff;
-          transform: translateY(-2px);
-        }
-
-        .share-button:active {
-          transform: translate(2px, 2px);
-        }
-        
-        .share-button-primary {
-          background-color: #63f8638d;
-          color: #120303;
-          border-color: #666;
-        }
-        
-        .share-button-primary:hover {
-          background-color: var(--green);
-          color: black;
-        }
-
-        .validation-error {
-          color: #ff6b6b;
-          font-size: 0.9rem;
-          margin-top: 0.3rem;
-          min-height: 1.2rem;
-        }
-        
-        /* Hide share card container initially */
-        #shareCardContainer.hidden {
-          display: none !important;
-        }
-      </style>
     </head>
 
     <script src="colours.js"></script>
@@ -229,13 +81,11 @@
             _(\&lt;_<br />
             ____(_)⍳(_)____
           </div>
-        <p class="subtitle">
-          <span data-i18n="subtitle"></span>
-          <a target="_blank" href="https://omarieclaire.github.io/loserlanemontreal/">LoserLane</a>
-        </p>
+          <p class="subtitle">
+            <span data-i18n="subtitle"></span>
+            <a target="_blank" href="https://omarieclaire.github.io/loserlanemontreal/">LoserLane</a>
+          </p>
         </div>
-
-       
 
         <div class="main-content">
           <div class="grid-section">
@@ -289,25 +139,27 @@
       <div id="shareCardContainer" class="hidden">
         <!-- This will be rendered for screenshot -->
       </div>
-      
+
       <!-- Share modal -->
+  <!-- Share modal -->
       <div class="modal-overlay" id="shareModalOverlay">
         <div class="modal">
+          <button class="info-close" onclick="closeShareModal()">×</button>
           <h2 data-i18n="shareTitle">Success!</h2>
           <p class="share-message" data-i18n="shareMessage">Your building has been submitted to LoserLane!</p>
-          
+
           <div class="building-preview-container">
             <div class="building-preview" id="shareBuildingPreview"></div>
           </div>
-          
+
+          <div class="share-card-building-name" id="shareCardBuildingName"></div>
+          <div class="share-card-artist-name" id="shareCardArtistName"></div>
+
           <div class="share-buttons-container" id="shareButtonsContainer">
-            <!-- Buttons will be dynamically added here -->
           </div>
-          
-          <button class="modal-btn modal-btn-cancel" onclick="closeShareModal()" data-i18n="done" style="margin-top: 1.5rem;">Done</button>
         </div>
       </div>
-      
+
       <div class="toast" id="toast">Copied!</div>
 
       <!-- Gentle landscape mode hint -->
@@ -400,9 +252,41 @@
 
         // Store current building info for sharing
         let currentBuildingInfo = {
-          name: '',
-          artist: ''
+          name: "",
+          artist: "",
         };
+        
+        // STANDARDIZED BUILDING RENDERER
+        // This function creates consistent building displays across all contexts
+        function renderBuildingDisplay(gridData, container, fontSize = "2.2rem") {
+          container.innerHTML = "";
+          container.style.display = "grid";
+          container.style.gridTemplateColumns = "repeat(10, 0.6em)";
+          container.style.gap = "0";
+          container.style.fontSize = fontSize;
+          container.style.justifyContent = "center";
+          container.style.background = "#120303";
+          container.style.lineHeight = "1";
+
+          gridData.forEach((row) => {
+            row.forEach((cell) => {
+              const cellDiv = document.createElement("div");
+              cellDiv.textContent = cell;
+              cellDiv.style.background = "#120303";
+              cellDiv.style.color = "var(--theme-color-alpha)";
+              cellDiv.style.aspectRatio = "1 / 1.5";
+              cellDiv.style.display = "flex";
+              cellDiv.style.alignItems = "center";
+              cellDiv.style.justifyContent = "center";
+              cellDiv.style.fontSize = "inherit";
+              cellDiv.style.width = "0.6em";
+              cellDiv.style.height = "0.9em";
+              cellDiv.style.textAlign = "center";
+              cellDiv.style.opacity = "0.9";
+              container.appendChild(cellDiv);
+            });
+          });
+        }
 
         function copyCell() {
           // Use hoveredCell instead of selectedCell
@@ -853,31 +737,34 @@
 
         function addToGame() {
           clearValidationErrors();
-          
-          // Show the modal with building preview
+
+          // Use EXACT same rendering as gallery
           const previewContainer = document.getElementById("buildingPreview");
           previewContainer.innerHTML = "";
           previewContainer.style.display = "grid";
-          previewContainer.style.gridTemplateColumns = "repeat(10, 1fr)";
-          previewContainer.style.gap = "2px";
-          previewContainer.style.maxWidth = "450px";
+          previewContainer.style.gridTemplateColumns = "repeat(10, 0.6em)";
+          previewContainer.style.gap = "0";
+          previewContainer.style.fontSize = "14px";
+          previewContainer.style.lineHeight = "1";
+          previewContainer.style.justifyContent = "center";
+          previewContainer.style.background = "#120303";
 
+          // Render all 10 rows exactly like gallery does
           grid.forEach((row) => {
             row.forEach((cell) => {
-              const cellDiv = document.createElement("div");
-              cellDiv.textContent = cell;
-              cellDiv.style.background = "#120303";
-              cellDiv.style.color = "#var(--theme-color-alpha)";
-              cellDiv.style.aspectRatio = "1 / 1.5";
-              cellDiv.style.display = "flex";
-              cellDiv.style.alignItems = "center";
-              cellDiv.style.justifyContent = "center";
-              cellDiv.style.fontSize = "10px";
-              cellDiv.style.minHeight = "4px";
-              previewContainer.style.gap = "2px";
-              previewContainer.appendChild(cellDiv);
+              const charSpan = document.createElement("span");
+              charSpan.style.display = "inline-block";
+              charSpan.style.width = "0.6em";
+              charSpan.style.height = "0.9em";
+              charSpan.style.textAlign = "center";
+              charSpan.style.aspectRatio = "1 / 1.5";
+              charSpan.style.color = "var(--theme-color-alpha)";
+              charSpan.style.opacity = "0.9";
+              charSpan.textContent = cell || " ";
+              previewContainer.appendChild(charSpan);
             });
           });
+          
           document.getElementById("modalOverlay").classList.add("show");
 
           // Focus on the first input
@@ -895,7 +782,7 @@
 
         function submitBuilding() {
           clearValidationErrors();
-          
+
           let buildingName = document.getElementById("modalBuildingName").value.trim();
           let artistName = document.getElementById("modalArtistName").value.trim();
           let hasError = false;
@@ -1226,26 +1113,26 @@
         });
 
         // Gentle landscape mode hint - shows once on mobile portrait
+
         function showLandscapeHint() {
-          // Only show on mobile-sized screens in portrait orientation
-          const isMobile = window.innerWidth <= 768;
+          // Only show on actual mobile devices in portrait orientation
+          const isMobile =
+            /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+            ("ontouchstart" in window && window.innerWidth <= 768);
           const isPortrait = window.innerHeight > window.innerWidth;
 
-          if (isMobile && isPortrait) {
+          if (isMobile && isPortrait && !localStorage.getItem("landscapeHintShown")) {
             const hint = document.getElementById("landscapeHint");
 
-            // Show the hint after a brief delay
             setTimeout(() => {
               hint.classList.add("show");
               hint.textContent = t("landscapeHint");
 
-              // Hide after 3 seconds
               setTimeout(() => {
                 hint.classList.remove("show");
               }, 4000);
             }, 500);
 
-            // Mark that we've shown it
             localStorage.setItem("landscapeHintShown", "true");
           }
         }
@@ -1267,32 +1154,43 @@
             const buildingDiv = document.createElement("div");
             buildingDiv.className = "gallery-building";
             buildingDiv.style.color = buildingColor;
+            buildingDiv.style.fontSize = "14px";
+            buildingDiv.style.display = "grid";
+            buildingDiv.style.gridTemplateColumns = "repeat(10, 0.6em)";
+            buildingDiv.style.gap = "0";
+            buildingDiv.style.lineHeight = "1";
+            buildingDiv.style.justifyContent = "center";
 
             // Calculate how many empty rows to add at the top for bottom alignment
             const emptyRows = GRID_SIZE - building.art.length;
 
-            // Render exactly like the game does - as text with inline-block spans
-            let buildingHTML = "";
-
             // Add empty rows at the top
             for (let rowNum = 0; rowNum < emptyRows; rowNum++) {
               for (let i = 0; i < 10; i++) {
-                buildingHTML += `<span style="display: inline-block; width: 0.6em; text-align: center;"> </span>`;
+                const emptyCell = document.createElement("span");
+                emptyCell.style.display = "inline-block";
+                emptyCell.style.width = "0.6em";
+                emptyCell.style.height = "0.9em";
+                emptyCell.style.textAlign = "center";
+                emptyCell.textContent = " ";
+                buildingDiv.appendChild(emptyCell);
               }
-              buildingHTML += "\n";
             }
 
             // Add the actual building art
             building.art.forEach((line) => {
-              // Each character gets wrapped in a span with width: 0.6em
               for (let i = 0; i < 10; i++) {
                 const char = line[i] || " ";
-                buildingHTML += `<span style="display: inline-block; width: 0.6em; text-align: center;">${char}</span>`;
+                const charSpan = document.createElement("span");
+                charSpan.style.display = "inline-block";
+                charSpan.style.width = "0.6em";
+                charSpan.style.height = "0.9em";
+                charSpan.style.textAlign = "center";
+                charSpan.style.aspectRatio = "1 / 1.5";
+                charSpan.textContent = char;
+                buildingDiv.appendChild(charSpan);
               }
-              buildingHTML += "\n";
             });
-
-            buildingDiv.innerHTML = buildingHTML;
 
             // Info section with building and artist name
             const infoDiv = document.createElement("div");
@@ -1321,6 +1219,7 @@
             galleryElement.appendChild(item);
           });
         }
+        
         function loadSpecificExample(building) {
           grid = Array(GRID_SIZE)
             .fill()
@@ -1345,224 +1244,193 @@
       <script>
         // Generate shareable image and show share options
         async function showShareOptions() {
-          // First, show the modal with preview
+          // Use standardized renderer for share preview
           const previewContainer = document.getElementById("shareBuildingPreview");
-          previewContainer.innerHTML = "";
-          previewContainer.style.display = "grid";
-          previewContainer.style.gridTemplateColumns = "repeat(10, 1fr)";
-          previewContainer.style.gap = "2px";
-
-          grid.forEach((row) => {
-            row.forEach((cell) => {
-              const cellDiv = document.createElement("div");
-              cellDiv.textContent = cell;
-              cellDiv.style.background = "#120303";
-              cellDiv.style.color = "var(--theme-color-alpha)";
-              cellDiv.style.aspectRatio = "1 / 1.5";
-              cellDiv.style.display = "flex";
-              cellDiv.style.alignItems = "center";
-              cellDiv.style.justifyContent = "center";
-              cellDiv.style.fontSize = "10px";
-              previewContainer.appendChild(cellDiv);
-            });
-          });
+          renderBuildingDisplay(grid, previewContainer, "1.4rem");
 
           // Show the modal immediately
           document.getElementById("shareModalOverlay").classList.add("show");
-          
+
+          document.getElementById("shareCardBuildingName").textContent = currentBuildingInfo.name;
+          document.getElementById("shareCardArtistName").textContent = `by ${currentBuildingInfo.artist}`;
+
           // Create the share card for screenshot
           const shareCard = createShareCard();
-          const container = document.getElementById('shareCardContainer');
-          container.innerHTML = '';
+          const container = document.getElementById("shareCardContainer");
+          container.innerHTML = "";
           container.appendChild(shareCard);
-          
+
           // Make it visible (will appear on top of modal)
-          container.classList.remove('hidden');
+          container.classList.remove("hidden");
 
           // Wait a moment for the DOM to render
-          await new Promise(resolve => setTimeout(resolve, 100));
+          await new Promise((resolve) => setTimeout(resolve, 100));
 
           // Generate the image using html2canvas
           try {
-            console.log('Starting html2canvas...');
+            console.log("Starting html2canvas...");
             const canvas = await html2canvas(shareCard, {
-              backgroundColor: '#0a0202',
+              backgroundColor: "#0a0202",
               scale: 2, // Higher quality
               logging: true, // Debug logging
-              useCORS: true
+              useCORS: true,
             });
-            
-            console.log('Canvas created:', canvas.width, 'x', canvas.height);
-            const imageDataUrl = canvas.toDataURL('image/png');
-            console.log('Image data URL created, length:', imageDataUrl.length);
-            
+
+            console.log("Canvas created:", canvas.width, "x", canvas.height);
+            const imageDataUrl = canvas.toDataURL("image/png");
+            console.log("Image data URL created, length:", imageDataUrl.length);
+
             // Hide the share card container after screenshot
-            container.classList.add('hidden');
-            
+            container.classList.add("hidden");
+
             // Create share buttons with the image
             createShareButtons(imageDataUrl);
-            
-            showToast('Image generated successfully!');
-            
+
+            showToast("Image generated successfully!");
           } catch (error) {
-            console.error('Error generating image:', error);
+            console.error("Error generating image:", error);
             // Hide the card even on error
-            container.classList.add('hidden');
-            showToast('Error creating image - text sharing still available');
+            container.classList.add("hidden");
+            showToast("Error creating image - text sharing still available");
             // Still show modal with text-only sharing
             createShareButtons(null);
           }
         }
 
         function createShareCard() {
-          const card = document.createElement('div');
-          card.className = 'share-card';
-          
+          const card = document.createElement("div");
+          card.className = "share-card";
+
           // Building display container
-          const buildingDisplay = document.createElement('div');
-          buildingDisplay.className = 'share-card-building-display';
+          const buildingDisplay = document.createElement("div");
+          buildingDisplay.className = "share-card-building-display";
+
+          // Render building using standardized method
+          const buildingArt = document.createElement("div");
+          buildingArt.className = "share-card-building-art";
           
-          // Render building as ASCII art (like gallery does)
-          const buildingArt = document.createElement('pre');
-          buildingArt.className = 'share-card-building-art';
-          
-          // Calculate how many empty rows to add at the top for bottom alignment
+          // Trim the grid for display
           let trimmedGrid = [...grid];
-          
-          // Remove empty rows from top
           while (trimmedGrid.length > 0 && trimmedGrid[0].every((cell) => cell === "")) {
             trimmedGrid.shift();
           }
-          
-          // Remove empty rows from bottom
           while (trimmedGrid.length > 0 && trimmedGrid[trimmedGrid.length - 1].every((cell) => cell === "")) {
             trimmedGrid.pop();
           }
           
+          // Add empty rows for bottom alignment
           const emptyRows = GRID_SIZE - trimmedGrid.length;
+          const fullGrid = [
+            ...Array(emptyRows).fill().map(() => Array(GRID_SIZE).fill("")),
+            ...trimmedGrid
+          ];
           
-          // Build the art string exactly like the gallery does
-          let artHTML = "";
+          renderBuildingDisplay(fullGrid, buildingArt, "18px");
           
-          // Add empty rows at the top
-          for (let rowNum = 0; rowNum < emptyRows; rowNum++) {
-            for (let i = 0; i < 10; i++) {
-              artHTML += `<span style="display: inline-block; width: 0.6em; text-align: center;"> </span>`;
-            }
-            artHTML += "\n";
-          }
-          
-          // Add the actual building art
-          trimmedGrid.forEach((row) => {
-            for (let i = 0; i < 10; i++) {
-              const char = row[i] || " ";
-              artHTML += `<span style="display: inline-block; width: 0.6em; text-align: center;">${char}</span>`;
-            }
-            artHTML += "\n";
-          });
-          
-          buildingArt.innerHTML = artHTML;
           buildingDisplay.appendChild(buildingArt);
           card.appendChild(buildingDisplay);
-          
+
           // Building name
-          const buildingName = document.createElement('div');
-          buildingName.className = 'share-card-building-name';
-          buildingName.textContent = currentBuildingInfo.name || 'BUILDING';
+          const buildingName = document.createElement("div");
+          buildingName.className = "share-card-building-name";
+          buildingName.textContent = currentBuildingInfo.name || "BUILDING";
           card.appendChild(buildingName);
-          
+
           // Artist name
-          const artistName = document.createElement('div');
-          artistName.className = 'share-card-artist-name';
-          artistName.textContent = `by ${currentBuildingInfo.artist || 'Anonymous'}`;
+          const artistName = document.createElement("div");
+          artistName.className = "share-card-artist-name";
+          artistName.textContent = `by ${currentBuildingInfo.artist || "Anonymous"}`;
           card.appendChild(artistName);
-          
+
           // Footer
-          const footer = document.createElement('div');
-          footer.className = 'share-card-footer';
-          footer.textContent = 'omarieclaire.github.io/loserlanemontreal';
+          const footer = document.createElement("div");
+          footer.className = "share-card-footer";
+          footer.textContent = "omarieclaire.github.io/loserlanemontreal";
           card.appendChild(footer);
-          
+
           return card;
         }
 
         function createShareButtons(imageDataUrl) {
-          const container = document.getElementById('shareButtonsContainer');
-          container.innerHTML = '';
-          
-          const shareUrl = 'https://omarieclaire.github.io/loserlanemontreal/';
-const shareText = `${t('buildingShareText')} "${currentBuildingInfo.name}" ${t('buildingShareTextEnd')}`;
-          
+          const container = document.getElementById("shareButtonsContainer");
+          container.innerHTML = "";
+
+          const shareUrl = "https://omarieclaire.github.io/loserlanemontreal/";
+          const shareText = `${t("buildingShareText")} "${currentBuildingInfo.name}" ${t("buildingShareTextEnd")}`;
+
           // Native share button (primary action)
           if (navigator.share) {
-            const shareBtn = document.createElement('button');
-            shareBtn.className = 'share-button share-button-primary';
-            shareBtn.textContent = t('shareButton');
+            const shareBtn = document.createElement("button");
+            shareBtn.className = "share-button share-button-primary";
+            shareBtn.textContent = t("shareButton");
             shareBtn.onclick = async () => {
               try {
                 if (imageDataUrl) {
                   // Convert data URL to blob
                   const response = await fetch(imageDataUrl);
                   const blob = await response.blob();
-                  const file = new File([blob], `${currentBuildingInfo.name}-loserLane.png`, { type: 'image/png' });
-                  
+                  const file = new File([blob], `${currentBuildingInfo.name}-loserLane.png`, { type: "image/png" });
+
                   // Check if sharing files is supported
                   if (navigator.canShare && navigator.canShare({ files: [file] })) {
                     await navigator.share({
-                      title: 'LoserLane Building',
+                      title: "LoserLane Building",
                       text: shareText,
-                      files: [file]
+                      files: [file],
                     });
                   } else {
                     // Fallback to text-only share
                     await navigator.share({
-                      title: 'LoserLane Building',
-                      text: `${shareText}\n\n${shareUrl}`
+                      title: "LoserLane Building",
+                      text: `${shareText}\n\n${shareUrl}`,
                     });
                   }
                 } else {
                   // Text-only share
                   await navigator.share({
-                    title: 'LoserLane Building',
-                    text: `${shareText}\n\n${shareUrl}`
+                    title: "LoserLane Building",
+                    text: `${shareText}\n\n${shareUrl}`,
                   });
                 }
-                showToast(t('sharedSuccess'));
+                showToast(t("sharedSuccess"));
               } catch (err) {
-                if (err.name !== 'AbortError') {
-                  console.error('Share failed:', err);
+                if (err.name !== "AbortError") {
+                  console.error("Share failed:", err);
                 }
               }
             };
             container.appendChild(shareBtn);
           }
-          
+
           // Download button
           if (imageDataUrl) {
-            const downloadBtn = document.createElement('button');
-            downloadBtn.className = 'share-button';
-            downloadBtn.textContent = t('downloadButton');
+            const downloadBtn = document.createElement("button");
+            downloadBtn.className = "share-button";
+            downloadBtn.textContent = t("downloadButton");
             downloadBtn.onclick = () => {
-              const link = document.createElement('a');
+              const link = document.createElement("a");
               link.download = `${currentBuildingInfo.name}-loserLane.png`;
               link.href = imageDataUrl;
               link.click();
-              showToast(t('downloadSuccess'));
+              showToast(t("downloadSuccess"));
             };
             container.appendChild(downloadBtn);
           }
-          
+
           // Copy text button
-          const copyBtn = document.createElement('button');
-          copyBtn.className = 'share-button';
-          copyBtn.textContent = t('copyTextButton');
+          const copyBtn = document.createElement("button");
+          copyBtn.className = "share-button";
+          copyBtn.textContent = t("copyTextButton");
           copyBtn.onclick = () => {
             const textToCopy = `${shareText}\n\n${shareUrl}`;
-            navigator.clipboard.writeText(textToCopy).then(() => {
-              showToast(t('copiedSuccess'));
-            }).catch(() => {
-              showToast(t('copyFailed'));
-            });
+            navigator.clipboard
+              .writeText(textToCopy)
+              .then(() => {
+                showToast(t("copiedSuccess"));
+              })
+              .catch(() => {
+                showToast(t("copyFailed"));
+              });
           };
           container.appendChild(copyBtn);
         }
@@ -1571,6 +1439,13 @@ const shareText = `${t('buildingShareText')} "${currentBuildingInfo.name}" ${t('
           document.getElementById("shareModalOverlay").classList.remove("show");
           clearGrid(); // Clear after sharing
         }
+
+        // Click outside share modal to close
+        document.getElementById("shareModalOverlay").addEventListener("click", (e) => {
+          if (e.target.id === "shareModalOverlay") {
+            closeShareModal();
+          }
+        });
       </script>
 
       <script>
