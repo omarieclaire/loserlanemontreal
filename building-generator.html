@@ -51,7 +51,156 @@
       <link rel="stylesheet" href="mainStyles.css" />
       <link rel="stylesheet" href="buildingGeneratorStyles.css" />
 
-      <style></style>
+      <!-- Add html2canvas library -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+      <style>
+        /* CSS Variables */
+        :root {
+          --vh: 1vh;
+          
+          /* Colours */
+          --dark-yellow: #e7a900;
+          --light-blue: #d1feff;
+          --light-purp: #dfb1ff;
+          --hot-pink: #ff77df;
+          --med-purp: #b19eff;
+          --green: #63f863;
+          --dark-grey: #120303;
+          --black: #000000;
+          
+          --overlay-background: rgba(0, 0, 0, 0.8);
+          
+          /* Font settings */
+          --font-main: "Courier New", monospace;
+          --font-size-base: 0.9rem;
+          --font-size-large: 1.3rem;
+        }
+
+        /* Share modal styles - matching gallery aesthetic */
+        #shareCardContainer {
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          z-index: 9999;
+        }
+        
+        .share-card {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 400px;
+          max-width: 90vw;
+          background-color: #000;
+          padding: 30px;
+          font-family: 'Courier New', monospace;
+          box-sizing: border-box;
+        }
+
+        .share-card-building-display {
+          background: #000;
+          padding: 20px;
+          margin-bottom: 15px;
+          width: 100%;
+          max-width: 350px;
+        }
+        
+        .share-card-building-art {
+          font-family: 'Courier New', monospace;
+          white-space: pre;
+          line-height: 1.2;
+          color: var(--theme-color);
+          font-size: 18px;
+          text-align: center;
+          margin: 0;
+          min-height: 180px;
+        }
+
+        .share-card-building-name {
+          color: var(--green);
+          font-size: 1.1rem;
+          margin: 10px 0 5px 0;
+          text-align: center;
+          text-transform: uppercase;
+          font-family: 'Courier New', monospace;
+          font-weight: bold;
+        }
+
+        .share-card-artist-name {
+          color: var(--light-blue);
+          opacity: 0.8;
+          font-size: 0.85rem;
+          margin: 0 0 10px 0;
+          text-align: center;
+          font-family: 'Courier New', monospace;
+        }
+
+        .share-card-footer {
+          color: var(--light-blue);
+          font-size: 0.7rem;
+          margin-top: 15px;
+          text-align: center;
+          opacity: 0.5;
+          font-family: 'Courier New', monospace;
+        }
+
+        .share-buttons-container {
+          display: flex;
+          gap: 10px;
+          justify-content: center;
+          margin-top: 1.5rem;
+          flex-wrap: wrap;
+          width: 100%;
+        }
+
+        .share-button {
+          padding: 10px 20px;
+          border: 2px solid var(--green);
+          background-color: transparent;
+          color: var(--green);
+          cursor: pointer;
+          font-size: 0.9rem;
+          font-family: 'Courier New', monospace;
+          text-transform: uppercase;
+          transition: all 0.2s;
+          border-radius: 5px;
+        }
+
+        .share-button:hover {
+          background-color: var(--hot-pink);
+          border-color: var(--hot-pink);
+          color: #fff;
+          transform: translateY(-2px);
+        }
+
+        .share-button:active {
+          transform: translate(2px, 2px);
+        }
+        
+        .share-button-primary {
+          background-color: #63f8638d;
+          color: #120303;
+          border-color: #666;
+        }
+        
+        .share-button-primary:hover {
+          background-color: var(--green);
+          color: black;
+        }
+
+        .validation-error {
+          color: #ff6b6b;
+          font-size: 0.9rem;
+          margin-top: 0.3rem;
+          min-height: 1.2rem;
+        }
+        
+        /* Hide share card container initially */
+        #shareCardContainer.hidden {
+          display: none !important;
+        }
+      </style>
     </head>
 
     <script src="colours.js"></script>
@@ -80,9 +229,7 @@
             _(\&lt;_<br />
             ____(_)⍳(_)____
           </div>
-           <!-- <h1 data-i18n="title">Draw a building!</h1> -->
         <p class="subtitle">
-          <!-- <span class="cta" data-i18n="title"></span> -->
           <span data-i18n="subtitle"></span>
           <a target="_blank" href="https://omarieclaire.github.io/loserlanemontreal/">LoserLane</a>
         </p>
@@ -92,11 +239,6 @@
 
         <div class="main-content">
           <div class="grid-section">
-            <!-- <div class="info-section">
-              <span class="current-char-label" data-i18n="currentCharacter">Current Character</span>
-              <span class="current-char-display" id="currentCharDisplay">█</span>
-            </div> -->
-
             <div class="grid-container">
               <div class="grid" id="grid"></div>
             </div>
@@ -126,10 +268,12 @@
           <div class="modal-input-group">
             <label data-i18n="buildingName">Building Name</label>
             <input type="text" id="modalBuildingName" data-i18n-placeholder="buildingPlaceholder" placeholder="EG CAFE DEI CAMPI" />
+            <div class="validation-error" id="buildingNameError"></div>
           </div>
           <div class="modal-input-group">
             <label data-i18n="artistName">Your Name / Handle</label>
             <input type="text" id="modalArtistName" data-i18n-placeholder="artistPlaceholder" placeholder="EG OMARIECLAIRE" />
+            <div class="validation-error" id="artistNameError"></div>
           </div>
           <div class="building-preview-container">
             <div class="building-preview" id="buildingPreview"></div>
@@ -141,20 +285,29 @@
         </div>
       </div>
 
+      <!-- Share card for screenshot (rendered outside modal) -->
+      <div id="shareCardContainer" class="hidden">
+        <!-- This will be rendered for screenshot -->
+      </div>
+      
+      <!-- Share modal -->
       <div class="modal-overlay" id="shareModalOverlay">
         <div class="modal">
-          <h2 data-i18n="shareTitle">Success! 🎉</h2>
-          <p class="share-message" data-i18n="shareMessage">Your building is on its way to LoserLane! Want to share your creation?</p>
+          <h2 data-i18n="shareTitle">Success!</h2>
+          <p class="share-message" data-i18n="shareMessage">Your building has been submitted to LoserLane!</p>
+          
           <div class="building-preview-container">
             <div class="building-preview" id="shareBuildingPreview"></div>
           </div>
-          <div class="modal-buttons">
-            <button class="modal-btn modal-btn-submit" onclick="shareToTwitter()" data-i18n="shareTwitter">Share on Twitter/X</button>
-            <button class="modal-btn modal-btn-submit" onclick="copyShareText()" data-i18n="copyLink">Copy Share Text</button>
-            <button class="modal-btn modal-btn-cancel" onclick="closeShareModal()" data-i18n="done">Done</button>
+          
+          <div class="share-buttons-container" id="shareButtonsContainer">
+            <!-- Buttons will be dynamically added here -->
           </div>
+          
+          <button class="modal-btn modal-btn-cancel" onclick="closeShareModal()" data-i18n="done" style="margin-top: 1.5rem;">Done</button>
         </div>
       </div>
+      
       <div class="toast" id="toast">Copied!</div>
 
       <!-- Gentle landscape mode hint -->
@@ -244,6 +397,12 @@
 
         const exampleBuildings = TORONTO_BUILDINGS;
         const paletteCategories = PALETTE_CATEGORIES;
+
+        // Store current building info for sharing
+        let currentBuildingInfo = {
+          name: '',
+          artist: ''
+        };
 
         function copyCell() {
           // Use hoveredCell instead of selectedCell
@@ -681,15 +840,20 @@
           clearLocalStorage();
 
           showToast(t("gridCleared"));
-          // if (confirm('Clear your building? This cannot be undone.')) {
-          // }
         }
 
         function getBuildingText() {
           return grid.map((row) => row.join("")).join("\n");
         }
 
+        function clearValidationErrors() {
+          document.getElementById("buildingNameError").textContent = "";
+          document.getElementById("artistNameError").textContent = "";
+        }
+
         function addToGame() {
+          clearValidationErrors();
+          
           // Show the modal with building preview
           const previewContainer = document.getElementById("buildingPreview");
           previewContainer.innerHTML = "";
@@ -726,40 +890,54 @@
           document.getElementById("modalOverlay").classList.remove("show");
           document.getElementById("modalBuildingName").value = "";
           document.getElementById("modalArtistName").value = "";
+          clearValidationErrors();
         }
 
         function submitBuilding() {
+          clearValidationErrors();
+          
           let buildingName = document.getElementById("modalBuildingName").value.trim();
           let artistName = document.getElementById("modalArtistName").value.trim();
+          let hasError = false;
 
+          // Validate building name
           if (!buildingName) {
-            showToast(t("enterBuildingName"));
+            document.getElementById("buildingNameError").textContent = t("enterBuildingName");
             document.getElementById("modalBuildingName").focus();
-            return;
+            hasError = true;
+          } else if (buildingName.length > 30) {
+            document.getElementById("buildingNameError").textContent = t("buildingNameTooLong");
+            document.getElementById("modalBuildingName").focus();
+            hasError = true;
           }
 
+          // Validate artist name
           if (!artistName) {
-            showToast(t("enterArtistName"));
-            document.getElementById("modalArtistName").focus();
-            return;
+            document.getElementById("artistNameError").textContent = t("enterArtistName");
+            if (!hasError) {
+              document.getElementById("modalArtistName").focus();
+            }
+            hasError = true;
+          } else if (artistName.length > 30) {
+            document.getElementById("artistNameError").textContent = t("artistNameTooLong");
+            if (!hasError) {
+              document.getElementById("modalArtistName").focus();
+            }
+            hasError = true;
           }
 
-          // Check character limits
-          if (buildingName.length > 30) {
-            showToast(t("buildingNameTooLong"));
-            document.getElementById("modalBuildingName").focus();
-            return;
-          }
-
-          if (artistName.length > 30) {
-            showToast(t("artistNameTooLong"));
-            document.getElementById("modalArtistName").focus();
+          // Stop if there are validation errors
+          if (hasError) {
             return;
           }
 
           // Remove spaces from inputs (as per form requirements)
           buildingName = buildingName.replace(/\s+/g, "_").toUpperCase();
           artistName = artistName.replace(/\s+/g, "_");
+
+          // Store for sharing
+          currentBuildingInfo.name = buildingName;
+          currentBuildingInfo.artist = artistName;
 
           // Trim empty rows from top and bottom
           let trimmedGrid = [...grid];
@@ -807,12 +985,7 @@
           })
             .then(() => {
               closeModal();
-              showShareOptions(buildingName, artistName);
-
-              showToast(t("submitSuccess"));
-
-              // Optional: Clear the grid after successful submission
-              // setTimeout(() => clearGrid(), 1000);
+              showShareOptions();
             })
             .catch((error) => {
               closeModal();
@@ -1170,12 +1343,9 @@
       </script>
 
       <script>
-        let currentShareData = {};
-
-        function showShareOptions(buildingName, artistName) {
-          currentShareData = { buildingName, artistName };
-
-          // Render the building preview
+        // Generate shareable image and show share options
+        async function showShareOptions() {
+          // First, show the modal with preview
           const previewContainer = document.getElementById("shareBuildingPreview");
           previewContainer.innerHTML = "";
           previewContainer.style.display = "grid";
@@ -1197,25 +1367,209 @@
             });
           });
 
+          // Show the modal immediately
           document.getElementById("shareModalOverlay").classList.add("show");
+          
+          // Create the share card for screenshot
+          const shareCard = createShareCard();
+          const container = document.getElementById('shareCardContainer');
+          container.innerHTML = '';
+          container.appendChild(shareCard);
+          
+          // Make it visible (will appear on top of modal)
+          container.classList.remove('hidden');
+
+          // Wait a moment for the DOM to render
+          await new Promise(resolve => setTimeout(resolve, 100));
+
+          // Generate the image using html2canvas
+          try {
+            console.log('Starting html2canvas...');
+            const canvas = await html2canvas(shareCard, {
+              backgroundColor: '#0a0202',
+              scale: 2, // Higher quality
+              logging: true, // Debug logging
+              useCORS: true
+            });
+            
+            console.log('Canvas created:', canvas.width, 'x', canvas.height);
+            const imageDataUrl = canvas.toDataURL('image/png');
+            console.log('Image data URL created, length:', imageDataUrl.length);
+            
+            // Hide the share card container after screenshot
+            container.classList.add('hidden');
+            
+            // Create share buttons with the image
+            createShareButtons(imageDataUrl);
+            
+            showToast('Image generated successfully!');
+            
+          } catch (error) {
+            console.error('Error generating image:', error);
+            // Hide the card even on error
+            container.classList.add('hidden');
+            showToast('Error creating image - text sharing still available');
+            // Still show modal with text-only sharing
+            createShareButtons(null);
+          }
+        }
+
+        function createShareCard() {
+          const card = document.createElement('div');
+          card.className = 'share-card';
+          
+          // Building display container
+          const buildingDisplay = document.createElement('div');
+          buildingDisplay.className = 'share-card-building-display';
+          
+          // Render building as ASCII art (like gallery does)
+          const buildingArt = document.createElement('pre');
+          buildingArt.className = 'share-card-building-art';
+          
+          // Calculate how many empty rows to add at the top for bottom alignment
+          let trimmedGrid = [...grid];
+          
+          // Remove empty rows from top
+          while (trimmedGrid.length > 0 && trimmedGrid[0].every((cell) => cell === "")) {
+            trimmedGrid.shift();
+          }
+          
+          // Remove empty rows from bottom
+          while (trimmedGrid.length > 0 && trimmedGrid[trimmedGrid.length - 1].every((cell) => cell === "")) {
+            trimmedGrid.pop();
+          }
+          
+          const emptyRows = GRID_SIZE - trimmedGrid.length;
+          
+          // Build the art string exactly like the gallery does
+          let artHTML = "";
+          
+          // Add empty rows at the top
+          for (let rowNum = 0; rowNum < emptyRows; rowNum++) {
+            for (let i = 0; i < 10; i++) {
+              artHTML += `<span style="display: inline-block; width: 0.6em; text-align: center;"> </span>`;
+            }
+            artHTML += "\n";
+          }
+          
+          // Add the actual building art
+          trimmedGrid.forEach((row) => {
+            for (let i = 0; i < 10; i++) {
+              const char = row[i] || " ";
+              artHTML += `<span style="display: inline-block; width: 0.6em; text-align: center;">${char}</span>`;
+            }
+            artHTML += "\n";
+          });
+          
+          buildingArt.innerHTML = artHTML;
+          buildingDisplay.appendChild(buildingArt);
+          card.appendChild(buildingDisplay);
+          
+          // Building name
+          const buildingName = document.createElement('div');
+          buildingName.className = 'share-card-building-name';
+          buildingName.textContent = currentBuildingInfo.name || 'BUILDING';
+          card.appendChild(buildingName);
+          
+          // Artist name
+          const artistName = document.createElement('div');
+          artistName.className = 'share-card-artist-name';
+          artistName.textContent = `by ${currentBuildingInfo.artist || 'Anonymous'}`;
+          card.appendChild(artistName);
+          
+          // Footer
+          const footer = document.createElement('div');
+          footer.className = 'share-card-footer';
+          footer.textContent = 'omarieclaire.github.io/loserlanemontreal';
+          card.appendChild(footer);
+          
+          return card;
+        }
+
+        function createShareButtons(imageDataUrl) {
+          const container = document.getElementById('shareButtonsContainer');
+          container.innerHTML = '';
+          
+          const shareUrl = 'https://omarieclaire.github.io/loserlanemontreal/';
+const shareText = `${t('buildingShareText')} "${currentBuildingInfo.name}" ${t('buildingShareTextEnd')}`;
+          
+          // Native share button (primary action)
+          if (navigator.share) {
+            const shareBtn = document.createElement('button');
+            shareBtn.className = 'share-button share-button-primary';
+            shareBtn.textContent = t('shareButton');
+            shareBtn.onclick = async () => {
+              try {
+                if (imageDataUrl) {
+                  // Convert data URL to blob
+                  const response = await fetch(imageDataUrl);
+                  const blob = await response.blob();
+                  const file = new File([blob], `${currentBuildingInfo.name}-loserLane.png`, { type: 'image/png' });
+                  
+                  // Check if sharing files is supported
+                  if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                    await navigator.share({
+                      title: 'LoserLane Building',
+                      text: shareText,
+                      files: [file]
+                    });
+                  } else {
+                    // Fallback to text-only share
+                    await navigator.share({
+                      title: 'LoserLane Building',
+                      text: `${shareText}\n\n${shareUrl}`
+                    });
+                  }
+                } else {
+                  // Text-only share
+                  await navigator.share({
+                    title: 'LoserLane Building',
+                    text: `${shareText}\n\n${shareUrl}`
+                  });
+                }
+                showToast(t('sharedSuccess'));
+              } catch (err) {
+                if (err.name !== 'AbortError') {
+                  console.error('Share failed:', err);
+                }
+              }
+            };
+            container.appendChild(shareBtn);
+          }
+          
+          // Download button
+          if (imageDataUrl) {
+            const downloadBtn = document.createElement('button');
+            downloadBtn.className = 'share-button';
+            downloadBtn.textContent = t('downloadButton');
+            downloadBtn.onclick = () => {
+              const link = document.createElement('a');
+              link.download = `${currentBuildingInfo.name}-loserLane.png`;
+              link.href = imageDataUrl;
+              link.click();
+              showToast(t('downloadSuccess'));
+            };
+            container.appendChild(downloadBtn);
+          }
+          
+          // Copy text button
+          const copyBtn = document.createElement('button');
+          copyBtn.className = 'share-button';
+          copyBtn.textContent = t('copyTextButton');
+          copyBtn.onclick = () => {
+            const textToCopy = `${shareText}\n\n${shareUrl}`;
+            navigator.clipboard.writeText(textToCopy).then(() => {
+              showToast(t('copiedSuccess'));
+            }).catch(() => {
+              showToast(t('copyFailed'));
+            });
+          };
+          container.appendChild(copyBtn);
         }
 
         function closeShareModal() {
           document.getElementById("shareModalOverlay").classList.remove("show");
           clearGrid(); // Clear after sharing
-        }
-
-        function shareToTwitter() {
-          const text = `I just added "${currentShareData.buildingName}" to LoserLane Montreal! 🏙️✨ Draw your own building: https://omarieclaire.github.io/loserlanemontreal/ @omarieclaire`;
-          const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
-          window.open(url, "_blank");
-        }
-
-        function copyShareText() {
-          const text = `I just added "${currentShareData.buildingName}" to LoserLane Montreal! 🏙️✨ Check it out: https://omarieclaire.github.io/loserlanemontreal/`;
-          navigator.clipboard.writeText(text).then(() => {
-            showToast("Share text copied! 📋");
-          });
         }
       </script>
 

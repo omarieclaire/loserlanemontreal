@@ -4,6 +4,9 @@
 const TRANSLATIONS = [
   // building generator
   { key: "title", en: "Join Us!", fr: "Dessine un bâtiment!" },
+
+
+  
     { key: "subtitle", en: "Draw your building and see it appear on Montreal's virtual streets in", fr: "Créez votre bâtiment et voyez-le apparaître dans la rue virtuelle de Montréal en" },
   { key: "currentCharacter", en: "Current Character", fr: "Caractère actuel" },
   { key: "eraseAll", en: "Clear all", fr: "Tout Effacer" },
@@ -35,15 +38,30 @@ const TRANSLATIONS = [
   { key: "montreal", en: "Montreal", fr: "Montréal" },
   { key: "landscapeHint", en: "rotate your phone? drawing is nicer in landscape mode", fr: "Tourne ton écran!" },
 
+  
 
-  { key: "shareTitle", en: 'Success! ', fr: 'Succès! ' },
+
 
   { key: "shareMessage", en: 'Your building is on its way to LoserLane! Want to share your creation?', fr: 'Votre bâtiment est en route vers LoserLane! Voulez-vous partager votre création?' },
-  { key: "shareTwitter", en: 'Share on Twitter/X', fr: 'Partager sur Twitter/X' },
   { key: "copyLink", en: 'Copy Share Text', fr: 'Copier le texte' },
   { key: "done", en: 'Done', fr: 'Terminé' },
   { key: "recentBuildings", en: 'Gallery: Recent Buildings', fr: 'Bâtiments Récents' },
 
+
+
+  { key: "shareTitle", en: "Success!", fr: "Succès!" },
+{ key: "shareButton", en: "Share", fr: "Partager" },
+{ key: "downloadButton", en: "Download", fr: "Télécharger" },
+{ key: "copyTextButton", en: "Copy Text", fr: "Copier Texte" },
+{ key: "sharedSuccess", en: "Shared!", fr: "Partagé!" },
+{ key: "downloadSuccess", en: "Downloaded!", fr: "Téléchargé!" },
+{ key: "copiedSuccess", en: "Copied!", fr: "Copié!" },
+{ key: "copyFailed", en: "Failed to copy", fr: "Échec de la copie" },
+
+{ key: "shareText", en: "I just created", fr: "Je viens de créer" },
+{ key: "shareTextEnd", en: "for LoserLane Montreal!", fr: "pour LoserLane Montréal!" },
+{ key: "buildingShareText", en: "I just created", fr: "Je viens de créer" },
+{ key: "buildingShareTextEnd", en: "for LoserLane Montreal!", fr: "pour LoserLane Montréal!" },
   //GAME
   // Game title
   { key: "gameTitle", en: "LOSER LANE", fr: "LOSER LANE" },
