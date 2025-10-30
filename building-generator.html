@@ -280,7 +280,7 @@
               cellDiv.style.justifyContent = "center";
               cellDiv.style.fontSize = "inherit";
               cellDiv.style.width = "0.6em";
-              cellDiv.style.height = "0.9em";
+              cellDiv.style.height = "1.2em";
               cellDiv.style.textAlign = "center";
               cellDiv.style.opacity = "0.9";
               container.appendChild(cellDiv);
@@ -755,7 +755,7 @@
               const charSpan = document.createElement("span");
               charSpan.style.display = "inline-block";
               charSpan.style.width = "0.6em";
-              charSpan.style.height = "0.9em";
+              charSpan.style.height = "1.2em";
               charSpan.style.textAlign = "center";
               charSpan.style.aspectRatio = "1 / 1.5";
               charSpan.style.color = "var(--theme-color-alpha)";
@@ -1104,6 +1104,8 @@
           if (!loaded) {
             // If nothing was loaded, make sure grid is displayed
             updateGrid();
+                      loadRandomExample();
+
           }
 
           const exampleBtn = document.querySelector(".btn-copy");
@@ -1437,7 +1439,8 @@
 
         function closeShareModal() {
           document.getElementById("shareModalOverlay").classList.remove("show");
-          clearGrid(); // Clear after sharing
+          // clearGrid(); // Clear after sharing find me
+          loadRandomExample();
         }
 
         // Click outside share modal to close
