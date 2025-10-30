@@ -13,355 +13,7 @@
 
 
 const TORONTO_BUILDINGS = [
-    {
-        name: "Habitat_67",
-        artist: "pix_peng",
-        art: [
-            "  ▓▓  ▓▓  ",
-            " ▓▓▓ ▓▓▓  ",
-            "▓▓▓ 67 ▓▓▓",
-            " ▓▓  ▓▓▓  ",
-            "▓▓▓ ▓▓ ▓▓ ",
-            " ▓▓  ▓▓ ▓▓"
-        ]
-    },
-    {
-        name: "Biosphere",
-        artist: "cos_koa",
-        art: [
-            "   ╱◇◇╲   ",
-            "  ◇◇◇◇◇◇  ",
-            " ◇◇◇◇◇◇◇◇ ",
-            " ◇◇◇◇◇◇◇◇ ",
-            "  ◇◇◇◇◇◇  ",
-            "   ╲◇◇╱   "
-        ]
-    },
-    {
-        name: "LE_CRAYON_MONTRÉALAIS",
-        artist: "Aurélie",
-        art: [
-            "   ⚛ ⚛    ",
-            "   ╔◢◣╗   ",
-            "   ⊡⊡⊡⊡   ",
-            "   ╚▒▒╝   ",
-            "    ▒▒    ",
-            "    ▒▒    "
-        ]
-    },
-    {
-        name: "BAIN_COLONIAL",
-        artist: "Julia",
-        art: [
-            " ┏━━━━━━┓ ",
-            " ┣━━━━━━┫ ",
-            " ┃ BAIN ┃ ",
-            " ┃      ┃ ",
-            " ┃COLO  ┃ ",
-            " ┃  NIAL┃ ",
-            " ┃      ┃ ",
-            " ┃      ┃ ",
-            " ┗━━━━━━┛ "
-        ]
-    },
-    {
-        name: "SNAKE_FACTORY",
-        artist: "Pen",
-        art: [
-            "  ∿∿∿⳻    ",
-            "  ∿∿∿5⳻   ",
-            "  ∿∿∿ S⳻  ",
-            "  ∿∿∿ S⚕  ",
-            "  ∿∿∿ S⚕  ",
-            "  ∿∿∿ S⚕  ",
-            "  ∿∿∿ S⚕  ",
-            "  ∿⍝∿ S⚕  "
-        ]
-    },
-    {
-        name: "BLOBBY'S_BUNKER",
-        artist: "Pen",
-        art: [
-            "   ⌓⌓⌓    ",
-            "  ◯ ❂ ⌇   ",
-            " ◯ ◜ ◝⌇   ",
-            " ◯⋰◟◘◞⦆   "
-        ]
-    },
-    {
-        name: "OBSERVATOIRE",
-        artist: "Pen",
-        art: [
-            "   ╭⦿⦿╮   ",
-            "  ╭ ⠁⠑ ╮  ",
-            " ╭ ⠛  ⠅⠝╮ ",
-            " ╰⠇ ⠋   ╯ ",
-            "  ╰⠕⠜ ⠜╯  ",
-            "   ╰  ╯   ",
-            "    ░░    ",
-            "    ▒▒    ",
-            "    ▓▓    ",
-            "    ██    "
-        ]
-    },
-    {
-        name: "ÉCOCENTRE_SAINT-LAURENT",
-        artist: "Pen",
-        art: [
-            "    ∥     ",
-            "   HH     ",
-            "  ▲▲▲▲    ",
-            "  ****    ",
-            " ⌠~◊ +≋   ",
-            "/⍞╳ 9 ⌯\  ",
-            "⌞╤╗ ⏏ ⌘╔╕ ",
-            "⌜╪╝⎇U ⠒╚╛ "
-        ]
-    },
-
-    {
-        name: "BANQ",
-        artist: "Julia",
-        art: [
-            " ┏━━━━━━┓ ",
-            " ┃BAnQ  ┃ ",
-            " ┣━━━━━━┛ ",
-            " ┃    ┃   ",
-            " ┃    ┃   ",
-            " ┃    ┃   ",
-            " ┃ ┌┐ ┃   ",
-            " ┃ ││ ┃   ",
-            " ┗━┷┷━┛   "
-        ]
-    },
-
-    {
-        name: "Olympic Stadium",
-        artist: "cr_owl",
-        art: [
-            "      ╱│  ",
-            "     ╱ │  ",
-            "    ╱  │  ",
-            "   ╱╲  │  ",
-            "  ╱  ╲ │  ",
-            " ◢◣ ◢◣◣│  "
-        ]
-    },
-    {
-        name: "Place des Arts",
-        artist: "star_slo",
-        art: [
-            "▀▀▀▀▀▀▀▀▀▀",
-            "█PLACE   █",
-            "█DES ARTS█",
-            "█ ▢ ▢ ▢ ▢█",
-            "█ ▢ ▢ ▢ ▢█",
-            "▔▔▔▔▔▔▔▔▔▔"
-        ]
-    },
-    {
-        name: "ENCORE_BOOKS",
-        artist: "Michael_Iantorno",
-        art: [
-            "▄▄▄▄▄▄▄▄▄▄",
-            "▌◘ENCORE⦿▐",
-            "┣─┬─┬─┬──┨",
-            "│⋰│▨│█│⋰⋰│",
-            "└─┴─┴─┴──┘"
-        ]
-    },
-    {
-        name: "Phi Centre",
-        artist: "cr_owl",
-        art: [
-            "╔═══PHI══╗",
-            "║ ◉ ART ◉║",
-            "║▓▓▓▓▓▓▓▓║",
-            "║        ║",
-            "║▓▓▓▓▓▓▓▓║",
-            "╚════════╝"
-        ]
-    },
-    {
-        name: "Musée d'Art Contemporain",
-        artist: "melo_kit",
-        art: [
-            "▀▀▀MAC▀▀▀▀",
-            "█ ◢■◣ ◢■◣█",
-            "█ ◥■◤ ◥■◤█",
-            "█ ART    █",
-            "█        █",
-            "▔▔▔▔▔▔▔▔▔▔"
-        ]
-    },
-    {
-        name: "SAT Societé",
-        artist: "su_fox",
-        art: [
-            "   ◢■■◣   ",
-            "╭{      )╮",
-            "│   ░░  │ ",
-            "│  ░   ░ │",
-            "│░ SAT ░│ ",
-            "│▓▓▓▓▓▓▓│ ",
-            "│░░░░░░░│ ",
-            "╰───────╯ "
-        ]
-    },
-    {
-        name: "BRANCHE_D'OLIVIER",
-        artist: "Alison",
-        art: [
-            "╔BRANCH═╕ ",
-            "║⁂D◞[] ⁂║ ",
-            "║OLIVIER║ ",
-            "║ ⠀✦✦✦ ⠀║ ",
-            "║⁂⠀⠀⠀⠀ ⁂║ ",
-            "╚═══════╛ "
-        ]
-    },
-    {
-        name: "SLUMLORD_TOWERS",
-        artist: "d6",
-        art: [
-            "╔════════╗",
-            "║SLUMLORD║",
-            "║ TOWERS ║",
-            "║⋰       ║",
-            "╚════════╝",
-            "▒▀█▀░░░█▀░",
-            "▒▀░◾▒▒▨█▀█",
-            "▒█░█▒▒▒▒█░",
-            "█◾█▄██▄█▄█",
-            "█╳█▌◾◾▐█╳█"
-        ]
-    },
-
-
-    {
-        name: "WILENSKY'S_DELI",
-        artist: "hlep",
-        art: [
-            "╱▔▔▔▔▔▔▔▔╲",
-            "║══║▣▣║══║",
-            "║══║▣▣║══║",
-            "║══║▣▣║══║",
-            "▒▒▒▒▒▒▒▒▒▒",
-            "▒▣▣▣▣▣▣▣▣▓",
-            "▒W▣▣▣▣▣▣Y▒",
-            "▒▣I▣▣▣▣K▣▒",
-            "▒▣▣LENS▣▣▒",
-            "██████████"
-        ]
-    },
-
-    {
-        name: "STADE_OLYMPIQUE",
-        artist: "Darzington",
-        art: [
-            "    ┌──   ",
-            "    │⚜╱   ",
-            "    ╱╱    ",
-            "   ╱╱     ",
-            "  ╱╱      ",
-            " ╱│────_⚐ ",
-            "╱ │▒▒▒▒▒\⚐",
-            "╱///||\\\╲",
-            "▉▉▉▉▉▉▉▉▉▉"
-        ]
-    },
-    {
-        name: "Fairmount Bagel",
-        artist: "ano_pan",
-        art: [
-            " ╱▔▔▔▔▔▔▔╲",
-            "│FAIRMOUNT│",
-            "│ ◯ (o) ◯│",
-            "│BAGELS. │",
-            "╰────────╯"
-        ]
-    },
-
-    {
-        name: "Casa d'Italia",
-        artist: "whi_wha",
-        art: [
-            "╔═CASA═══╗",
-            "║D'ITALIA║",
-            "║ ★ ★ ★  ║",
-            "║▓▓▓▓▓▓▓▓║",
-            "║CULTURA ║",
-            "╚════════╝"
-        ]
-    },
-
-    {
-        name: "McCord Museum",
-        artist: "gen_ot",
-        art: [
-            "▀McCORD▀▀▀",
-            "█        █",
-            "█        █",
-            "█        █",
-            "█ ◢■◣◢■◣ █",
-            "▔▔▔▔▔▔▔▔▔▔"
-        ]
-    },
-    {
-        name: "Quai des Brumes",
-        artist: "vel_de",
-        art: [
-            "╔═QUAI══╗ ",
-            "║ DES   ║ ",
-            "║BRUMES ║ ",
-            "║♡      ║ ",
-            "╚═══════╝ "
-        ]
-    },
-    {
-        name: "Cabaret Mile End",
-        artist: "ja_gir",
-        art: [
-            "▁▁CABARET▁",
-            "│ MILE   │",
-            "│  END   │",
-            "│ STAGE ▓│",
-            "└────────┘"
-        ]
-    },
-    {
-        name: "Foufounes Électriques",
-        artist: "neon_fer",
-        art: [
-            "╔FOUFOU═╗ ",
-            "║NES    ║ ",
-            "║ELEC   ║ ",
-            "║TRIQUES║ ",
-            "╚═══════╝ "
-        ]
-    },
-    {
-        name: "Le Dépanneur Café",
-        artist: "snu_se",
-        art: [
-            "╭DEPAN──╮ ",
-            "│ NEUR  │ ",
-            "│ CAFE  │ ",
-            "╰───────╯ "
-        ]
-    },
-    {
-        name: "Drawn & Quarterly",
-        artist: "jazz_gir",
-        art: [
-            "╔DRAWN═╗  ",
-            "║  &   ║  ",
-            "║QRTLY ║  ",
-            "║ ◢■◣  ║  ",
-            "║BOOKS ║  ",
-            "╚══════╝  "
-        ]
-    },
+   
 
     {
         name: "L'Escalier",
@@ -385,9 +37,6 @@ const TORONTO_BUILDINGS = [
             "▔▔▔▔▔▔▔▔▔▔"
         ]
     },
-
-
-
     {
         name: "Café Olimpico",
         artist: "esp_eag",
@@ -1068,6 +717,355 @@ const TORONTO_BUILDINGS = [
             "│CAFE    │",
             "༼つ╹ ╹ ༽つ│ ",
             "╰────────╯"
+        ]
+    },
+     {
+        name: "Habitat_67",
+        artist: "pix_peng",
+        art: [
+            "  ▓▓  ▓▓  ",
+            " ▓▓▓ ▓▓▓  ",
+            "▓▓▓ 67 ▓▓▓",
+            " ▓▓  ▓▓▓  ",
+            "▓▓▓ ▓▓ ▓▓ ",
+            " ▓▓  ▓▓ ▓▓"
+        ]
+    },
+    {
+        name: "Biosphere",
+        artist: "cos_koa",
+        art: [
+            "   ╱◇◇╲   ",
+            "  ◇◇◇◇◇◇  ",
+            " ◇◇◇◇◇◇◇◇ ",
+            " ◇◇◇◇◇◇◇◇ ",
+            "  ◇◇◇◇◇◇  ",
+            "   ╲◇◇╱   "
+        ]
+    },
+    {
+        name: "LE_CRAYON_MONTRÉALAIS",
+        artist: "Aurélie",
+        art: [
+            "   ⚛ ⚛    ",
+            "   ╔◢◣╗   ",
+            "   ⊡⊡⊡⊡   ",
+            "   ╚▒▒╝   ",
+            "    ▒▒    ",
+            "    ▒▒    "
+        ]
+    },
+    {
+        name: "BAIN_COLONIAL",
+        artist: "Julia",
+        art: [
+            " ┏━━━━━━┓ ",
+            " ┣━━━━━━┫ ",
+            " ┃ BAIN ┃ ",
+            " ┃      ┃ ",
+            " ┃COLO  ┃ ",
+            " ┃  NIAL┃ ",
+            " ┃      ┃ ",
+            " ┃      ┃ ",
+            " ┗━━━━━━┛ "
+        ]
+    },
+    {
+        name: "SNAKE_FACTORY",
+        artist: "Pen",
+        art: [
+            "  ∿∿∿⳻    ",
+            "  ∿∿∿5⳻   ",
+            "  ∿∿∿ S⳻  ",
+            "  ∿∿∿ S⚕  ",
+            "  ∿∿∿ S⚕  ",
+            "  ∿∿∿ S⚕  ",
+            "  ∿∿∿ S⚕  ",
+            "  ∿⍝∿ S⚕  "
+        ]
+    },
+    {
+        name: "BLOBBY'S_BUNKER",
+        artist: "Pen",
+        art: [
+            "   ⌓⌓⌓    ",
+            "  ◯ ❂ ⌇   ",
+            " ◯ ◜ ◝⌇   ",
+            " ◯⋰◟◘◞⦆   "
+        ]
+    },
+    {
+        name: "OBSERVATOIRE",
+        artist: "Pen",
+        art: [
+            "   ╭⦿⦿╮   ",
+            "  ╭ ⠁⠑ ╮  ",
+            " ╭ ⠛  ⠅⠝╮ ",
+            " ╰⠇ ⠋   ╯ ",
+            "  ╰⠕⠜ ⠜╯  ",
+            "   ╰  ╯   ",
+            "    ░░    ",
+            "    ▒▒    ",
+            "    ▓▓    ",
+            "    ██    "
+        ]
+    },
+    {
+        name: "ÉCOCENTRE_SAINT-LAURENT",
+        artist: "Pen",
+        art: [
+            "    ∥     ",
+            "   HH     ",
+            "  ▲▲▲▲    ",
+            "  ****    ",
+            " ⌠~◊ +≋   ",
+            "/⍞╳ 9 ⌯\  ",
+            "⌞╤╗ ⏏ ⌘╔╕ ",
+            "⌜╪╝⎇U ⠒╚╛ "
+        ]
+    },
+
+    {
+        name: "BANQ",
+        artist: "Julia",
+        art: [
+            " ┏━━━━━━┓ ",
+            " ┃BAnQ  ┃ ",
+            " ┣━━━━━━┛ ",
+            " ┃    ┃   ",
+            " ┃    ┃   ",
+            " ┃    ┃   ",
+            " ┃ ┌┐ ┃   ",
+            " ┃ ││ ┃   ",
+            " ┗━┷┷━┛   "
+        ]
+    },
+
+    {
+        name: "Olympic Stadium",
+        artist: "cr_owl",
+        art: [
+            "      ╱│  ",
+            "     ╱ │  ",
+            "    ╱  │  ",
+            "   ╱╲  │  ",
+            "  ╱  ╲ │  ",
+            " ◢◣ ◢◣◣│  "
+        ]
+    },
+    {
+        name: "Place des Arts",
+        artist: "star_slo",
+        art: [
+            "▀▀▀▀▀▀▀▀▀▀",
+            "█PLACE   █",
+            "█DES ARTS█",
+            "█ ▢ ▢ ▢ ▢█",
+            "█ ▢ ▢ ▢ ▢█",
+            "▔▔▔▔▔▔▔▔▔▔"
+        ]
+    },
+    {
+        name: "ENCORE_BOOKS",
+        artist: "Michael_Iantorno",
+        art: [
+            "▄▄▄▄▄▄▄▄▄▄",
+            "▌◘ENCORE⦿▐",
+            "┣─┬─┬─┬──┨",
+            "│⋰│▨│█│⋰⋰│",
+            "└─┴─┴─┴──┘"
+        ]
+    },
+    {
+        name: "Phi Centre",
+        artist: "cr_owl",
+        art: [
+            "╔═══PHI══╗",
+            "║ ◉ ART ◉║",
+            "║▓▓▓▓▓▓▓▓║",
+            "║        ║",
+            "║▓▓▓▓▓▓▓▓║",
+            "╚════════╝"
+        ]
+    },
+    {
+        name: "Musée d'Art Contemporain",
+        artist: "melo_kit",
+        art: [
+            "▀▀▀MAC▀▀▀▀",
+            "█ ◢■◣ ◢■◣█",
+            "█ ◥■◤ ◥■◤█",
+            "█ ART    █",
+            "█        █",
+            "▔▔▔▔▔▔▔▔▔▔"
+        ]
+    },
+    {
+        name: "SAT Societé",
+        artist: "su_fox",
+        art: [
+            "   ◢■■◣   ",
+            "╭{      )╮",
+            "│   ░░  │ ",
+            "│  ░   ░ │",
+            "│░ SAT ░│ ",
+            "│▓▓▓▓▓▓▓│ ",
+            "│░░░░░░░│ ",
+            "╰───────╯ "
+        ]
+    },
+    {
+        name: "BRANCHE_D'OLIVIER",
+        artist: "Alison",
+        art: [
+            "╔BRANCH═╕ ",
+            "║⁂D◞[] ⁂║ ",
+            "║OLIVIER║ ",
+            "║ ⠀✦✦✦ ⠀║ ",
+            "║⁂⠀⠀⠀⠀ ⁂║ ",
+            "╚═══════╛ "
+        ]
+    },
+    {
+        name: "SLUMLORD_TOWERS",
+        artist: "d6",
+        art: [
+            "╔════════╗",
+            "║SLUMLORD║",
+            "║ TOWERS ║",
+            "║⋰       ║",
+            "╚════════╝",
+            "▒▀█▀░░░█▀░",
+            "▒▀░◾▒▒▨█▀█",
+            "▒█░█▒▒▒▒█░",
+            "█◾█▄██▄█▄█",
+            "█╳█▌◾◾▐█╳█"
+        ]
+    },
+
+
+    {
+        name: "WILENSKY'S_DELI",
+        artist: "hlep",
+        art: [
+            "╱▔▔▔▔▔▔▔▔╲",
+            "║══║▣▣║══║",
+            "║══║▣▣║══║",
+            "║══║▣▣║══║",
+            "▒▒▒▒▒▒▒▒▒▒",
+            "▒▣▣▣▣▣▣▣▣▓",
+            "▒W▣▣▣▣▣▣Y▒",
+            "▒▣I▣▣▣▣K▣▒",
+            "▒▣▣LENS▣▣▒",
+            "██████████"
+        ]
+    },
+
+    {
+        name: "STADE_OLYMPIQUE",
+        artist: "Darzington",
+        art: [
+            "    ┌──   ",
+            "    │⚜╱   ",
+            "    ╱╱    ",
+            "   ╱╱     ",
+            "  ╱╱      ",
+            " ╱│────_⚐ ",
+            "╱ │▒▒▒▒▒\⚐",
+            "╱///||\\\╲",
+            "▉▉▉▉▉▉▉▉▉▉"
+        ]
+    },
+    {
+        name: "Fairmount Bagel",
+        artist: "ano_pan",
+        art: [
+            " ╱▔▔▔▔▔▔▔╲",
+            "│FAIRMOUNT│",
+            "│ ◯ (o) ◯│",
+            "│BAGELS. │",
+            "╰────────╯"
+        ]
+    },
+
+    {
+        name: "Casa d'Italia",
+        artist: "whi_wha",
+        art: [
+            "╔═CASA═══╗",
+            "║D'ITALIA║",
+            "║ ★ ★ ★  ║",
+            "║▓▓▓▓▓▓▓▓║",
+            "║CULTURA ║",
+            "╚════════╝"
+        ]
+    },
+
+    {
+        name: "McCord Museum",
+        artist: "gen_ot",
+        art: [
+            "▀McCORD▀▀▀",
+            "█        █",
+            "█        █",
+            "█        █",
+            "█ ◢■◣◢■◣ █",
+            "▔▔▔▔▔▔▔▔▔▔"
+        ]
+    },
+    {
+        name: "Quai des Brumes",
+        artist: "vel_de",
+        art: [
+            "╔═QUAI══╗ ",
+            "║ DES   ║ ",
+            "║BRUMES ║ ",
+            "║♡      ║ ",
+            "╚═══════╝ "
+        ]
+    },
+    {
+        name: "Cabaret Mile End",
+        artist: "ja_gir",
+        art: [
+            "▁▁CABARET▁",
+            "│ MILE   │",
+            "│  END   │",
+            "│ STAGE ▓│",
+            "└────────┘"
+        ]
+    },
+    {
+        name: "Foufounes Électriques",
+        artist: "neon_fer",
+        art: [
+            "╔FOUFOU═╗ ",
+            "║NES    ║ ",
+            "║ELEC   ║ ",
+            "║TRIQUES║ ",
+            "╚═══════╝ "
+        ]
+    },
+    {
+        name: "Le Dépanneur Café",
+        artist: "snu_se",
+        art: [
+            "╭DEPAN──╮ ",
+            "│ NEUR  │ ",
+            "│ CAFE  │ ",
+            "╰───────╯ "
+        ]
+    },
+    {
+        name: "Drawn & Quarterly",
+        artist: "jazz_gir",
+        art: [
+            "╔DRAWN═╗  ",
+            "║  &   ║  ",
+            "║QRTLY ║  ",
+            "║ ◢■◣  ║  ",
+            "║BOOKS ║  ",
+            "╚══════╝  "
         ]
     },
 

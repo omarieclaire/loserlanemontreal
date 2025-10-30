@@ -1245,7 +1245,7 @@ ${artLines.join(",\n")}
           const galleryElement = document.getElementById("galleryScroll");
           if (!galleryElement) return;
 
-          const recentBuildings = TORONTO_BUILDINGS.slice(-40).reverse();
+          const recentBuildings = TORONTO_BUILDINGS.slice(-60).reverse();
 
           recentBuildings.forEach((building) => {
             const item = this._createGalleryItem(building);
