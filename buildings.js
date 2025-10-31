@@ -1378,6 +1378,22 @@ const TORONTO_BUILDINGS = [
         ]
     },
 
+        {
+                name: "JEANS_JEANS_JEANS",
+                artist: "Ellen",
+                art: [
+                    "   ≜≜≜≜   ",
+            "  ◇◇◇◇◇◇  ",
+            "  ╱▧▧▧▧╲  ",
+            "▛⋰  ██  ⋱▜",
+            "▌░jeans ░▐",
+            "▌▒ jeans▒▐",
+            " ▒jeans ▒ ",
+            "    ▛▜    ",
+            " ◣/\▭▭/\◢ "
+                ]
+            },
+
 ];
 
 
