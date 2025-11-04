@@ -13,7 +13,7 @@
 
 
 const TORONTO_BUILDINGS = [
-   
+
 
     {
         name: "L'Escalier",
@@ -25,29 +25,7 @@ const TORONTO_BUILDINGS = [
             "╰───────╯ "
         ]
     },
-    {
-        name: "Cinéma du Parc",
-        artist: "reel_lem",
-        art: [
-            "▀▀CINEMA▀▀",
-            "█ DU    █ ",
-            "█ PARC  █ ",
-            "█ ◢▓▓◣  █ ",
-            "█ ◥▓▓◤  █ ",
-            "▔▔▔▔▔▔▔▔▔▔"
-        ]
-    },
-    {
-        name: "Café Olimpico",
-        artist: "esp_eag",
-        art: [
-            "╭OLIMPICO╮",
-            "│ESPRESSO│",
-            "│ CAFFE  │",
-            "│░1970░░ │",
-            "╰────────╯"
-        ]
-    },
+   
     {
         name: "Cinéma Beaubien",
         artist: "film_flam",
@@ -720,6 +698,29 @@ const TORONTO_BUILDINGS = [
         ]
     },
      {
+        name: "Cinéma du Parc",
+        artist: "reel_lem",
+        art: [
+            "▀▀CINEMA▀▀",
+            "█ DU    █ ",
+            "█ PARC  █ ",
+            "█ ◢▓▓◣  █ ",
+            "█ ◥▓▓◤  █ ",
+            "▔▔▔▔▔▔▔▔▔▔"
+        ]
+    },
+    {
+        name: "Café Olimpico",
+        artist: "esp_eag",
+        art: [
+            "╭OLIMPICO╮",
+            "│ESPRESSO│",
+            "│ CAFFE  │",
+            "│░1970░░ │",
+            "╰────────╯"
+        ]
+    },
+    {
         name: "Habitat_67",
         artist: "pix_peng",
         art: [
@@ -1378,11 +1379,28 @@ const TORONTO_BUILDINGS = [
         ]
     },
 
-        {
-                name: "JEANS_JEANS_JEANS",
-                artist: "Ellen",
-                art: [
-                    "   ≜≜≜≜   ",
+
+    {
+        name: "LE_CABANON",
+        artist: "ROMZY",
+        art: [
+            "    ⚘⚘    ",
+            "   ╭┻┺╮   ",
+            "   ├✪✪┤   ",
+            "╔══⌓═════╗",
+            "║LE⚙     ║",
+            "║CABANON★║",
+            "║        ║",
+            "║░░⚑░░⚑░░║",
+            "╚════════╝",
+            "   ╱  ╲   "
+        ]
+    },
+    {
+        name: "JEANS_JEANS_JEANS",
+        artist: "Ellen",
+        art: [
+            "   ≜≜≜≜   ",
             "  ◇◇◇◇◇◇  ",
             "  ╱▧▧▧▧╲  ",
             "▛⋰  ██  ⋱▜",
@@ -1391,14 +1409,56 @@ const TORONTO_BUILDINGS = [
             " ▒jeans ▒ ",
             "    ▛▜    ",
             " ◣/\▭▭/\◢ "
-                ]
-            },
+        ]
+    },
+    {
+        name: "CINÉMA_L'AMOUR",
+        artist: "BobWithHair",
+        art: [
+            "▮▤▤▤▤▤▤▤▤▮",
+            "┇┌┐ ┌┐ ┌┐┇",
+            "┇└┘║└┘ └┘┇",
+            "┇┌┐║┌┐ ┌┐┇",
+            "┇└┘║└┘⠀└┘┇",
+            "┇⠀CINEMA⠀┇",
+            "┇⠀L'AMOUR┇",
+            "┇┎─────┰─┨",
+            "┗┻━━━━━┹─┚"
+        ]
+    },
+    {
+        name: "DANS_MON_HOOD",
+        artist: "Cinzia",
+        art: [
+            "      /\\  ",
+            "     /  \\ ",
+            "   /    ∥\\",
+            "  DANS  ∥ ",
+            " / MON ⧂- ",
+            "/HOOD  /▊|",
+            "|     |▊▊|",
+            "|     |▊▊|"
+        ]
+    },
+    {
+        name: "BOTANICAL_GARDENS",
+        artist: "Paloma",
+        art: [
+            "❀ ◑ ❃ ⍟  ⠗",
+            "⌇◍❂ ✩ ⌇ ☆ ",
+            "BOTANICAL⌡",
+            "GARDEN ⚙ ○",
+            "∿   ⠟  ⌠ ⚘"
+        ]
+    },
+
+
 
 ];
 
 
 function checkBuildingWidth(buildings) {
-    const nonCompliantBuildings = buildings.filter(building => 
+    const nonCompliantBuildings = buildings.filter(building =>
         building.art.some(line => line.length > 10)
     );
 
@@ -1414,6 +1474,6 @@ checkBuildingWidth(TORONTO_BUILDINGS);
 
 
 
-    
-                         
+
+
 
