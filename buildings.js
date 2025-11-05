@@ -1451,6 +1451,16 @@ const TORONTO_BUILDINGS = [
             "∿   ⠟  ⌠ ⚘"
         ]
     },
+        {
+        name: "SAUNA_GI_JOE",
+        artist: "K",
+        art: [
+            "▆▆▆▆▆▆▆▆▆ ",
+            "GI ⍟ JOE  ",
+            "▯▕ ▕ ▕ ▕▯ ",
+            "▯▆▆▆▆▆▆▆▯ "
+        ]
+    },
 
 
 
