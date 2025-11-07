@@ -39,8 +39,8 @@ body {
 }
 
 body {
-    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
-
+  /* padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); */
+top: 2px;
 }
 
 a {
@@ -306,7 +306,7 @@ button.first-time {
   user-select: none;
   padding: 2px;
   margin-bottom: 10px;
-  font-size: 2.2rem;
+  font-size: 2.8rem;
 }
 
 .grid {
@@ -350,10 +350,11 @@ button.first-time {
   margin-top: 1rem;
 }
 
-.controls button {
+.controls button, .btn-primary {
   flex: 1;
   min-width: 0;
-  padding: 8px 2px;
+  padding: 8px 16px
+  
 }
 
 /* ========================================
@@ -836,31 +837,32 @@ button.first-time {
 }
 
 /* Mobile Horizontal - small screens */
-@media (max-width: 768px) {
+@media (max-width: 468px) {
   .subtitle {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     border-bottom: 1px solid;
+    width: 80%;
   }
 
   #header-container {
     margin-bottom: 15px;
     /* max-width: 80vw; */
   }
-.lang-toggle-container,
-.info-button-container {
-  top: 15px;
-}
-
+  .lang-toggle-container,
+  .info-button-container {
+    top: 15px;
+  }
 }
 
 /* Mobile Landscape - small screens */
 @media (max-width: 768px) and (orientation: landscape) {
   .subtitle {
-    font-size: 0.75rem;
+    font-size: 0.45rem;
     border-bottom: 1px solid;
+    /* width: 70%; */
   }
   .container {
-    max-width: 92vw;
+    max-width: 100vw;
     padding: 12px;
   }
 
@@ -890,6 +892,7 @@ button.first-time {
   .palette {
     max-height: 65vh;
     padding: 8px;
+    max-height: 90vh;
   }
 
   .char-btn {
@@ -899,7 +902,7 @@ button.first-time {
   }
 
   .controls button {
-    padding: 6px 4px;
+    padding: 3px 3px;
     font-size: 11px;
   }
 
@@ -907,10 +910,10 @@ button.first-time {
     margin-bottom: 1rem;
   }
 
-.lang-toggle-container,
-.info-button-container {
-  top: 15px;
-}
+  .lang-toggle-container,
+  .info-button-container {
+    top: 5px;
+  }
 }
 
 /* Mobile Landscape - medium screens */
@@ -920,7 +923,7 @@ button.first-time {
     margin: 0;
   }
   .container {
-    max-width: 92vw;
+    max-width: 100vw;
     padding: 18px;
   }
 
@@ -955,13 +958,14 @@ button.first-time {
 
   .subtitle {
     font-size: 0.75rem;
+    /* width: 60%; */
   }
   #title-bike {
     font-size: 0.5rem;
   }
 
   .lang-toggle-container,
-.info-button-container {
-  top: 15px;
-}
+  .info-button-container {
+    top: 5px;
+  }
 }
