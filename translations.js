@@ -45,7 +45,7 @@ const TRANSLATIONS = [
   { key: "shareMessage", en: 'Your building is on its way to LoserLane! Want to share your creation?', fr: 'Votre bâtiment est en route vers LoserLane! Voulez-vous partager votre création?' },
   { key: "copyLink", en: 'Copy Share Text', fr: 'Copier le texte' },
   { key: "done", en: 'Done', fr: 'Terminé' },
-  { key: "recentBuildings", en: 'Gallery: Recent Buildings', fr: 'Bâtiments Récents' },
+  { key: "recentBuildings", en: '⬇ Gallery: Recent Buildings ⬇', fr: '⬇ Bâtiments Récents ⬇' },
 
 
 

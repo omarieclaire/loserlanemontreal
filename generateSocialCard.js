@@ -351,7 +351,7 @@ const contentContainer = document.createElement("div");
   const messageElement = document.createElement("p");
   messageElement.className = "CTO";
   messageElement.id = "CTO";
-  messageElement.innerHTML = `<a target="_blank" href="https://newsinteractives.cbc.ca/features/2025/montreal-municipal-election/#intro">${t(
+  messageElement.innerHTML = `<a target="_blank" href="https://mairesse.montreal.ca/en/send-message-mayor">${t(
     "fightForLanes"
   )}</a>`;
 
