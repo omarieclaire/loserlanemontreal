@@ -38,6 +38,11 @@ body {
   overflow: auto;
 }
 
+body {
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+
+}
+
 a {
   color: var(--text-secondary);
   transition: color 0.2s ease;
@@ -167,7 +172,7 @@ button.first-time {
 }
 
 .subtitle {
-  font-size: 0.95rem;
+  font-size: 1rem;
   border-bottom: 1px solid;
   width: 100%;
 }
@@ -841,10 +846,11 @@ button.first-time {
     margin-bottom: 15px;
     /* max-width: 80vw; */
   }
+.lang-toggle-container,
+.info-button-container {
+  top: 15px;
+}
 
-  .info-button-container {
-    top: 15px;
-  }
 }
 
 /* Mobile Landscape - small screens */
@@ -901,9 +907,10 @@ button.first-time {
     margin-bottom: 1rem;
   }
 
-  .info-button-container {
-    top: 15px;
-  }
+.lang-toggle-container,
+.info-button-container {
+  top: 15px;
+}
 }
 
 /* Mobile Landscape - medium screens */
@@ -952,4 +959,9 @@ button.first-time {
   #title-bike {
     font-size: 0.5rem;
   }
+
+  .lang-toggle-container,
+.info-button-container {
+  top: 15px;
+}
 }

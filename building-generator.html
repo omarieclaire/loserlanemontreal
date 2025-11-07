@@ -2,8 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no" />
     <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="LoserLane" />
 
     <title>Loser Lane Building Generator</title>
     <meta name="title" content="Loser Lane Building Generator" />
@@ -1681,6 +1684,8 @@ ${artLines.join(",\n")}
       // main
       /////////////////
 
+
+
       const App = {
         // Initialize the application
         init() {
@@ -1689,6 +1694,7 @@ ${artLines.join(",\n")}
           this._loadInitialData();
           this._setupEventListeners();
           this._showLandscapeHint();
+          this._hideBrowserUI();
         },
 
         // Setup theme color
@@ -1708,6 +1714,19 @@ ${artLines.join(",\n")}
           PaletteController.selectChar(State.currentChar);
         },
 
+
+        _hideBrowserUI() {
+  // Small scroll trick to hide browser chrome on mobile
+  window.scrollTo(0, 1);
+  
+  // Also hide on orientation change
+  window.addEventListener('orientationchange', () => {
+    setTimeout(() => window.scrollTo(0, 1), 100);
+  });
+},
+
+
+        
         // Load initial data
         _loadInitialData() {
           const loaded = Storage.loadGrid(State.GRID_SIZE);
