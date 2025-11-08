@@ -1,4 +1,3 @@
-document.addEventListener("DOMContentLoaded", () => {
   const PenMode = {
     isActive: false,
     originalHTML: null,
@@ -453,7 +452,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     },
   };
-});
 
 ///////////////////
 // State Management
