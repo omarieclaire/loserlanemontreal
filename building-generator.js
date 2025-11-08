@@ -834,7 +834,7 @@ const KeyboardHandler = {
   },
 
   _onSecretCodeDetected() {
-    UIUtils.showToast("🖊️ PEN MODE ACTIVATED!");
+    // UIUtils.showToast("🖊️ PEN MODE ACTIVATED!");
     console.log("Secret code 'pen' detected!");
 
     // Activate pen mode (NEW CODE)
