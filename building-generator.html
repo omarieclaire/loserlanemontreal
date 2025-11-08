@@ -46,6 +46,7 @@
     <!-- Stylesheet -->
     <link rel="stylesheet" href="mainStyles.css" />
     <link rel="stylesheet" href="buildingGeneratorStyles.css" />
+    <link rel="stylesheet" href="pen.css" />
 
     <!-- External Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -329,7 +330,7 @@
           const buildingDiv = document.createElement("div");
           buildingDiv.className = "gallery-building";
 
-const buildingColor = COLOURS.BUILDINGS[Math.floor(Math.random() * COLOURS.BUILDINGS.length)];
+          const buildingColor = COLOURS.BUILDINGS[Math.floor(Math.random() * COLOURS.BUILDINGS.length)];
           buildingDiv.style.color = buildingColor;
           buildingDiv.style.fontSize = "14px";
           buildingDiv.style.display = "grid";
@@ -874,14 +875,45 @@ ${artLines.join(",\n")}
       /////////////////
 
       const KeyboardHandler = {
+        _secretBuffer: [],
+        _secretCode: "pen",
+
         // Initialize keyboard listeners
         init() {
           document.addEventListener("keydown", (e) => this._handleKeyDown(e));
           document.addEventListener("keyup", (e) => this._handleKeyUp(e));
         },
 
+        _checkSecretCode(key) {
+          if (key.length === 1 && key.match(/[a-z]/i)) {
+            this._secretBuffer.push(key.toLowerCase());
+            if (this._secretBuffer.length > 10) {
+              this._secretBuffer.shift();
+            }
+            const recentKeys = this._secretBuffer.slice(-this._secretCode.length).join("");
+            if (recentKeys === this._secretCode) {
+              this._onSecretCodeDetected();
+              this._secretBuffer = [];
+            }
+          }
+        },
+
+        _onSecretCodeDetected() {
+          UIUtils.showToast("🖊️ PEN MODE ACTIVATED!");
+          console.log("Secret code 'pen' detected!");
+
+          // Activate pen mode (NEW CODE)
+          if (typeof PenMode !== "undefined") {
+            PenMode.activate();
+          } else {
+            console.error("PenMode module not loaded!");
+          }
+        },
+
         // Handle keydown events
         _handleKeyDown(e) {
+          this._checkSecretCode(e.key);
+
           // Handle Shift key for drag-to-move mode
           if (e.key === "Shift") {
             State.isShiftPressed = true;
@@ -1789,6 +1821,7 @@ ${artLines.join(",\n")}
         App.init();
       });
     </script>
+    <script src="pen.js"></script>
   </head>
 
   <body>

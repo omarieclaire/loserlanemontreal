@@ -7,6 +7,8 @@
    ======================================== */
 :root {
   --theme-color: #63f863;
+    --green: #63f863;
+
   --theme-color-alpha: #63f863;
   --background: #120303;
   --surface: #0a0202;
@@ -314,6 +316,7 @@ button.first-time {
   grid-template-columns: repeat(10, 0.6em);
   background: #000;
   justify-content: center;
+  border: .5px solid var(--theme-color);
 }
 
 .cell {

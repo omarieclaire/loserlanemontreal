@@ -1,0 +1,190 @@
+
+.sushi-train-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 600px;
+  margin: 30px 0;
+}
+
+
+.sushi-hole {
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, #000000 0%, #1a1a1a 50%, var(--surface) 100%);
+  border: 2px dotted var(--theme-color);
+  box-shadow: 
+    inset 0 0 10px rgba(0, 0, 0, 0.8),
+    0 0 15px rgba(99, 248, 99, 0.3);
+  z-index: 100;
+  opacity: .5;
+}
+
+.sushi-hole.entry {
+  /* Position set by JavaScript */
+}
+
+.sushi-hole.exit {
+  /* Position set by JavaScript */
+}
+
+
+.character-train {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Individual characters on the train */
+.train-char {
+  position: absolute;
+  font-size: 38px;
+  font-weight: bold;
+  color: var(--theme-color-alpha);
+  cursor: pointer;
+  pointer-events: all;
+  transition: transform 0.3s ease, font-size 0.3s ease;
+  user-select: none;
+  z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.train-char.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.train-char:hover {
+  z-index: 1000;
+  filter: drop-shadow(0 0 10px var(--theme-color));
+}
+
+.train-char.paused {
+  animation-play-state: paused !important;
+}
+
+.train-char.selected {
+  color: var(--accent-yellow);
+  filter: drop-shadow(0 0 8px var(--accent-yellow));
+}
+
+
+/* Entry animation - spin and scale in */
+@keyframes enterHole {
+  0% {
+    transform: translate(-50%, -50%) scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.3) rotate(180deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1) rotate(360deg);
+    opacity: 1;
+  }
+}
+
+/* Exit animation - slower collapse/destruction with wobble */
+@keyframes exitHole {
+  0% {
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  15% {
+    transform: translate(-50%, -50%) scale(1.1) rotate(15deg);
+    opacity: 0.9;
+  }
+  30% {
+    transform: translate(-50%, -50%) scale(0.95) rotate(-10deg);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(0.7) rotate(30deg);
+    opacity: 0.5;
+  }
+  70% {
+    transform: translate(-50%, -50%) scale(0.4) rotate(90deg);
+    opacity: 0.3;
+  }
+  85% {
+    transform: translate(-50%, -50%) scale(0.1) rotate(150deg);
+    opacity: 0.1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+/* Grid section positioning within sushi container */
+.sushi-train-container .grid-section {
+  position: relative;
+  z-index: 50;
+}
+
+
+/* Hide the original palette when pen mode is active */
+body.pen-mode-active .palette-section {
+  display: none !important;
+}
+
+
+@media (max-width: 768px) {
+  .sushi-train-container {
+    min-height: 500px;
+  }
+
+  .train-char {
+    font-size: 20px;
+  }
+
+  .sushi-hole {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+
+body.pen-mode-active #header-container {
+  margin-bottom: 3.5rem !important;
+}
+
+/* Ensure main content uses flex layout */
+body.pen-mode-active .main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Smooth transition when activating pen mode */
+.palette-section {
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.palette-section.pen-mode-hiding {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.sushi-train-container {
+  animation: penModeSlideIn 0.5s ease-out;
+}
+
+@keyframes penModeSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
