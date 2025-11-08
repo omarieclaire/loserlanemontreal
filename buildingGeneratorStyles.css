@@ -141,6 +141,8 @@ button.first-time {
 #add-to-game-btn {
   margin-top: 7px;
   width: 100%;
+  background: #63f863;
+  padding: 14px 16px;
 }
 
 /* ========================================
@@ -304,7 +306,7 @@ button.first-time {
 .grid-container {
   background: var(--surface);
   max-height: 65vh;
-  overflow: auto;
+  /* overflow: auto; */
   user-select: none;
   padding: 2px;
   margin-bottom: 10px;
