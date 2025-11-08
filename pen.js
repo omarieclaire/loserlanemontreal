@@ -108,9 +108,9 @@ const PenMode = {
     config: {
       speed: 0.13,
       characterSpacing: 15,
-      pathOffset: 30,
-      verticalOffset: 88,
-      verticalAdjust: 53,
+      pathOffset: 35,
+      verticalOffset: 95,
+      verticalAdjust: 65,
       exitTriggerOffset: 2, // Trigger exit this many positions before the end
     },
 
